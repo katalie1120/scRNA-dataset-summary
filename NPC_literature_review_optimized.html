@@ -1,0 +1,1509 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>鼻咽癌前沿文献：多组学证据链与研究故事全景（优化版）</title>
+<style>
+:root{--ink:#202a33;--navy:#2c3e50;--blue:#2980b9;--green:#27885a;--orange:#ca791e;--purple:#8151a0;--teal:#168c80;--line:#d8dfe5;--muted:#66727c}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:78px}body{margin:0;background:#f2f3f4;color:var(--ink);font-family:"Noto Serif CJK SC","Songti SC","SimSun",serif;font-size:15px;line-height:1.8}
+a{color:#176c9e;text-decoration:none}a:hover{text-decoration:underline}
+button,input,select{font:inherit}button{border:0;border-radius:3px;padding:7px 13px;cursor:pointer;background:#e8eff5;color:#203e54}button:hover{background:#cfdeeb}
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:20;background:var(--navy);color:white;padding:9px 20px;display:flex;align-items:center;gap:9px;box-shadow:0 2px 8px #0002;font-family:Arial,sans-serif;font-size:12px}
+.toolbar .brand{font-weight:700;letter-spacing:.08em;margin-right:auto}
+.toolbar .print{background:#bc4d41;color:white}
+.toolbar input{width:205px;min-width:80px;padding:7px 9px;border-radius:3px;border:1px solid #60788a;background:#fff;color:#263944}
+.toolbar select{padding:6px 4px;max-width:125px;border:0;border-radius:3px}
+.layout{width:min(1190px,100%);margin:75px auto 40px;display:grid;grid-template-columns:210px minmax(0,940px);gap:20px;padding:0 16px}
+.sidebar{position:sticky;top:75px;align-self:start;max-height:calc(100vh - 95px);overflow:auto;font-size:12px;padding:8px 3px}
+.sidebar h3{font-size:13px;margin:7px 0;color:#394b5b}
+.sidebar a{display:block;padding:5px 7px;color:#526474;line-height:1.5;border-left:2px solid transparent}
+.sidebar a:hover{background:#e7eef3;border-color:var(--blue);text-decoration:none}
+.sidebar .minor{font-size:11px;padding-left:13px}
+.paper{background:#fff;box-shadow:0 4px 24px #0002;padding:30px 38px;min-width:0}
+.doc-title{text-align:center;padding:7px 0 18px;border-bottom:3px solid var(--navy);margin-bottom:18px}
+.eyebrow{font-family:Arial,sans-serif;font-size:11px;letter-spacing:.18em;color:#647587}
+.doc-title h1{font-size:26px;line-height:1.45;letter-spacing:.04em;margin:10px 0}
+.doc-title .sub{font-size:13px;color:var(--muted)}
+p{margin:8px 0 12px}
+h2{font-size:20px;line-height:1.5;margin:32px 0 14px;padding:6px 11px;border-left:5px solid var(--blue);background:#eaf4fb;color:#1a5276;scroll-margin-top:80px}
+h2.green{border-color:var(--green);background:#eaf7ef;color:#216541}
+h2.orange{border-color:var(--orange);background:#fff4e6;color:#865316}
+h2.purple{border-color:var(--purple);background:#f3eef8;color:#644080}
+h2.teal{border-color:var(--teal);background:#e8f6f3;color:#17685f}
+h3{font-size:17px;margin:22px 0 9px;line-height:1.5}h4{font-size:14px;margin:13px 0 6px;color:#244e68}
+ul,ol{padding-left:21px;margin:7px 0 12px}li{margin:4px 0}
+.muted,.evidence,.meta,.caption{color:var(--muted);font-size:12px}
+.evidence{border-top:1px dotted #d3d9df;margin-top:7px;padding-top:4px;font-family:Arial,sans-serif;line-height:1.55}
+.evidence:before{content:"依据："}
+.meta{line-height:1.6}
+.callout{padding:12px 15px;background:#edf5fb;border-left:4px solid var(--blue);margin:14px 0;border-radius:0 4px 4px 0}
+.callout.warn{background:#fff6e9;border-color:#c58431}
+.callout.note{background:#f2eef8;border-color:#8365a0}
+.callout p:last-child{margin-bottom:0}
+.callout strong{display:block;margin-bottom:4px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0}
+.card{padding:12px 14px;background:#f4f8fb;border:1px solid #d4e1ea;border-radius:4px;min-width:0}
+.card:nth-child(2n){background:#eff7f1;border-color:#d4e7da}
+.card p{font-size:13px;margin:5px 0}.card h4{margin:0 0 5px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:18px 0}
+.stat{background:#f0f4f7;text-align:center;padding:10px 5px;border-top:3px solid #8295a5}
+.stat b{display:block;font:700 25px Arial,sans-serif;color:#2b506a}
+.stat span{font-size:11px}
+.tag{display:inline-block;background:#dcecf7;color:#205b7f;padding:2px 7px;font-family:Arial,sans-serif;font-size:11px;line-height:1.5;border-radius:3px;margin:2px 4px 2px 0}
+.tag.npc{background:#dcefe4;color:#246a41}.tag.method{background:#eae1f3;color:#6a4384}.tag.cross{background:#fff0d8;color:#83551d}
+.table-wrap{overflow-x:auto;margin:10px 0 17px}
+table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px;line-height:1.65}
+th{background:#2f7198;color:white;font-weight:600;text-align:left;padding:8px 9px;vertical-align:top}
+td{padding:9px;border-bottom:1px solid #dce3e8;vertical-align:top;overflow-wrap:anywhere}
+tr:nth-child(even) td{background:#f6f8fa}table .evidence{font-size:10.5px}td p{margin:3px 0 6px}
+.compact{font-size:12px}
+.study{border:1px solid #ccd8e2;margin:21px 0 27px;border-radius:4px;scroll-margin-top:78px}
+.study-head{background:#f0f5f8;padding:15px 17px;border-bottom:1px solid #d9e2e9}
+.study-head h3{margin:4px 0 7px;font-size:19px}
+.english{font-family:Arial,sans-serif;color:#526574;font-size:12px;line-height:1.5;margin:6px 0}
+.study-body{padding:15px 18px}
+.study-body>p:first-child{margin-top:0}
+.thesis{background:#f5f8fa;border-left:3px solid #829faf;padding:10px 12px;font-size:14px;margin:12px 0}
+.study details{margin-top:12px}
+summary{cursor:pointer;font-weight:700;color:#315c78;font-size:13px;padding:9px 11px;background:#eef4f8;border-radius:3px}
+summary:hover{background:#e1edf5}details[open]>summary{margin-bottom:12px}
+.step{border:1px solid #dbe4ea;border-left:3px solid #3981ac;padding:11px 13px;margin:11px 0;background:#fff}
+.step h4{margin:0 0 7px}
+.step-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 15px}
+.step-grid p{font-size:13px;margin:0}
+.label{color:#45667c;font-weight:700;font-size:12px;display:block;margin-bottom:2px}
+.next{font-size:12px;margin:8px 0 0;color:#755c2e;background:#fff9ee;padding:6px 9px}
+.validation{border-left-color:#40916c}.validation .label{color:#376f50}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}
+.flow>div{padding:12px;border:1px solid #d2e0eb;border-top:3px solid #377eab;background:#f0f7fb;font-size:13px}
+.flow>div:nth-child(n+4){border-top-color:#40906d;background:#eff8f2}
+.flow b{display:block;margin-bottom:5px;color:#215d82}.flow span{font-size:12px}
+.source-list{font-size:12px}.source-list li{margin:8px 0}
+.file-name{font-size:11px;color:#72808b}
+.group-intro{font-size:14px;color:#4e6070}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px}
+.toc-grid a{padding:8px 10px;background:#f2f6f9;border:1px solid #dce5ec;border-radius:3px}
+.mini-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:9px;font-size:11px}
+.anchor{scroll-margin-top:80px}
+.no-results{padding:18px;background:#fff3e2;text-align:center;display:none}
+#search-status{font-size:11px;min-width:65px}
+.footer{text-align:center;font-size:11px;color:#76818b;padding-top:20px;border-top:2px solid #c8d3dc;margin-top:35px}
+.kbd{font-family:Arial,sans-serif;color:#526578;font-size:11px}
+mark{background:#fff0a8}.hidden{display:none!important}
+section{scroll-margin-top:75px}
+/* 数据搭配专用样式 */
+.data-matrix{margin:12px 0}
+.data-matrix table{font-size:12px}
+.data-matrix th{background:#3d6b80;font-size:11px}
+.indep-level{display:inline-block;padding:1px 5px;border-radius:2px;font-size:10px;font-weight:700}
+.indep-new{background:#d4edda;color:#155724}
+.indep-ext{background:#d1ecf1;color:#0c5460}
+.indep-reuse{background:#fff3cd;color:#856404}
+.indep-same{background:#f8d7da;color:#721c24}
+.story-arc{background:#f9f9f9;border:1px solid #dde;border-radius:4px;padding:12px 15px;margin:12px 0;font-size:13px}
+.story-arc ol{margin:8px 0;padding-left:20px}
+.story-arc li{margin:6px 0;line-height:1.6}
+.story-arc li b{color:#2c5282}
+@media(max-width:1000px){.layout{grid-template-columns:1fr;max-width:860px}.sidebar{display:none}.paper{padding:28px}}
+@media(max-width:650px){body{font-size:14px}.layout{margin-top:112px;padding:0 7px}.paper{padding:20px 14px}.toolbar{flex-wrap:wrap;padding:8px;gap:6px}.toolbar input{flex:1;min-width:145px}.toolbar select{max-width:115px}.doc-title h1{font-size:22px}.stats{grid-template-columns:repeat(2,1fr)}.cards,.flow,.step-grid,.toc-grid{grid-template-columns:1fr}}
+@media print{@page{size:A4;margin:14mm 13mm 15mm}body{background:white;font-size:10pt}.toolbar,.sidebar{display:none!important}.layout{display:block;width:auto;margin:0;padding:0}.paper{box-shadow:none;padding:0}.study{break-before:page}.study-head{padding:9px 10px}.study-body{padding:5px 0}h2{font-size:15pt}table{font-size:8.5pt}th{background:#e6edf3!important;color:#203b4d!important}td{padding:6px}.table-wrap{overflow:visible}.study.hidden{display:block!important}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="brand">NPC · 文献精读手册（优化版）</span>
+  <input id="search" type="search" aria-label="检索论文全文" placeholder="检索基因、方法、数据编号…">
+  <select id="kind" aria-label="论文范围">
+    <option value="all">全部论文</option>
+    <option value="npc">鼻咽癌 7 篇</option>
+    <option value="support">参考研究 12 篇</option>
+  </select>
+  <span id="search-status" aria-live="polite"></span>
+  <button id="clear">清除</button>
+  <button id="expand">展开详读</button>
+  <button id="collapse">收起详读</button>
+  <button class="print" id="print">打印 / PDF</button>
+</div>
+
+<div class="layout">
+<nav class="sidebar" aria-label="目录">
+  <h3>阅读导航</h3>
+  <a href="#scope">01 范围与读法</a>
+  <a href="#catalog">02 论文全景</a>
+  <a href="#logic">03 数据搭配逻辑</a>
+  <a href="#npc">04 鼻咽癌 7 篇精读</a>
+  <a href="#support">05 跨癌种与方法 12 篇</a>
+  <a href="#compare">06 横向比较</a>
+  <a href="#provenance">07 数据复用核查</a>
+  <a href="#blueprint">08 研究设计模板</a>
+  <a href="#registry">09 数据入口</a>
+  <a href="#references">10 文献目录</a>
+  <h3>鼻咽癌 7 篇</h3>
+  <a class="minor" href="#P01">P01 多组学分型与GP诱导化疗获益</a>
+  <a class="minor" href="#P10">P10 蛋白分型、双蛋白面板与Panobinostat</a>
+  <a class="minor" href="#P11">P11 USP18–TRIM21–TRIM29放疗耐受机制</a>
+  <a class="minor" href="#P13">P13 TLS的免疫生态：单细胞、空间与克隆证据</a>
+  <a class="minor" href="#P02">P02 三类免疫逃逸表型</a>
+  <a class="minor" href="#P03">P03 NK功能障碍：蛋白组到公共单细胞</a>
+  <a class="minor" href="#P09">P09 SAHA扰动下的乙酰化—磷酸化图谱</a>
+  <h3>参考研究 12 篇</h3>
+  <a class="minor" href="#P04">P04 泛癌免疫蛋白基因组分型</a>
+  <a class="minor" href="#P06">P06 GBM复发的神经元状态转换</a>
+  <a class="minor" href="#P08">P08 罕见肾肿瘤多组学分型与诊断</a>
+  <a class="minor" href="#P16">P16 GBM针芯活检多模态可行性</a>
+  <a class="minor" href="#P19">P19 转移性乳腺癌多平台空间图谱</a>
+  <a class="minor" href="#P18">P18 DVP：形态导航深度蛋白组</a>
+  <a class="minor" href="#P05">P05 mipDVP：多重成像接空间蛋白功能</a>
+  <a class="minor" href="#P14">P14 SCPro：分选参考辅助空间蛋白解卷积</a>
+  <a class="minor" href="#P07">P07 PDO磷酸化扰动与组织空间免疫</a>
+  <a class="minor" href="#P12">P12 Hybrid-DIA低输入磷酸化联合测量</a>
+  <a class="minor" href="#P15">P15 Phospho-seq：信号状态与染色质转录联测</a>
+  <a class="minor" href="#P17">P17 benchmarKIN：激酶活性推断的可靠性评估</a>
+</nav>
+
+<main class="paper">
+<header class="doc-title">
+  <div class="eyebrow">NASOPHARYNGEAL CARCINOMA · MULTI-OMICS EVIDENCE & STUDY DESIGN</div>
+  <h1>鼻咽癌前沿文献<br>多组学证据链与研究故事全景</h1>
+  <div class="sub">19 篇逐篇精读 · 数据分组与搭配逻辑 · 分析推进与验证边界 · 跨研究设计比较</div>
+  <div class="sub">整理日期：2026 年 10 月</div>
+</header>
+
+<!-- ======================================================= -->
+<!-- 01 阅读范围 -->
+<!-- ======================================================= -->
+<section id="scope">
+<h2>01｜阅读范围与读法</h2>
+<p>这 19 篇文献覆盖的共同问题是：<b>如何从临床差异出发，用不同组学和实验数据逐步缩小候选，最终确立可被干预或检测的机制。</b>它们的价值不在于"用了多少组学"，而在于每种数据是否真正填补了前一步留下的信息缺口。</p>
+<div class="stats">
+  <div class="stat"><b>19</b><span>篇研究</span></div>
+  <div class="stat"><b>7</b><span>篇NPC直接研究</span></div>
+  <div class="stat"><b>12</b><span>篇参考研究</span></div>
+  <div class="stat"><b>6</b><span>项独立III期试验资源</span></div>
+</div>
+<div class="callout">
+  <strong>附件范围说明</strong>
+  <p>12 篇参考研究涵盖其他癌种或技术研究，可借鉴研究设计，但其生物学结论不能直接移植到 NPC。各篇详读在"可迁移的设计思路"部分会明确区分。</p>
+</div>
+<div class="toc-grid">
+  <a href="#catalog">全景表：19 篇分别在回答什么问题</a>
+  <a href="#logic">数据搭配：不同组学如何形成证据链</a>
+  <a href="#npc">7 篇 NPC：完整故事拆解</a>
+  <a href="#compare">横向比较：相似主题的不同证据强度</a>
+</div>
+</section>
+
+<!-- ======================================================= -->
+<!-- 02 论文全景 -->
+<!-- ======================================================= -->
+<section id="catalog">
+<h2>02｜19 篇论文全景：科学问题先于技术</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+  <th style="width:8%">编号</th>
+  <th style="width:30%">核心科学问题</th>
+  <th style="width:35%">故事主轴</th>
+  <th style="width:27%">最值得学的设计</th>
+</tr></thead>
+<tbody>
+<tr><td><a href="#P01">P01</a><br><span class="tag npc">NPC</span></td>
+<td>GP诱导化疗的获益为何因人而异？</td>
+<td>多组学分型 → GP治疗交互 → IgA浆细胞与CD8耗竭轴 → 独立试验样本验证</td>
+<td>以治疗交互而非单纯预后差异驱动分型；三类独立临床队列分别承担发现、机制和验证。</td></tr>
+<tr><td><a href="#P10">P10</a><br><span class="tag npc">NPC</span></td>
+<td>蛋白分型能否同时指导诊断、预后与用药？</td>
+<td>临床质谱 → S1/S2分型 → 双蛋白TMA面板 → CMAP药物提名 → Panobinostat–MYC–HR → 放疗增敏</td>
+<td>"发现签名→低维病理面板"与"差异签名→药物筛选→机制闭合"两条并行转化路线。</td></tr>
+<tr><td><a href="#P11">P11</a><br><span class="tag npc">NPC</span></td>
+<td>USP18 通过什么分子机制促进放疗耐受？</td>
+<td>临床蛋白组候选 → USP18功能 → IP-MS发现TRIM29 → 催化失活揭示支架作用 → TRIM21–K27链–K561 → DDR与放疗表型 → 临床IHC</td>
+<td>每一轮IP-MS提出具体假说，每一组突变实验排除一种解释，形成严格的依赖性因果链。</td></tr>
+<tr><td><a href="#P13">P13</a><br><span class="tag npc">NPC</span></td>
+<td>TLS如何组织体液与细胞免疫来影响预后和治疗反应？</td>
+<td>整合scRNA建细胞图谱 → BCR补克隆证据 → 两套空间平台定位 → CAF–B细胞轴功能干预 → bulk预后及ICB应答</td>
+<td>每种模态回答不同问题：转录组建字典，受体克隆补生物学约束，空间确认邻域，共培养验证功能。</td></tr>
+<tr><td><a href="#P02">P02</a><br><span class="tag npc">NPC</span></td>
+<td>之前 scRNA 图谱看不见肿瘤细胞，遮蔽了哪些免疫逃逸模式？</td>
+<td>scRNA+snRNA互补捕获 → 三类逃逸形态（低MHC/成纤维样/组织屏障） → IMC空间核查</td>
+<td>先解决测量偏差，再讨论生物学；明确声明未做体外功能验证，控制了结论强度。</td></tr>
+<tr><td><a href="#P03">P03</a><br><span class="tag npc">NPC</span></td>
+<td>除T细胞耗竭外，NPC中NK细胞是否也被功能性压制？</td>
+<td>小规模本地蛋白组提出异常 → 两套公共scRNA定位NK亚群 → IHC核对方向</td>
+<td>低成本"本地发现+公共数据定位+组织核查"三角验证；明确未完成功能实验。</td></tr>
+<tr><td><a href="#P09">P09</a><br><span class="tag npc">NPC</span></td>
+<td>SAHA对NPC的作用超出乙酰化，能否从多PTM图谱找到关键分子？</td>
+<td>SAHA处理同一细胞系 → 蛋白/乙酰化/磷酸化三层联测 → 双PTM候选 → Co-IP/WB验证LMNA与WSTF</td>
+<td>每个组学层回答不同问题；PTM全局相关性弱（R²=0.03），提示需选具体分子验证而非泛化"交叉调控"。</td></tr>
+<tr><td><a href="#P04">P04</a></td>
+<td>跨癌种是否存在可重现的共同免疫状态？细胞数量与功能活跃是否等价？</td>
+<td>RNA+蛋白双轴去卷积 → 7种免疫亚型 → DNA/甲基化/激酶关联 → OAK试验验证治疗相关性</td>
+<td>先区分细胞组成与功能状态再分型；多层证据分工：测量（MRM/IHC）、上游（DNA/甲基化）、方向（扰动）、结局（试验）。</td></tr>
+<tr><td><a href="#P06">P06</a></td>
+<td>GBM复发为何不能由驱动突变变化充分解释？</td>
+<td>123例原发–复发配对 → DNA稳定而蛋白/PTM改变 → 神经元状态 → scRNA排除正常细胞混入 → 时序PDX → BRAF依赖性 → 联合生存</td>
+<td>纵向配对设计揭示DNA与蛋白功能的脱耦；时序模型将人类观察转化为受控干预。</td></tr>
+<tr><td><a href="#P08">P08</a></td>
+<td>形态相似的良恶性肾肿瘤如何用组学标志精准区分？</td>
+<td>多组学多层分型 → snRNA确认细胞来源 → 诊断marker筛选 → IHC/RNA-ISH外部验证</td>
+<td>"高维发现→低维病理读数"的诊断型研究范式；每个候选 marker 经过 RNA/蛋白/组织三层核查。</td></tr>
+<tr><td><a href="#P16">P16</a></td>
+<td>常规针芯活检能否支持多模态深度测量？</td>
+<td>空间定位取材 → 7模态分配 → 各模态独立读出 → 跨模态互证→ 异质性评估 → PDX/PDCL建模</td>
+<td>先问"材料够不够"，再问"信息能否互证"；单例可行性展示，不混同于30例队列结论。</td></tr>
+<tr><td><a href="#P19">P19</a></td>
+<td>转移癌活检如何建立可比较的细胞–空间图谱，发现非平均量化的空间生物学？</td>
+<td>67份活检sc/snRNA建参考 → 连续切片4平台空间对比 → 平台技术偏差量化 → 巨噬细胞屏障/EMT斑块/T细胞邻域差异</td>
+<td>先消除技术偏差再解读生物学；同一切片多平台互证为空间结论提供可靠性下限。</td></tr>
+<tr><td><a href="#P18">P18</a></td>
+<td>显微镜可识别的细胞形态能否转换为深度蛋白组？</td>
+<td>图像分割 → 单细胞轮廓LMD → 汇集同类细胞MS → 形态–功能蛋白连接 → FFPE临床可行性</td>
+<td>先锁定"取哪类细胞、在哪里"再测蛋白；区分"单细胞分辨率选取"与"逐细胞无偏MS"。</td></tr>
+<tr><td><a href="#P05">P05</a></td>
+<td>同类免疫细胞在肿瘤巢内外的功能蛋白状态是否不同？</td>
+<td>14–22重成像定位 → LMD同类细胞汇集 → 比较肿瘤区/固有层巨噬细胞与T细胞蛋白差异 → IF复核</td>
+<td>先由图像提出空间假说，再用MS读出超出原抗体panel的功能信息；两阶段互补。</td></tr>
+<tr><td><a href="#P14">P14</a></td>
+<td>如何从极少量组织细胞中获得分辨率更高的细胞亚型信息？</td>
+<td>iPAC低输入处理 → 多重成像导航LMD → FACS分选蛋白参考 → Tangram空间映射 → Treg亚型发现 → 人TMA验证</td>
+<td>分选参考与空间样本分离：参考提高可分性，空间提供位置；二者配合完成"发现–验证"闭环。</td></tr>
+<tr><td><a href="#P07">P07</a></td>
+<td>同样的驱动突变为何不能预测激酶抑制剂反应？非遗传异质性如何影响耐药？</td>
+<td>PDO库静态多组学 → 短时磷酸化扰动 → 网络重排与突变弱相关 → scRNA状态解释 → IMC补充TME空间信息</td>
+<td>功能扰动（磷酸化）揭示静态数据看不到的网络适应性；原组织IMC阻止错误的免疫联合策略推断。</td></tr>
+<tr><td><a href="#P12">P12</a></td>
+<td>样本量极少时，靶向位点与全局发现能否在同一次进样中兼顾？</td>
+<td>重标内标触发MSx → 与常规DIA同次采集 → 梯度验证→ 已知信号扰动校验 → 单球5-FU时序应用</td>
+<td>技术设计的核心是"同一进样两种读出"；"单个球体"是多细胞样本，非单细胞测量。</td></tr>
+<tr><td><a href="#P15">P15</a></td>
+<td>胞内磷酸信号、染色质可及性与基因表达能否在单细胞内同时连接？</td>
+<td>DNA标记抗体+scATAC → 刺激/阻断验证PTM捕获 → 视网膜/脑类器官应用 → GLI3结合+KO扰动校验</td>
+<td>明确区分实测ATAC+ADT与桥接推断RNA；用既有扰动数据检验候选调控位点是否真有功能。</td></tr>
+<tr><td><a href="#P17">P17</a></td>
+<td>磷酸化数据推断的激酶活性，到底多可靠？选什么算法和数据库最重要？</td>
+<td>扰动基准+肿瘤多组学基准双重评估 → 19种算法比较 → 先验库质量的效果超过算法复杂度 → 药敏关联验证实用价值</td>
+<td>先验知识质量比算法复杂度更影响结果；在使用激酶活性推断结论前，应报告可覆盖激酶数、底物库来源和跨方法一致性。</td></tr>
+</tbody></table></div>
+<p class="caption">故事主轴为本报告按原文图序归纳；各项详情在对应精读中逐项展开。</p>
+</section>
+
+<!-- ======================================================= -->
+<!-- 03 数据搭配逻辑 -->
+<!-- ======================================================= -->
+<section id="logic">
+<h2 class="teal">03｜不同组学数据如何逻辑清晰地搭配成证据链</h2>
+
+<p>多组学的价值不在于同时测量了多少维度，而在于<b>每种数据填补一个前一步无法回答的缺口</b>。下图是跨论文归纳的通用设计框架——每篇文章完成的环节不同，终点合理性取决于研究问题。</p>
+
+<div class="flow">
+  <div><b>① 临床锚点</b><span>明确比较对象（谁获益、谁耐受、何时复发）和结局，而非仅描述差异。</span></div>
+  <div><b>② 全局筛选</b><span>从 DNA/RNA/蛋白/PTM 中找可重现状态；Bulk 数据缩小候选，不决定因果。</span></div>
+  <div><b>③ 细胞来源</b><span>单细胞数据区分"肿瘤细胞自身变化"与"细胞比例变化"，排除混淆。</span></div>
+  <div><b>④ 空间邻域</b><span>确认候选细胞是否在可发生作用的位置；相邻≠已发生相互作用。</span></div>
+  <div><b>⑤ 定向干预</b><span>敲低/阻断/位点突变/救援，检验必要性和依赖性；替代解释须明确排除。</span></div>
+  <div><b>⑥ 临床回归</b><span>独立队列、独立试验样本或前瞻设计检验推广性；与发现集的数据分离是关键。</span></div>
+</div>
+
+<h3>四类数据搭配方式及其证据强度</h3>
+<div class="cards">
+  <div class="card">
+    <h4>同患者同活检多模态配对 <span class="indep-level indep-new">最强</span></h4>
+    <p>同一组织提取 DNA/RNA/蛋白，各模态结果可逐患者关联。代表：P01 的 240 例同活检四模态。<br>注意：QC 后每个模态的有效人数不同，不能将最大值写成全模态人数。</p>
+  </div>
+  <div class="card">
+    <h4>同患者不同时间或区域 <span class="indep-level indep-new">强（纵向）</span></h4>
+    <p>捕捉治疗后演化，患者为配对单位。代表：P06 的 123 对原发–复发、P16 的多区域针芯。<br>注意：同一患者的不同时间点≠新增独立患者；区域采样数≠患者数。</p>
+  </div>
+  <div class="card">
+    <h4>同研究、独立队列正交验证 <span class="indep-level indep-ext">中等</span></h4>
+    <p>同队列的 IHC/mIF/空间测量，与 Bulk 分析相互印证。代表：P01 的 mIHC 子集、P10 的外部 TMA。<br>注意：同一患者群体不同模态的正交验证，不能计为外部独立队列。</p>
+  </div>
+  <div class="card">
+    <h4>跨研究三角验证 <span class="indep-level indep-reuse">弱（方向性）</span></h4>
+    <p>不同患者的数据互相印证某一方向。代表：P03 的本地蛋白组 + 公共 scRNA、P13 的整合多来源单细胞。<br>注意：两批来自不同患者的相关性，不能拼成同一患者的完整证据链。</p>
+  </div>
+</div>
+
+<h3>组学数据各自能回答什么，又不能替代什么</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+  <th>数据类型</th>
+  <th>主要回答的问题</th>
+  <th>必须搭配的互补数据</th>
+  <th>常见误读（不能单独证明的事）</th>
+</tr></thead>
+<tbody>
+<tr><td>WES/WGS、CNV</td><td>哪些遗传背景与表型关联？</td><td>RNA/蛋白验证 cis/trans 表达效应；纯度和细胞比例校正。</td><td>有扩增 ≠ 蛋白升高；有突变 ≠ 功能丧失。</td></tr>
+<tr><td>Bulk RNA、蛋白组</td><td>群体水平的状态与分型。</td><td>单细胞定位来源，IHC 验证蛋白，独立队列验证结局。</td><td>Bulk 差异 ≠ 每个恶性细胞都改变；预后标记 ≠ 预测治疗获益。</td></tr>
+<tr><td>磷酸化/乙酰化/泛素化</td><td>蛋白的调控状态与信号活性。</td><td>总蛋白校正；位点突变救援；激酶/E3 依赖性验证。</td><td>位点升高 ≠ 上游激酶被激活；修饰相关 ≠ 直接催化。</td></tr>
+<tr><td>sc/snRNA + BCR/TCR</td><td>哪个细胞群承担变化，哪些克隆相关。</td><td>患者层统计 + 空间邻域 + 功能读出。</td><td>拟时序 ≠ 实测时间方向；克隆共享 ≠ 观察到细胞迁移。</td></tr>
+<tr><td>空间转录组/成像</td><td>候选细胞是否在可发生作用的位置。</td><td>单细胞参考、病理分区、共培养阻断。</td><td>空间相邻 ≠ 已发生配体–受体作用；Spot 去卷积 ≠ 实测单细胞。</td></tr>
+<tr><td>基因/药物干预 + 体内模型</td><td>改变候选是否改变表型，是否依赖该机制。</td><td>遗传与药理双重手段；靶点命中读出；救援实验。</td><td>药物有效 ≠ 单靶点；免疫缺陷模型 ≠ 证明了免疫机制。</td></tr>
+<tr><td>临床试验存档组织/外部队列</td><td>发现是否推广，是否与治疗效应有关。</td><td>预先固定标记规则；患者与发现集分离；治疗×标记交互分析。</td><td>同组显著另组不显著 ≠ 治疗×标记交互显著。</td></tr>
+</tbody></table></div>
+
+<div class="callout note">
+  <strong>读每张图都问三个问题</strong>
+  <p>① 这张图排除了哪一种替代解释？② 如果删掉它，故事的哪一环断了？③ 下一个实验是否真的检验了上一步提出的机制假说？后文每篇的"分析推进"按这三个问题组织。</p>
+</div>
+</section>
+
+<div id="no-results" class="no-results">没有匹配的论文，请更换关键词或清除筛选。</div>
+
+<!-- ======================================================= -->
+<!-- 04 NPC 7篇 -->
+<!-- ======================================================= -->
+<section id="npc">
+<h2 class="green">04｜鼻咽癌 7 篇精读</h2>
+<p class="group-intro">按科学问题组织（而非按发表时间）：从分型与治疗分层，到放疗耐受机制，再到免疫微环境与药物扰动。</p>
+
+<!-- P01 -->
+<article class="study" id="P01" data-kind="npc">
+<header class="study-head">
+  <span class="tag npc">P01 · 鼻咽癌</span>
+  <span class="tag">Nature Cancer 2026 · 7:790–809</span>
+  <h3>多组学分型揭示GP诱导化疗获益的异质性：IgA浆细胞轴与PD-1联合治疗机会</h3>
+  <div class="english">Multi-omic characterization of nasopharyngeal carcinoma delineates the subtype-specific landscape of response to induction chemotherapy</div>
+  <div class="mini-links">
+    <a href="https://doi.org/10.1038/s43018-026-01149-8" target="_blank" rel="noopener">DOI ↗</a>
+    <a href="#catalog">返回总表</a>
+  </div>
+</header>
+<div class="study-body">
+
+<h4>科学问题</h4>
+<p>局部区域晚期NPC患者接受GP诱导化疗（GP-IC）加同步放化疗，但临床增益因人而异。能否用治疗前小活检的多组学数据，找到既解释这种差异、又可转化为常规病理检测的分子分型？</p>
+
+<div class="thesis">
+  <b>核心结论：</b>蛋白组定义三类NPC亚型——S1（IFNγ/效应免疫）、S2（CNA驱动细胞周期增殖，GP获益最明显）、S3（IgA⁺浆细胞/CD8 T细胞耗竭，GP获益有限但PD-1联合获益更大）。IgA⁺浆细胞通过MIF–CD74轴促进CD8 T细胞表面耗竭标记，mIHC可转化检测，并在三项独立III期试验样本中验证治疗交互。这是治疗分层的研究依据，尚未进入前瞻性标志物指导试验。
+</div>
+
+<h4>研究故事：数据如何层层推进</h4>
+<div class="story-arc">
+  <p><b>问题的起点是治疗效应，不是预后。</b>文章首先在GP+CCRT与CCRT两臂之间检验分子特征×治疗交互，发现蛋白信号（而非孤立突变）最能组织获益信息——这保证了后续分型服务于临床问题，而非单纯描述肿瘤异质性。</p>
+  <ol>
+    <li><b>蛋白组定义三类：</b>4,500高变蛋白共识聚类（k=3），S2的GP增益最显著（DFS HR=0.23），S3免疫丰富但预后较差，提出两条待解释分支。</li>
+    <li><b>解释S2（化疗敏感）：</b>CNA–RNA–磷酸化形成细胞周期链（CCND1扩增→RB1磷酸化→增殖），细胞系abemaciclib联合实验提供功能支持。</li>
+    <li><b>拆分两类"免疫热"：</b>S1为效应免疫（STAT1–IRF1–MHC），S3为B细胞/IgA与耗竭并存——此处bulk将"免疫多"与"免疫有效"分开，是关键区分。</li>
+    <li><b>从bulk收敛到细胞来源：</b>复用既往GP前后配对scRNA（15例，来自Lv等，非本研究240例的单细胞），发现不应答者中IgA⁺浆细胞残留更多，CellChat提名MIF–CD74轴。</li>
+    <li><b>体外阻断补局部因果：</b>组织流式分选IgA⁺浆细胞与CD8共培养，MIF/CD74中和降低PD-1⁺Tim-3⁺比例——这是从关联到局部功能证据的关键一步。</li>
+    <li><b>mIHC实现低维检测：</b>发现队列子集和254例GP试验存档组织，IgA⁺浆细胞检测替代质谱。</li>
+    <li><b>双向治疗假说闭合：</b>高IgA浆细胞组→GP获益有限→PD-1附加获益更大（CONTINUUM/DIPPER两项试验），将"化疗耐受表型"转化为"免疫治疗机会"。</li>
+  </ol>
+</div>
+
+<details open>
+<summary>数据分组与搭配：谁与谁配对，各自承担什么任务</summary>
+<div class="table-wrap data-matrix"><table>
+<thead><tr>
+  <th>数据层</th>
+  <th>规模与分组</th>
+  <th>与其他数据的对应关系</th>
+  <th>在故事中的任务</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td><b>发现队列：同活检WES、RNA、蛋白、磷酸化</b><br>SYSUCC-GP，2013–2018，治疗前活检</td>
+  <td>入组240例（GP+CCRT 120 / CCRT 120）；QC后WES/RNA各~225，蛋白231，磷酸化231。鉴定12,278蛋白/37,166位点，过滤后9,585蛋白和4,253位点供分析。跨模态匹配216例。<br><span class="indep-level indep-new">同活检配对</span></td>
+  <td>同一活检四模态配对；两臂为回顾性非随机分组；20例慢性鼻咽炎为技术参考，无患者胚系DNA。</td>
+  <td>寻找治疗交互特征；蛋白分型；各层解释分型生物学。</td>
+</tr>
+<tr>
+  <td><b>既往bulk RNA（外部验证）</b><br>GSE102349、GSE132112、EGAS00001004542</td>
+  <td>训练集153/测试集63内部，外部预后验证95例+150例。<span class="indep-level indep-ext">跨队列，RNA分类器映射</span></td>
+  <td>与发现队列无患者重叠；通过分类器传递亚型标签，不是外部蛋白组重现。</td>
+  <td>检验分型相关表达程序在独立RNA队列的可识别性和预后关联。</td>
+</tr>
+<tr>
+  <td><b>既往GP前后配对scRNA</b><br>Lv et al., Nat Med 2023，CNP0001341/CNP0001503</td>
+  <td>9应答+6不应答患者，15对治疗前后；提取51,352个B细胞供分析。<span class="indep-level indep-reuse">跨队列复用（非本研究240例）</span></td>
+  <td>与发现队列为不同患者；纵向配对提供细胞消长信息，但样本量限于15例。</td>
+  <td>定位IgA浆细胞来源；观察GP后细胞残留；产生MIF–CD74通讯候选。</td>
+</tr>
+<tr>
+  <td><b>共培养与阻断实验</b><br>NPC新鲜组织IgA⁺CD138⁺浆细胞 × PBMC来源CD8</td>
+  <td>组织流式n=6例；共培养/阻断n=6生物学重复（1:1，48h）。<span class="indep-level indep-new">本研究新实验</span></td>
+  <td>来源于与发现队列不同的NPC组织；体外模型，无EBV背景。</td>
+  <td>将MIF–CD74推断推进到体外功能证据；阻断降低耗竭标记诱导。</td>
+</tr>
+<tr>
+  <td><b>mIHC发现队列子集 + 独立GP试验（NCT01872962）</b></td>
+  <td>发现子集77例用于空间接触分析；GP试验：GP+CCRT 132 / CCRT 122。<span class="indep-level indep-ext">发现队列正交验证 + 独立试验</span></td>
+  <td>mIHC与质谱来自同一患者群（正交，非独立）；GP试验为不同患者群（独立，但非预设标志物设计）。</td>
+  <td>建立可转化的组织检测；验证IgA浆细胞与GP治疗增益的交互（DFS P=0.036，OS P=0.066）。</td>
+</tr>
+<tr>
+  <td><b>空间转录组（外部重分析）</b><br>GSE206245，12例toripalimab联合化疗</td>
+  <td>21,753个Visium FFPE spots；7应答+5不应答。<span class="indep-level indep-reuse">P13数据复用</span></td>
+  <td>数据来自P13研究，不是本研究新生成空间数据；spots≠单细胞。</td>
+  <td>在含疗效结局的空间数据中检验IgA浆细胞/TCA特征与ICB应答关联。</td>
+</tr>
+<tr>
+  <td><b>PD-1试验存档组织</b><br>CONTINUUM（NCT03700476）+ DIPPER（NCT03427827）</td>
+  <td>CONTINUUM 169例（84对照/85免疫），DIPPER 262例（131/131）。<span class="indep-level indep-ext">独立试验，非预设标志物</span></td>
+  <td>两项试验方案不同（给药时序/风险人群），不能合并成单一结论。</td>
+  <td>检验高IgA浆细胞组是否在PD-1附加下获得更大EFS获益。</td>
+</tr>
+</tbody></table></div>
+</details>
+
+<details open>
+<summary>验证链条：每个实验回答什么，证明范围止于何处</summary>
+<div class="step validation">
+  <h4>外部RNA队列分类器验证</h4>
+  <div class="step-grid">
+    <p><span class="label">设计</span>内部216例70/30训练–测试和五折交叉验证；外部RNA队列投影亚型标签。</p>
+    <p><span class="label">补上的缺口</span>分型相关表达程序可跨队列识别，测试集准确率90.5%。</p>
+    <p><span class="label">证明边界</span>不是外部蛋白组独立重现；高准确率不等于临床效用；最优阈值有选择乐观风险。</p>
+    <p><span class="label">数据</span>PDF p.5，p.17；Extended Data Fig.3</p>
+  </div>
+</div>
+<div class="step validation">
+  <h4>IgA浆细胞MIF–CD74共培养阻断</h4>
+  <div class="step-grid">
+    <p><span class="label">设计</span>重组MIF梯度；IgA⁺浆细胞与预激活CD8 1:1；抗MIF/抗CD74/浆细胞去除对照。</p>
+    <p><span class="label">补上的缺口</span>局部因果：IgA浆细胞/MIF参与CD8耗竭标记（PD-1⁺Tim-3⁺）的诱导，不只是共表达。</p>
+    <p><span class="label">证明边界</span>读出为表面耗竭标记，非持久耗竭或抗原特异杀伤恢复；体外模型缺乏肿瘤细胞。</p>
+    <p><span class="label">数据</span>PDF p.11–12，Fig.7g–l</p>
+  </div>
+</div>
+<div class="step validation">
+  <h4>GP试验（NCT01872962）标志物分析</h4>
+  <div class="step-grid">
+    <p><span class="label">设计</span>254例随机试验存档FFPE，按IgA浆细胞mIHC分组，比较两治疗臂结局。</p>
+    <p><span class="label">补上的缺口</span>比单臂预后关联更强：低IgA组GP增益明确（DFS交互P=0.036）。</p>
+    <p><span class="label">证明边界</span>回顾性、非预设标志物；阈值在60%分位扫描后取，有乐观偏倚；OS交互P=0.066未达常规显著。</p>
+    <p><span class="label">数据</span>PDF p.11，p.15，Fig.7s–t</p>
+  </div>
+</div>
+<div class="step validation">
+  <h4>PD-1试验（CONTINUUM / DIPPER）样本分析</h4>
+  <div class="step-grid">
+    <p><span class="label">设计</span>两项III期试验存档mIHC，高IgA组比较EFS获益。</p>
+    <p><span class="label">补上的缺口</span>同一标志物在GP和PD-1两种治疗下指示方向相反的获益——治疗背景决定标志物的临床意义。</p>
+    <p><span class="label">证明边界</span>两试验方案不同，不可合并；回顾性非预设；不等于S3应全部改用免疫治疗。</p>
+    <p><span class="label">数据</span>PDF p.13–15，Fig.8j–m</p>
+  </div>
+</div>
+</details>
+
+<details>
+<summary>主要局限与设计借鉴</summary>
+<div class="callout warn">
+  <strong>关键局限</strong>
+  <ul>
+    <li>P01的S1/S2/S3与P10的S1/S2是<b>完全不同的分型体系</b>，切勿仅凭名称合并患者标签。</li>
+    <li>发现队列为回顾性非随机分组；WES无配对胚系DNA，仅用PoN过滤体细胞突变。</li>
+    <li>IgA阈值在30%–70%范围扫描后取60%，有选择乐观偏倚；mIHC用50%中位分组，两者并非等价临床检测阈值。</li>
+    <li>交互分析P&lt;0.1且部分图未经多重校正；结论须区分探索性与确认性分析层次。</li>
+    <li>CNP两套数据与GSE206245为不同来源，附件文件名的关联不能混同为同一患者队列。</li>
+    <li>缺乏合适的在体EBV相关NPC模型；主要因果机制止于体外共培养。</li>
+  </ul>
+</div>
+<div class="callout">
+  <strong>可迁移的设计思路</strong>
+  <ul>
+    <li><b>先定义治疗对照，再问标志物。</b>有随机化臂时检验治疗×标记交互，而非仅用应答组的差异作"预测标志物"。</li>
+    <li><b>为每种模态分配唯一任务：</b>蛋白组发现类别，WES解释上游剂量，磷酸化贴近功能，单细胞定位来源，空间确认邻域，共培养验证候选轴，mIHC把机制转成可扩展检测。</li>
+    <li><b>同一标记在不同治疗下意义相反是科学发现，不是逻辑矛盾。</b>关键在治疗交互与细胞状态背景，而非"B细胞越多越好/越坏"的简单方向。</li>
+  </ul>
+</div>
+</details>
+</div>
+</article>
+
+<!-- P10 -->
+<article class="study" id="P10" data-kind="npc">
+<header class="study-head">
+  <span class="tag npc">P10 · 鼻咽癌</span>
+  <span class="tag">Signal Transduction and Targeted Therapy 2026 · 11:244</span>
+  <h3>蛋白组分型、双蛋白病理面板与Panobinostat放疗增敏</h3>
+  <div class="english">Large-scale and high-resolution mass spectrometry-based proteomics defines molecular subtypes of nasopharyngeal carcinoma for therapeutic targeting</div>
+  <div class="mini-links">
+    <a href="https://doi.org/10.1038/s41392-026-02742-0" target="_blank" rel="noopener">DOI ↗</a>
+    <a href="#catalog">返回总表</a>
+  </div>
+</header>
+<div class="study-body">
+
+<h4>科学问题</h4>
+<p>能否从临床 NPC 的蛋白与磷酸化图谱，<b>同时</b>获得可简化为病理检测的分型/标志物，<b>以及</b>可进入实验验证的候选药物，并解释其联合放疗的合理性？</p>
+
+<div class="thesis">
+  <b>核心结论：</b>79 例 NPC 的 TMT 蛋白/磷酸化定义 S1（增殖为主，预后较好）和 S2（补体/凝血及免疫抑制，预后较差）。ACTBL2/UNC13D 双蛋白将分型迁移至 89 例外部 TMA；CMAP 筛选后 Panobinostat 在细胞、类器官和裸鼠中显示抑瘤活性，药后 RNA-seq 锁定 MYC–HR 修复因子降低，联合照射进一步抑制肿瘤。临床治疗效果尚未经过患者试验验证。
+</div>
+
+<h4>研究故事：两条并行转化路线</h4>
+<div class="story-arc">
+  <p>全文是同一发现图谱分叉出的<b>两条并行路线</b>，而非线性单一故事：</p>
+  <ol>
+    <li><b>路线A（诊断/分型）：</b>疾病差异 → 最小蛋白判别组合（FERMT1/IGF2BP3，诊断）→ 肿瘤内聚类（ACTBL2/UNC13D，分型）→ 外部 TMA 预后验证。药后 RNA-seq 不参与此路线。</li>
+    <li><b>路线B（治疗）：</b>分型差异蛋白 → CMAP 药物筛选 → 细胞/类器官/裸鼠筛选 Panobinostat → 药后 HK1 RNA-seq 发现 MYC–HR 降低 → 遗传/药理操纵 MYC → DR-GFP 功能报告验证 HR 缺陷 → 四组联合照射。</li>
+  </ol>
+  <p>两条路线共享同一个发现图谱，但分别回答"怎么识别亚型"和"怎么干预亚型"。<b>药后 RNA-seq 是已选定药物的机制探索</b>，不是患者多组学配对验证。</p>
+</div>
+
+<details open>
+<summary>数据分组与搭配</summary>
+<div class="table-wrap data-matrix"><table>
+<thead><tr><th>数据层</th><th>规模与分组</th><th>对应关系与角色</th></tr></thead>
+<tbody>
+<tr><td><b>TMT 蛋白组 + 磷酸化组</b><br>厦门大学附一院，治疗前活检</td>
+<td>87 NPC / 56 对照（不同患者）；QC后79+52；10批次；鉴定12,141蛋白/30,106位点。<br><span class="indep-level indep-new">同样本两层质谱</span></td>
+<td>肿瘤与非肿瘤来自不同人（非癌旁配对）；同批含混合内参用于批间校正。</td></tr>
+<tr><td><b>外部 TMA IHC</b><br>上海芯超，89例NPC</td>
+<td>ACTBL2/UNC13D H-score，预测S1=57/S2=32。<br><span class="indep-level indep-ext">外部患者，病理检测替代质谱</span></td>
+<td>无外部全蛋白组"真标签"重分型；以双蛋白预测代替质谱亚型。</td></tr>
+<tr><td><b>HK1 药后 RNA-seq</b><br>Panobinostat 100nM，48h</td>
+<td>DMSO vs 药物；重复数主文未明确。<br><span class="indep-level indep-new">细胞扰动，非患者RNA</span></td>
+<td>与临床143例患者无对应关系；目的是揭示已选药物的机制，不是验证临床分型。</td></tr>
+<tr><td><b>多细胞系 + 1株 NPC 类器官</b><br>HK1/C666-1/5-8F/HNE2</td>
+<td>药敏通常n=3；类器官1株（每孔约50个结构）。<br><span class="indep-level indep-new">多模型测试</span></td>
+<td>HK1/C666-1偏S1样（低ACTBL2）；5-8F/HNE2偏S2样（高表达）；单株类器官不代表患者间异质性。</td></tr>
+<tr><td><b>C666-1裸鼠皮下模型</b><br>每组6只，随机分组</td>
+<td>三药比较4组；Panobinostat±IR另设4组。<br><span class="indep-level indep-new">体内免疫缺陷模型</span></td>
+<td>免疫缺陷，不能验证免疫微环境效应；联合照射只用单次8Gy，非临床分割方案。</td></tr>
+</tbody></table></div>
+</details>
+
+<details open>
+<summary>验证链条与证明边界</summary>
+<div class="step validation">
+  <h4>外部TMA分类器</h4>
+  <div class="step-grid">
+    <p><span class="label">补上的缺口</span>低维蛋白标记可在外部病理测量中分层预后。</p>
+    <p><span class="label">证明边界</span>预测标签不是独立全蛋白组真标签；内部AUC=0.998有选择乐观风险，不等于外部检测准确率。</p>
+  </div>
+</div>
+<div class="step validation">
+  <h4>MYC→HR遗传与药理操纵</h4>
+  <div class="step-grid">
+    <p><span class="label">补上的缺口</span>MYC参与HR相关表达调控；DR-GFP报告显示HR功能下降。</p>
+    <p><span class="label">证明边界</span>缺少药物背景下强制恢复MYC的完整救援；不能称药物→MYC→HR链已完全因果闭合。</p>
+  </div>
+</div>
+<div class="step validation">
+  <h4>联合照射体内外实验</h4>
+  <div class="step-grid">
+    <p><span class="label">补上的缺口</span>HR缺陷为依据的放疗联合在体外和裸鼠中可行。</p>
+    <p><span class="label">证明边界</span>未提供严格协同定量（Bliss/Loewe）、克隆存活放射增敏比或临床分割剂量数据。</p>
+  </div>
+</div>
+</details>
+
+<details>
+<summary>主要局限与设计借鉴</summary>
+<div class="callout warn">
+  <strong>关键局限</strong>
+  <ul>
+    <li>P10的S1（增殖）与P01的S2（增殖）生物学相近，但分型方法、标记和临床背景完全不同，不能直接合并患者。</li>
+    <li>正常对照来自不同人，非癌旁配对；部分图注与Methods的秩检验描述存在不一致，应按非配对设计复现。</li>
+    <li>CMAP参考谱来自外部细胞扰动数据库，与患者RNA无直接关系；药物提名后必须经过实验验证，不能仅凭签名分数给出临床建议。</li>
+    <li>S2特异药效只用2株细胞系代表，且均不包含S2定义的免疫/基质生态。</li>
+  </ul>
+</div>
+<div class="callout">
+  <strong>可迁移的设计思路</strong>
+  <ul>
+    <li>"发现签名→低维病理面板"与"差异签名→药物筛选→机制→联合治疗"两条路线可并行，但各自终点不同，不能混写成单一证明链。</li>
+    <li>放疗敏感性研究优先补全：HR/NHEJ功能报告、损伤清除时序、克隆存活剂量曲线、药物背景救援，再进行体内联合验证。</li>
+    <li>外部TMA须检验预设分类器在新患者中的校准和批次转换，而非仅重新验证两个蛋白与亚型的表达差异。</li>
+  </ul>
+</div>
+</details>
+</div>
+</article>
+
+<!-- P11 -->
+<article class="study" id="P11" data-kind="npc">
+<header class="study-head">
+  <span class="tag npc">P11 · 鼻咽癌</span>
+  <span class="tag">Cell Death &amp; Differentiation 2025在线/2026卷 · 33:988–1003</span>
+  <h3>USP18–TRIM21–TRIM29：NPC放疗耐受的多层因果机制</h3>
+  <div class="english">USP18 promotes nasopharyngeal carcinoma radioresistance via TRIM29 oligomerization and ubiquitination</div>
+  <div class="mini-links">
+    <a href="https://doi.org/10.1038/s41418-025-01615-3" target="_blank" rel="noopener">DOI ↗</a>
+    <a href="#catalog">返回总表</a>
+  </div>
+</header>
+<div class="study-body">
+
+<h4>科学问题</h4>
+<p>放疗耐受NPC中升高的去泛素化蛋白USP18，是通过催化活性、IFN信号还是某个下游底物发挥作用？其具体的分子机制和依赖关系是什么？</p>
+
+<div class="thesis">
+  <b>核心结论：</b>USP18作为<b>支架蛋白</b>（而非经典去泛素化酶）招募E3连接酶TRIM21，后者在TRIM29的K561位点附加K27链泛素化，促进TRIM29寡聚化和照射后核内/染色质定位，增强DDR并促进放疗耐受。USP18催化活性并非必需；TRIM29敲低可逆转USP18的耐受效应；200例独立临床组织IHC支持USP18高表达与局部复发和较差OS相关。
+</div>
+
+<h4>研究故事：逐层排除、逐层确认</h4>
+<div class="story-arc">
+  <p>这篇文章最值得学习的是<b>每一步都提出下一层"为什么"</b>，而不是累积相关性：</p>
+  <ol>
+    <li><b>发现候选（5对配对蛋白组 + 公共转录组）：</b>USP18而非USP32在多数据来源中一致升高，且与DDR/放疗相关程序关联。</li>
+    <li><b>证明功能（CRISPR KO + 克隆形成）：</b>USP18敲除/敲低降低照射后存活，增加损伤与凋亡——确立研究对象值得深入。</li>
+    <li><b>发现互作底物（第一轮IP-MS）：</b>TRIM29出现在USP18免疫沉淀中；但USP18处理后TRIM29泛素化升高，与经典去泛素化酶预期相反——这个"反常结果"推动故事转折。</li>
+    <li><b>排除催化解释（C64S突变）：</b>USP18酶活失活突变体仍能促进TRIM29 K27链泛素化，说明USP18通过支架而非催化发挥作用。</li>
+    <li><b>找到真正E3（第二轮IP-MS → TRIM21）：</b>两轮互作组交叉+E3数据库+依赖性实验，TRIM21最突出；USP18 KO削弱TRIM21–TRIM29结合；TRIM21催化失活（C16A）不能恢复泛素化。</li>
+    <li><b>确定修饰位点和结构后果：</b>K561R突变减弱寡聚化和核/染色质定位；交联/native-PAGE看组装，分级提取看定位——把修饰转化为可观测的蛋白状态改变。</li>
+    <li><b>依赖性救援（下游敲低逆转上游效应）：</b>TRIM29敲低消除USP18过表达带来的耐受促进效应——证明TRIM29是传递USP18功能的关键下游。</li>
+    <li><b>临床收口（200例独立IHC队列）：</b>高USP18与局部复发和较差OS相关，机制方向与临床结局一致。</li>
+  </ol>
+</div>
+
+<details open>
+<summary>数据分组与搭配</summary>
+<div class="table-wrap data-matrix"><table>
+<thead><tr><th>数据层</th><th>规模与分组</th><th>配对关系与角色</th></tr></thead>
+<tbody>
+<tr><td><b>临床活检蛋白组（发现）</b><br>SYSUCC 2016–2019，治疗前</td>
+<td>5对耐受vs敏感（按性别/年龄/TNM匹配的不同患者）；PXD056802。<br><span class="indep-level indep-new">不同患者匹配比较</span></td>
+<td>非同一患者治疗前后，而是不同患者按临床变量配对；发现候选，样本量小，需后续功能验证。</td></tr>
+<tr><td><b>公共转录组（候选排序）</b><br>GSE53819/12452/180272/102349</td>
+<td>GSE102349的GSEA分析：高USP18组57例，低USP18组56例；另4对子分析。<br><span class="indep-level indep-reuse">跨队列复用</span></td>
+<td>与蛋白组为不同患者来源；不同子分析的人数不可累加。</td></tr>
+<tr><td><b>互作组/修饰位点质谱</b><br>SUNE1细胞</td>
+<td>IP-MS发现TRIM29；第二轮发现TRIM21；候选K位点6个。<br><span class="indep-level indep-new">定向分子实验</span></td>
+<td>细胞系实验，非临床队列；为每一步分子假说提供蛋白互作和位点证据。</td></tr>
+<tr><td><b>细胞功能与动物实验</b><br>SUNE1/HK1/HONE1-IR-R + 裸鼠</td>
+<td>细胞实验通常3次独立重复；裸鼠每组n=6，单次8Gy照射。<br><span class="indep-level indep-new">功能机制验证</span></td>
+<td>依赖性救援是本篇因果链最强的部分：TRIM29敲低逆转USP18耐受效应。</td></tr>
+<tr><td><b>独立临床IHC队列</b><br>SYSUCC 2004–2009，200例</td>
+<td>低表达107例/高表达93例；OS/DFS/LRRFS。<br><span class="indep-level indep-ext">独立时间段，非随机治疗分组</span></td>
+<td>与发现队列时间段不同；回顾性预后关联，不等于预测特定治疗获益。</td></tr>
+</tbody></table></div>
+</details>
+
+<details open>
+<summary>验证链条：从支架功能到临床相关</summary>
+<div class="step validation">
+  <h4>催化失活救援（C64S + TRIM21 C16A + TRIM29 K561R）</h4>
+  <div class="step-grid">
+    <p><span class="label">补上的缺口</span>区分"支架功能"与"催化功能"；确定真正E3和底物修饰位点。</p>
+    <p><span class="label">证明边界</span>K561R的体内放疗疗效救援未在主文呈现；针对USP18催化活性的抑制剂可能不足以阻断支架效应，临床干预靶点应考虑复合体界面。</p>
+  </div>
+</div>
+<div class="step validation">
+  <h4>TRIM29下游依赖性救援</h4>
+  <div class="step-grid">
+    <p><span class="label">补上的缺口</span>TRIM29传递USP18的放疗耐受效应；是故事中最接近因果的一环。</p>
+    <p><span class="label">证明边界</span>免疫缺陷皮下裸鼠不能验证EBV/免疫微环境中的整体疗效。</p>
+  </div>
+</div>
+</details>
+
+<details>
+<summary>主要局限与设计借鉴</summary>
+<div class="callout warn">
+  <strong>关键局限</strong>
+  <ul>
+    <li>"5对"是不同患者按临床变量匹配，均为治疗前活检，<b>不是</b>同一患者治疗前后纵向配对。</li>
+    <li>K27链泛素化促进蛋白组装，而非降解——USP18催化抑制剂不能自动成为干预手段；应考虑复合体界面或蛋白降解策略。</li>
+    <li>临床IHC为单中心回顾性预后关联，不等于预测放疗增敏药物的患者获益。</li>
+  </ul>
+</div>
+<div class="callout">
+  <strong>可迁移的设计思路</strong>
+  <ul>
+    <li><b>让每个工具解决一个逻辑缺口：</b>IP-MS找互作对象，变性IP看修饰类型，突变找位点，交联/native-PAGE看组装，分级提取看亚细胞定位，克隆形成看放疗结局。每个实验的答案决定下一个实验的设计。</li>
+    <li>遇到"反常结果"（去泛素化酶反而增加泛素化）时，将其作为机制转折点，通过催化失活突变区分酶活与支架功能，比直接跳过更有说服力。</li>
+  </ul>
+</div>
+</details>
+</div>
+</article>
+
+<!-- P13 -->
+<article class="study" id="P13" data-kind="npc">
+<header class="study-head">
+  <span class="tag npc">P13 · 鼻咽癌</span>
+  <span class="tag">Nature Communications 2024</span>
+  <h3>TLS生态系统：NPC中体液与细胞免疫的组织方式</h3>
+  <div class="english">Single-cell and spatial transcriptome analyses reveal tertiary lymphoid structures linked to tumour progression and immunotherapy response in nasopharyngeal carcinoma</div>
+  <div class="mini-links">
+    <a href="https://doi.org/10.1038/s41467-024-52153-4" target="_blank" rel="noopener">DOI ↗</a>
+    <a href="#catalog">返回总表</a>
+  </div>
+</header>
+<div class="study-body">
+
+<h4>科学问题</h4>
+<p>NPC的TLS由哪些细胞构成，如何支持B细胞成熟与CD8 T细胞状态？这些空间关系能否解释肿瘤进展和免疫治疗应答？CAF究竟通过哪些分子帮助B细胞进入TLS？</p>
+
+<div class="thesis">
+  <b>核心结论：</b>研究建立了CXCL13⁺ CAF–B/GC B–浆细胞及干样CXCL13⁺CD8 T细胞构成的TLS功能网络，与较好预后和PD-1联合化疗应答相关。CAF功能干预（VCAM1阻断→黏附，CXCL13中和→迁移，TNFSF13B中和→IgG产出）是最直接的因果证据；浆细胞的ADCC/ADCP、抗原特异性和TLS向肿瘤巢的T细胞供给主要由空间和克隆证据支持，尚待功能闭合。
+</div>
+
+<h4>研究故事：每种数据回答不同的问题</h4>
+<div class="story-arc">
+  <p>本文的结构是<b>"先建图谱，再选择一条可实验检验的通路"</b>，而非把所有数据塞进同一个分析。</p>
+  <ol>
+    <li><b>整合单细胞建细胞字典（56例NPC，多来源整合）：</b>区分B谱系、Tfh、CXCL13⁺CD8和CXCL13⁺ CAF在TLS的共同富集，确立"结构中的细胞类型"而非仅"肿瘤中有多少细胞"。</li>
+    <li><b>BCR补充克隆生物学约束：</b>既有cDNA再建BCR（不增加新患者），SHM和类别转换支持GC反应，克隆共享支持B→浆细胞迁移方向（注意：克隆相同≠观测到迁移）。</li>
+    <li><b>两套空间平台定位结构（Stereo-seq冰冻3例 + Visium FFPE 12例）：</b>TCA/TLS/基质三分区；直接检测病毒RNA（Stereo-seq）或用100基因代理EBV状态（FFPE）；两套平台为独立子集，不合并计算。</li>
+    <li><b>浆细胞功能放入EBV异质性肿瘤巢：</b>EBV高×有浆细胞邻近的TCA凋亡特征最强，多重IHC确认IgG浆细胞–凋亡肿瘤相邻（20µm内）。提出ADCC/ADCP假说，但尚无直接杀伤实验。</li>
+    <li><b>收敛到CXCL13⁺ CAF功能轴：</b>CellChat提名候选分子→SpaGene/多重IHC确认空间可及性→选黏附、迁移、IgG产出三个可测终点做干预。</li>
+    <li><b>三个独立功能实验（原代CAF/MRC-5 × 外周血B细胞）：</b>VCAM1+组vs−组黏附差异，VCAM1中和降低；CXCL13过表达增强迁移，中和可逆；TNFSF13B过表达提高IgG分泌，中和可逆。这是全文最直接的因果证据。</li>
+    <li><b>TLS与T细胞供给假说（TCR+轨迹+空间）：</b>CXCL13⁺CD8（TLS）与HAVCR2⁺耗竭T（TCA）共享克隆，提出TLS供给效应前体T细胞模型。</li>
+    <li><b>bulk临床队列收口（147/150例RNA和microarray）：</b>TLS细胞特征分数（TLS-CS）高与较好预后相关，验证空间生态的临床意义。</li>
+  </ol>
+</div>
+
+<details open>
+<summary>数据分组与搭配：最容易混淆的数字关系</summary>
+<div class="table-wrap data-matrix"><table>
+<thead><tr><th>数据层</th><th>规模与分组</th><th>关键说明</th></tr></thead>
+<tbody>
+<tr><td><b>整合scRNA（多来源，含BCR）</b></td>
+<td>56例NPC+11例非恶性，77份样本；343,829个细胞（含血液）；20份既有cDNA新增BCR建库。<br><span class="indep-level indep-reuse">多来源整合，含复用数据</span></td>
+<td><b>343,829是细胞数，56是NPC患者数；新增BCR≠新增患者。</b>来源包括GSE162025/150825/150430/HRA000087等多个既有资源。</td></tr>
+<tr><td><b>Stereo-seq空间转录组</b><br>3例新鲜冰冻NPC</td>
+<td>9,563个bin100（约50×50µm）。<br><span class="indep-level indep-new">本研究新生成</span></td>
+<td>独立空间子集，不与scRNA全部56例一一对应；可直接检测EBV RNA。</td></tr>
+<tr><td><b>Visium FFPE空间转录组 + 治疗应答</b><br>12例晚期NPC，7应答/5不应答</td>
+<td>21,753 spots；toripalimab联合化疗（非纯ICB）。<br><span class="indep-level indep-new">本研究新生成，GSE206245</span></td>
+<td>回顾性配应答信息；联合化疗限制ICB特异性解读；spots≠单细胞。<b>P01亦复用此数据集，不能再算P01的独立空间验证。</b></td></tr>
+<tr><td><b>CAF功能干预实验</b><br>原代NPC CAF × 外周血B细胞</td>
+<td>CAF来自3例患者；黏附n=3，迁移n=11，IgG n=4，至少3生物学重复。<br><span class="indep-level indep-new">本研究新实验</span></td>
+<td>外周血B细胞≠肿瘤驻留B细胞；部分干预用MRC-5工程化成纤维细胞替代NPC原代CAF，两种模型互补但不等同。</td></tr>
+<tr><td><b>bulk预后队列</b><br>147例RNA-seq + 150例microarray</td>
+<td>Cox及TLS-CS分层；ROC最优cutoff，需另行锁阈值验证。<br><span class="indep-level indep-reuse">部分复用GSE102349</span></td>
+<td>147例部分来自GSE102349，不与scRNA来源完全独立。ROC最优cutoff存在乐观偏倚。</td></tr>
+</tbody></table></div>
+</details>
+
+<details>
+<summary>主要局限与设计借鉴</summary>
+<div class="callout warn">
+  <strong>关键局限</strong>
+  <ul>
+    <li>GSE206245（Visium数据）由P13生成，被P01复用分析；因此P01的空间支持不构成独立于P13的独立空间验证队列。</li>
+    <li>ADCC/ADCP与EBV抗原特异性未经抗体分离、肿瘤杀伤实验验证；IgG总量分泌≠肿瘤特异抗体。</li>
+    <li>Visium 55µm spot、Stereo-seq bin100为多细胞单位；BayesSpace增强结果为计算推断。</li>
+    <li>IgA和IgG在本文均与浆细胞/TLS功能关联；不能因此得出"所有IgA都是P01所述的抑制性表型"，需结合TLS成熟度、空间邻域和治疗背景分别解读。</li>
+  </ul>
+</div>
+<div class="callout">
+  <strong>可迁移的设计思路</strong>
+  <ul>
+    <li><b>每种模态回答不同问题：</b>scRNA建细胞字典，BCR补克隆约束，空间确认邻域，共培养/阻断验证功能。不要让多种技术重复回答同一个差异问题。</li>
+    <li>选择一个通讯轴时，分别设计：趋化（迁移实验）、黏附（接触实验）、分化/分泌（抗体分泌实验）三个终点，每个实验专门回答前一步留下的功能缺口。</li>
+    <li>数据整合前建立"原始研究—患者—样本—模态—公开编号"的来源表，区分完全独立验证、同队列正交验证和既有数据重分析，防止重复计算独立患者数。</li>
+  </ul>
+</div>
+</details>
+</div>
+</article>
+
+<!-- P02 -->
+<article class="study" id="P02" data-kind="npc">
+<header class="study-head">
+  <span class="tag npc">P02 · 鼻咽癌</span>
+  <span class="tag">Clinical and Translational Medicine 2023</span>
+  <h3>补足肿瘤细胞捕获：NPC的三类免疫逃逸表型</h3>
+  <div class="english">Single-cell analysis reveals the multiple patterns of immune escape in the nasopharyngeal carcinoma microenvironment</div>
+  <div class="mini-links">
+    <a href="https://doi.org/10.1002/ctm2.1315" target="_blank" rel="noopener">DOI ↗</a>
+    <a href="#catalog">返回总表</a>
+  </div>
+</header>
+<div class="study-body">
+
+<h4>科学问题</h4>
+<p>既往NPC单细胞图谱多用解离法，主要捕获免疫细胞而严重低估上皮/肿瘤细胞比例。这种技术偏倚是否遮蔽了恶性细胞的异质性以及与之相关的免疫逃逸模式？</p>
+
+<div class="thesis">
+  <b>核心结论：</b>scRNA+snRNA互补揭示三类免疫逃逸候选：①低MHC肿瘤亚群（抗原呈递减少）；②CNV异常的成纤维样恶性细胞候选（表型可塑性）；③增生上皮形成的组织屏障（物理阻隔）。证据主要为多模态表型和空间观察，作者明确未开展体外或动物功能验证。
+</div>
+
+<h4>研究故事与数据搭配</h4>
+<div class="story-arc">
+  <ol>
+    <li><b>先证明测量缺口，再讨论生物学：</b>临床活检分流scRNA/snRNA与IMC；IMC作为"地面真值"发现scRNA显著低估上皮比例，snRNA更接近IMC——这是驱动双模态设计的关键理由。</li>
+    <li><b>定义恶性与低MHC状态：</b>27个上皮簇，inferCNV以正常同类细胞为参考，同标本存在多种CNV模式；低MHC簇在IMC中有HLA-DR异质性印证。</li>
+    <li><b>识别成纤维样恶性候选：</b>snRNA捕获COL1A1⁺细胞，推断CNV与同患者恶性上皮共享→提出EMT相关可塑性；需DNA层CNV/突变和谱系实验确认，目前为候选。</li>
+    <li><b>组织屏障成像：</b>IMC显示增生上皮内免疫稀少，与肿瘤巢相邻时形成免疫稀少界面。静态切片只能提出屏障假说，不能证明免疫细胞"不能穿过"。</li>
+  </ol>
+</div>
+
+<div class="callout">
+  <strong>数据搭配说明</strong>
+  <p>9供者（N01/N02同人，不能计两例）：scRNA（P01–P03，3例NPC+2例对照）与snRNA（P04–P07，4例NPC+1例对照）来自不同患者子集，并非对同一患者做成对技术比较。IMC来自全部9例患者的53个ROI，与RNA测量不是同细胞配对。</p>
+</div>
+
+<div class="callout warn">
+  <strong>关键局限与证明边界</strong>
+  <ul>
+    <li>成纤维样恶性身份的主要证据是CNV相似性和转录程序，缺乏DNA级别突变核查、体外成瘤和谱系追踪；Ig基因高表达须排除环境RNA和双细胞。</li>
+    <li>CD8⁺ NK状态集中于NPC组，但NK与T细胞标记有重叠，需多重共染确认谱系。</li>
+    <li>无功能干预，逃逸表型均为观察性候选，不能写成已经验证的机制。</li>
+    <li>研究设计最值得借鉴之处：<b>先用组织成像审计细胞捕获偏差，再为恶性细胞与免疫问题分别选测序方案</b>。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P03 -->
+<article class="study" id="P03" data-kind="npc">
+<header class="study-head">
+  <span class="tag npc">P03 · 鼻咽癌</span>
+  <span class="tag">Journal of Translational Medicine 2023</span>
+  <h3>NK细胞功能障碍：从小队列蛋白组到公共单细胞定位</h3>
+  <div class="english">Comprehensive single-cell transcriptomic and proteomic analysis reveals NK cell exhaustion and unique tumor cell evolutionary trajectory in non-keratinizing nasopharyngeal carcinoma</div>
+  <div class="mini-links">
+    <a href="https://doi.org/10.1186/s12967-023-04112-8" target="_blank" rel="noopener">DOI ↗</a>
+    <a href="#catalog">返回总表</a>
+  </div>
+</header>
+<div class="study-body">
+
+<h4>科学问题</h4>
+<p>NPC中除T细胞耗竭外，NK细胞是否也受功能性压制？能否将组织层蛋白变化定位到具体NK亚群，并联系肿瘤EBV状态及候选配体–受体机制？</p>
+
+<div class="thesis">
+  <b>核心结论：</b>3+3例FFPE蛋白组提示NK细胞毒相关蛋白降低；公共scRNA（GSE162025）定位ZNF683高/TIGIT/LAG3高的NK3亚群作为候选耗竭状态；GSE150825复现方向；IHC印证标记物；LGALS9介导抑制及EBV相关肿瘤状态为推断性假说。未做NK杀伤、受体阻断或EBV干预实验。
+</div>
+
+<h4>研究故事与数据搭配</h4>
+<div class="story-arc">
+  <p>这是"低成本三角验证"的典型设计：本地小样本提出方向性问题，公共数据回答细胞来源，组织染色核对蛋白方向。</p>
+  <ol>
+    <li><b>本地蛋白组（3+3，161差异蛋白）：</b>NK细胞毒通路成员降低 + B2M降低，提出两条平行的免疫逃逸假说。Bulk差异不能区分细胞比例变化与单细胞状态变化——需要单细胞数据。</li>
+    <li><b>公共scRNA再分析（GSE162025，10例EBV阳性NPC）：</b>NK重聚类定义NK1/NK2/NK3三亚群；NK3为ZNF683高、TIGIT/LAG3高的组织驻留样候选。</li>
+    <li><b>GSE150825复现（含NLH对照）：</b>独立来源印证NK3标记在肿瘤组织富集。</li>
+    <li><b>IHC核对方向：</b>TIGIT/LAG3升高，CD56/granzyme B降低，与蛋白组和scRNA方向一致。</li>
+    <li><b>CellChat通讯候选（LGALS9–CD44等）：</b>联系NK抑制与肿瘤状态，为后续干预提供方向。</li>
+  </ol>
+</div>
+
+<div class="callout warn">
+  <strong>关键局限</strong>
+  <ul>
+    <li>3+3为不同患者比较（非癌旁配对）；公共scRNA来自不同患者，属跨队列三角，非同患者蛋白–RNA配对。</li>
+    <li>NK身份单凭转录标记，与T细胞有重叠；IHC为TIGIT/LAG3单染，无NK与T细胞同细胞共染区分谱系。</li>
+    <li>GSE162025与GSE150825被P13等论文复用，相同数据的多篇分析不等于独立患者验证。</li>
+    <li>LGALS9通讯、EBV活跃状态和拟时序均为推断性模型，需配体/受体阻断、NK杀伤实验和病毒干预验证。</li>
+    <li>最值得借鉴的设计：<b>先用本地蛋白组提出系统异常，再用公共单细胞归属细胞来源，最后用组织核查方向</b>——成本低，需补功能闭环。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P09 -->
+<article class="study" id="P09" data-kind="npc">
+<header class="study-head">
+  <span class="tag npc">P09 · 鼻咽癌</span>
+  <span class="tag">Frontiers in Genetics 2022</span>
+  <h3>SAHA扰动下的乙酰化–磷酸化联合图谱：候选分子发现与生化验证</h3>
+  <div class="english">Suberoylanilide Hydroxamic Acid (SAHA) Treatment Reveals Crosstalk Among Proteome, Phosphoproteome, and Acetylome in Nasopharyngeal Carcinoma Cells</div>
+  <div class="mini-links">
+    <a href="https://doi.org/10.3389/fgene.2022.873840" target="_blank" rel="noopener">DOI ↗</a>
+    <a href="#catalog">返回总表</a>
+  </div>
+</header>
+<div class="study-body">
+
+<h4>科学问题</h4>
+<p>SAHA是HDAC抑制剂，其在NPC细胞中的效应是否超出乙酰化层？通过全蛋白、磷酸化和乙酰化三层联测，能否找到双PTM候选分子并在第二细胞系中验证？</p>
+
+<div class="thesis">
+  <b>核心结论：</b>SAHA处理后，46个蛋白同时出现乙酰化和磷酸化改变；LMNA与WSTF的"乙酰化降低、磷酸化升高"模式在5-8F和HNE3两个细胞系中均获Co-IP/WB支持。三层PTM全局相关性弱（R²=0.03），提示双PTM存在但非普遍线性耦联。研究止于分子发现和生化验证，无患者队列和动物药效。
+</div>
+
+<h4>研究故事与数据搭配</h4>
+<div class="story-arc">
+  <p>这是一个纯细胞系的发现型研究，关键价值在于<b>每个组学层回答不同问题，而不是重复描述同一差异</b>：</p>
+  <ol>
+    <li><b>总蛋白（背景）：</b>药物造成的整体丰度变化；识别剪接/泛素/MAPK等受影响网络——为PTM变化提供总量参照。</li>
+    <li><b>乙酰化（HDAC直接相关层）：</b>修饰位点邻近序列motif，分析MYC/EGFR/RNA剪接等富集——捕获HDAC抑制剂最直接影响的层次。</li>
+    <li><b>磷酸化（信号伴随层）：</b>细胞周期/CDK相关变化；与乙酰化按蛋白ID对齐找双PTM候选——不是同肽段双修饰，而是同一蛋白在两层均有改变。</li>
+    <li><b>Co-IP/WB验证（HNE3第二细胞系）：</b>LMNA和WSTF在两系中方向一致；代表性MS2谱图支持候选肽段身份。</li>
+  </ol>
+  <p>R²=0.03这个弱相关值<b>本身是发现</b>：双PTM不是普遍的线性耦联，需逐蛋白验证，不能从"crosstalk"直接推论所有乙酰化改变都驱动磷酸化改变。</p>
+</div>
+
+<div class="callout warn">
+  <strong>关键局限</strong>
+  <ul>
+    <li>3+3为细胞样本，不是患者；全文无临床队列、无动物药效、无位点功能救援。</li>
+    <li>总蛋白定量数在摘要（6,491）与Results（6,391）不一致，复现时以原始文件为准。</li>
+    <li>Co-IP使用pan-Kac和泛phosphoserine抗体，不能将所有修饰归为特定位点的独立抗体已验证。</li>
+    <li>双PTM交集不能证明乙酰化直接导致磷酸化改变；机制需要酶依赖性、位点突变和功能读出。</li>
+    <li>与P10对照阅读：P09停在生化发现，P11把互作、修饰类型、位点、结构状态、定位、表型依赖性全部串联，可清楚理解从候选到因果需要哪些步骤。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+</section><!-- end #npc -->
+
+<!-- ======================================================= -->
+<!-- 05 支持研究（12篇，缩略版） -->
+<!-- ======================================================= -->
+<section id="support">
+<h2 class="purple">05｜跨癌种与方法参考：12篇精读</h2>
+<p class="group-intro">这组文章提供的是队列设计、数据连接和验证方式的范例，其具体生物学结论属于各自原研究的癌种或模型，迁移到NPC需要重新验证。</p>
+
+<!-- P04 -->
+<article class="study" id="P04" data-kind="support">
+<header class="study-head">
+  <span class="tag cross">P04 · 跨癌种参考</span>
+  <span class="tag">Cell 2024</span>
+  <h3>泛癌免疫蛋白基因组分型：细胞组成与功能状态不能互换</h3>
+  <div class="english">Pan-cancer proteogenomics characterization of tumor immunity</div>
+</header>
+<div class="study-body">
+<h4>科学问题与故事核心</h4>
+<p>跨10个癌种的1,056例CPTAC样本，用bulk RNA与蛋白<b>双轴去卷积</b>（BayesDeBulk）加蛋白免疫通路模块，定义7种免疫亚型。核心发现：<b>CD8细胞数量丰富≠IFNγ通路激活（CD8−/IFNG⁺亚型存在）</b>——仅统计细胞比例会错过免疫功能状态差异。</p>
+
+<h4>数据搭配逻辑</h4>
+<div class="table-wrap data-matrix"><table>
+<thead><tr><th>数据层</th><th>规模</th><th>任务</th><th>独立性</th></tr></thead>
+<tbody>
+<tr><td>配对bulk RNA+蛋白/磷酸化/DNA</td><td>1,056例，10癌种</td><td>发现与描述免疫亚型</td><td><span class="indep-level indep-new">同患者配对</span></td></tr>
+<tr><td>IHC/MRM/多重IF（同队列子集）</td><td>17–64例子集</td><td>正交验证去卷积计算分型</td><td><span class="indep-level indep-same">同队列正交，非独立队列</span></td></tr>
+<tr><td>独立CCRCC外部队列（112例蛋白+RNA）</td><td>112例</td><td>检验内皮型亚型可迁移性</td><td><span class="indep-level indep-ext">独立队列</span></td></tr>
+<tr><td>OAK NSCLC试验RNA（344例有RNA）</td><td>atezolizumab组344，化疗355</td><td>将CD8⁺/IFNG⁺亚型连接到ICB结局</td><td><span class="indep-level indep-ext">独立试验，RNA分类器迁移</span></td></tr>
+<tr><td>外部scRNA、L1000 CRISPR、H&E</td><td>1,587,530细胞；既有扰动库</td><td>补来源、候选激酶方向和形态替代</td><td><span class="indep-level indep-reuse">外部数据库复用</span></td></tr>
+</tbody></table></div>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li>区分"免疫细胞多"和"免疫功能激活"再分型；先用总蛋白校正PTM再推断激酶活性。</li>
+    <li>同队列正交测量（IHC/MRM）确认分型真实性，独立队列验证可迁移性，试验样本验证临床价值——三类证据分工不同，不能用同队列验证替代独立人群验证。</li>
+    <li>注意：HNSCC不等于NPC；泛癌亚型标签不能直接搬用到EBV相关肿瘤。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P06 -->
+<article class="study" id="P06" data-kind="support">
+<header class="study-head">
+  <span class="tag cross">P06 · 跨癌种参考</span>
+  <span class="tag">Cancer Cell 2024</span>
+  <h3>纵向蛋白基因组学揭示GBM复发的神经元状态转换</h3>
+  <div class="english">Integrated proteogenomic characterization of glioblastoma evolution</div>
+</header>
+<div class="study-body">
+<h4>科学问题与故事核心</h4>
+<p>治疗后GBM复发为何不能由保留的驱动突变充分解释？核心发现：<b>DNA稳定而蛋白/磷酸化输出改变</b>（EGFR突变保留但EGFR磷酸化下降），引出神经元状态（NEU）转换假说。scRNA排除正常神经元混入，时序PDX重演状态转变，BRAF抑制阻断该状态并联合TMZ延长PDX生存。</p>
+
+<h4>数据搭配逻辑</h4>
+<p><b>123例原发–复发真实配对</b>（同患者不同时间）是本研究的核心设计强度。各模态人数不同（WES 122对，RNA 86对，蛋白105对，磷酸化89对），应按实际有效n分析，不能按最大值描述全模态。</p>
+<p>scRNA仅4对患者8例组织（细胞数4,228恶性+12,258非恶性），主要用于排除正常神经细胞混入造成的bulk假象，不代表全部配对队列的单细胞覆盖。</p>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li><b>纵向配对+跨层脱耦是最有价值的设计模式：</b>保留同患者治疗前后对应，再比较DNA稳定vs蛋白/PTM改变，说明基因组不足以描述功能演化。</li>
+    <li>NPC放疗研究可按"治疗前/耐受后配对→DNA/RNA与蛋白/PTM脱耦→scRNA定位→放疗时序模型→依赖性干预"组织故事，每步回答具体缺口。</li>
+    <li>GBM的神经元状态机制不能移植到NPC，但<b>研究设计逻辑可借鉴</b>：先观察配对变化，再在模型中复现，最后用靶向干预检验依赖性。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P08 -->
+<article class="study" id="P08" data-kind="support">
+<header class="study-head">
+  <span class="tag cross">P08 · 跨癌种参考</span>
+  <span class="tag">Cell Reports Medicine 2024</span>
+  <h3>罕见肾肿瘤：多组学分型落到鉴别诊断标志物</h3>
+  <div class="english">Comprehensive proteogenomic characterization of rare kidney tumors</div>
+</header>
+<div class="study-body">
+<h4>科学问题与故事核心</h4>
+<p>形态相似但性质不同的肾肿瘤亚型如何从多组学角度精准区分，并将高维发现压缩为可实施的IHC/RNA-ISH诊断标志物？这是"<b>高维发现→低维病理读数</b>"的诊断型研究范式。</p>
+
+<h4>数据搭配要点</h4>
+<p>151例（名义）实为103 ccRCC+48 non-ccRCC，各模态有效n不同。snRNA来自8例子集（79,673核，Methods值）；Results写9,673为笔误。多组学含蛋白/磷酸化/甲基化/糖蛋白/代谢组，各自针对特定生物学问题。</p>
+<p>与P04共享103例ccRCC患者；跨论文并置结论时应核对具体样本ID。</p>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li>先确定最难区分的临床组（如放疗敏感/耐受、免疫应答/不应答），再倒推多组学筛选和组织验证方案，避免以测量维度数量代替临床问题清晰度。</li>
+    <li>只有当研究问题直接涉及表面糖修饰、分泌蛋白或代谢机制时才增加对应模态，并配置相应功能实验（糖基化位点突变、同位素示踪）。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P16 -->
+<article class="study" id="P16" data-kind="support">
+<header class="study-head">
+  <span class="tag cross">P16 · 跨癌种参考</span>
+  <span class="tag">Nature Communications 2025</span>
+  <h3>GBM针芯活检：有限材料如何支撑多模态深度测量</h3>
+  <div class="english">Investigative needle core biopsies support multimodal deep-data generation in glioblastoma</div>
+</header>
+<div class="study-body">
+<h4>科学问题与故事核心</h4>
+<p>常规立体定向针芯量少，能否在同次手术中获得细胞、空间、信号、代谢和抗原呈递数据，并评估不同针芯间的空间代表性？</p>
+<p><b>核心设计说明：</b>全模态展示为1例复发GBM（n-of-1可行性展示）；处理优化用4例不同患者；区域异质性评估用另1例；30例队列用于PDX/PDCL建模——四个任务的样本来源不同，不能合并称"30例全模态临床验证"。</p>
+
+<h4>数据搭配要点</h4>
+<p>同一患者同次手术多模态取样是设计核心。各检测消耗不同切片/部分，并非同一细胞全模态同测。关键发现：RNA/总蛋白不能良好预测HLA-I呈递肽（二者低相关性）——提示呈递模态不可替代。</p>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li>NPC活检分配可参考：病理确认病灶→按保存方式（新鲜/FFPE/冻存）分流→按科学问题分配模态（细胞状态用scRNA，呈递用免疫肽组，信号用磷酸化，位置用成像）。</li>
+    <li>先测RNA再推断激酶活性或抗原呈递可能不足：若研究NPC的磷酸化信号或HLA呈递，应直接测磷酸化组和免疫肽组，而非由RNA预测。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P19 -->
+<article class="study" id="P19" data-kind="support">
+<header class="study-head">
+  <span class="tag cross">P19 · 跨癌种参考</span>
+  <span class="tag">Nature Medicine 2024</span>
+  <h3>转移性乳腺癌多平台空间图谱：发现平均量化掩盖的空间表型</h3>
+  <div class="english">A multi-modal single-cell and spatial expression map of metastatic breast cancer biopsies across clinicopathological features</div>
+</header>
+<div class="study-body">
+<h4>科学问题与故事核心</h4>
+<p>转移癌活检临床/技术异质性大，如何建立可比较图谱并发现单纯细胞比例量化看不见的空间生物学（EMT斑块、巨噬细胞屏障、T细胞邻近效应）？</p>
+<p><b>数据搭配说明：</b>67份活检来自60名患者（部分患者有两份）；15份含四种空间平台连续切片（非同一细胞四模态同测）；先量化平台偏差再解读生物学是本文的标志性设计。</p>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li>先用sc/snRNA建立高质量细胞参考，再根据研究假说设计靶向空间面板（含已知细胞marker+候选功能基因），而非全转录组空间再重新注释。</li>
+    <li>多种空间平台联用时，先用连续切片相邻区域估计平台偏差；证明生物学差异大于技术差异后，再解读空间结构。</li>
+    <li>SOX4与NPC免疫排斥的关联需在NPC中独立验证；乳腺癌结论不能直接移植。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P18 -->
+<article class="study" id="P18" data-kind="support">
+<header class="study-head">
+  <span class="tag method">P18 · 技术参考</span>
+  <span class="tag">Nature Biotechnology 2022</span>
+  <h3>DVP：形态图像精确导航深度蛋白组测量</h3>
+  <div class="english">Deep Visual Proteomics defines single-cell identity and heterogeneity</div>
+</header>
+<div class="study-body">
+<h4>核心设计逻辑</h4>
+<p>先用图像分割确定"哪类细胞在哪里"，再自动激光显微切割该类细胞，将汇集的同类细胞做深度质谱。"单细胞分辨率选取"与"逐细胞无偏MS"不是同一回事——常规每份切割50–100个同类细胞汇集测量。</p>
+<p><b>故事设计：</b>正常输卵管已知细胞类型验证流程准确性→U2OS核形态发现未知状态→唾液腺癌控制细胞来源后发现差异→同片黑色素瘤不同区域揭示进展相关蛋白——复杂度逐步提升，从技术建立走向疾病发现。</p>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li>现有FFPE蜡块可作为DVP起点：先选"肿瘤巢内/边缘/TLS/基质"等感兴趣区域，切割同类细胞做蛋白组，解决bulk差异来源（恶性细胞还是间质）问题。</li>
+    <li>同片区域n≠患者n；结论推广需要新患者和独立功能验证。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P05 -->
+<article class="study" id="P05" data-kind="support">
+<header class="study-head">
+  <span class="tag method">P05 · 技术参考</span>
+  <span class="tag">Molecular Cell 2025</span>
+  <h3>mipDVP：多重成像定位后测量同类细胞的功能蛋白差异</h3>
+  <div class="english">Deciphering functional tumor-immune crosstalk through highly multiplexed imaging and deep visual proteomics</div>
+</header>
+<div class="study-body">
+<h4>核心设计逻辑</h4>
+<p>14–22重成像定位细胞身份和空间位置→激光切割汇集同类细胞（约100–200个/份）→DIA质谱→空间与蛋白两轴互证。核心发现：<b>同类免疫细胞在肿瘤巢内外的蛋白功能状态不同</b>——位置而非身份决定了部分功能特征。</p>
+<p>CRC：巨噬细胞屏障样分布，肿瘤区CTL抗原呈递/细胞毒性相关蛋白下降；扁桃体癌：邻近肿瘤的CTL富集缺氧/NRF2相关蛋白。两个病例，不是CRC或扁桃体癌总体分型。</p>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li>NPC可用多重IF定位肿瘤巢内/边缘/TLS区的T细胞或浆细胞，LMD汇集后测蛋白组；空间位置在切割前定义，而非事后用坐标解释。</li>
+    <li>IF验证几个关键候选蛋白，再与MS方向对照，既减少成本又提供正交证据。功能因果仍需细胞共培养和受体阻断实验。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P14 -->
+<article class="study" id="P14" data-kind="support">
+<header class="study-head">
+  <span class="tag method">P14 · 技术参考</span>
+  <span class="tag">Nature Communications 2024</span>
+  <h3>SCPro：分选细胞蛋白参考辅助空间蛋白组细胞类型解析</h3>
+  <div class="english">Multimodal single cell-resolved spatial proteomics reveal pancreatic tumor heterogeneity</div>
+</header>
+<div class="study-body">
+<h4>核心设计逻辑</h4>
+<p>iPAC低输入处理降低背景→多重成像导航LMD→额外建立14类FACS分选蛋白参考→Tangram空间映射→筛选高特异膜蛋白→KLRG1/TNFRSF18识别Treg亚型→重新分选验证→人TMA预后关联。</p>
+<p><b>关键配对说明：</b>14类分选参考来自独立5只小鼠（9周龄），空间切片来自1只7周龄小鼠；参考与空间非同一动物，外推映射需注意发育阶段差异。</p>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li>若要解析NPC空间免疫细胞的蛋白功能差异：先从NPC新鲜组织/外周血分选已知细胞类型建立蛋白参考，再用参考辅助空间去卷积，而非单靠scRNA参考。</li>
+    <li>发现新亚型后应回到新样本重分选、测蛋白、做功能实验，再在独立NPC临床队列验证空间分布和结局关联。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P07 -->
+<article class="study" id="P07" data-kind="support">
+<header class="study-head">
+  <span class="tag cross">P07 · 跨癌种参考</span>
+  <span class="tag">iScience 2023</span>
+  <h3>PDO磷酸化扰动揭示激酶依赖性网络；IMC补足TME空间信息</h3>
+  <div class="english">Functional and spatial proteomics profiling reveals intra- and intercellular signaling crosstalk in colorectal cancer</div>
+</header>
+<div class="study-body">
+<h4>核心设计逻辑</h4>
+<p>静态WES/RNA/蛋白无法解释激酶抑制剂响应的患者异质性→加入2小时药物扰动磷酸化（6 PDO × 6种抑制剂+TNFα）→信号网络更按PDO而非突变聚类→scRNA解释PDO内干细胞/分化状态→IMC补充原组织空间接触信息。</p>
+<p><b>关键发现：</b>PD-L1⁺肿瘤与PD-1⁺免疫细胞的密度高，并不保证两者空间微聚集——"细胞多"不等于"相互接触"，空间信息无法从密度推断。</p>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li>NPC可从同一活检分出PDO/PDC和组织空间成像：PDO用于短时放疗/药物后磷酸化扰动，再测细胞状态；组织空间用于确认候选免疫接触结构。两者互补，不要求患者级合并。</li>
+    <li>计算信号网络（CellChat/SIGNOR）是提出假说，不是验证机制；选1–2个空间接触最充分的信号轴做体外共培养或配体/受体阻断。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P12 -->
+<article class="study" id="P12" data-kind="support">
+<header class="study-head">
+  <span class="tag method">P12 · 技术参考</span>
+  <span class="tag">Nature Communications 2023</span>
+  <h3>Hybrid-DIA：同一进样中兼顾靶向磷酸位点与全局发现</h3>
+  <div class="english">Hybrid-DIA: intelligent data acquisition integrates targeted and discovery proteomics to analyze phospho-signaling in single spheroids</div>
+</header>
+<div class="study-body">
+<h4>核心设计逻辑</h4>
+<p>重标内标检测到匹配碎片后触发MSx靶向扫描，与常规DIA在同次进样中交替运行。技术论文的验证路径：标准品检验线性→稀释系列检验低输入性能→已知EGF通路对照验证生物学可读性→单个HCT116球体5-FU时序应用展示真实能力。</p>
+<p><b>关键说明：</b>"单个球体"含数百至数千细胞；每个球体为一个破坏性测量样本，5个球体是5个生物重复，非同一球体反复采样。</p>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li>NPC针吸或类器官材料有限时，可将先验DDR/免疫信号关键位点（如CHEK1/ATM底物）纳入重标panel，与开放发现合并采集——关键是先确定有重标内标和适配仪器。</li>
+    <li>增加仪器覆盖不能替代生物重复；每种处理至少3–5个独立样本，不能用技术重复填充。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P15 -->
+<article class="study" id="P15" data-kind="support">
+<header class="study-head">
+  <span class="tag method">P15 · 技术参考</span>
+  <span class="tag">Nature Communications 2025</span>
+  <h3>Phospho-seq：胞内磷酸信号与染色质/转录调控的单细胞联测</h3>
+  <div class="english">Phospho-seq: integrated, multi-modal profiling of intracellular protein dynamics in single cells</div>
+</header>
+<div class="study-body">
+<h4>核心设计逻辑</h4>
+<p>DNA标记胞内抗体与scATAC共同固定和文库化，同细胞测磷酸ADT+ATAC；RNA主要通过桥接数据推断（非实测同细胞RNA）。关键发现：<b>ATAC不变时磷酸信号已改变</b>（PI3K抑制后pRPS6降低而全基因组ATAC接近不变）——磷酸状态模态提供ATAC看不到的信息增量。</p>
+<p>GLI3验证策略：候选位点（Phospho-seq相关位点）→既有CUT&Tag结合→既有KO/WT multiome的DA分析→功能响应位点与Phospho-seq相关位点的重叠。这是"相关性+结合+扰动"三层证据合用，而非单一来源。</p>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li>NPC若要连接某激酶信号（如MAPK/mTOR）与特定细胞状态，可设计经验证的总蛋白/磷酸蛋白成对抗体panel+scATAC；桥接RNA须明确标注为推断值。</li>
+    <li>从候选位点走向机制：磷酸共变→ChIP/CUT&Tag确认结合→基因扰动改变靶位点的染色质可及性→表型变化。Phospho-seq提供发现入口，因果需后续实验。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+<!-- P17 -->
+<article class="study" id="P17" data-kind="support">
+<header class="study-head">
+  <span class="tag method">P17 · 技术参考</span>
+  <span class="tag">Nature Communications 2025</span>
+  <h3>benchmarKIN：激酶活性推断的系统性可靠性评估</h3>
+  <div class="english">Comprehensive evaluation of phosphoproteomic-based kinase activity inference</div>
+</header>
+<div class="study-body">
+<h4>核心设计逻辑</h4>
+<p>用两类互补真值（已知扰动基准 + CPTAC肿瘤多组学代理真值）× 19种算法 × 多个底物库，系统比较激酶活性推断方法。<b>核心发现：先验知识（底物库质量）的影响超过算法复杂度；简单z-score不弱于复杂模型；人工整理底物库重要；NetworKIN在肿瘤背景中有帮助。</b></p>
+<p>药敏关联（NCI60+GDSC）提供实用价值验证：部分激酶的推断活性比蛋白量更能反映抑制剂响应方向（如CDK4活性与palbociclib敏感性）。</p>
+
+<div class="callout">
+  <strong>NPC研究可借鉴的设计思路</strong>
+  <ul>
+    <li>在NPC磷酸化组分析中，报告：底物库来源和版本、每个激酶的可覆盖底物数、跨不同方法的一致性。<b>候选激酶仅由1–2个位点支撑时，降级为线索，补充定向磷酸化测定和遗传干预。</b></li>
+    <li>P12（如何测更准）、P17（如何解读更可靠）、P11（如何验证到因果）构成从技术到机制的完整逻辑链，应串联阅读。</li>
+  </ul>
+</div>
+</div>
+</article>
+
+</section><!-- end #support -->
+
+<!-- ======================================================= -->
+<!-- 06 横向比较 -->
+<!-- ======================================================= -->
+<section id="compare">
+<h2 class="orange">06｜横向比较：相同话题，不同证据强度</h2>
+
+<h3>两篇NPC分型论文为何不是同一套亚型</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+  <th>比较维度</th>
+  <th><a href="#P01">P01 · Nature Cancer</a></th>
+  <th><a href="#P10">P10 · STTT</a></th>
+</tr></thead>
+<tbody>
+<tr><td>临床起点</td><td>GP诱导化疗在哪类患者产生额外获益？</td><td>蛋白异质性如何转成诊断、预后与候选药物？</td></tr>
+<tr><td>分型驱动</td><td>治疗×亚型交互分析驱动</td><td>肿瘤内聚类驱动</td></tr>
+<tr><td>S1/S2/S3含义</td><td>S1效应免疫；S2细胞周期（GP获益）；S3IgA浆细胞/耗竭</td><td>S1增殖为主；S2补体/凝血/免疫抑制</td></tr>
+<tr><td>RNA-seq的用途</td><td>患者RNA用于外部队列分型映射</td><td>HK1细胞药物扰动，不是患者RNA</td></tr>
+<tr><td>关键验证终点</td><td>独立III期试验样本的治疗交互</td><td>外部TMA预后分层 + 药物机制闭合</td></tr>
+</tbody></table></div>
+<div class="callout warn">
+  <strong>同名标签不代表同一亚型</strong>
+  <p>P01的S2和P10的S1都有增殖特征，但生物学背景、分型算法和临床终点完全不同。若要建立对应关系，须在相同患者队列中交叉计算两套分类器，核对基因/蛋白特征、治疗背景和结局，不能仅凭"S1/S2"名称合并。</p>
+</div>
+
+<h3>同样谈免疫逃逸——证据强度有何不同</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+  <th>论文</th>
+  <th>最强的证据</th>
+  <th>尚缺的关键环节</th>
+</tr></thead>
+<tbody>
+<tr><td><a href="#P02">P02</a>：三类逃逸形态</td><td>scRNA+snRNA互补描述细胞状态；IMC确认空间位置和蛋白表型。</td><td>成纤维样恶性谱系验证；屏障移除后免疫进入/杀伤功能实验。</td></tr>
+<tr><td><a href="#P03">P03</a>：NK功能障碍</td><td>三角验证（蛋白组→公共scRNA→组织IHC）方向一致。</td><td>NK身份共染；真实杀伤功能测定；LGALS9阻断和EBV干预。</td></tr>
+<tr><td><a href="#P13">P13</a>：TLS生态</td><td>CAF–B细胞轴的黏附/迁移/IgG分泌三个独立功能干预实验。</td><td>ADCC/ADCP和EBV抗原特异性；T细胞迁移方向（克隆证据 vs 实测谱系）。</td></tr>
+<tr><td><a href="#P01">P01</a>：IgA浆细胞–MIF轴</td><td>纵向scRNA定位来源；MIF/CD74阻断体外功能；三项试验样本治疗交互验证。</td><td>持久耗竭（非表面标记）；在体EBV模型；前瞻性标志物分层试验。</td></tr>
+</tbody></table></div>
+<p>四篇文章不是"谁更高级"的排序，而是在不同层次上解决不同的信息缺口。真正需要避免的是把图谱描述性语言写成已验证的因果机制。</p>
+
+<h3>P01的IgA浆细胞与P13的TLS/IgG：不是矛盾，是不同维度</h3>
+<p>P01聚焦IgA⁺浆细胞与CD8耗竭及GP/PD-1治疗差异；P13研究GC成熟浆细胞（主要报告IgG产出）、TLS结构和肿瘤邻域凋亡。两篇还共享GSE206245数据集。</p>
+<p>正确的解读方式：将"浆细胞"进一步拆分为<b>同种型、成熟状态（GC经历与否）、所在结构（TLS内/外）、相邻受体细胞类型、治疗时间窗和治疗方案</b>。TLS内分化成熟的IgG⁺浆细胞与非TLS背景中的IgA⁺浆细胞可能扮演不同角色，需要分别在相同队列中验证，而非仅凭"B细胞/浆细胞越多越好/越坏"来概括。</p>
+
+<h3>"空间蛋白组""单细胞""多模态"——读技术术语时的关键区分</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+  <th>术语</th>
+  <th>实际含义</th>
+  <th>容易混淆的边界</th>
+</tr></thead>
+<tbody>
+<tr><td>DVP/mipDVP（P18/P05）单细胞分辨率</td><td>图像识别并切割单个细胞；质谱测50–200个同类细胞的汇集样本。</td><td>选取分辨率≠测量分辨率；技术重复≠患者重复。</td></tr>
+<tr><td>Visium spot（P13）</td><td>55µm spot含多个细胞，去卷积为计算分配结果。</td><td>spot数量≠细胞数量；BayesSpace增强结果为计算推断，非实测单细胞。</td></tr>
+<tr><td>Phospho-seq（P15）桥接RNA</td><td>ATAC+ADT实测同细胞；RNA通过bridge多模态数据集推断。</td><td>推断RNA≠实测RNA，不能当作ATAC+ADT的独立验证。</td></tr>
+<tr><td>P13的"343,829个细胞"</td><td>整合多来源研究的总细胞数；新BCR建库只是对既有样本的额外模态。</td><td>细胞数≠患者数≠独立研究数；新增BCR≠新增患者。</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- ======================================================= -->
+<!-- 07 数据复用核查 -->
+<!-- ======================================================= -->
+<section id="provenance">
+<h2 class="orange">07｜数据复用与独立性核查</h2>
+
+<h3>同一数据集在多篇文章中的使用</h3>
+<div class="cards">
+  <div class="card">
+    <h4>GSE162025 / GSE150825</h4>
+    <p>原始NPC scRNA资源（Liu等2021 / Gong等2021）。P03用于NK亚群再分析；P13用于TLS整合图谱中的部分来源。两篇的相关发现共享底层细胞和患者，不能相互独立引用对方。</p>
+  </div>
+  <div class="card">
+    <h4>GSE206245 / HRA006885</h4>
+    <p>P13新生成：NPC Visium空间数据+BCR资源。P01重分析其中12例免疫治疗子集。GSE206245共18条GEO记录（15 NPC空间+2胃癌空间+1汇总BCR）。P01分析的空间数据≠P13新增独立队列。</p>
+  </div>
+  <div class="card">
+    <h4>CNP0001341 / CNP0001503</h4>
+    <p>同一既往研究（Lv等2023 Nat Med）的raw/processed NPC scRNA入口。P01复用15例GP前后配对样本。与GSE206245为不同来源，不能因附件文件名混同。</p>
+  </div>
+  <div class="card">
+    <h4>GSE102349</h4>
+    <p>NPC bulk RNA公共资源，被P01（外部RNA映射）、P11（GSEA/放疗子分析）、P13（预后队列组成部分）多次复用。不同子分析的人数不可累加；各篇用途和所取样本子集须逐一核对。</p>
+  </div>
+</div>
+
+<h3>常见原文口径差异提示</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>位置</th><th>差异内容</th><th>本报告处理方式</th></tr></thead>
+<tbody>
+<tr><td>P01 空间方法</td><td>将GSE206245称为Visium HD；原始数据为Visium FFPE/SpaceRanger 1.3体系。</td><td>按原始测量解释，spot为55µm，不作为单细胞读数。</td></tr>
+<tr><td>P01 Fig.7图注</td><td>multicentre-GP编号与Methods不一致（一处为NCT03700476，应为NCT01872962）。</td><td>采用Methods的NCT01872962；保留不一致提示。</td></tr>
+<tr><td>P09 蛋白总数</td><td>摘要6,491与Results 6,391不一致。</td><td>保留两种口径，关键定量沿对应结果和图注，不选择其一夸大覆盖。</td></tr>
+<tr><td>P08 snRNA细胞数</td><td>Results写9,673；Methods写79,673（疑似漏"7"）。</td><td>采用Methods 79,673并注明正文疑似错字。</td></tr>
+<tr><td>P11"paired"说明</td><td>5对指不同患者按临床变量匹配；非同一患者治疗前后纵向配对。</td><td>明确标注"不同患者匹配比较"，不写成纵向队列。</td></tr>
+<tr><td>P16 Fig.6i相关系数</td><td>图面ρ=0.72与图注ρ=0.02不一致。</td><td>不依赖该数值作强结论，仅报告"RNA/磷酸化/空间支持候选互作"。</td></tr>
+</tbody></table></div>
+
+<h3>建立最小来源表——分析前的必要步骤</h3>
+<p>每条数据记录至少保留：<b>原始研究 · accession · 患者/样本ID · 组织部位 · 时间点 · 治疗状态 · 测序模态 · 处理程度 · 本文用途</b>。先核对样本关系，再选择整合算法。同名GSE或同一医院来源不等于样本独立，在同一公共患者集上挑选签名后，不能把该集的另一篇再分析文章当外部验证。</p>
+</section>
+
+<!-- ======================================================= -->
+<!-- 08 研究设计模板 -->
+<!-- ======================================================= -->
+<section id="blueprint">
+<h2 class="green">08｜如何把研究数据逻辑清晰地组织成完整故事</h2>
+
+<p>以下是本报告基于19篇文献归纳的设计模板。关键原则是<b>先确定主问题，再选择最小但足以排除替代解释的数据组合</b>。不同模态无需在同一矩阵里强行合并，只要每种数据的来源、配对关系和推理任务清楚，就能形成完整故事。</p>
+
+<h3>模板A：从临床获益异质性走向分层策略</h3>
+<div class="flow">
+  <div><b>定义临床终点</b><span>明确有/无附加治疗与结局。先问治疗交互，再问预后差异。</span></div>
+  <div><b>发现与候选定位</b><span>蛋白/RNA分型；单细胞确认细胞来源，而非把bulk差异直接归因给某类细胞。</span></div>
+  <div><b>机制与功能验证</b><span>候选轴的阻断实验；低维检测转化（mIHC/靶向MS）；独立试验样本检验治疗交互，而非仅预后相关。</span></div>
+</div>
+<p class="caption">借鉴P01。"低维检测"使用时须在不同于发现集的样本上预先锁定阈值，不能把发现集优化的分位数直接称为临床判断标准。</p>
+
+<h3>模板B：从候选走向放疗耐受机制与增敏</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+  <th>故事节点</th>
+  <th>需要的数据/实验</th>
+  <th>通过此节点的判据</th>
+</tr></thead>
+<tbody>
+<tr><td>候选值得研究</td><td>临床治疗前样本，蛋白/RNA筛选；外部队列方向核查。</td><td>患者层效应稳定；差异无法用纯度/分期/治疗差异解释。</td></tr>
+<tr><td>候选影响放疗</td><td>多模型KO/KD/OE×多剂量照射；克隆形成；损伤时间过程。</td><td>候选操作改变放疗存活，与基础生长/毒性可区分。</td></tr>
+<tr><td>找到机制中介</td><td>IP-MS/位点质谱/E3筛选；DDR功能读出（DR-GFP/γH2AX）。</td><td>候选变化连接到中介过程，具有时间和条件一致性。</td></tr>
+<tr><td>排除替代路径</td><td>催化失活突变；位点突变（K→R）；下游敲低；回补与上位性。</td><td>破坏中介削弱上游效应；回补恢复相应环节。</td></tr>
+<tr><td>证明联合价值</td><td>药物/干预×照射的四组设计；适当体内模型；靶点命中与毒性读出。</td><td>若宣称协同，使用Bliss/Loewe分析或放射增敏比，不仅是"联合效果更好"。</td></tr>
+<tr><td>回到临床</td><td>独立组织队列，明确区分预后标记、放疗敏感性标记与治疗获益预测标记。</td><td>分别定位于观察性相关、功能性候选或预测性验证，不混同三类结论。</td></tr>
+</tbody></table></div>
+<p class="caption">借鉴P11的依赖性机制框架和P10的药物联合设计。若只有治疗前两组样本，说明"与耐受相关"，不要写成"观察到治疗后演化"。</p>
+
+<h3>模板C：从免疫细胞图谱走向空间功能生态</h3>
+<p>先在患者层建立细胞类型、状态和组成差异（患者级汇总统计）；再用空间数据检验候选细胞是否在可发生作用的位置，用受体端蛋白/磷酸信号缩小机制范围。最后设计<b>"来源细胞有/无候选×受体细胞有/无对应受体×直接/间接共培养×阻断与救援"</b>，读取真实迁移、细胞毒性或分泌功能。</p>
+<div class="callout note">
+  <strong>空间数据和通讯算法的角色</strong>
+  <p>CellChat/NicheNet/CellPhoneDB是<b>提出假说的工具</b>，不是验证机制的证据。选1–2个空间接触最充分、蛋白/磷酸层有支持的候选轴，设计体外干预验证，比继续添加空间关联图更有说服力。</p>
+</div>
+
+<h3>模板D：有限活检的材料分配</h3>
+<p>先由病理确认病灶和细胞含量，按针芯/切片分配：新鲜组织→scRNA（细胞状态）；冻存→质谱（蛋白/磷酸化）；FFPE→空间成像（位置）和IHC/mIF（验证）；余量→PDX/PDC（功能模型）。每种材料的消耗和适合的分析清楚后，再决定采集量。</p>
+
+<div class="callout">
+  <strong>有限预算时的优先顺序</strong>
+  <p>先补影响主结论的证据缺口，而非追求模态完备。若最大不确定性是细胞来源→增加单细胞；若是发生位置→增加mIF/空间；若是机制必要性→增加遗传干预与救援；若是人群泛化→增加独立患者队列。更多技术重复或更复杂的整合算法，通常不能替代缺失的生物学重复和关键对照实验。</p>
+</div>
+</section>
+
+<!-- ======================================================= -->
+<!-- 09 数据入口 -->
+<!-- ======================================================= -->
+<section id="registry">
+<h2 class="teal">09｜数据入口总表（部分）</h2>
+<p>关键数据编号，按论文分组。实际合并分析时须按原始患者/样本去重，accession相同的不同子分析不能计为独立来源。</p>
+<div class="table-wrap"><table>
+<thead><tr><th style="width:15%">论文</th><th style="width:20%">编号</th><th style="width:35%">内容说明</th><th style="width:30%">获取要求</th></tr></thead>
+<tbody>
+<tr><td>P01</td><td>HRA006718</td><td>DNA/RNA原始序列</td><td>GSA-Human受控，需申请</td></tr>
+<tr><td>P01</td><td>PXD050544</td><td>蛋白组/磷酸化质谱</td><td>ProteomeXchange公开</td></tr>
+<tr><td>P01</td><td>CNP0001341/1503</td><td>既往GP scRNA raw/processed</td><td>CNGB；非GSE206245</td></tr>
+<tr><td>P01/P13</td><td>GSE206245</td><td>NPC空间+BCR（P13生成）</td><td>GEO处理数据；原始在HRA006885受控</td></tr>
+<tr><td>P10</td><td>IPX0011763000</td><td>临床蛋白/磷酸化质谱</td><td>iProX公开</td></tr>
+<tr><td>P10</td><td>GSE295454</td><td>HK1药后RNA-seq</td><td>GEO公开</td></tr>
+<tr><td>P11</td><td>PXD056802</td><td>5对临床活检蛋白组</td><td>PRIDE公开</td></tr>
+<tr><td>P11</td><td>RDDB2025124785</td><td>主要原始数据</td><td>RDD，可向作者申请</td></tr>
+<tr><td>P13</td><td>HRA006885</td><td>NPC BCR和空间原始序列</td><td>GSA-Human受控</td></tr>
+<tr><td>P02</td><td>HRA003340</td><td>scRNA/snRNA原始序列</td><td>GSA-Human受控</td></tr>
+<tr><td>P09</td><td>PXD021029</td><td>三层PTM质谱数据</td><td>PRIDE/ProteomeXchange</td></tr>
+<tr><td>P04</td><td>PDC（CPTAC泛癌）</td><td>多癌种蛋白/磷酸化/RNA</td><td>部分公开，基因组受控（phs001287）</td></tr>
+<tr><td>P06</td><td>PRJNA1051047；PDC000514/515</td><td>GBM WES/RNA/蛋白/磷酸化</td><td>SRA/PDC</td></tr>
+<tr><td>P08</td><td>PDC000464/465/466；GDC CPTAC-3</td><td>罕见肾肿瘤多组学</td><td>PDC/GDC，部分受控</td></tr>
+<tr><td>P18</td><td>PXD023904；S-BSST820</td><td>DVP质谱 + 图像/软件</td><td>PRIDE/BioStudies公开</td></tr>
+<tr><td>P05</td><td>PXD057118；S-BIAD1116</td><td>mipDVP质谱 + 多重成像</td><td>PRIDE/BioImages公开</td></tr>
+<tr><td>P07</td><td>Zenodo 7015015</td><td>CRC PDO WES/RNA/蛋白/磷酸化/scRNA/IMC</td><td>Zenodo公开</td></tr>
+<tr><td>P12</td><td>PXD038947</td><td>Hybrid-DIA所有实验质谱</td><td>PRIDE公开</td></tr>
+<tr><td>P15</td><td>GSE285561；Zenodo 7754315</td><td>Phospho-seq测序 + 处理数据</td><td>GEO/Zenodo公开</td></tr>
+<tr><td>P17</td><td>Zenodo 12566560；benchmarKIN</td><td>激酶推断基准数据 + 代码</td><td>Zenodo/GitHub公开</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- ======================================================= -->
+<!-- 10 文献目录 -->
+<!-- ======================================================= -->
+<section id="references">
+<h2>10｜文献目录</h2>
+<ol class="source-list">
+<li value="1"><b>P01</b>：Multi-omic characterization of nasopharyngeal carcinoma delineates the subtype-specific landscape of response to induction chemotherapy · Nature Cancer 2026, 7:790–809 · <a href="https://doi.org/10.1038/s43018-026-01149-8" target="_blank" rel="noopener">10.1038/s43018-026-01149-8</a> · <a href="#P01">精读</a></li>
+<li value="2"><b>P02</b>：Single-cell analysis reveals the multiple patterns of immune escape in the nasopharyngeal carcinoma microenvironment · Clinical and Translational Medicine 2023 · <a href="https://doi.org/10.1002/ctm2.1315" target="_blank" rel="noopener">10.1002/ctm2.1315</a> · <a href="#P02">精读</a></li>
+<li value="3"><b>P03</b>：Comprehensive single-cell transcriptomic and proteomic analysis reveals NK cell exhaustion and unique tumor cell evolutionary trajectory in NPC · Journal of Translational Medicine 2023 · <a href="https://doi.org/10.1186/s12967-023-04112-8" target="_blank" rel="noopener">10.1186/s12967-023-04112-8</a> · <a href="#P03">精读</a></li>
+<li value="4"><b>P04</b>：Pan-cancer proteogenomics characterization of tumor immunity · Cell 2024 · <a href="https://doi.org/10.1016/j.cell.2024.01.027" target="_blank" rel="noopener">10.1016/j.cell.2024.01.027</a> · <a href="#P04">精读</a></li>
+<li value="5"><b>P05</b>：Deciphering functional tumor-immune crosstalk through highly multiplexed imaging and deep visual proteomics · Molecular Cell 2025 · <a href="https://doi.org/10.1016/j.molcel.2024.12.023" target="_blank" rel="noopener">10.1016/j.molcel.2024.12.023</a> · <a href="#P05">精读</a></li>
+<li value="6"><b>P06</b>：Integrated proteogenomic characterization of glioblastoma evolution · Cancer Cell 2024 · <a href="https://doi.org/10.1016/j.ccell.2023.12.015" target="_blank" rel="noopener">10.1016/j.ccell.2023.12.015</a> · <a href="#P06">精读</a></li>
+<li value="7"><b>P07</b>：Functional and spatial proteomics profiling reveals intra- and intercellular signaling crosstalk in colorectal cancer · iScience 2023 · <a href="https://doi.org/10.1016/j.isci.2023.108399" target="_blank" rel="noopener">10.1016/j.isci.2023.108399</a> · <a href="#P07">精读</a></li>
+<li value="8"><b>P08</b>：Comprehensive proteogenomic characterization of rare kidney tumors · Cell Reports Medicine 2024 · <a href="https://doi.org/10.1016/j.xcrm.2024.101547" target="_blank" rel="noopener">10.1016/j.xcrm.2024.101547</a> · <a href="#P08">精读</a></li>
+<li value="9"><b>P09</b>：SAHA Treatment Reveals Crosstalk Among Proteome, Phosphoproteome, and Acetylome in NPC · Frontiers in Genetics 2022 · <a href="https://doi.org/10.3389/fgene.2022.873840" target="_blank" rel="noopener">10.3389/fgene.2022.873840</a> · <a href="#P09">精读</a></li>
+<li value="10"><b>P10</b>：Large-scale proteomics defines molecular subtypes of NPC for therapeutic targeting · Signal Transduction and Targeted Therapy 2026, 11:244 · <a href="https://doi.org/10.1038/s41392-026-02742-0" target="_blank" rel="noopener">10.1038/s41392-026-02742-0</a> · <a href="#P10">精读</a></li>
+<li value="11"><b>P11</b>：USP18 promotes NPC radioresistance via TRIM29 oligomerization and ubiquitination · Cell Death &amp; Differentiation 2025/2026, 33:988–1003 · <a href="https://doi.org/10.1038/s41418-025-01615-3" target="_blank" rel="noopener">10.1038/s41418-025-01615-3</a> · <a href="#P11">精读</a></li>
+<li value="12"><b>P12</b>：Hybrid-DIA integrates targeted and discovery proteomics to analyze phospho-signaling in single spheroids · Nature Communications 2023 · <a href="https://doi.org/10.1038/s41467-023-39347-y" target="_blank" rel="noopener">10.1038/s41467-023-39347-y</a> · <a href="#P12">精读</a></li>
+<li value="13"><b>P13</b>：Single-cell and spatial transcriptome analyses reveal TLS linked to NPC progression and immunotherapy response · Nature Communications 2024 · <a href="https://doi.org/10.1038/s41467-024-52153-4" target="_blank" rel="noopener">10.1038/s41467-024-52153-4</a> · <a href="#P13">精读</a></li>
+<li value="14"><b>P14</b>：Multimodal single cell-resolved spatial proteomics reveal pancreatic tumor heterogeneity · Nature Communications 2024 · <a href="https://doi.org/10.1038/s41467-024-54438-0" target="_blank" rel="noopener">10.1038/s41467-024-54438-0</a> · <a href="#P14">精读</a></li>
+<li value="15"><b>P15</b>：Phospho-seq: integrated multi-modal profiling of intracellular protein dynamics in single cells · Nature Communications 2025 · <a href="https://doi.org/10.1038/s41467-025-56590-7" target="_blank" rel="noopener">10.1038/s41467-025-56590-7</a> · <a href="#P15">精读</a></li>
+<li value="16"><b>P16</b>：Investigative needle core biopsies support multimodal deep-data generation in glioblastoma · Nature Communications 2025 · <a href="https://doi.org/10.1038/s41467-025-58452-8" target="_blank" rel="noopener">10.1038/s41467-025-58452-8</a> · <a href="#P16">精读</a></li>
+<li value="17"><b>P17</b>：Comprehensive evaluation of phosphoproteomic-based kinase activity inference · Nature Communications 2025 · <a href="https://doi.org/10.1038/s41467-025-59779-y" target="_blank" rel="noopener">10.1038/s41467-025-59779-y</a> · <a href="#P17">精读</a></li>
+<li value="18"><b>P18</b>：Deep Visual Proteomics defines single-cell identity and heterogeneity · Nature Biotechnology 2022 · <a href="https://doi.org/10.1038/s41587-022-01302-5" target="_blank" rel="noopener">10.1038/s41587-022-01302-5</a> · <a href="#P18">精读</a></li>
+<li value="19"><b>P19</b>：A multi-modal single-cell and spatial expression map of metastatic breast cancer biopsies · Nature Medicine 2024 · <a href="https://doi.org/10.1038/s41591-024-03215-z" target="_blank" rel="noopener">10.1038/s41591-024-03215-z</a> · <a href="#P19">精读</a></li>
+</ol>
+
+<div class="callout note">
+  <strong>阅读说明</strong>
+  <p>各篇详读的内容主要依据附件PDF正文、Methods、图注和数据可用性声明；未将正文提及但未随附的独立补充表视为已逐项核验。"研究设计借鉴"是本报告的综合解读，不是原文已经完成的结论。外部核查日期2026年10月，数据登记状态以原文及当日公开记录为准；登记号不等于数据无需申请即可下载。</p>
+</div>
+</section>
+
+<footer class="footer">
+  本文件不依赖外部脚本或字体，可离线阅读；数据链接和DOI需要联网访问。<br>
+  页面支持关键词检索、按NPC/参考分类过滤、展开/折叠详读和打印/PDF导出。
+</footer>
+
+</main>
+</div><!-- end .layout -->
+
+<script>
+const studies=[...document.querySelectorAll('.study')];
+const search=document.getElementById('search');
+const kind=document.getElementById('kind');
+const norm=s=>s.toLocaleLowerCase().replace(/\s+/g,'');
+const texts=new Map(studies.map(s=>[s,norm(s.textContent)]));
+
+function filter(){
+  const q=norm(search.value);
+  let n=0;
+  studies.forEach(s=>{
+    const yes=(!q||texts.get(s).includes(q))&&(kind.value==='all'||s.dataset.kind===kind.value);
+    s.classList.toggle('hidden',!yes);
+    if(yes)n++;
+  });
+  document.getElementById('search-status').textContent=n+'/19';
+  document.getElementById('no-results').style.display=n?'none':'block';
+  document.body.classList.toggle('searching',!!q||kind.value!=='all');
+}
+
+search.addEventListener('input',filter);
+kind.addEventListener('change',filter);
+document.getElementById('expand').onclick=()=>document.querySelectorAll('.study details').forEach(d=>d.open=true);
+document.getElementById('collapse').onclick=()=>document.querySelectorAll('.study details').forEach(d=>d.open=false);
+document.getElementById('clear').onclick=()=>{search.value='';kind.value='all';filter()};
+document.querySelectorAll('a[href^="#P"]').forEach(a=>a.addEventListener('click',()=>{
+  const el=document.querySelector(a.getAttribute('href'));
+  if(el){el.classList.remove('hidden');el.querySelectorAll('details').forEach(d=>d.open=true);}
+}));
+let printState=[];
+window.addEventListener('beforeprint',()=>{
+  printState=[...document.querySelectorAll('details')].map(d=>[d,d.open]);
+  printState.forEach(([d])=>d.open=true);
+});
+window.addEventListener('afterprint',()=>printState.forEach(([d,o])=>d.open=o));
+document.getElementById('print').onclick=()=>window.print();
+filter();
+</script>
+</body>
+</html>
