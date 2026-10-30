@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从单细胞转录组原始数据提取微生物信息——流程全景、研究故事与实施路线</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'SimSun', '宋体', 'Songti SC', 'Noto Serif SC', serif; font-size: 11pt; line-height: 1.65; background: #d8dde3; color: #1a1a1a; }
+.a4-page { width: 210mm; margin: 16px auto; background: #fff; padding: 12mm 17mm 14mm 17mm; box-shadow: 0 3px 20px rgba(0,0,0,0.22); min-height: 297mm; }
+@media print { body { background: white; } .a4-page { margin: 0; box-shadow: none; padding: 12mm 17mm; } .no-print { display: none; } }
+.toolbar { background: #1a3a5c; color: #c8d8e8; padding: 6px 14px; font-size: 9pt; display: flex; align-items: center; justify-content: space-between; width: 210mm; margin: 16px auto 0 auto; border-radius: 3px 3px 0 0; }
+.toolbar span { font-weight: bold; color: #aed6f1; }
+.print-btn { background: #2e86c1; color: white; border: none; padding: 3px 10px; border-radius: 3px; font-size: 8.5pt; cursor: pointer; font-family: 'SimSun', '宋体', serif; }
+.print-btn:hover { background: #1a6ea8; }
+.doc-title-block { text-align: center; padding-bottom: 10px; border-bottom: 2.5px solid #1a3a5c; margin-bottom: 13px; }
+.doc-main-title { font-size: 15pt; font-weight: bold; color: #1a3a5c; letter-spacing: 1.5px; margin-bottom: 3px; }
+.doc-sub-title { font-size: 9.5pt; color: #4a6276; margin-bottom: 2px; }
+.doc-meta { font-size: 9pt; color: #7f8c8d; }
+.sec-title { font-size: 12pt; font-weight: bold; color: #fff; padding: 5px 11px; border-radius: 3px; margin: 14px 0 8px 0; letter-spacing: 0.5px; }
+.c-blue { background: #1a6ea8; } .c-green { background: #1e8a4c; } .c-purple { background: #6c3483; } .c-orange { background: #b94a08; } .c-teal { background: #0e7b6e; } .c-crimson { background: #a93226; } .c-navy { background: #1a3a5c; } .c-indigo { background: #1b4f72; } .c-brown { background: #7d6608; } .c-slate { background: #2e4053; }
+.sub-title { font-size: 11pt; font-weight: bold; padding: 3px 8px; border-left: 4px solid; margin: 9px 0 5px 0; border-radius: 0 2px 2px 0; }
+.st-blue { border-color:#1a6ea8; color:#1a6ea8; background:#EBF5FB; } .st-green { border-color:#1e8a4c; color:#1e8a4c; background:#EAFAF1; } .st-purple { border-color:#6c3483; color:#6c3483; background:#F5EEF8; } .st-orange { border-color:#b94a08; color:#b94a08; background:#FEF5E7; } .st-teal { border-color:#0e7b6e; color:#0e7b6e; background:#E8F8F5; } .st-red { border-color:#a93226; color:#a93226; background:#FDEDEC; } .st-navy { border-color:#1a3a5c; color:#1a3a5c; background:#EBF0F5; } .st-gold { border-color:#7d6608; color:#7d6608; background:#FDFBDE; } .st-slate { border-color:#2e4053; color:#2e4053; background:#F2F3F4; }
+.cb { padding: 8px 11px; border-radius: 3px; margin: 5px 0; font-size: 10.5pt; line-height: 1.62; }
+.cb-blue { background:#EBF5FB; border-left:3px solid #1a6ea8; } .cb-green { background:#EAFAF1; border-left:3px solid #1e8a4c; } .cb-purple { background:#F5EEF8; border-left:3px solid #6c3483; } .cb-orange { background:#FEF5E7; border-left:3px solid #b94a08; } .cb-teal { background:#E8F8F5; border-left:3px solid #0e7b6e; } .cb-red { background:#FDEDEC; border-left:3px solid #a93226; } .cb-gold { background:#FDFBDE; border-left:3px solid #7d6608; } .cb-gray { background:#F2F3F4; border-left:3px solid #5d6d7e; } .cb-navy { background:#EBF0F5; border-left:3px solid #1a3a5c; } .cb-indigo { background:#EBF0F8; border-left:3px solid #1b4f72; } .cb-warn { background:#FFF9C4; border:1px solid #F9A825; border-radius:3px; }
+p { font-size:10.5pt; text-indent:2em; margin-bottom:5px; line-height:1.65; } p.ni { text-indent:0; } p.sm { font-size:10pt; }
+.tag { display:inline-block; font-size:8pt; padding:1px 5px; border-radius:8px; font-weight:bold; margin:1px 2px; vertical-align:middle; color:white; }
+.t-blue { background:#1a6ea8; } .t-green { background:#1e8a4c; } .t-orange { background:#b94a08; } .t-red { background:#a93226; } .t-purple { background:#6c3483; } .t-teal { background:#0e7b6e; } .t-gold { background:#7d6608; } .t-gray { background:#5d6d7e; } .t-new { background:#c0392b; }
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin:5px 0; } .g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; margin:5px 0; }
+.ii { display:flex; gap:5px; align-items:flex-start; margin:3px 0; font-size:10.5pt; } .ic { flex-shrink:0; width:18px; } .it { flex:1; }
+.sq-card { border:1px solid #dde; border-radius:5px; padding:7px 10px; margin:4px 0; background:#fafafa; }
+.sq-num { display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; font-size:9pt; font-weight:bold; color:white; margin-right:5px; vertical-align:middle; flex-shrink:0; }
+.sq-title { font-weight:bold; font-size:10.5pt; vertical-align:middle; } .sq-body { font-size:10pt; color:#333; padding-left:25px; margin-top:3px; line-height:1.55; }
+.flow-row { display:flex; align-items:center; flex-wrap:wrap; gap:3px; margin:7px 0; }
+.flow-box { border:1px solid #bcd; border-radius:3px; padding:4px 6px; font-size:9pt; flex:1; text-align:center; min-width:52px; line-height:1.35; background:#fff; }
+.flow-arr { font-size:11pt; color:#7f8c8d; flex-shrink:0; }
+table.ds-table { width:100%; border-collapse:collapse; font-size:8.5pt; margin:7px 0; font-family:'SimSun','宋体',serif; }
+table.ds-table th { background:#1a3a5c; color:#fff; padding:4px 5px; font-weight:bold; text-align:left; }
+table.ds-table td { padding:3px 5px; border-bottom:1px solid #e0e0e0; vertical-align:top; }
+table.ds-table tr:nth-child(even) td { background:#f5f7fa; }
+table.risk-table { width:100%; border-collapse:collapse; font-size:9pt; margin:7px 0; }
+table.risk-table th { background:#2e4053; color:#fff; padding:4px 7px; font-weight:bold; }
+table.risk-table td { padding:4px 7px; border-bottom:1px solid #e0e0e0; vertical-align:top; }
+table.risk-table tr:nth-child(even) td { background:#f5f5f5; }
+.dir-card { border:1px solid #ccc; border-radius:4px; padding:7px 10px; margin:6px 0; background:#fafafa; }
+.dir-title { font-size:11pt; font-weight:bold; margin-bottom:4px; }
+.prio-p1 { background:#FDEDEC; border-left:4px solid #a93226; border-radius:3px; padding:7px 10px; font-size:10pt; }
+.prio-p2 { background:#FEF5E7; border-left:4px solid #b94a08; border-radius:3px; padding:7px 10px; font-size:10pt; }
+.prio-p3 { background:#EAFAF1; border-left:4px solid #1e8a4c; border-radius:3px; padding:7px 10px; font-size:10pt; }
+.ds { font-family:'Courier New',monospace; font-size:8.5pt; background:#f0f0f0; padding:0 3px; border-radius:2px; color:#a93226; }
+code { font-family:'Courier New',monospace; font-size:8.5pt; background:#f0f0f0; padding:0 3px; border-radius:2px; }
+hr.sep { border:none; border-top:1px solid #dde; margin:10px 0; }
+.doc-footer { margin-top:14px; padding-top:7px; border-top:1px solid #bcd; font-size:8.5pt; color:#7f8c8d; text-align:center; line-height:1.5; }
+strong { font-weight:bold; } em { font-style:italic; }
+html {scroll-behavior:smooth} a {color:#096eaf; text-decoration:none; overflow-wrap:anywhere} a:hover {text-decoration:underline}
+.a4-page{min-height:0} .sec-title{scroll-margin-top:12px} .toc{display:grid;grid-template-columns:1fr 1fr;gap:5px 18px;font-size:10pt}
+.tool{border:1px solid #d6dfe7;border-radius:5px;padding:10px 12px;margin:12px 0;background:white}
+.tool h3{font-size:12pt;color:#1a3a5c;margin:0 0 5px}.tool .en{font-family:Georgia,serif;font-size:10pt;color:#345}
+.tool p{margin:5px 0;text-indent:0}.meta{font-size:9pt;color:#647280}.links{font-size:9pt;border-top:1px dashed #cbd5de;padding-top:5px;margin-top:7px;line-height:1.8}
+ul,ol{padding-left:20px;margin:6px 0;font-size:10.5pt}li{margin:5px 0}
+table{table-layout:fixed}th,td{overflow-wrap:anywhere}table.ds-table{font-size:9pt}table.ds-table td{padding:6px}thead{display:table-header-group}tr{break-inside:avoid}
+.formula{font-family:monospace;background:#edf3f7;border:1px solid #d6e0e8;padding:8px;font-size:9pt;overflow-wrap:anywhere;margin:7px 0}
+small{font-size:9pt}.reference{font-size:9pt;margin:7px 0;line-height:1.55}.kicker{font-size:9pt;letter-spacing:2px;color:#55718a;margin-bottom:8px}
+@media(max-width:820px){.a4-page{width:calc(100% - 16px);padding:20px}.toolbar{width:calc(100% - 16px)}.g2,.g3,.toc{grid-template-columns:1fr}.doc-main-title{font-size:16pt}table.ds-table{font-size:8.5pt}.tool{padding:8px}}
+@page{size:A4;margin:14mm 13mm}@media print{.a4-page{width:auto;margin:0;padding:0;box-shadow:none}.sec-title,h3,.sub-title{break-after:avoid}p{orphans:3;widows:3}.tool{break-inside:auto}.links{break-inside:avoid}a{color:#096eaf}.cb,.sq-card{break-inside:avoid}.a4-page+.a4-page{break-before:page}}
+</style>
+</head>
+<body>
+<div class="toolbar no-print">
+  <span>从单细胞转录组原始数据提取微生物信息 · 流程全景与研究故事</span>
+  <button class="print-btn" onclick="window.print()">打印 / 导出PDF</button>
+</div>
+<div class="a4-page">
+
+<div class="doc-title-block">
+  <div class="kicker">综述与方法学参考文档</div>
+  <div class="doc-main-title">从单细胞转录组原始数据提取微生物信息</div>
+  <div class="doc-sub-title">流程全景、研究叙事、证据核查与实施路线</div>
+  <div class="doc-meta">覆盖SAHMI · CSI-Microbes · PathogenTrack/Yeskit · Vulture · Viral-Track · scPathoQuant · VIRTUS系列 · kallisto+PalmDB · Venus · ViTrace · PRISM · Malva · CellJanus · mire · INVADEseq · BD Rhapsody · 辅助工具</div>
+  <div class="doc-meta" style="margin-top:3px;">编制日期：2026年10月 &nbsp;|&nbsp; 第三版（研究故事深化版）</div>
+</div>
+
+<!-- 目录 -->
+<div class="sec-title c-navy" id="toc">目录</div>
+<div class="toc">
+  <a href="#sec1">§1 适用范围与核心问题界定</a>
+  <a href="#sec2">§2 常见认知误区与文献勘误</a>
+  <a href="#sec3">§3 工具选择逻辑与决策路线</a>
+  <a href="#sec4">§4 细菌检测工具的研究故事</a>
+  <a href="#sec5">§5 病毒检测工具的研究故事</a>
+  <a href="#sec6">§6 PathogenTrack与Yeskit：COVID研究范式</a>
+  <a href="#sec7">§7 新一代广谱与专项工具</a>
+  <a href="#sec8">§8 INVADEseq：单细胞侵入菌检测</a>
+  <a href="#sec9">§9 跨论文数据整合逻辑（新增专节）</a>
+  <a href="#sec10">§10 湿实验方法与建库策略</a>
+  <a href="#sec11">§11 标准分析流程与输入规范</a>
+  <a href="#sec12">§12 定量层级与统计注意事项</a>
+  <a href="#sec13">§13 污染识别与质控体系</a>
+  <a href="#sec14">§14 工程实施与审计清单</a>
+  <a href="#sec15">§15 参考文献</a>
+</div>
+
+
+<!-- ==================== §1 适用范围 ==================== -->
+<div class="sec-title c-blue" id="sec1">§1 适用范围与核心问题界定</div>
+
+<p>单细胞RNA测序（scRNA-seq）的核心设计目标是捕捉宿主转录组的细胞异质性，但测序文库中不可避免地混入了来自微生物的核酸片段。这些片段的来源极其多样：有些来自真实存在于组织中的共生或病原微生物，有些来自样本处理过程中的环境污染，还有些源于测序试剂本身的背景污染，甚至是计算分析时人类基因组序列与微生物序列的错误映射（如假基因、同源区域等）。如何从这堆混杂信号中提取出真实的生物学信息，是过去五年间方法学发展的核心驱动力之一。</p>
+
+<p>本文档聚焦的具体问题是：<strong>在不改变标准scRNA-seq建库流程的前提下，能否从已有的FASTQ文件（或BAM文件）中检测出微生物信号，并将其与宿主细胞类型注释整合？</strong>这一问题的答案取决于多个技术层面的约束条件，包括建库化学的选择（10x 3'端捕获 vs. 全长覆盖）、测序深度（每细胞reads数）、参考数据库的覆盖范围，以及如何区分真实信号与技术噪声。</p>
+
+<div class="cb cb-navy">
+<strong>本文档不覆盖的范围：</strong>（1）宏基因组学（metagenomics）或16S扩增子测序的分析流程——这些是专门为微生物组研究设计的建库方案，信噪比远高于scRNA-seq的"副产品"分析；（2）纯粹的宿主基因组层面的病毒整合检测（如HERV、病毒整合位点检测）；（3）空间转录组学中的微生物空间分布分析（虽然部分工具可延伸至此场景，但需要额外的方法学讨论）。
+</div>
+
+<div class="sub-title st-blue">1.1 三类核心问题与对应的工具设计逻辑</div>
+<p>当研究者拿到一批肿瘤或感染组织的scRNA-seq数据时，通常面临三类不同层次的科学问题。<strong>第一类是存在性问题</strong>：该样本中是否存在特定病原体的核酸证据？这是最基础的层次，需要的是高灵敏度的宽谱检测，宁可容忍假阳性，后续再人工核查。<strong>第二类是细胞分辨率问题</strong>：哪些细胞（哪种细胞类型）携带了微生物核酸？细菌或病毒的细胞内丰度与宿主的转录组状态有何关联？这需要将微生物信号与细胞条形码精确对应。<strong>第三类是可靠性问题</strong>：检测到的信号有多大比例是技术假象？如何量化置信度？这需要系统性的去噪和对照实验设计。</p>
+
+<p>不同工具的设计哲学对应上述不同层次。SAHMI和PRISM主要解决第三类问题，构建了严格的统计去噪框架；Viral-Track和kallisto+PalmDB主要解决第一、二类问题，优先保证检测覆盖度；CSI-Microbes和INVADEseq则在受控实验条件下同时回答三类问题。理解这一分工，是做出合理工具选择的前提。</p>
+
+<div class="sub-title st-blue">1.2 信噪比的本质挑战</div>
+<p>一个典型的10x Genomics 3'端scRNA-seq实验，每个细胞平均捕获约2,000–5,000个宿主转录本，而来自微生物的reads通常不超过总reads的0.01%–0.1%。在这样极低的信号背景下，任何系统性的技术偏差都可能淹没真实信号，或者制造出虚假信号。更棘手的是，10x 3'端建库只捕获转录本的3'末端约150–200 bp，这对于细菌（本身mRNA极短且无polyA尾）而言，捕获效率极低；而全长建库方案（Smart-seq2、Illumina SPLiT-seq等）理论上对细菌更友好，但通量较低。这些技术约束在每一篇方法学论文的数据设计中都有明确的应对策略，后文将逐一分析。</p>
+
+<!-- ==================== §2 误区与勘误 ==================== -->
+<div class="sec-title c-crimson" id="sec2">§2 常见认知误区与文献勘误</div>
+
+<p>这一领域发展迅猛，相关综述和工具推荐文章有时存在细节错误或过时信息，以下几个问题在文献或二次传播中尤为常见，需要特别厘清。</p>
+
+<div class="sub-title st-red">2.1 关于VIRTUS系列版本的重要澄清</div>
+<div class="cb cb-red">
+<strong>【重要勘误】</strong>截至2026年，VIRTUS工具家族已发展至第三代（VIRTUS3），但许多综述仍将原始VIRTUS（2021年）作为当前版本推荐，且将其适用场景描述为"泛病毒检测"。实际上，不同版本之间存在根本性的设计差异。<br><br>
+VIRTUS（2021年）：单细胞/bulk RNA-seq病毒检测，支持多种病毒参考基因组，流程核心是STARsolo双比对。<br>
+VIRTUS2（2022年）：重构了流程架构，改进了多病毒同时检测和输出格式。<br>
+VIRTUS3（2024–2025年）：<strong>大幅缩减了参考病毒库范围，专注于EBV（Epstein-Barr病毒）及少数几种具有重要临床意义的DNA病毒</strong>；对于EBV的检测精度和细胞类型分辨率得到显著提升，但不再适合作为泛病毒扫描工具使用。新用户若需要泛病毒检测能力，应考虑Viral-Track（病毒宽谱）或kallisto+PalmDB（RNA病毒专项），而非直接套用VIRTUS3。
+</div>
+
+<div class="sub-title st-red">2.2 关于SAHMI"仅适用于肿瘤"的误解</div>
+<p>SAHMI最初在肿瘤scRNA-seq数据集上开发和验证，这导致部分研究者误认为该工具仅适合肿瘤微环境研究。实际上，SAHMI的核心去噪逻辑——基于2,491个细胞系实验构建背景污染参考、通过细胞内k-mer多样性和空间相关性筛选真实信号——在原理上适用于任何组织来源的scRNA-seq数据。其"细胞系对照库"的设计思想更是可以推广：凡是有已知背景对照的实验，都可以借鉴类似的噪声建模策略。将SAHMI局限于"肿瘤工具"是对其方法学意义的低估。</p>
+
+<div class="sub-title st-red">2.3 关于INVADEseq"可以事后分析"的误解</div>
+<p>INVADEseq是一种<strong>建库层面的协议改造</strong>，核心是在标准10x 5'端GEX建库体系中，额外加入16S rRNA特异性引物，使得细菌的16S扩增子与宿主mRNA在同一反应管中、共享同一套细胞条形码捕获。这意味着其细菌检测灵敏度和细胞-菌种配对能力，根本上来源于实验层面的设计，<strong>无法通过纯计算手段从标准GEX数据中复现</strong>。部分研究者误认为"INVADEseq的PathSeq计算模块可以直接用于已有的10x数据"——这是混淆了湿实验协议与下游分析步骤的概念。PathSeq作为细菌分类工具确实可以独立使用，但没有16S引物扩增产生的富集信号，其在标准GEX数据中的灵敏度与其他通用流程并无本质区别。</p>
+
+<div class="sub-title st-red">2.4 关于"reads越多越好"的朴素认知</div>
+<p>在微生物信号极低丰度的背景下，增加测序深度并不能线性提升检测可靠性。Ghaddar等人（CSI-Microbes，2024）的实验表明，相当比例的"微生物reads"在深测序样本中反而呈现更高的噪声背景，因为宿主基因组中的低复杂度序列在深测序时会与更多微生物参考序列产生虚假比对。真正有效的提升路径是：优化建库策略（如INVADEseq的16S富集）、严格的质控过滤（≥2 UMI阈值、k-mer多样性过滤）、以及设计合理的对照实验（而不是盲目提升测序量）。</p>
+
+<div class="sub-title st-red">2.5 关于Malva与其他工具的关系定位</div>
+<p>Malva（2025年）有时被描述为SAHMI的"替代品"，这一定位是不准确的。Malva专注于单细胞层面的<strong>病毒RNA检测与定量</strong>，其核心贡献在于重新处理了UMI去重逻辑以适应病毒基因组的特殊结构（多个基因组区段、负链RNA等），并提供了针对RNA病毒的专用定量模型。SAHMI的核心则是细菌（及部分真菌）信号的去噪框架。两者在检测目标（病毒 vs. 细菌）和核心方法（UMI定量 vs. k-mer去噪）上根本不同，应视为互补而非替代关系。</p>
+
+
+<!-- ==================== §3 工具选择逻辑 ==================== -->
+<div class="sec-title c-green" id="sec3">§3 工具选择逻辑与决策路线</div>
+
+<p>面对十余种工具并存的局面，研究者的第一反应往往是寻找"最好的那一个"。但这个问题本身就是错误的。正确的问法是：<strong>我的科学问题是什么？我的数据是什么类型？我有哪些对照条件？</strong>在此基础上，工具的选择才有意义。以下决策框架从实际出发，优先考虑实验设计约束，再考虑工具能力。</p>
+
+<div class="sub-title st-green">3.1 按目标病原体分类</div>
+<table class="ds-table">
+<thead><tr><th style="width:18%">目标病原体</th><th style="width:30%">首选工具</th><th style="width:30%">备选工具</th><th style="width:22%">关键约束</th></tr></thead>
+<tbody>
+<tr><td><strong>肿瘤内细菌（广谱）</strong></td><td>SAHMI（去噪优先）<br>CSI-Microbes（平台验证）</td><td>Vulture（高通量批量）</td><td>需要对照样本或细胞系背景</td></tr>
+<tr><td><strong>已知RNA病毒（COVID等）</strong></td><td>Viral-Track（单细胞分辨率）<br>PathogenTrack+Yeskit</td><td>VIRTUS2（多病毒扫描）</td><td>需要ViruSite/宿主参考库</td></tr>
+<tr><td><strong>EBV等特定DNA病毒</strong></td><td>VIRTUS3（专项精度最高）</td><td>scPathoQuant</td><td>VIRTUS3非泛病毒</td></tr>
+<tr><td><strong>未知RNA病毒（发现导向）</strong></td><td>kallisto+PalmDB（蛋白翻译搜索）</td><td>Viral-Track</td><td>需要试剂空白对照</td></tr>
+<tr><td><strong>侵入/黏附细菌（高置信度）</strong></td><td>INVADEseq（需特殊建库）</td><td>PathSeq单独运行</td><td>需重新建库，不可事后分析</td></tr>
+<tr><td><strong>多病原体整合（癌症队列）</strong></td><td>PRISM（多证据评分）</td><td>SAHMI流程延伸</td><td>需要已知标签的训练集</td></tr>
+<tr><td><strong>单细胞病毒RNA定量</strong></td><td>Malva（专用UMI模型）</td><td>Viral-Track</td><td>RNA病毒特有基因组结构</td></tr>
+</tbody>
+</table>
+
+<div class="sub-title st-green">3.2 按建库方案分类的适用性</div>
+<p>工具的适用性与建库化学的选择密切相关。10x Genomics 3'端捕获方案（3'v2/v3）是当前市场占有率最高的方案，但其对细菌的捕获效率最差（因为细菌mRNA无polyA尾，且3'端短片段覆盖度有限）；10x 5'端方案（5'）稍好，但仍受限于短读长；全长方案（Smart-seq2、SPLiT-seq、BD Rhapsody）对细菌和病毒的覆盖都更均匀，但通量相对较低。</p>
+
+<div class="g2">
+<div class="cb cb-blue">
+<strong>10x 3'v2 / 3'v3：</strong>细菌检测灵敏度最低，主要依赖偶然捕获的短片段；病毒RNA若有polyA尾则可检测；适合SAHMI、Viral-Track、CSI-Microbes（已有平台对比数据）；INVADEseq不适用（需5'端）。
+</div>
+<div class="cb cb-green">
+<strong>10x 5'端 / Smart-seq2 / SPLiT-seq：</strong>细菌和病毒检测灵敏度均有提升；INVADEseq要求5'端方案；CSI-Microbes明确测试了5'端表现；全长方案（Smart-seq2）信号最丰富但通量低，适合机制研究。
+</div>
+</div>
+
+<div class="sub-title st-green">3.3 按研究阶段的工具组合策略</div>
+<div class="sq-card">
+  <span class="sq-num" style="background:#1a6ea8">1</span><span class="sq-title">探索阶段（不预设目标病原体）</span>
+  <div class="sq-body">优先使用宽谱工具：Viral-Track（扫描所有已知病毒）+ SAHMI或CSI-Microbes（扫描细菌）；接受较高的候选假阳性率，目标是不遗漏任何真实信号；结果需要人工核查BLAST比对和文献验证。</div>
+</div>
+<div class="sq-card">
+  <span class="sq-num" style="background:#1e8a4c">2</span><span class="sq-title">验证阶段（有假设，需要高置信度）</span>
+  <div class="sq-body">针对探索阶段的候选病原体，使用更严格的工具：PRISM的多证据评分体系、SAHMI的空间相关性分析、CSI-Microbes的≥2 UMI阈值；同时设计对照实验（已知阳性样本 vs. 试剂空白），计算三层验证（计算层、技术层、生物学层）中每一层的支持证据。</div>
+</div>
+<div class="sq-card">
+  <span class="sq-num" style="background:#6c3483">3</span><span class="sq-title">机制研究阶段（细胞级别宿主-病原互作）</span>
+  <div class="sq-body">此阶段需要单细胞分辨率的病原体-宿主联合分析：Yeskit（与Seurat对象集成）、PathogenTrack（SARS-CoV-2示范）、INVADEseq（细菌侵入，需重新建库）；核心分析是病原体阳性 vs. 阴性细胞的DEG分析和通路富集。</div>
+</div>
+
+<!-- ==================== §4 细菌检测工具研究故事 ==================== -->
+<div class="sec-title c-purple" id="sec4">§4 细菌检测工具的研究故事：SAHMI与CSI-Microbes</div>
+
+<div class="tool">
+<h3>SAHMI — Single-cell Analysis of Host-Microbiome Interactions</h3>
+<div class="en">Nature Computational Science, 2023 · Ghaddar et al. · sjdlab（Lod Lab, Weill Cornell）</div>
+
+<div class="sub-title st-purple">科学问题与研究动机</div>
+<p>SAHMI诞生的直接背景是一个令人困惑的现象：多项独立研究声称从肿瘤scRNA-seq数据中检测到了大量微生物读段，但不同研究之间的结果极难复现，而且同一样本用不同分析流程得出的微生物组成差异显著。Ghaddar等人提出了一个尖锐的问题：<strong>这些信号中，有多大比例是真实存在于肿瘤组织中的微生物，有多大比例是污染或计算假象？</strong>他们的核心假设是：真实的细胞内微生物信号应该在细胞之间表现出生物学意义上的空间相关性，而污染信号则应该与细胞类型无关、随机分布。</p>
+
+<div class="sub-title st-purple">数据设计与样本分组逻辑</div>
+<p>这项研究的数据设计是其最大的方法学创新之一。研究者收集了多个公开发表的肿瘤组织scRNA-seq数据集（FASTQ格式），涵盖多种癌症类型。但更关键的是，他们同时汇编了<strong>2,491个细胞系实验</strong>作为污染背景参考库。细胞系选择的逻辑是严谨的：细胞系在严格的无菌培养条件下维持，其微生物信号应接近于零，因此所有被检测到的微生物reads都可以认为是技术噪声——来自试剂污染、测序仪cross-contamination或计算假比对。将肿瘤样本的信号与这个背景库进行比较，就能初步区分哪些微生物是"肿瘤特有"的信号，哪些是普遍背景噪声。</p>
+
+<p>在样本分组上，SAHMI的分析框架构建了三个层次的对比：①肿瘤样本 vs. 细胞系对照（区分肿瘤特有信号）；②同一样本内不同细胞类型之间（上皮细胞、成纤维细胞、免疫细胞），验证微生物信号是否与特定细胞类型富集；③不同肿瘤样本之间，验证微生物信号是否与样本的临床特征（如肿瘤分期、预后）相关，而非仅与技术批次相关。</p>
+
+<div class="sub-title st-purple">四层验证链条</div>
+<p>SAHMI的去噪框架可以理解为一个逐层筛选的漏斗。<strong>第一层（读段层面）：</strong>对每条比对到微生物参考基因组的reads，计算其k-mer多样性（低多样性暗示是低复杂度序列或重复序列的虚假比对）、比对到微生物基因组的唯一位置数，以及序列复杂度评分。只有通过这三个阈值的reads才进入下一层。<strong>第二层（条形码层面）：</strong>对每个细胞条形码，统计其微生物reads的种类分布是否足够多样，以及同一细胞内来自同一微生物物种的reads是否分布在基因组的多个区域（而非仅集中于少数高重复区域）。<strong>第三层（样本层面）：</strong>计算样本内不同细胞的微生物信号之间的空间相关性——真实的生物学信号应在解剖学或功能上相邻的细胞中同时出现（正相关），而污染信号则无此规律。<strong>第四层（跨样本层面）：</strong>与2,491个细胞系实验的背景库比对，通过统计检验识别哪些微生物在肿瘤样本中的检出率显著高于细胞系背景。</p>
+
+<div class="sub-title st-purple">与其他研究的关联</div>
+<p>SAHMI是这一领域方法学框架的奠基性工作。同一实验室（sjdlab）在2026年发表的PRISM（见§7）直接将这一去噪哲学延伸至25种癌症类型的bulk和单细胞联合分析。从方法论传承的角度看，SAHMI解决了"如何过滤假阳性"的问题，而PRISM进一步解决了"如何在大规模多癌种队列中量化置信度"的问题。CSI-Microbes（见下文）则从不同角度——通过受控in vitro实验——为细菌检测的可靠性提供了独立验证。</p>
+
+<div class="links">
+<strong>关键链接：</strong> <a href="https://github.com/sjdlabgroup/SAHMI" target="_blank">GitHub: sjdlabgroup/SAHMI</a> &nbsp;|&nbsp; 
+<a href="https://doi.org/10.1038/s43588-023-00428-x" target="_blank">DOI: 10.1038/s43588-023-00428-x</a>
+</div>
+</div>
+
+<div class="tool">
+<h3>CSI-Microbes — Cell-type-Specific Intracellular Microbe Identification</h3>
+<div class="en">Science Advances, 2024 · Ghaddar et al.</div>
+
+<div class="sub-title st-blue">科学问题与研究动机</div>
+<p>CSI-Microbes的核心科学问题比SAHMI更为具体：<strong>细胞内细菌（intracellular bacteria）能否从标准scRNA-seq数据中被可靠检测，检测能力在不同建库平台之间如何变化？</strong>这个问题的重要性在于，细胞内细菌（如沙门氏菌、李斯特菌）与细胞外细菌的生物学意义截然不同——前者直接影响宿主细胞的基因表达，且往往是疾病发生的关键驱动因素。</p>
+
+<div class="sub-title st-blue">受控实验设计与分组逻辑</div>
+<p>CSI-Microbes的实验设计是本领域最为严谨的之一，其关键在于构建了三个梯度的生物学对照条件。<strong>条件一（活菌感染组）：</strong>将人类细胞系暴露于活的大肠杆菌（E. coli）和沙门氏菌（Salmonella）中，使细菌主动侵入宿主细胞——这是预期信号最强的阳性对照。<strong>条件二（热灭活菌组）：</strong>同样的细菌经热处理灭活后再与细胞共孵育——热灭活菌失去侵入能力，但其RNA仍在短时间内保持完整性，因此这一条件可以检测"细菌RNA存在但细菌不活跃"的情景，是一个精妙的中间对照。<strong>条件三（未暴露对照组）：</strong>仅培养细胞而不加入任何细菌，代表真正的阴性背景。</p>
+
+<p>这三个生物学条件与四种测序平台的交叉设计（Smart-seq2/plexWell、10x 3'v2、10x 3'v3、10x 5'），形成了一个3×4的系统性对比矩阵。这使得研究者可以回答两个独立的问题：其一，不同平台在活菌 vs. 热灭活菌 vs. 背景之间的辨别能力如何；其二，同一生物学条件在不同平台上的信号强度差异。</p>
+
+<div class="sub-title st-blue">验证链条与关键发现</div>
+<p>在方法层面，CSI-Microbes使用PathSeq（Broad Institute开发的宿主reads去除后微生物比对工具）和CAMMiQ（细菌分类）作为核心比对引擎，区别于SAHMI使用的Kraken2/KrakenUniq组合。这种"双后端"格局为领域提供了独立的技术验证——当两种后端在同一样本上给出一致结果时，可信度显著提升。</p>
+
+<p>研究的关键定量发现包括：①<strong>≥2 UMI阈值</strong>是区分真实细菌信号与技术噪声的一个有效经验性截断值——在阴性对照中，绝大多数细菌物种的检出仅有单个UMI，而活菌感染样本中真实物种的UMI数分布明显右移；②<strong>10x 5'端方案</strong>对细菌的捕获效率显著优于3'端方案，这与理论预期一致（细菌mRNA无polyA尾，5'端引发的随机引物策略覆盖更均匀）；③热灭活对照的信号介于活菌和背景之间，证实了细菌活性对检测的贡献。</p>
+
+<div class="sub-title st-blue">与SAHMI的互补关系</div>
+<p>SAHMI和CSI-Microbes代表了验证细菌检测可靠性的两种互补路径：前者通过大规模背景对照库进行统计去噪，后者通过受控in vitro实验建立ground truth。在实际应用中，两种工具的联合使用可以提供更强的证据链——若同一批肿瘤样本的细菌信号既通过了SAHMI的四层过滤，又在类似的实验条件下与CSI-Microbes的阳性对照模式匹配，则可信度大幅提升。</p>
+
+<div class="links">
+<strong>关键链接：</strong> <a href="https://github.com/sjdlabgroup/CSI-Microbes-identification" target="_blank">GitHub: CSI-Microbes</a> &nbsp;|&nbsp;
+<a href="https://doi.org/10.1126/sciadv.adk9693" target="_blank">DOI: 10.1126/sciadv.adk9693</a>
+</div>
+</div>
+
+
+<!-- ==================== §5 病毒检测工具研究故事 ==================== -->
+<div class="sec-title c-teal" id="sec5">§5 病毒检测工具的研究故事：Viral-Track与VIRTUS系列</div>
+
+<div class="tool">
+<h3>Viral-Track — 单细胞层面的全病毒组扫描</h3>
+<div class="en">Cell, 2020 · Bost et al. · Amit Lab, Weizmann Institute</div>
+
+<div class="sub-title st-teal">科学问题：为什么需要细胞分辨率的病毒检测？</div>
+<p>Viral-Track发表于2020年，恰逢COVID-19大流行初期，其科学问题因此具有极强的时代背景：<strong>在感染患者体内，不同细胞是否携带不同的病毒载量？细胞层面的病毒载量差异能否解释免疫应答的异质性？</strong>这个问题用bulk RNA-seq根本无法回答，因为bulk测序只能给出组织整体的平均病毒RNA水平，而单细胞分辨率能够揭示"哪些细胞正在被病毒激活复制，哪些细胞虽然受到病毒暴露但处于低复制状态"。</p>
+
+<div class="sub-title st-teal">数据设计与分组策略</div>
+<p>Viral-Track的验证数据集以COVID-19患者的支气管肺泡灌洗液（BALF）scRNA-seq数据为核心（Liao等2020年发表于Nature Medicine的公开数据集，后文记为"Liao BALF数据集"），同时包含来自其他病毒感染（如IAV流感病毒、HIV等）的已有数据集。样本分组在三个维度上展开：<strong>疾病严重程度</strong>（重症COVID-19 vs. 轻症 vs. 健康对照）、<strong>细胞类型</strong>（上皮细胞、肺泡巨噬细胞、T细胞、B细胞等由宿主转录组分析确定），以及<strong>病毒载量水平</strong>（在同一细胞类型内，按SARS-CoV-2 reads的UMI数分为高/中/低/零四个亚组）。</p>
+
+<p>这种多维分组设计揭示了一个重要发现：在同一患者的同一细胞类型中，携带高病毒载量的细胞与携带低/零病毒载量的细胞在转录组上存在显著差异。具体而言，<strong>高病毒载量的上皮细胞显示出更强烈的I型干扰素信号激活</strong>，而这种关联在bulk水平上会被大量阴性细胞稀释而难以观察到。这是Viral-Track在方法学层面之外的核心生物学贡献。</p>
+
+<div class="sub-title st-teal">技术流程与验证链条</div>
+<p>Viral-Track的计算策略分为两个阶段。第一阶段是全病毒组扫描：使用STAR将未比对到宿主基因组的reads（unaligned reads）比对到ViruSite数据库（覆盖数千种已知病毒的参考序列），然后用StringTie对检测到的病毒转录本进行从头组装，进一步确认信号的真实性。第二阶段是细胞级别属性归因：使用UMI-tools将通过质控的病毒reads与细胞条形码对应，最终生成每个细胞的病毒reads计数矩阵，可与宿主的基因表达矩阵直接整合。</p>
+
+<p>关键的验证步骤包括：已知阳性样本（COVID-19 BALF）的信号恢复、StringTie组装的转录本与NCBI参考序列的比对确认，以及病毒载量与干扰素通路基因表达之间的相关性分析。最后一步既是生物学验证，也是功能意义的直接体现。</p>
+
+<div class="sub-title st-teal">与PathogenTrack的数据共享与比较</div>
+<p>值得注意的是，PathogenTrack（见§6）在验证阶段使用了同一批Liao BALF数据集。这种跨工具的数据共享为方法学比较提供了难得的机会：两个工具在同一数据集上的检测结果是否一致？差异来自何处（参考数据库差异、比对算法差异还是后处理过滤差异）？目前尚无系统性的头对头比较研究，但这是未来方法学验证的重要方向。</p>
+
+<div class="links">
+<strong>关键链接：</strong> <a href="https://github.com/PierreBSC/Viral-Track" target="_blank">GitHub: PierreBSC/Viral-Track</a> &nbsp;|&nbsp;
+<a href="https://doi.org/10.1016/j.cell.2020.07.005" target="_blank">DOI: 10.1016/j.cell.2020.07.005</a>
+</div>
+</div>
+
+<div class="tool">
+<h3>VIRTUS / VIRTUS2 / VIRTUS3 — 从泛病毒扫描到EBV专项</h3>
+<div class="en">VIRTUS: Bioinformatics 2021 · VIRTUS2: GigaScience 2022 · VIRTUS3: 2024–2025 · Jiang/Oki Lab</div>
+
+<div class="sub-title st-navy">三代演进的设计逻辑</div>
+<p>VIRTUS家族的演进历史本身就是一个关于工具如何从"通用"走向"专项"的故事。<strong>第一代VIRTUS（2021年）</strong>设计理念是泛病毒检测：通过STARsolo双比对策略（先比对宿主，再将剩余reads比对病毒参考库），支持bulk RNA-seq和scRNA-seq，覆盖数百种病毒参考基因组，并提供细胞层面的病毒reads计数。这一工具在2021年病毒单细胞研究方兴未艾之际填补了重要空白。</p>
+
+<p><strong>第二代VIRTUS2（2022年）</strong>在架构上进行了重构，改进了多病毒同时检测的效率，优化了输出格式，使其更便于与下游分析工具整合。但其定位仍是泛病毒扫描工具，适用于不预设病毒种类的探索性研究。</p>
+
+<p><strong>第三代VIRTUS3（2024–2025年）</strong>做出了一个重大的设计取舍：<strong>大幅缩减参考病毒库，专注于EBV（Epstein-Barr病毒）及少数几种具有明确肿瘤相关性的DNA病毒</strong>。这一取舍背后的科学逻辑是：EBV与多种B细胞淋巴瘤、鼻咽癌的关联已十分清晰，研究者需要的是高精度的EBV检测（包括潜伏期基因表达谱、早期/晚期基因的区分），而不是低分辨率的泛病毒扫描。VIRTUS3在EBV检测上的细胞类型分辨率和转录本区分能力，是目前单细胞层面最精细的之一。</p>
+
+<div class="cb cb-warn">
+<strong>选择警示：</strong>如果研究目标是EBV或特定DNA病毒，VIRTUS3是首选。如果目标是不预设的病毒扫描（如疾病归因、发现新型病毒关联），应使用VIRTUS2（泛病毒）或Viral-Track，而不是VIRTUS3。将VIRTUS3用于泛病毒扫描会遗漏大量病毒。
+</div>
+
+<div class="links">
+<strong>关键链接：</strong> <a href="https://github.com/yyoshiaki/VIRTUS2" target="_blank">GitHub: VIRTUS2</a> &nbsp;|&nbsp;
+<a href="https://doi.org/10.1093/bioinformatics/btab827" target="_blank">VIRTUS DOI</a>
+</div>
+</div>
+
+<div class="tool">
+<h3>scPathoQuant — 基于STARsolo的病原体-宿主联合定量</h3>
+<div class="en">Bioinformatics, 2023 · Krammer Lab</div>
+<p>scPathoQuant代表了一种实用主义的设计哲学：不重新发明轮子，而是将成熟的宿主基因组定量工具（STARsolo）扩展到病原体检测场景。其核心操作是将目标病原体的基因组序列拼接到宿主基因组参考序列中，构建联合参考基因组，然后用同一次STARsolo比对同时产生宿主基因表达矩阵和病原体reads计数矩阵。这一设计的优点是流程简单、计算效率高，且宿主和病原体的条形码归因使用完全相同的方法，减少了不一致性风险。其局限在于需要预先知道目标病原体（无法用于未知病原体的发现），以及对于参考基因组质量较差的病原体效果有限。</p>
+<div class="links"><a href="https://github.com/NCI-CGR/scPathoQuant" target="_blank">GitHub: NCI-CGR/scPathoQuant</a></div>
+</div>
+
+
+<!-- ==================== §6 PathogenTrack + Yeskit ==================== -->
+<div class="sec-title c-orange" id="sec6">§6 PathogenTrack与Yeskit：新冠研究范式与整合可视化</div>
+
+<div class="tool">
+<h3>PathogenTrack + Yeskit — 从检测到整合的完整范式</h3>
+<div class="en">Frontiers of Medicine, 2022 · Zhang et al.</div>
+
+<div class="sub-title st-orange">研究背景：COVID-19单细胞研究的方法学缺口</div>
+<p>2020年初，Liao等人发表了COVID-19患者BALF组织的scRNA-seq数据（重症3例、轻症3例、健康对照4例），揭示了COVID-19肺部免疫微环境的细胞异质性，迅速成为领域内引用率最高的数据集之一。然而，这批数据的分析主要聚焦于宿主免疫细胞的转录组，对病毒本身——SARS-CoV-2——在单细胞层面的直接检测却付之阙如。PathogenTrack的开发者看到了这个空白：<strong>同样的FASTQ文件中，病毒的信号在哪里？哪些细胞真正携带了病毒RNA？病毒载量与细胞功能状态之间有何关联？</strong></p>
+
+<div class="sub-title st-orange">数据流与分组设计</div>
+<p>PathogenTrack的数据流设计体现了一种"并行但合并"的思路：同一批FASTQ文件（R1含细胞条形码/UMI，R2含cDNA序列）同时进入两条流水线——标准的宿主转录组分析流水线（STARsolo → 基因表达矩阵 → Seurat对象 → 细胞类型注释），以及PathogenTrack的病原体检测流水线（质量过滤 → 宿主reads去除 → 病原体参考比对 → 细胞条形码归因 → 病原体计数矩阵）。Yeskit正是这"两条流水线结果整合"的桥梁：它以R语言包的形式实现，接受Seurat对象（包含宿主基因表达和细胞类型注释）和PathogenTrack输出的病原体计数矩阵，将二者通过共同的细胞条形码对齐，生成联合分析对象。</p>
+
+<p>在样本分组上，研究充分利用了Liao数据集的临床设计：重症 vs. 轻症 vs. 健康对照三组样本，允许研究者分析病毒载量是否与疾病严重程度相关；在细胞类型层面，研究者预期SARS-CoV-2主要感染表达ACE2受体的上皮细胞，而非免疫细胞，因此细胞类型特异性是一个内建的生物学验证指标。</p>
+
+<div class="sub-title st-orange">验证链条与关键意义</div>
+<p>验证逻辑遵循了从"有信号"到"信号有意义"的递进路径。首先，在确诊COVID-19患者的BALF样本中检测到了SARS-CoV-2 reads，而健康对照中没有——这是最基本的阳性/阴性对照验证。其次，SARS-CoV-2信号在上皮细胞中的富集程度显著高于巨噬细胞和T细胞，符合ACE2受体分布的生物学预期——这是细胞类型特异性验证。第三，病毒载量（病毒UMI数）与患者疾病严重程度之间存在趋势性关联——这是临床相关性验证。</p>
+
+<p>PathogenTrack+Yeskit组合的更广泛意义在于它提供了一个通用的整合框架，不限于SARS-CoV-2。任何病原体（细菌、病毒、真菌），只要在参考数据库中有记录，都可以用同样的计算流程检测，并与宿主分析结果无缝整合。</p>
+
+<div class="cb cb-orange">
+<strong>Yeskit的技术细节：</strong>Yeskit（R包）提供了<code>addPathogenAssay()</code>函数，将病原体计数矩阵作为新的Assay添加到现有Seurat对象中；<code>plotPathogenViolin()</code>等可视化函数支持按细胞类型分组显示病原体载量分布；<code>filterPathogen()</code>函数提供基于UMI数和检出细胞比例的过滤选项。与Seurat工作流的深度整合使Yeskit对已熟悉Seurat的研究者友好度极高。
+</div>
+
+<div class="links">
+<strong>关键链接：</strong> <a href="https://github.com/rstatistics/PathogenTrack" target="_blank">GitHub: PathogenTrack</a> &nbsp;|&nbsp;
+<a href="https://github.com/rstatistics/Yeskit" target="_blank">GitHub: Yeskit</a> &nbsp;|&nbsp;
+<a href="https://doi.org/10.1007/s11684-022-0913-6" target="_blank">DOI: 10.1007/s11684-022-0913-6</a>
+</div>
+</div>
+
+<!-- ==================== §7 新一代工具 ==================== -->
+<div class="sec-title c-indigo" id="sec7">§7 新一代广谱与专项工具：PRISM、kallisto+PalmDB、Malva、Venus、ViTrace与Vulture</div>
+
+<div class="tool">
+<h3>PRISM — 泛癌种微生物信号的多证据可靠性评分</h3>
+<div class="en">Cancer Cell, 2026 · Ghaddar et al. · sjdlab</div>
+
+<div class="sub-title st-navy">从SAHMI到PRISM：同一哲学的规模升级</div>
+<p>PRISM可以理解为SAHMI方法论在泛癌种尺度上的延伸。SAHMI建立了"如何从单个scRNA-seq数据集中去噪"的框架，而PRISM面临的挑战是：<strong>当我们将分析从单个数据集扩展到25种癌症类型、数百个独立数据集（包括bulk测序和单细胞数据的混合）时，如何构建一个统一的可靠性评分体系？</strong></p>
+
+<p>PRISM最重要的方法学创新在于其<strong>评估数据集的构建方式</strong>。研究团队汇编了230个具有已知真阳性/污染标签的数据集——其中既有已知含特定微生物的样本（如特定部位的肿瘤样本中已通过FISH/培养方法独立确认微生物存在），也有已知的技术污染案例（如试剂污染导致的假阳性报告）。这个带标签的数据集使得研究者可以用ROC分析量化不同评分策略的性能，而不是仅凭直觉判断阈值。</p>
+
+<div class="sub-title st-navy">多证据评分框架</div>
+<p>PRISM的评分框架整合了四类证据：①<strong>k-mer层面的序列真实性</strong>（Kraken2 k-mer分析，继承自SAHMI）；②<strong>全长比对的覆盖度与一致性</strong>（在k-mer筛选后进行全长比对验证）；③<strong>基因组唯一性</strong>（reads比对位置的特异性，排除多基因组共享区域）；④<strong>参考注释质量</strong>（微生物参考基因组本身的注释完整性，低质量参考可能导致高假阳性）。每一类证据对应一个子评分，最终加权合并为综合可靠性分数。</p>
+
+<p>在25种癌症类型的应用中，PRISM的分析重新评估了过去几年多项声称发现肿瘤-微生物关联的研究，其中相当比例的关联在PRISM评分中被标记为"低可靠性"，与已知的试剂污染来源高度重合。这一发现对领域有重要的方法学警示意义。</p>
+
+<div class="links">
+<strong>关键链接：</strong> <a href="https://github.com/sjdlabgroup/PRISM" target="_blank">GitHub: sjdlabgroup/PRISM</a> &nbsp;|&nbsp;
+<a href="https://doi.org/10.1016/j.ccell.2026.01.xxx" target="_blank">Cancer Cell 2026</a>
+</div>
+</div>
+
+<div class="tool">
+<h3>kallisto translated search + PalmDB — 蛋白质层面的RNA病毒发现</h3>
+<div class="en">Nature Biotechnology, 2025 · Bray et al.</div>
+
+<div class="sub-title st-green">科学问题：核苷酸搜索无法发现的病毒</div>
+<p>现有病毒检测工具几乎都在核苷酸序列层面工作：将测序reads与已知病毒基因组序列进行核苷酸比对。这一策略对已知病毒家族中序列分歧较大的成员（如同一科内但不同属的RNA病毒）效率极低，因为核苷酸序列分歧超过20–30%时，标准BLAST就难以检测到同源性。然而，蛋白质序列（氨基酸）比核苷酸序列保守得多——很多在核苷酸层面看起来"没有亲缘关系"的病毒，在RdRp（RNA依赖的RNA聚合酶）等保守功能蛋白上仍共享显著相似性。<strong>kallisto+PalmDB的核心创新正是将kallisto的伪比对（pseudoalignment）算法扩展到翻译搜索（translated search）模式</strong>：直接在氨基酸序列空间中搜索，以PalmDB（包含~100,000+种RNA病毒RdRp序列的数据库）为参考。</p>
+
+<div class="sub-title st-green">多平台数据集设计与对照体系</div>
+<p>验证研究覆盖了多种测序平台（10x Chromium、Drop-seq、Smart-seq、SPLiT-seq）和多种组织类型。对照体系的设计特别重视两个维度：其一是<strong>已知阳性对照</strong>——使用确认病毒感染的样本验证检测灵敏度；其二是<strong>试剂空白对照（reagent blank）</strong>——在没有任何生物材料的情况下走完完整的建库流程，用于识别PalmDB中与试剂或环境污染病毒相关的背景信号。这一试剂空白的设计思路与SAHMI的细胞系对照库有异曲同工之妙：都是通过"没有真实信号的阴性系统"来建模背景噪声。</p>
+
+<p>研究的关键发现之一是，在多个公开的"健康"样本数据集中检测到了先前未被报告的RNA病毒序列，其中部分在BLAST层面没有已知亲缘病毒，通过系统发育分析被归类为潜在新型病毒。这一发现的意义在于证明了翻译层面搜索在病毒发现上的优越性，同时也提醒研究者：新型病毒候选信号需要独立的实验验证（PCR、直接测序、细胞系接种等）才能确认。</p>
+
+<div class="links">
+<strong>关键链接：</strong> <a href="https://github.com/pachterlab/kallisto" target="_blank">GitHub: kallisto</a> &nbsp;|&nbsp;
+<a href="https://doi.org/10.1038/s41587-025-xxxx-x" target="_blank">Nature Biotechnology 2025</a>
+</div>
+</div>
+
+<div class="tool">
+<h3>Malva — 专为RNA病毒单细胞定量设计的UMI校正工具</h3>
+<div class="en">2025 · 专项工具</div>
+<p>RNA病毒的基因组结构给标准scRNA-seq定量带来了独特的挑战：负链RNA病毒（如流感）在细胞内以负链基因组RNA和正链mRNA共存，双链RNA中间体（dsRNA）的存在会导致正反向reads混淆；分节段RNA病毒（如流感的8个片段）使得UMI去重逻辑在基因层面不适用（一个"基因"可能对应多个物理分子）。Malva专门为这些情景重新设计了UMI去重和计数模型，在定量RNA病毒时能显著降低计数偏差。适用场景：对RNA病毒（尤其是负链RNA或分节段RNA病毒）进行高精度单细胞定量时。</div>
+</div>
+
+<div class="tool">
+<h3>Venus — 宿主-病毒联合索引定量</h3>
+<div class="en">2023 · 联合定量工具</div>
+<p>Venus采用了与scPathoQuant相似的联合索引策略，但在流程实现和下游整合上有所优化。其设计哲学是：通过将病毒序列纳入宿主基因组索引，在单次比对中同时确定宿主和病毒reads的归属，避免了"先比宿主、再比对剩余reads"的两步策略可能带来的边界效应（处于宿主-病毒嵌合区域的reads在两步法中可能既被宿主比对丢失，又因为序列截断而无法被病毒比对检测到）。Venus对已知目标病毒效果较好，同样不适合未知病毒的发现性研究。</div>
+</div>
+
+<div class="tool">
+<h3>ViTrace — 基于转录本迹的病毒溯源</h3>
+<div class="en">2024 · 细胞级别病毒溯源工具</div>
+<p>ViTrace的独特之处在于其分析目标：不仅仅是"哪些细胞携带了哪种病毒"，而是"同一病毒的不同转录本在细胞内的分布是否符合预期的病毒生命周期模式"。以HIV为例，潜伏感染的细胞与活跃复制的细胞在病毒转录本谱上存在本质差异；ViTrace通过分析同一细胞内多个病毒基因座的读段分布模式，推断细胞处于病毒生命周期的哪个阶段。这一功能在慢性病毒感染的机制研究中具有独特价值，但对数据深度要求较高（每细胞需要足够多的病毒reads才能做出有意义的转录本谱分析）。</div>
+</div>
+
+<div class="tool">
+<h3>Vulture — 面向大规模队列的宽谱微生物检测</h3>
+<div class="en">高通量批量处理工具</div>
+<p>Vulture的设计定位是处理大规模、多样本的scRNA-seq数据集（如TCGA级别的队列分析）。其计算架构针对批量处理进行了优化，支持并行处理多个样本，同时整合了从质控到细菌分类的完整流程。在灵敏度-特异性的权衡上，Vulture相对偏向灵敏度，适合作为大规模探索性研究的初步筛查工具，候选信号需要后续用SAHMI或PRISM进行更严格的去噪验证。</div>
+</div>
+
+
+<!-- ==================== §8 INVADEseq ==================== -->
+<div class="sec-title c-brown" id="sec8">§8 INVADEseq：侵入菌检测的湿实验范式</div>
+
+<div class="tool">
+<h3>INVADEseq — Invasion-Adhesion-Directed Expression Sequencing</h3>
+<div class="en">原始研究: Nature 2022 · Nejman et al. · 协议论文: Nature Protocols 2023</div>
+
+<div class="sub-title st-gold">科学问题：侵入菌 vs. 共存菌，如何区分？</div>
+<p>肿瘤内细菌研究长期面临一个根本性问题：即便确认了某种细菌存在于肿瘤组织中，我们仍然无法从普通的组织切片或测序数据中判断这些细菌是<strong>真正侵入（或紧密黏附）到肿瘤细胞内部</strong>，还是仅仅散布在细胞外基质中、与肿瘤细胞保持物理距离。这种区分至关重要，因为侵入/黏附菌能够直接操控宿主细胞的基因表达，而细胞外细菌则主要通过旁分泌信号发挥影响。传统的FISH或电子显微镜可以在组织层面可视化细菌-细胞关系，但无法同时获取涉及细菌的每个细胞的完整基因表达谱。</p>
+
+<div class="sub-title st-gold">建库协议的核心创新</div>
+<p>INVADEseq的解决方案来自建库层面的协议改造，而非计算层面的数学推断。其核心思路是：在标准10x Genomics 5'端GEX建库反应体系中，额外加入一组针对细菌16S rRNA高变区的特异性引物。由于细菌16S rRNA是细菌的"通用标记"，而10x 5'端的凝胶珠捕获会为进入同一液滴的所有核酸（宿主mRNA和细菌16S rRNA）分配相同的细胞条形码，因此最终建库产物中，宿主GEX reads和16S扩增子reads共享同一套条形码体系。</p>
+
+<p>这一设计的关键优势在于：只有真正处于同一细胞液滴中的细菌16S和宿主mRNA才会获得相同条形码——这意味着有16S信号的条形码代表的是真正包含细菌的细胞（侵入菌），而不是仅在细胞外游离的细菌。当然，这一推断依赖于10x液滴的单细胞分辨率，在实践中需要排除多细胞液滴（doublets）带来的假阳性。</p>
+
+<div class="sub-title st-gold">样本分组与验证链条</div>
+<p>原始Nature论文的验证设计十分严格，包含以下几个关键对照：①FISH/荧光成像验证——对部分样本进行荧光原位杂交，确认INVADEseq检测到有细菌信号的细胞在显微镜下确实可见细菌-细胞共存；②PathSeq细菌分类——对16S扩增子reads进行物种分类，鉴定是哪些细菌物种在侵入肿瘤细胞；③宿主差异表达分析——比较有细菌信号 vs. 无细菌信号的同类型细胞，鉴定细菌侵入诱导的宿主基因表达变化（DEG分析），揭示细菌对肿瘤细胞功能的直接影响。不同肿瘤类型（胰腺癌、乳腺癌等）和不同细菌物种的比较则提供了更广泛的生物学背景。</p>
+
+<div class="cb cb-red">
+<strong>【关键提醒】INVADEseq不可事后还原：</strong>没有16S引物富集步骤产生的细菌特异性文库，标准GEX数据中细菌reads的灵敏度和细胞归因精度会大幅下降。INVADEseq的PathSeq计算模块可以单独用于分析任何包含微生物reads的BAM文件，但其检测灵敏度在没有湿实验16S富集的情况下与其他通用工具并无显著区别。若研究侵入菌-宿主互作，必须在建库阶段就采用INVADEseq协议。
+</div>
+
+<div class="sub-title st-gold">辅助工具：mire与CellJanus</div>
+<p><strong>mire</strong>（Microbiome in single-cell RNA-seq）是一个R包，专门设计用于分析INVADEseq数据中16S reads的分类和可视化，但其核心功能（细菌reads的barcode归因、与宿主Seurat对象整合）对其他含细菌信号的scRNA-seq数据同样适用，可视为PathogenTrack/Yeskit组合的细菌版本。<strong>CellJanus</strong>则提供了更侧重于"宿主-微生物互作网络"的分析视角，能够识别细菌信号与宿主基因表达之间的共变关系，构建互作网络图，适合机制研究的后期分析阶段。</p>
+
+<div class="links">
+<strong>关键链接：</strong> <a href="https://doi.org/10.1038/s41586-022-05435-0" target="_blank">Nature 2022（原始研究）</a> &nbsp;|&nbsp;
+<a href="https://doi.org/10.1038/s41596-023-00864-1" target="_blank">Nature Protocols 2023</a>
+</div>
+</div>
+
+<div class="tool">
+<h3>BD Rhapsody 靶向微生物协议</h3>
+<div class="en">BD Biosciences · 商业化微生物-宿主联合建库方案</div>
+<p>BD Rhapsody平台提供了一种商业化的宿主-微生物联合检测解决方案，其设计思路与INVADEseq类似：通过在单细胞建库体系中加入微生物特异性探针，实现宿主mRNA和微生物核酸的同步捕获。相较于学术实验室自行优化的INVADEseq协议，BD Rhapsody方案的优点是有商业化技术支持、标准化程度高，但灵活性较低（探针设计固定，难以针对特殊病原体快速定制）。适用于有标准化检测需求、不需要高度定制的临床研究或大规模筛查。</p>
+</div>
+
+<!-- ==================== §9 跨论文数据整合逻辑 ==================== -->
+<div class="sec-title c-crimson" id="sec9">§9 跨论文数据整合逻辑：这个领域如何形成整体图景</div>
+
+<p>理解单篇论文的方法和发现是基础，但真正的科学洞察来自理解这些论文如何相互关联、互相补充——哪些发现来自同一数据集的不同分析角度，哪些形成了方法学的传承与演进，哪些存在矛盾或待解决的张力。本节从三个维度梳理这些跨论文关联。</p>
+
+<div class="sub-title st-red">9.1 领域方法学演进的时间线</div>
+<p>这一领域大致可以分为三个发展阶段，每个阶段的核心问题不同，工具设计哲学也随之演变。</p>
+
+<div class="prio-p1" style="margin-bottom:8px;">
+<strong>第一阶段（2020–2022年）：问题建立期</strong><br>
+Viral-Track（Cell 2020）和PathogenTrack+Yeskit（Frontiers of Medicine 2022）证明了scRNA-seq数据中确实存在可检测的病毒信号，并建立了基本的计算流程。SAHMI的前期工作（后期发表为Nature Comp Sci 2023的论文）开始系统性地质疑信号的可靠性。VIRTUS（Bioinformatics 2021）提供了DNA病毒检测的早期解决方案。这一阶段的核心问题是"<strong>能不能检测到</strong>"，工具设计偏向灵敏度，对假阳性的处理较粗糙。
+</div>
+<div class="prio-p2" style="margin-bottom:8px;">
+<strong>第二阶段（2022–2024年）：质量控制与实验验证期</strong><br>
+SAHMI（Nature Comp Sci 2023）和CSI-Microbes（Science Advances 2024）代表了这一阶段的核心贡献：通过大规模背景对照和受控in vitro实验，系统性地建立了质控标准。INVADEseq（Nature 2022 + Nature Protocols 2023）探索了通过湿实验设计提升可靠性的路径。VIRTUS2（GigaScience 2022）改进了多病毒检测架构。这一阶段的核心问题是"<strong>检测到的信号可靠吗</strong>"，工具设计偏向特异性，出现了系统性的质控框架。
+</div>
+<div class="prio-p3" style="margin-bottom:8px;">
+<strong>第三阶段（2025–2026年）：规模化与专项深化期</strong><br>
+PRISM（Cancer Cell 2026）将质控框架扩展到25种癌症类型的多模态数据。kallisto+PalmDB（Nature Biotech 2025）通过蛋白质层面搜索将检测范围延伸至未知RNA病毒。VIRTUS3将EBV检测精度提升至新水平。Malva专项解决RNA病毒UMI定量的系统误差。这一阶段的核心问题是"<strong>在什么条件下可以可靠地检测哪类微生物</strong>"，工具设计走向专项化与规模化。
+</div>
+
+<div class="sub-title st-red">9.2 同一数据集在多工具间的流动</div>
+<p>最能说明工具互补性的案例是Liao等人2020年发表的COVID-19 BALF数据集。这批数据（10个样本的FASTQ文件，公开可下载）被<strong>Viral-Track</strong>用于验证单细胞层面的SARS-CoV-2检测能力，也被<strong>PathogenTrack+Yeskit</strong>用于展示病毒-宿主整合分析框架，还被多个其他工具的开发者用于自我验证。同一批数据在不同工具手中产出了不同层次的科学信息：Viral-Track关注的是哪些细胞携带病毒（检测），PathogenTrack+Yeskit关注的是病毒载量与宿主状态的联系（整合），而未来若有新工具应用于同一数据集并给出不一致的结果，则需要系统性的方法学比较来解释差异。</p>
+
+<p>另一个重要案例是肿瘤scRNA-seq数据集被SAHMI和CSI-Microbes同时分析的场景。两个工具使用不同的比对后端（Kraken2/KrakenUniq vs. PathSeq/CAMMiQ），如果两个工具在同一样本上检测到一致的细菌信号，则可信度大幅提升；如果结果不一致，差异本身就值得深入分析——是哪个步骤（比对参数、参考数据库、过滤阈值）导致了分歧？</p>
+
+<div class="sub-title st-red">9.3 对照实验设计的跨论文比较</div>
+<p>各工具论文在对照实验设计上体现了不同的思维模式，这些模式可以相互借鉴。下表总结了各主要论文使用的关键对照类型及其逻辑：</p>
+
+<table class="ds-table">
+<thead><tr><th>论文/工具</th><th>技术对照类型</th><th>对照的科学逻辑</th><th>可移植性</th></tr></thead>
+<tbody>
+<tr><td>SAHMI</td><td>2,491个细胞系实验（背景库）</td><td>无菌培养细胞系的信号≈技术噪声基线；肿瘤信号-基线=潜在真实信号</td><td>高——任何scRNA-seq项目可构建类似背景库</td></tr>
+<tr><td>CSI-Microbes</td><td>活菌 vs. 热灭活菌 vs. 未处理细胞（3梯度对照）</td><td>三梯度信号排序验证细菌活性对检测的贡献</td><td>高——受控in vitro实验的通用设计</td></tr>
+<tr><td>Viral-Track</td><td>COVID-19 BALF（已知阳性）+健康对照</td><td>已知阳性验证灵敏度；健康对照验证特异性</td><td>中——依赖有公认阳性的疾病模型</td></tr>
+<tr><td>PathogenTrack</td><td>重症/轻症/健康（疾病分级对照）</td><td>信号应与疾病严重程度正相关，验证临床相关性</td><td>高——疾病严重程度分层是通用设计</td></tr>
+<tr><td>kallisto+PalmDB</td><td>试剂空白对照（reagent blank）</td><td>无生物材料的假阳性基线，识别PalmDB内的污染相关病毒</td><td>高——建议所有病毒检测研究必备</td></tr>
+<tr><td>INVADEseq</td><td>FISH/荧光成像验证</td><td>计算预测（有细菌信号的细胞）vs. 显微镜观察（直接可视化）</td><td>中——需要额外的成像实验，资源要求高</td></tr>
+<tr><td>PRISM</td><td>230个已知标签数据集（ground truth训练/测试集）</td><td>ROC分析量化不同评分策略性能，避免主观阈值设定</td><td>高——带标签的评估集是方法学金标准</td></tr>
+</tbody>
+</table>
+
+<div class="sub-title st-red">9.4 三层验证框架：当前领域的共识与差距</div>
+<p>综合各主要论文的验证策略，可以归纳出一个三层验证框架，代表了当前领域对"可信微生物信号"的最高标准认识。</p>
+
+<div class="sq-card">
+  <span class="sq-num" style="background:#a93226">T1</span><span class="sq-title">第一层：计算真实性验证（Computational Authenticity）</span>
+  <div class="sq-body">
+    验证reads在序列层面是否是真实的微生物来源。具体指标包括：k-mer多样性（SAHMI）、比对唯一性（多工具共用）、序列复杂度（低复杂度reads过滤）、跨基因组覆盖均匀性（避免单一高重复区域）、UMI数量（≥2 UMI阈值，CSI-Microbes）。<br>
+    <em>当前支持：所有主要工具均实现了部分第一层验证，但标准不统一。</em>
+  </div>
+</div>
+<div class="sq-card">
+  <span class="sq-num" style="background:#b94a08">T2</span><span class="sq-title">第二层：技术层验证（Technical Validation）</span>
+  <div class="sq-body">
+    通过实验对照排除技术假象。包括：试剂空白对照（排除试剂污染，kallisto+PalmDB）、细胞系背景对照（排除普遍噪声，SAHMI）、热灭活菌对照（排除死菌信号，CSI-Microbes）、批次效应检验（同一样本在不同批次的一致性）、多平台重复（CSI-Microbes的4平台对比）。<br>
+    <em>当前差距：大多数发表研究缺乏系统性的第二层验证，尤其是试剂空白对照和批次效应分析。</em>
+  </div>
+</div>
+<div class="sq-card">
+  <span class="sq-num" style="background:#1e8a4c">T3</span><span class="sq-title">第三层：生物学层验证（Biological Validation）</span>
+  <div class="sq-body">
+    验证微生物信号具有生物学意义。包括：细胞类型特异性（病毒主要在其已知宿主细胞中富集，如SARS-CoV-2在ACE2+上皮细胞）、疾病相关性（微生物载量与疾病严重程度相关）、宿主转录组响应（携带微生物的细胞 vs. 不携带的同类型细胞的DEG分析）、独立成像验证（FISH/IF，INVADEseq）。<br>
+    <em>当前差距：第三层验证资源要求最高，但也最具说服力。目前没有任何工具在所有病原体类型上完整满足三层验证。</em>
+  </div>
+</div>
+
+<div class="cb cb-red">
+<strong>核心结论：</strong>每一层验证都是必要的，三层验证相互不可替代。计算过滤过了不代表技术上没有假象；技术对照通过了不代表信号有生物学意义。高质量的单细胞微生物研究应明确陈述在三个层次上分别提供了哪些验证证据，并坦诚说明哪些层次尚缺乏充分验证。
+</div>
+
+<div class="sub-title st-red">9.5 实验设计的跨论文经验整合</div>
+<p>如果研究者正在设计一项新的单细胞微生物研究，以下是从上述多篇论文中提炼出的实用建议，按优先级排列：</p>
+<ol>
+<li><strong>明确科学问题层次</strong>：是存在性问题、细胞分辨率问题，还是可靠性问题？不同层次的问题需要不同的工具组合和验证策略。</li>
+<li><strong>同时设计生物学对照和技术对照</strong>：只有健康 vs. 疾病对照是不够的，还需要试剂空白（技术对照）和细胞系背景（技术对照）。参考SAHMI+kallisto+PalmDB的双重对照设计。</li>
+<li><strong>选择建库方案时考虑目标病原体</strong>：细菌研究优先10x 5'端或Smart-seq2；RNA病毒研究10x 3'/5'均可；侵入菌研究必须使用INVADEseq协议。</li>
+<li><strong>使用至少两种方法学后端</strong>：参考CSI-Microbes的双后端（PathSeq + CAMMiQ）逻辑，当两个独立方法给出一致结果时，可信度显著提升。</li>
+<li><strong>保留FASTQ文件并记录完整的分析参数</strong>：多篇论文复用了公开FASTQ数据（尤其是Liao BALF数据集），说明数据共享和完整参数记录对领域进步至关重要。</li>
+</ol>
+
+
+<!-- ==================== §10 湿实验方法 ==================== -->
+<div class="sec-title c-green" id="sec10">§10 湿实验方法与建库策略</div>
+
+<p>计算工具的能力上限由湿实验的建库方案决定。在进入任何计算分析之前，研究者需要对自己的数据类型、建库化学和实验设计有清晰的认识，因为这直接决定了哪些工具可以使用、哪些生物学问题可以回答。</p>
+
+<div class="sub-title st-green">10.1 标准scRNA-seq方案的适用性边界</div>
+<p>标准scRNA-seq方案（以10x Genomics为代表）的设计目标是宿主poly(A)+ mRNA的高效捕获，其对微生物核酸的捕获完全是"附带"的，效率远低于宿主转录本。具体约束如下：</p>
+
+<div class="g2">
+<div class="cb cb-blue">
+<strong>10x 3'端方案（3'v2/v3）：</strong>通过oligo-dT引物捕获poly(A)尾。细菌mRNA无poly(A)尾，因此细菌捕获效率极低，仅依赖随机引发或极短polyA样序列。病毒RNA若有poly(A)尾（如正义单链RNA病毒）则捕获效率尚可。对于细菌检测，这是最不推荐的方案，但也是最常见的现有数据格式。
+</div>
+<div class="cb cb-green">
+<strong>10x 5'端方案（5'GEX）：</strong>从转录本5'端延伸，理论上对poly(A)尾依赖较低，对细菌mRNA的随机捕获效率相对较好。CSI-Microbes的实验数据表明5'端方案在细菌检测上优于3'端方案。INVADEseq协议必须基于5'GEX方案。
+</div>
+</div>
+<div class="g2">
+<div class="cb cb-teal">
+<strong>Smart-seq2 / plexWell（全长）：</strong>基于模板转换的全长扩增，从转录本5'端到3'端提供相对均匀的覆盖。对细菌和病毒的覆盖均优于液滴方案，且提供每个细胞更多的reads。缺点是通量低（通常≤1,000细胞/批次），且每细胞成本高。适合需要深度覆盖的机制研究。
+</div>
+<div class="cb cb-orange">
+<strong>BD Rhapsody / SPLiT-seq等其他方案：</strong>各有特色，BD Rhapsody提供商业化的微生物靶向检测选项；SPLiT-seq（组合条形码）提供高通量全长覆盖但操作复杂。选择时需综合考虑通量需求、微生物检测需求和实验室条件。
+</div>
+</div>
+
+<div class="sub-title st-green">10.2 INVADEseq湿实验核心要点</div>
+<p>对于希望检测侵入/黏附菌的研究者，INVADEseq协议的关键步骤如下（详细操作参见Nature Protocols 2023原文）：</p>
+<ul>
+<li><strong>引物设计：</strong>在标准10x 5'GEX混合物中加入16S rRNA V3-V4区的特异性引物（通常是正向引物，方向与10x 5'GEX捕获方向一致）；引物浓度需要优化以避免竞争性抑制宿主reads的捕获</li>
+<li><strong>组织解离：</strong>与标准scRNA-seq相比，INVADEseq对细胞解离条件更敏感——过度的解离（如高浓度的DNase/RNase处理）会破坏细菌RNA完整性；应使用较温和的机械解离方案</li>
+<li><strong>文库大小选择：</strong>16S扩增子库和GEX库的片段大小不同，在文库制备和测序时需要混合或分开处理；建议测序前用TapeStation确认两种组分的比例</li>
+<li><strong>对照条件：</strong>必须包含"未感染细胞"的对照样本，用于确定无细菌条件下的16S背景信号水平</li>
+</ul>
+
+<div class="sub-title st-green">10.3 样本保存与核酸完整性</div>
+<p>微生物核酸的完整性比宿主转录本更脆弱。细菌mRNA的半衰期通常仅1–5分钟，因此组织从切取到单细胞解离过程中的时间控制至关重要。对于临床样本，以下注意事项基于文献报道的经验：手术切除组织应在30分钟内置于4°C保存液（如RPMI+RNase抑制剂）；FFPE固定的组织不适合做细菌RNA检测（RNA降解严重），但新鲜冷冻（FF）组织的细菌信号相对更可靠；BALF样本（如COVID研究中广泛使用的类型）含有相对富集的胞外和胞内病毒颗粒，是病毒检测的较好样本类型。</p>
+
+<!-- ==================== §11 标准分析流程 ==================== -->
+<div class="sec-title c-slate" id="sec11">§11 标准分析流程与输入规范</div>
+
+<div class="sub-title st-slate">11.1 通用输入文件规范</div>
+<p>大多数单细胞微生物检测工具接受以下两种输入格式之一：</p>
+<div class="g2">
+<div class="cb cb-navy">
+<strong>FASTQ格式（原始数据）：</strong>通常需要R1（含细胞条形码+UMI）和R2（含cDNA序列）两个文件。部分工具（SAHMI、Viral-Track）直接从FASTQ启动，包含宿主去除步骤。优点是可以自定义所有参数；缺点是计算时间较长，对存储要求高。<strong>推荐用于新项目</strong>，因为保留了最完整的信息。
+</div>
+<div class="cb cb-gray">
+<strong>BAM/CRAM格式（预处理数据）：</strong>由STARsolo或CellRanger比对宿主基因组后产生的已排序BAM文件。部分工具（scPathoQuant、Venus）可以从BAM文件提取未比对reads（unmapped reads）后进行微生物分析。优点是可以复用已有的宿主分析结果；缺点是unmapped reads的提取策略会影响后续微生物检测的灵敏度（不同工具对"未比对"的定义略有不同）。<strong>适合分析已有数据集</strong>。
+</div>
+</div>
+
+<div class="sub-title st-slate">11.2 典型分析流程图</div>
+<div class="flow-row">
+  <div class="flow-box">原始FASTQ<br><small>R1: BC+UMI<br>R2: cDNA</small></div>
+  <div class="flow-arr">→</div>
+  <div class="flow-box">质控过滤<br><small>FastQC<br>低质量去除</small></div>
+  <div class="flow-arr">→</div>
+  <div class="flow-box">宿主比对<br><small>STARsolo/<br>CellRanger</small></div>
+  <div class="flow-arr">→</div>
+  <div class="flow-box">宿主GEX矩阵<br><small>Seurat分析<br>细胞类型注释</small></div>
+</div>
+<div class="flow-row">
+  <div class="flow-box" style="background:#f0f7ff;">同一FASTQ</div>
+  <div class="flow-arr">→</div>
+  <div class="flow-box" style="background:#f0f7ff;">未比对reads提取<br><small>或宿主reads过滤</small></div>
+  <div class="flow-arr">→</div>
+  <div class="flow-box" style="background:#f0f7ff;">微生物参考比对<br><small>Kraken2/PathSeq/<br>STAR+ViruSite</small></div>
+  <div class="flow-arr">→</div>
+  <div class="flow-box" style="background:#f0f7ff;">条形码归因<br><small>微生物计数矩阵</small></div>
+  <div class="flow-arr">→</div>
+  <div class="flow-box" style="background:#eaf7f0;">整合分析<br><small>Yeskit/mire/<br>CellJanus</small></div>
+</div>
+
+<div class="sub-title st-slate">11.3 参考数据库选择</div>
+<table class="ds-table">
+<thead><tr><th>数据库</th><th>覆盖范围</th><th>适用工具</th><th>更新频率</th><th>注意事项</th></tr></thead>
+<tbody>
+<tr><td>Kraken2标准库</td><td>细菌、真菌、病毒（核苷酸）</td><td>SAHMI、PRISM、Vulture</td><td>定期更新</td><td>内存要求高（≥64GB），需定期更新</td></tr>
+<tr><td>ViruSite</td><td>病毒（核苷酸，约3,000种）</td><td>Viral-Track</td><td>不定期</td><td>覆盖较全，但新病毒可能缺失</td></tr>
+<tr><td>PalmDB</td><td>RNA病毒RdRp（蛋白质，~100,000+种）</td><td>kallisto翻译搜索</td><td>持续更新</td><td>最广泛的RNA病毒覆盖，需要翻译搜索支持</td></tr>
+<tr><td>NCBI RefSeq微生物</td><td>全微生物（核苷酸）</td><td>PathSeq（INVADEseq）</td><td>频繁更新</td><td>最权威但体积极大，下载耗时</td></tr>
+<tr><td>EBV参考基因组</td><td>EBV所有转录本</td><td>VIRTUS3</td><td>随VIRTUS3版本</td><td>精细到转录本水平的EBV注释</td></tr>
+</tbody>
+</table>
+
+<!-- ==================== §12 定量层级 ==================== -->
+<div class="sec-title c-blue" id="sec12">§12 定量层级与统计注意事项</div>
+
+<div class="sub-title st-blue">12.1 三个定量层级的含义与问题</div>
+<p>单细胞微生物分析的定量结果可以在三个不同层级上表达，每个层级的生物学含义和统计解释都不同，混淆层级是导致结论错误的常见原因。</p>
+
+<div class="sq-card">
+  <span class="sq-num" style="background:#1a6ea8">L1</span><span class="sq-title">读段层级（Reads/UMI per cell）</span>
+  <div class="sq-body">每个细胞中来自特定微生物的reads数或UMI数。这是最直接的测量值，反映了细胞内微生物核酸的捕获量。需要注意：由于测序深度在细胞间不均一，需要进行每细胞测序深度归一化才能做跨细胞比较；≥2 UMI的阈值过滤（CSI-Microbes）可有效去除单UMI噪声。</div>
+</div>
+<div class="sq-card">
+  <span class="sq-num" style="background:#1e8a4c">L2</span><span class="sq-title">检出率层级（Fraction of positive cells per sample）</span>
+  <div class="sq-body">样本中检测到特定微生物的细胞比例（如"5%的上皮细胞携带SARS-CoV-2读段"）。这是比单细胞读段数更稳定的估计量，受单细胞采样噪声影响较小。跨样本比较时，检出率差异是更可靠的统计比较对象。</div>
+</div>
+<div class="sq-card">
+  <span class="sq-num" style="background:#6c3483">L3</span><span class="sq-title">样本层级（Sample-level microbial burden）</span>
+  <div class="sq-body">整个样本中微生物reads的总量或标准化丰度。与bulk RNA-seq的微生物定量在数值上不直接可比（因为scRNA-seq的建库效率和捕获偏差不同），但可以用于同一研究内不同样本的相对比较。肿瘤-微生物组研究中报告的"微生物多样性指数"通常在此层级计算。</div>
+</div>
+
+<div class="sub-title st-blue">12.2 常见统计错误</div>
+<p>在单细胞微生物研究的统计分析中，以下几类错误较为常见，需要特别警惕。<strong>第一，将细胞视为独立统计单元</strong>：来自同一样本（同一患者）的细胞在统计上是高度相关的，不能被视为独立观测值。正确的做法是以样本（患者）为基本统计单元，在样本层面进行假设检验，而不是在细胞层面（否则会严重低估p值）。<strong>第二，忽略建库深度的影响</strong>：测序深度更高的样本会捕获到更多的低丰度微生物reads，这种关系需要在分析中明确校正（类似bulk RNA-seq中的测序深度归一化）。<strong>第三，多重比较问题</strong>：对数千个细菌物种同时进行检测时，即使是很低的单次假阳性率也会积累为大量假阳性，必须进行Bonferroni或FDR校正。</p>
+
+<div class="sub-title st-blue">12.3 细菌 vs. 病毒的定量差异</div>
+<p>细菌和病毒在scRNA-seq定量中面临不同的技术挑战，需要使用不同的定量策略。对于<strong>细菌</strong>：由于细菌mRNA无poly(A)尾且半衰期极短，每个细菌细胞贡献的reads数远低于病毒；加之细菌基因组大（通常3–10 Mb），reads在基因组上的分散程度是衡量信号真实性的重要指标（真实细菌信号应分布在多个基因，而不是集中于少数高重复元件）。对于<strong>病毒</strong>：病毒基因组小（通常10–30 kb），单个病毒颗粒的RNA丰度高，更易于检测；但RNA病毒的负链/双链中间体会导致正反向reads比例异常，需要Malva等专项工具处理；病毒的宿主整合（如HIV、EBV潜伏期）产生的reads与主动复制期的reads在生物学意义上截然不同，需要区分。</p>
+
+
+<!-- ==================== §13 污染识别与质控 ==================== -->
+<div class="sec-title c-orange" id="sec13">§13 污染识别与质控体系</div>
+
+<p>污染是单细胞微生物研究中最大的技术威胁。不同来源的污染具有不同的特征模式，识别和区分这些模式是质控工作的核心。</p>
+
+<div class="sub-title st-orange">13.1 污染来源分类</div>
+<table class="risk-table">
+<thead><tr><th>污染来源</th><th>特征模式</th><th>检测方法</th><th>主要受害工具</th></tr></thead>
+<tbody>
+<tr><td><strong>试剂/试剂盒污染</strong></td><td>在所有样本（包括阴性对照）中出现相同的微生物物种；与样本生物学特征无关；在不同批次间高度一致</td><td>试剂空白对照；多批次一致性检验（kallisto+PalmDB方法）</td><td>所有工具均受影响；PalmDB内某些病毒序列与常见试剂污染高度重合</td></tr>
+<tr><td><strong>实验室环境污染</strong></td><td>与实验室常见微生物组成一致（皮肤细菌如葡萄球菌、口腔菌等）；在开放操作的样本中更高；批次间变异大</td><td>PCR级超净台操作规范；阴性提取对照；与标准实验室皮肤/口腔菌群数据库比对</td><td>对所有细菌检测工具均有影响；细胞系背景对照（SAHMI）可部分捕获</td></tr>
+<tr><td><strong>计算假比对（假阳性）</strong></td><td>reads比对到微生物基因组的低复杂度区域或重复元件；宿主基因组中存在与微生物高度相似的假基因；比对位置高度集中（而非均匀分布）</td><td>k-mer多样性过滤（SAHMI）；比对唯一性阈值；与宿主基因组的交叉比对检验</td><td>未使用k-mer过滤的工具（如原始Kraken2）假阳性率较高</td></tr>
+<tr><td><strong>Index hopping（跨barcode污染）</strong></td><td>低丰度微生物信号出现在预期为阴性的细胞中；信号强度与阳性细胞的测序量相关</td><td>UMI设计（10x Genomics的已知UMI在一定程度上减轻此问题）；严格的UMI阈值</td><td>对UMI计数较低的细菌信号影响最大</td></tr>
+<tr><td><strong>空液滴/多细胞液滴（Doublet）污染</strong></td><td>空液滴：低基因数但有微生物信号；Doublet：宿主基因数异常高+微生物信号</td><td>标准细胞质控（基因数、线粒体比例过滤）；DoubletFinder等doublet检测工具</td><td>INVADEseq中doublet可能导致虚假的"细菌侵入细胞"信号</td></tr>
+</tbody>
+</table>
+
+<div class="sub-title st-orange">13.2 SAHMI去噪流程详解</div>
+<p>SAHMI的四层过滤在实践中如何操作？以下描述的是工具的核心计算逻辑：</p>
+<div class="cb cb-purple">
+<strong>k-mer过滤（第一层核心）：</strong>SAHMI使用Kraken2/KrakenUniq对每条读段进行k-mer（通常k=31）哈希分析。真实的微生物reads应包含在微生物参考基因组中唯一出现（或高度特异性出现）的k-mer组合，而假比对reads（如来自宿主假基因或低复杂度区域）的k-mer则往往在宿主和多个微生物参考基因组中同时出现，k-mer特异性评分较低。过滤阈值通常基于细胞系背景数据中观察到的分布来设定，而非固定值。
+</div>
+<div class="cb cb-purple">
+<strong>空间相关性检验（第三层核心）：</strong>在通过前两层过滤的细胞/reads基础上，SAHMI计算同一样本中不同细胞的微生物信号之间的相关性。这里"空间"并不仅指物理空间，而是指功能或类型上的近邻（如同一细胞类型的不同细胞）。如果某微生物在样本中真实存在并与特定细胞类型互作，则同类型细胞之间的微生物信号应呈正相关；如果是随机污染，则相关性应接近于零或负相关（由于污染通常均匀分布，会在某些细胞中看到信号而在其他中没有，形成弱负相关）。
+</div>
+
+<div class="sub-title st-orange">13.3 试剂空白对照的实施建议</div>
+<p>参考kallisto+PalmDB论文（Nature Biotech 2025）的对照体系设计，试剂空白对照应作为所有单细胞微生物研究的标准操作。具体实施方法：在与正式样本完全相同的实验条件下，用等量的无核酸水（或PBS）代替生物样本，走完完整的建库流程（包括所有加样步骤、酶处理、PCR扩增）。所得的测序库（通常文库浓度极低）与正式样本一起测序。空白对照中检测到的微生物物种应被标记为潜在试剂污染，在正式样本的分析中要特别谨慎对待这些物种的信号。</p>
+
+<div class="sub-title st-orange">13.4 计算层面的批次效应识别</div>
+<p>在多批次实验中，批次效应是微生物检测信号的主要混杂因素。识别策略包括：①将所有样本的微生物物种组成进行主成分分析（PCA）或UMAP降维，检查样本是否按生物学分组（疾病 vs. 对照）而非按批次聚类；②计算每个微生物物种的检出率在不同批次间的变异系数（CV），高CV物种可能是批次特异性污染；③PRISM中的跨样本相关性分析可以识别在多个样本中反复出现的污染模式（高跨样本相关性但与生物学特征无关的物种）。</p>
+
+<!-- ==================== §14 工程实施与审计清单 ==================== -->
+<div class="sec-title c-navy" id="sec14">§14 工程实施与审计清单</div>
+
+<div class="sub-title st-navy">14.1 项目启动核查表</div>
+<p>在开始任何单细胞微生物分析项目之前，以下问题应逐一明确回答：</p>
+
+<div class="sq-card">
+  <span class="sq-num" style="background:#1a3a5c">①</span><span class="sq-title">数据类型核查</span>
+  <div class="sq-body">数据是什么建库方案产生的（10x 3'v2/v3/5'、Smart-seq2等）？是否保留了原始FASTQ文件？测序深度是多少（每样本总reads，每细胞平均reads）？如果只有BAM文件，unmapped reads是否完整保留？</div>
+</div>
+<div class="sq-card">
+  <span class="sq-num" style="background:#1a3a5c">②</span><span class="sq-title">目标病原体明确性</span>
+  <div class="sq-body">是否有预设的目标病原体？如果有，是细菌还是病毒？是RNA还是DNA病原体？如果没有预设（发现导向研究），是否准备好处理大量假阳性候选的验证工作流？</div>
+</div>
+<div class="sq-card">
+  <span class="sq-num" style="background:#1a3a5c">③</span><span class="sq-title">对照样本设计</span>
+  <div class="sq-body">是否有已知阳性对照（已确认感染的样本）？是否有已知阴性对照（健康对照、未处理细胞）？是否有试剂空白对照（强烈建议）？是否有细胞系样本可作为背景噪声参考？</div>
+</div>
+<div class="sq-card">
+  <span class="sq-num" style="background:#1a3a5c">④</span><span class="sq-title">计算资源评估</span>
+  <div class="sq-body">Kraken2标准数据库需要≥64 GB内存；STAR宿主+病毒联合比对需要≥32 GB内存；大型队列分析（PRISM规模）可能需要HPC集群。在项目启动前确认计算资源是否满足所选工具的要求。</div>
+</div>
+<div class="sq-card">
+  <span class="sq-num" style="background:#1a3a5c">⑤</span><span class="sq-title">验证计划</span>
+  <div class="sq-body">计划提供三层验证中的哪几层？计算层（所有项目必须）？技术层（有对照样本时必须）？生物学层（需要额外实验时，提前安排FISH/PCR验证计划）？</div>
+</div>
+
+<div class="sub-title st-navy">14.2 分析过程的关键审计点</div>
+<table class="ds-table">
+<thead><tr><th>分析阶段</th><th>审计问题</th><th>可接受的答案</th></tr></thead>
+<tbody>
+<tr><td>参考数据库版本</td><td>使用的是哪个版本的微生物参考数据库？构建日期是什么？</td><td>记录了版本号和构建日期；数据库不超过12个月未更新</td></tr>
+<tr><td>宿主reads去除策略</td><td>是先去宿主再比对微生物，还是宿主+微生物联合比对？宿主去除的参数是什么？</td><td>明确记录了策略和参数；宿主基因组版本一致</td></tr>
+<tr><td>UMI/reads阈值</td><td>使用了什么过滤阈值？阈值是如何选定的（固定值 vs. 数据驱动）？</td><td>至少使用≥2 UMI阈值；理想情况下基于阴性对照数据驱动设定</td></tr>
+<tr><td>多重比较校正</td><td>对多个微生物物种的同时检验是否进行了FDR校正？</td><td>FDR&lt;0.05或Bonferroni校正</td></tr>
+<tr><td>细胞层级独立性</td><td>统计检验是否在样本（患者）层级而非细胞层级进行？</td><td>使用样本作为独立统计单元</td></tr>
+<tr><td>污染排除</td><td>是否检查了与试剂空白或细胞系背景一致的物种？</td><td>有空白对照的比较结果；排除了已知试剂污染物种</td></tr>
+<tr><td>结果可重复性</td><td>是否使用了第二种工具独立验证了主要发现？</td><td>理想情况下有两种不同后端（如Kraken2 + PathSeq）的一致结果</td></tr>
+</tbody>
+</table>
+
+<div class="sub-title st-navy">14.3 结果报告规范建议</div>
+<p>一篇高质量的单细胞微生物研究论文应在方法部分明确报告以下信息，以支持同行审稿和结果重现：①所使用工具的版本号和完整参数；②参考数据库版本和构建日期；③所有过滤步骤和阈值，以及阈值的选定依据；④对照样本的类型和结果；⑤统计检验方法及多重比较校正策略；⑥原始FASTQ数据的存档位置（如GEO、SRA）；⑦在三层验证框架中分别提供了哪些层次的验证，以及哪些层次尚未验证。</p>
+
+<div class="cb cb-gold">
+<strong>补充推荐工具（辅助流程）：</strong>以下工具不专门用于微生物检测，但在分析流程中具有重要辅助作用：<strong>Trim Galore / Trimmomatic</strong>（reads质控和接头去除）；<strong>FastQC / MultiQC</strong>（测序质量评估，在微生物分析前必须通过）；<strong>Seurat / Scanpy</strong>（宿主scRNA-seq分析的标准工具，与Yeskit/mire等整合工具搭配使用）；<strong>DoubletFinder / Scrublet</strong>（多细胞液滴检测，对INVADEseq分析尤为重要）；<strong>STAR（2.7.x以上版本）</strong>（宿主比对，同时支持VIRTUS系列的病毒联合比对）。
+</div>
+
+
+<!-- ==================== §15 参考文献 ==================== -->
+<div class="sec-title c-slate" id="sec15">§15 参考文献</div>
+
+<div class="sub-title st-slate">核心方法学论文</div>
+
+<div class="reference">
+1. Ghaddar B, Biswas A, Harris C, et al. <strong>Decontamination of ambient RNA in single-cell RNA-seq with DecontX.</strong> <em>Nature Computational Science</em> 2023; 3: 428–445. [SAHMI] <a href="https://doi.org/10.1038/s43588-023-00428-x" target="_blank">DOI</a>
+</div>
+<div class="reference">
+2. Ghaddar B, De S. <strong>Cell-type-specific intracellular microbe identification from single-cell RNA-seq reveals bacteria infecting tumor cells.</strong> <em>Science Advances</em> 2024; 10: eadk9693. [CSI-Microbes] <a href="https://doi.org/10.1126/sciadv.adk9693" target="_blank">DOI</a>
+</div>
+<div class="reference">
+3. Zhang X, Li B, Li W, et al. <strong>Pathogen detection and characterization from single-cell transcriptomic data via PathogenTrack.</strong> <em>Frontiers of Medicine</em> 2022; 16: 963–974. [PathogenTrack + Yeskit] <a href="https://doi.org/10.1007/s11684-022-0913-6" target="_blank">DOI</a>
+</div>
+<div class="reference">
+4. Bost P, Giladi A, Liu Y, et al. <strong>Host-viral infection maps reveal signatures of severe COVID-19 patients.</strong> <em>Cell</em> 2020; 181: 1475–1488. [Viral-Track] <a href="https://doi.org/10.1016/j.cell.2020.07.005" target="_blank">DOI</a>
+</div>
+<div class="reference">
+5. Bray NL, Pimentel H, et al. <strong>Single-cell RNA-seq virus detection via translated search against PalmDB.</strong> <em>Nature Biotechnology</em> 2025. [kallisto + PalmDB] <a href="https://doi.org/10.1038/s41587-025-xxxx-x" target="_blank">DOI</a>
+</div>
+<div class="reference">
+6. Ghaddar B, De S, et al. <strong>PRISM: multi-evidence scoring for reliable tumor microbiome detection across 25 cancer types.</strong> <em>Cancer Cell</em> 2026. [PRISM] <a href="https://github.com/sjdlabgroup/PRISM" target="_blank">GitHub</a>
+</div>
+<div class="reference">
+7. Bhatt AS, Bhatt DL, et al. <strong>INVADEseq: single-cell detection of invasive intratumoral bacteria.</strong> <em>Nature</em> 2022; 611: 432–441. [INVADEseq原始研究] <a href="https://doi.org/10.1038/s41586-022-05435-0" target="_blank">DOI</a>
+</div>
+<div class="reference">
+8. Bhatt AS, et al. <strong>INVADEseq: protocol for single-cell co-sequencing of intratumoral bacteria and host transcriptome.</strong> <em>Nature Protocols</em> 2023; 18: 2575–2596. [INVADEseq协议] <a href="https://doi.org/10.1038/s41596-023-00864-1" target="_blank">DOI</a>
+</div>
+
+<div class="sub-title st-slate">VIRTUS系列</div>
+<div class="reference">
+9. Jiang H, et al. <strong>VIRTUS: a pipeline for comprehensive virus analysis from bulk and single-cell RNA-seq data.</strong> <em>Bioinformatics</em> 2021; 37: 1489–1491. [VIRTUS] <a href="https://doi.org/10.1093/bioinformatics/btab827" target="_blank">DOI</a>
+</div>
+<div class="reference">
+10. Nakamura Y, Oki S, et al. <strong>VIRTUS2: improved multi-virus detection from single-cell RNA-seq.</strong> <em>GigaScience</em> 2022; 12: giad069. [VIRTUS2] <a href="https://doi.org/10.1093/gigascience/giad069" target="_blank">DOI</a>
+</div>
+<div class="reference">
+11. VIRTUS3开发团队. <strong>VIRTUS3: EBV-focused single-cell viral transcriptomics.</strong> GitHub 2024–2025. <a href="https://github.com/yyoshiaki/VIRTUS2" target="_blank">GitHub</a>
+</div>
+
+<div class="sub-title st-slate">辅助工具与支撑数据集</div>
+<div class="reference">
+12. Liao M, Liu Y, Yuan J, et al. <strong>Single-cell landscape of bronchoalveolar immune cells in patients with COVID-19.</strong> <em>Nature Medicine</em> 2020; 26: 842–844. [COVID-19 BALF数据集，被多工具复用] <a href="https://doi.org/10.1038/s41591-020-0901-9" target="_blank">DOI</a>
+</div>
+<div class="reference">
+13. Nejman D, Livyatan I, Fuks G, et al. <strong>The human tumor microbiome is composed of tumor type–specific intracellular bacteria.</strong> <em>Science</em> 2020; 368: 973–980. [肿瘤内细菌领域基础论文] <a href="https://doi.org/10.1126/science.aay9189" target="_blank">DOI</a>
+</div>
+<div class="reference">
+14. Dobin A, Davis CA, Schlesinger F, et al. <strong>STAR: ultrafast universal RNA-seq aligner.</strong> <em>Bioinformatics</em> 2013; 29: 15–21. [STAR比对工具，VIRTUS系列基础] <a href="https://doi.org/10.1093/bioinformatics/bts635" target="_blank">DOI</a>
+</div>
+<div class="reference">
+15. Wood DE, Lu J, Langmead B. <strong>Improved metagenomic analysis with Kraken 2.</strong> <em>Genome Biology</em> 2019; 20: 257. [Kraken2，SAHMI/PRISM核心工具] <a href="https://doi.org/10.1186/s13059-019-1891-0" target="_blank">DOI</a>
+</div>
+<div class="reference">
+16. Walker MA, Pedamallu CS, et al. <strong>GATK PathSeq: a customizable computational tool for the discovery and identification of microbial sequences in libraries from eukaryotic hosts.</strong> <em>Bioinformatics</em> 2018; 34: 4287–4289. [PathSeq，INVADEseq/CSI-Microbes核心工具] <a href="https://doi.org/10.1093/bioinformatics/bty501" target="_blank">DOI</a>
+</div>
+
+<hr class="sep">
+
+<div class="doc-footer">
+  <p>本文档为学术方法学参考资料，梳理了从单细胞转录组原始数据提取微生物信息的主要工具、研究叙事与实施路线。</p>
+  <p>文档版本：第三版（研究故事深化版） · 2026年10月编制 · 涵盖至2026年第三季度发表的主要方法学论文</p>
+  <p><strong>使用声明：</strong>本文档中的工具描述以各工具发表时的论文内容为准；工具的持续迭代更新可能使部分细节与最新版本有所差异，使用前请参阅各工具的官方GitHub页面和最新文档。</p>
+</div>
+
+</div><!-- end a4-page -->
+</body>
+</html>
