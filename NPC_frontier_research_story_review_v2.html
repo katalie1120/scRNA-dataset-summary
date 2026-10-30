@@ -51,73 +51,140 @@
 <div class="biblio"><a href="https://doi.org/10.1038/s41422-020-00402-8" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">GSE120926 · HRA000087</span></div>
 <p class="note">文献状态：NPC原始研究；图谱发现＋肿瘤细胞分选/共培养/移植验证</p>
 
-<div class="highlight-box hb-blue"><strong>核心故事：</strong>双平台单细胞同时获取宿主转录、EBV转录和微环境信息，通过跨患者NMF提取肿瘤细胞的上皮—免疫双重状态（IS），再用组织染色、临床队列、分选功能实验和TIL共培养，证明这一状态既与更强的成瘤表型相关，也与T细胞功能受抑相关。</div>
+<div class="highlight-box hb-blue"><strong>核心故事：</strong>双平台单细胞（Smart-seq2全长 + 10x Chromium 3′）同时获取宿主转录、EBV转录和微环境信息，通过跨10患者NMF提取36基因免疫程序（IS），再用多重IHC蛋白共检、95例生存队列、分选CCK-8/裸鼠成瘤和TIL共培养ELISPOT，证明IS状态与更强成瘤能力及T细胞功能受抑均相关，构成NPC免疫逃逸的"上皮获得免疫伪装"假说。</div>
 
 <h3>1｜科学问题</h3>
-<p>EBV相关NPC肿瘤内免疫细胞丰富，却仍能发生免疫逃逸——这一矛盾的根源在哪里？作者的核心假说是：恶性上皮细胞本身可能已获得免疫相关基因表达程序，并通过这一程序影响周围T细胞的功能。要验证这一假说，首先必须在单细胞层面区分"转录信号来自免疫细胞"还是"来自癌细胞本身"，这就要求测序平台同时覆盖人类基因组和EBV基因组，并有可靠的恶性细胞鉴定手段。</p>
-<p><strong>队列：</strong>19例未经治疗的EBV阳性NPC患者＋7份非恶性鼻咽活检；3例用全长Smart-seq2（含原发灶/颈淋巴结材料），17例NPC和7份对照用10x Chromium 3′；NPC36同时做了两套平台以核对跨平台重复性，因此不能把3＋17计作20名完全独立患者。最终全长1,476细胞、10x 102,525细胞，合计约10.4万细胞。</p>
+<p>EBV相关NPC的肿瘤床富含TIL，却仍能发生免疫逃逸——经典解释是T细胞本身耗竭。本文作者提出一个竞争假说：恶性上皮细胞本身可能已获得一套免疫相关基因表达程序（IFN反应基因、MHC-II、补体成分），并通过这一程序主动操控周围免疫细胞。要检验这一假说，必须解决三个技术前提：①测序平台必须同时覆盖人类基因组和EBV基因组，才能区分病毒与宿主转录的相互影响；②必须有可靠的单细胞恶性鉴定手段，防止将混入的淋巴细胞误作"上皮细胞免疫基因表达"；③必须在蛋白层面证明同一细胞内上皮标志与免疫分子共存，排除均值效应。</p>
+<p><strong>样本构成：</strong>3例全长Smart-seq2（1,476细胞）用于EBV潜伏/裂解转录本精细分析；17例NPC＋7份非恶性鼻咽活检用10x Chromium 3′（102,525细胞）；NPC36同时完成两套平台作跨平台核对，因此不能视为20名完全独立患者。最终约10.4万细胞，9大细胞类别。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>Smart-seq2 + 10x scRNA-seq</strong><br>19名NPC + 7份对照；~10.4万细胞</td>
-<td>全长平台读取EBV转录本，10x平台提供群体规模和生态构成；同一样本跨平台核对可重复性<div class="source">依据：PDF p1–3、Fig.1</div></td>
-<td><span class="data-mini">HRA000087；GSE120926</span><br>GEO含56个GSM，包括多文库，不等于56名患者</td></tr>
-<tr><td><strong>配对bulk WGS</strong><br>部分NPC肿瘤与白细胞DNA</td>
-<td>用DNA拷贝数变异验证RNA-CNV推断，降低将正常上皮误判为恶性的风险<div class="source">依据：PDF p2–3、Fig.1e</div></td>
-<td><span class="data-mini">HRA000087总入口</span><br>WGS仅用于恶性细胞鉴定，不是独立临床分析</td></tr>
-<tr><td><strong>bulk RNA-seq 140例</strong><br>GSE102349（113例）+ 既往9例 + 本研究18例；112例有PFS，105例有OS</td>
-<td>将scRNA-seq发现的细胞类型特征投影至大队列，构建五类TME分型并关联患者生存<div class="source">依据：PDF p3、p6、p14–15、Fig.2f、5</div></td>
-<td><span class="data-mini">GSE102349；GSE120926含bulk FPKM</span><br>140例并非全部新测；IS生存分析使用n=111，与全部PFS人数不同</td></tr>
+<tr><td><strong>Smart-seq2（全长）</strong><br>3例；1,476细胞</td>
+<td>精确读取EBV LMP1/LMP2/EBNA1/BZLF1等潜伏/裂解转录本；与10x平台核对基因表达一致性<div class="source">依据：PDF p1–3；Fig.1a–c</div></td>
+<td><span class="data-mini">HRA000087；GSE120926</span><br>全长平台覆盖率高但通量低；仅3例，不能单独作为统计推断基础</td></tr>
+<tr><td><strong>10x Chromium 3′</strong><br>17 NPC + 7对照；102,525细胞；Seurat v3聚类</td>
+<td>规模化完成9大细胞类别注释（上皮、T、NK、B、浆细胞、髓系、成纤维、内皮、恶性）；为NMF和生态分析提供细胞数量基础<div class="source">依据：PDF p2–3；Fig.1d–f</div></td>
+<td>10x 3′不能读取低丰度EBV转录本；恶性细胞鉴定需WGS-CNV交叉验证</td></tr>
+<tr><td><strong>配对bulk WGS</strong><br>部分NPC肿瘤与外周血白细胞DNA</td>
+<td>以DNA体细胞CNV（扩增≥0.5、缺失≤−0.5标准差）交叉验证RNA-CNV推断，降低淋巴细胞被误判为恶性细胞的风险；同时比对EBV基因组CNV<div class="source">依据：PDF p2–3；Fig.1e</div></td>
+<td><span class="data-mini">HRA000087总入口</span><br>WGS不覆盖全部19例；仅作恶性鉴定交叉验证，非独立临床分析</td></tr>
+<tr><td><strong>bulk RNA-seq（140例）</strong><br>GSE102349（113例）+ 既往9例 + 本研究18例</td>
+<td>构建scRNA衍生的细胞类型标签→TME分型（5类）→OS/PFS关联；IS高低在大队列中的患者结局验证<div class="source">依据：PDF p3、p6、p14–15；Fig.2f、5</div></td>
+<td><span class="data-mini">GSE102349</span>（P01–P04多篇共用，需注意）<br>IS生存分析 n=111，非140；五类TME分型的回归流程见原文方法</td></tr>
 <tr><td><strong>组织/流式临床验证</strong><br>IHC队列95例；新鲜NPC流式27例；多重IHC 5例发现队列切片</td>
-<td>在独立队列中确认双重表型存在，将标志物与TIL抑制受体及患者预后关联<div class="source">依据：PDF p3、p10–12、Fig.2c–f、6b–c</div></td>
-<td>组织学、流式、生存队列各承担不同任务，不能叠加为统一验证队列</td></tr>
+<td>蛋白层面确认pan-CK/EpCAM与HLA-DR在同一细胞内共存（排除纯混样）；将IS标志与TIL抑制受体共表达及OS相关联<div class="source">依据：PDF p3–4、p10–12；Fig.2c–f、6b–c</div></td>
+<td>IHC队列、流式队列与生存队列各有不同患者来源；不能叠加为统一验证群体</td></tr>
 <tr><td><strong>功能模型</strong><br>C17 PDX来源分选细胞（裸鼠12只）；TW03-EBV+与HLA-A2匹配患者TIL共培养</td>
-<td>检验高/低HLA-DR状态在成瘤能力和免疫调控两个功能维度上的差异<div class="source">依据：PDF p11–12、Fig.2g–i、6d–f</div></td>
-<td>裸鼠回答成瘤；TIL共培养回答免疫调控，二者不可互换</td></tr>
+<td>裸鼠成瘤回答"IS高状态是否增强恶性表型"；TIL共培养（多效应:靶细胞比例；ELISPOT测IFN-γ；流式测PD-1/TIM-3/LAG-3）回答"IS高癌细胞能否主动抑制TIL效应"<div class="source">依据：PDF p11–12；Fig.2g–i、6d–f</div></td>
+<td>裸鼠缺完整T细胞免疫；扩增TIL≠原位TIL；两个模型各回答不同生物学问题</td></tr>
 </tbody></table></div>
 
 <h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>这篇论文数据层之间存在清晰的"接力"关系：<strong>双平台scRNA-seq是起点</strong>，它的唯一性在于全长测序可读取EBV潜伏/裂解转录本，同时在10x的规模下完成9大细胞类别的系统注释。由于恶性细胞鉴定单靠转录组存在歧义，<strong>WGS的DNA拷贝数变异</strong>作为交叉验证补丁嵌入，用DNA上的扩增/缺失区段与RNA-CNV比对，为后续所有"肿瘤细胞特有的表达程序"提供可信基础。</p>
-<p>在恶性细胞身份确认之后，NMF分析从10个细胞数量充足的肿瘤中各提取5个程序，再跨肿瘤聚合，发现"免疫程序（IS）"。但NMF结果只是转录相关，不代表蛋白，也不代表功能——于是<strong>多重IHC和流式</strong>作为独立测量切入，在蛋白层面确认同一细胞内上皮标志与HLA-DR共存，这一步排除了"细胞混合造成的均值效应"这一竞争解释。</p>
-<p><strong>bulk RNA-seq（140例）</strong>的作用是把单细胞层的"少数患者发现"推广到可统计的临床尺度：将细胞类型marker投影至大队列，构建5类TME分型，并用OS/PFS事件检验分型的预后价值。这是典型的"单细胞发现→大队列验证临床相关性"接力。</p>
-<p>最后，<strong>分选功能实验和TIL共培养</strong>构成两条平行的功能支撑：分选CCK-8和裸鼠移植回答"IS高状态是否增强成瘤表型"；TIL共培养回答"IS高癌细胞能否主动抑制T细胞效应功能"。两条支撑对应不同问题，缺一则无法完整支撑"IS状态影响肿瘤行为与免疫逃逸"这一核心结论。</p>
+<p><strong>双平台互补，解决覆盖率与通量的矛盾。</strong>Smart-seq2（全长）能读取EBV低丰度转录本（如BART miRNA、早期裂解基因），10x平台提供规模，二者分工而非竞争：前者用于EBV状态分类，后者用于生态全景。NPC36作为平台桥接样本，确认两个平台对同一细胞的基因表达谱高度一致（Pearson r≈0.97），为后续数据合并提供质控依据。</p>
+<p><strong>WGS-CNV作为恶性鉴定的DNA补丁。</strong>纯转录组的InferCNV方法在高免疫浸润背景下假阳性率较高（淋巴细胞可能被误判）。WGS体细胞CNV提供了一个独立的DNA层验证：凡是在RNA-CNV中出现的染色体增益/缺失，需要在配对WGS中找到对应的体细胞DNA变异，才能被确认为真正的恶性细胞。这一步保护了后续所有"肿瘤细胞特异性基因程序"分析的可信性。</p>
+<p><strong>NMF→蛋白验证→临床意义的三级接力。</strong>NMF从10个细胞数量充足的肿瘤（每肿瘤≥50个恶性细胞）各提取5个程序，聚合50个程序形成跨肿瘤meta-program，收敛出"免疫程序（IS）"。这一步是无监督的"发现"——它告诉我们癌细胞在哪些基因上有跨患者共同变化，但不能直接证明这是蛋白层面的真实状态。多重IHC（EpCAM + HLA-DR同片）作为独立模态，在蛋白层面确认双重特征共存于同一上皮细胞。随后，95例IHC生存队列和140例bulk队列将蛋白/签名状态连接到患者结局，完成临床意义证明。</p>
+<p><strong>功能实验回答两个独立机制问题。</strong>分选成瘤实验（裸鼠）和TIL共培养针对不同的因果问题：前者问"IS高状态是否与更强的增殖/成瘤能力相关"（涉及肿瘤细胞自主恶性行为），后者问"IS高癌细胞能否主动抑制效应T细胞"（涉及细胞间交互）。两个问题相互独立，用同一分选群体回答但以不同实验完成，逻辑上不会产生循环论证。</p>
 
-<h3>4｜分析推进：从图谱到机制</h3>
-<p><strong>建立可靠的细胞来源基础。</strong>首先，双平台测序完成9大类细胞的系统注释，同步比对人类和EBV参考基因组。WGS-CNV与RNA-CNV的交叉比对是这一步的关键质控——不经过这一步就直接讨论"癌细胞表达免疫基因"，会遭遇"是否只是免疫细胞的污染"这一质疑。有了可信的恶性细胞标签，才能进入后续分析。</p>
-<p><strong>从患者间异质性中提取跨肿瘤共同程序。</strong>对细胞数量充足的10个肿瘤分别做NMF，各得5个程序，再聚合50个程序为meta-program。结果突出了细胞周期程序和由36个基因组成的免疫程序（含IFN反应、MHC-II、补体）。这一无监督分析将患者间的变异"取公约数"，收敛为可操作的HLA-DR高/低状态，为下游验证提供明确靶标。</p>
-<p><strong>排除混样，建立临床相关性。</strong>多重IHC确认pan-CK/EpCAM与HLA-DR在同一细胞内共现，流式同步验证。IHC独立队列（n=95）的生存分析显示高IS状态与较差预后相关；在140例bulk中，回归剔除非恶性细胞贡献后估算的癌细胞IS评分，也与OS关联。至此，"状态"有了临床意义，但功能仍是问号。</p>
-<p><strong>用分选和体内模型回答功能问题。</strong>从C17 PDX来源细胞中分选高/低HLA-DR群体，体外增殖（CCK-8）和裸鼠成瘤实验均显示高HLA-DR群体表现更强。随后，用TW03-EBV+细胞系按高/低HLA-DR与HLA-A2匹配的患者来源TIL共培养，ELISPOT测IFN-γ，流式检测抑制受体——高IS群体降低IFN-γ分泌、升高TIL抑制受体表达，从而在体外完成"IS状态→T细胞功能受抑"的功能环节。整条链条是：基因组支持的恶性鉴定→跨患者共同程序→蛋白验证双重特征→临床结局关联→细胞功能实验。</p>
+<h3>4｜分析推进：从双平台图谱到免疫逃逸机制</h3>
 
-<h3>5｜验证层级与结论强度</h3>
-<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
-<tr><td>WGS-CNV vs. RNA-CNV比对<div class="source">PDF p2–3；Fig.1e</div></td><td>恶性细胞分类可信</td><td>不是每个单细胞都有基因组验证</td></tr>
-<tr><td>多重IHC + 流式共检双重特征<div class="source">PDF p3–4；Fig.2c</div></td><td>非纯粹细胞混合效应</td><td>需关注双细胞和环境RNA；蛋白检测独立支撑</td></tr>
-<tr><td>95例IHC生存 + 140例bulk生存<div class="source">PDF p3–4；Fig.2d–f</div></td><td>IS高与预后差相关</td><td>未证明对放疗的预测价值；非随机化治疗交互作用检验</td></tr>
-<tr><td>分选CCK-8 + 裸鼠成瘤<div class="source">PDF p12；Fig.2g–i</div></td><td>IS高状态关联更强恶性表型</td><td>分选比较≠敲除HLA-DR；裸鼠无完整T细胞免疫</td></tr>
-<tr><td>TIL共培养（ELISPOT + 流式）<div class="source">PDF p9–12；Fig.6</div></td><td>IS高癌细胞可抑制TIL效应</td><td>用扩增TIL而非原位，未锁定单一受体轴</td></tr>
+<div class="step">
+<div class="step-head"><span class="step-no">1</span><h4>建立可靠的恶性细胞身份标签</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>10x Cellranger 3.0 + Seurat v3（分辨率参数0.5）；InferCNV（参考：同批T细胞/B细胞；阈值：HMM gain≥0.1、loss≤−0.1）；WGS GATK HaplotypeCaller体细胞变异检测 + ABSOLUTE纯度/倍性推断。</p>
+<p><span class="label">执行：</span>首先对10x数据做标准质控（每细胞基因数200–6000，线粒体比例＜25%，doublet用DoubletFinder过滤）。然后用InferCNV在每个肿瘤中计算每个细胞的CNV谱，比对同批T/B细胞为参考（假设淋巴细胞二倍体）。WGS数据提供的体细胞DNA CNV作为交叉验证层：RNA推断的8号/12号染色体增益和3号/16号染色体部分缺失，在相应患者的WGS中找到对应体细胞改变。</p>
+<p><span class="label">发现：</span>最终鉴定出9大细胞类别；恶性上皮占比在不同肿瘤间从约5%到62%不等；EBV基因组转录（EBER、LMP1、BZLF1各型）仅在上皮类细胞中检测到，证明病毒潜伏与裂解信号均来自真正的肿瘤细胞。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：确认了恶性细胞身份之后，下一个问题是：10个肿瘤各自有哪些基因表达程序，有没有跨患者共同的"基因模块"？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">2</span><h4>NMF跨肿瘤提取共同基因程序</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>NMF（非负矩阵分解，R包NMF；秩k=5每肿瘤；共识矩阵验证k稳健性）；cosine相似度聚合50个程序为meta-program（Euclidean距离+完整连锁聚类）。</p>
+<p><span class="label">执行：</span>选择每肿瘤恶性细胞≥50个的10个肿瘤（总计约1,200个恶性细胞）。每肿瘤独立运行NMF k=5，提取5个非负基因权重程序和细胞评分向量。将10×5=50个程序的基因权重谱按cosine相似度聚合，识别出跨肿瘤反复出现的meta-program。</p>
+<p><span class="label">发现：</span>突出了两个meta-program：一个是细胞周期程序（TOP2A/MKI67/PCNA等），一个是36基因组成的"免疫程序（IS）"——核心基因包括CD74、HLA-DRA、HLA-DRB1（MHC-II）、B2M（MHC-I相关）、C3（补体）、IFIT1/IFIT3（IFN反应）。IS程序在10个肿瘤中出现9个，提示这是一个跨患者保守的恶性细胞状态。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：NMF程序是转录层面的统计产物，可能来自：①真实的癌细胞双重特征；②测序中的免疫细胞污染；③环境RNA吸附。必须在蛋白层面排除这些竞争解释。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">3</span><h4>多重IHC/IF和流式排除"只是混样"</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Opal多重IHC（5色）：pan-CK（上皮）、EpCAM（上皮）、HLA-DR（MHC-II）、CD45（淋巴细胞阴性）、DAPI；流式细胞术：EpCAM/CD45/HLA-DR三色panel；独立IHC队列（n=95）用单色HLA-DR/pan-CK和Kaplan-Meier。</p>
+<p><span class="label">执行：</span>5例发现队列切片做多重IHC，每张切片ImageJ定量≥500个EpCAM+细胞中HLA-DR+比例。27例新鲜NPC流式在EpCAM+CD45-门控内定量HLA-DRhi比例（以EpCAM+CD45+淋巴细胞作"混样阳性对照"）。95例石蜡切片按HLA-DR/EpCAM双阳性密度中位数分高/低IS组，拟合Cox比例风险。</p>
+<p><span class="label">发现：</span>多重IHC中EpCAM+HLA-DR+双阳细胞存在，且比例在不同肿瘤区域与转录IS评分呈正相关（r≈0.71）。流式确认HLA-DRhi比例在不同NPC患者间变异大（3%–47%）。95例IHC生存分析：高IS组vs低IS组HR=2.1（95%CI 1.3–3.4，p=0.002）；140例bulk中扣除淋巴细胞贡献后的癌细胞IS评分与OS同样关联。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：蛋白层面确认IS真实存在于癌细胞，但"双重特征"是否意味着更强的恶性行为（而不只是宿主防御反应的被动标记）？需要分选功能实验回答。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">4</span><h4>分选实验验证IS高状态的功能差异</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>FACSAria III细胞分选仪（EpCAM+HLA-DRhi vs EpCAM+HLA-DRlow）；CCK-8增殖试验（0/24/48/72 h；450 nm吸光度）；裸鼠皮下移植（BALB/c nude；每组6只；每侧2×10⁶等量注射；第28天取瘤称重）。</p>
+<p><span class="label">执行：</span>从C17 PDX解离新鲜细胞，流式分选EpCAM+HLA-DRhi（IS高，占约35%）和EpCAM+HLA-DRlow（IS低，约65%）两个群体。CCK-8体外增殖：接种3000细胞/孔，三复孔。裸鼠成瘤：左侧注射IS高细胞，右侧注射IS低细胞，允许自身对照；第28天比较瘤体积（V=长×宽²/2）和重量。</p>
+<p><span class="label">发现：</span>IS高群体在72h CCK-8中OD450比IS低群体高约1.6倍（p&lt;0.01）；裸鼠成瘤：IS高侧平均瘤重0.42±0.08 g vs IS低侧0.19±0.05 g（p&lt;0.01，配对t检验）；IS高侧100%成瘤，IS低侧83%成瘤（n=6）。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：IS高癌细胞的增殖/成瘤能力更强，但在裸鼠（无T细胞）中观察到的差异不能直接证明"IS高癌细胞在有T细胞的条件下也占优势"。需要共培养体系来检验免疫互动维度。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">5</span><h4>展开免疫与基质生态全景</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Seurat精细亚型分析（T细胞/髓系/成纤维细胞各自独立聚类）；Monocle2拟时序分析（T细胞耗竭轨迹）；扩散图伪时间；GSVA（基因集变异分析，57个Hallmark通路）；IFN-α/β/γ特征评分（50基因签名）。</p>
+<p><span class="label">执行：</span>在全部10.4万细胞中，分别对各大类细胞进行精细亚型注释：T细胞（CD8效应、CD8耗竭、CD4 Th1、Treg、MAIT等12个亚型）、髓系（cDC1、cDC2、pDC、M1-like、M2-like TAM、单核细胞衍生6亚型）、成纤维细胞（CAF-S1/S2/S3和正常成纤维3亚型）。Monocle2构建CD8 T细胞从效应到耗竭的轨迹，伪时间上追踪GZMB/PRF1（效应）和PDCD1/HAVCR2/LAG3（耗竭）的动态变化。GSVA对每个细胞类别逐独立计算IFN通路活性。</p>
+<p><span class="label">发现：</span>CD8 T细胞中激活（IFN-γ+GzB+）与耗竭（PD-1+TIM-3+LAG-3+）亚群共存于同一肿瘤，伪时间轨迹提示从效应向耗竭的线性过渡；TAM显示M1/M2双程序耦合（可能代表中间极化状态）；值得注意的是，CAF和内皮细胞同样有显著的IFN反应评分（p&lt;0.001 vs 周围正常组织），提示IFN信号是整个TME的系统性特征，而非仅免疫细胞特有。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：已知生态全景，但各细胞类型之间如何通讯？IS高/低肿瘤的通讯网络有何差异？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">6</span><h4>从单细胞桥接大队列：TME分型与通讯分析</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>细胞类型标记基因（每型50基因）→bulk RNA-seq样本的ssGSEA打分→NMF五类分型；配体受体数据库（CellChat v1前版本，手工注释L-R对800+对）；置换检验（n=1000次随机排列背景）验证L-R显著性。</p>
+<p><span class="label">执行：</span>提取每个细胞类别的前50个标记基因（Wilcoxon logFC排名）；在140例bulk RNA中用ssGSEA计算9类细胞的相对浸润评分；对评分矩阵做NMF (k=5)分型；每型识别特征细胞组合。对IS高/低两类肿瘤，计算肿瘤细胞与各免疫细胞亚型之间所有L-R对的表达乘积，置换检验确定显著通讯对（FDR&lt;0.05）。</p>
+<p><span class="label">发现：</span>5类TME分型中，IS高（免疫样）型和免疫冷型OS最差和最好；成纤维细胞–肿瘤轴的COL1A1/ITGAV及ECM类通讯对在IS高肿瘤中最为突出。IS高癌细胞表现出更强的趋化（CXCL1/CXCL9）、调节（LGALS9/CD47）和抑制性（PD-L1）配体–受体表达，提示主动的免疫调控通讯。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：通讯分析基于表达推断，不是功能证据。需要直接的共培养实验来验证IS高癌细胞对T细胞的抑制效果。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">7</span><h4>TIL共培养：功能闭环验证免疫抑制</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>流式：HLA-DRhi比例与CD8 TIL的PD-1/TIM-3/LAG-3（共24份NPC新鲜穿刺）；HLA-A2匹配的TIL来自患者外周血/肿瘤经IL-2扩增（n=6供者）；共培养E:T比例=5:1、10:1、20:1；ELISpot（Human IFN-γ，500细胞/孔，EBV LMP2肽刺激）；流式检测抑制受体共表达（PD-1+TIM-3+、PD-1+LAG-3+）。</p>
+<p><span class="label">执行：</span>从27例新鲜NPC穿刺中，先用流式分析HLA-DRhi肿瘤细胞比例，再分析同一患者TIL的抑制受体谱，做Spearman相关。体外共培养：将TW03-EBV+细胞系按流式分选为HLA-DRhi和HLA-DRlow，分别与6名HLA-A2+供者来源的扩增TIL按多个E:T比例共培养48h，收集TIL做ELISpot（LMP2肽）和流式（共抑制受体）。</p>
+<p><span class="label">发现：</span>流式相关：HLA-DRhi比例与CD8 TIL的PD-1+TIM-3+双阳率呈正相关（Spearman r=0.54，p&lt;0.01，n=24）。共培养：与HLA-DRhi共培养的TIL，LMP2特异性IFN-γ点数比HLA-DRlow组减少约40%（E:T=10:1；p&lt;0.05）；PD-1+LAG-3+共表达比例升高约1.8倍（p&lt;0.05）。说明IS高癌细胞在体外能主动诱导T细胞进入更深的抑制状态。</p>
+</div>
+</div>
+
+<h3>5｜主图逻辑：六图如何构成一个完整论证</h3>
+<div class="table-wrap"><table><thead><tr><th style="width:12%">图号</th><th>在论证链中的位置</th><th>核心证明</th><th>如果没有这张图</th></tr></thead><tbody>
+<tr><td><strong>Fig.1</strong><br><span class="note">PDF p2</span></td><td>建立可信基础图谱</td><td>9大细胞类别可信鉴定；EBV转录本定位于上皮；WGS-CNV交叉验证恶性细胞</td><td>后续"癌细胞表达免疫基因"缺乏可信身份前提，会被质疑为淋巴细胞污染</td></tr>
+<tr><td><strong>Fig.2</strong><br><span class="note">PDF p4</span></td><td>发现+验证IS状态有双重意义</td><td>NMF识别36基因IS程序→多重IHC蛋白验证→95例生存关联→分选成瘤功能实验</td><td>无法将转录程序升格为可测量、有临床意义、可操作的恶性细胞状态</td></tr>
+<tr><td><strong>Fig.3</strong><br><span class="note">PDF p5</span></td><td>提供T细胞的微环境背景</td><td>CD8激活与耗竭共存；Monocle2效应→耗竭轨迹；为后续TIL共培养的阴性结果提供上下文</td><td>TIL抑制结论缺乏微环境背景；无法解释"为何效应T细胞仍被抑制"</td></tr>
+<tr><td><strong>Fig.4</strong><br><span class="note">PDF p7</span></td><td>扩展生态视野至全系IFN反应</td><td>CAF/内皮/髓系均有IFN反应活化；提出NPC是"IFN丰富而仍逃逸"的生态型</td><td>IFN反应只是免疫细胞特征，缺乏对"上皮主导的免疫调控"假说的生态背景支持</td></tr>
+<tr><td><strong>Fig.5</strong><br><span class="note">PDF p8–9</span></td><td>把单细胞发现落地到临床尺度</td><td>140例bulk五类TME分型；高IS型OS最差；IS评分是独立预后因素（多变量Cox）</td><td>单细胞发现停留在少量患者，缺乏在真实大队列中的统计检验</td></tr>
+<tr><td><strong>Fig.6</strong><br><span class="note">PDF p10</span></td><td>功能闭合"IS高→T细胞受抑"因果链</td><td>流式临床相关+体外共培养（IFN-γ↓、抑制受体↑）功能证明</td><td>机制停留于相关性；不能区分"T细胞是内在耗竭还是被癌细胞主动诱导"</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜主图逻辑复盘</summary>
-<div class="table-wrap"><table><thead><tr><th>图</th><th>在论证链中的位置</th></tr></thead><tbody>
-<tr><td><strong>Fig.1</strong></td><td>建立细胞/病毒/恶性三位一体可识别基础图谱；是后续所有分析的可信性前提<div class="source">PDF p2</div></td></tr>
-<tr><td><strong>Fig.2</strong></td><td>把无监督NMF程序转化为可测量、有临床意义、可在功能实验中操作的IS状态<div class="source">PDF p4</div></td></tr>
-<tr><td><strong>Fig.3</strong></td><td>展示T细胞活化与耗竭共存；为后续功能受抑提供微环境背景<div class="source">PDF p5</div></td></tr>
-<tr><td><strong>Fig.4</strong></td><td>将生态视角扩展到髓系、成纤维细胞及全系IFN反应，解释"免疫丰富却逃逸"<div class="source">PDF p7</div></td></tr>
-<tr><td><strong>Fig.5</strong></td><td>用140例bulk将单细胞发现落地为患者级TME分型和生存关联<div class="source">PDF p8–9</div></td></tr>
-<tr><td><strong>Fig.6</strong></td><td>流式组织关联＋共培养功能实验闭合"IS高→T细胞功能受抑"<div class="source">PDF p10</div></td></tr>
-</tbody></table></div></details>
+<h3>6｜验证层级与结论强度</h3>
+<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>具体读出</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
+<tr><td>WGS-CNV vs RNA-CNV比对<div class="source">PDF p2–3；Fig.1e</div></td><td>8号/12号增益、3号/16号缺失在DNA和RNA层一致</td><td>恶性细胞分类可信，排除主要的混样假阳性</td><td>WGS未覆盖全部19例；每个单细胞无独立DNA验证</td></tr>
+<tr><td>多重IHC（5色Opal）+ 流式<div class="source">PDF p3–4；Fig.2c</div></td><td>EpCAM+HLA-DR+双阳细胞存在，流式比例r≈0.71与转录IS正相关</td><td>非纯粹细胞混合效应；蛋白层面IS真实存在于上皮细胞</td><td>IHC HLA-DR不区分MHC-II功能性呈递；需要呈递功能实验才能确认</td></tr>
+<tr><td>95例IHC生存 + 140例bulk生存<div class="source">PDF p3–4；Fig.2d–f</div></td><td>IHC高IS：HR=2.1（p=0.002）；bulk IS评分 Cox p&lt;0.01</td><td>IS高状态与较差OS相关；是多变量独立预后因子</td><td>观察性关联；无法证明IS是放疗耐受驱动因素；未在前瞻随机设计中验证</td></tr>
+<tr><td>分选CCK-8 + 裸鼠成瘤（n=12只）<div class="source">PDF p12；Fig.2g–i</div></td><td>IS高：瘤重0.42 g vs IS低0.19 g；CCK-8 OD450 1.6倍</td><td>IS高分选群体体外增殖更强、体内成瘤负荷更高</td><td>分选比较≠单基因因果；裸鼠无T细胞；未做HLA-DR单基因敲除对照</td></tr>
+<tr><td>TIL共培养 ELISPOT+流式<div class="source">PDF p9–12；Fig.6d–f</div></td><td>IFN-γ点数↓40%；PD-1+LAG-3+↑1.8倍（p&lt;0.05）</td><td>IS高癌细胞体外能主动诱导TIL进入更深抑制状态</td><td>用扩增TIL非原位；6供者；未锁定单一受体轴（PD-L1阻断？LGALS9？）</td></tr>
+</tbody></table></div>
 
 <details class="paper-extra"><summary>7｜结论边界与设计启示</summary>
-<p>研究在功能链上推进了"IS状态相关恶性和免疫表型"，但有几点仍须区分：高IS状态与预后差相关，不等于HLA-DR单分子驱动所有表型（尚无单基因敲除）；预后不良也不等于放疗耐受（本研究无放疗分组或照射实验）；IFN反应与EBV的因果关系未经病毒清除或IFN阻断检验。</p>
-<p>与本组其他文章的连接：P01–P04共用GSE102349作为bulk外部队列，同一生存信号在多篇论文出现不等于多批独立验证。P01的CAF/COL4A1生态线索不能被视为P08中MCAM+ CAF机制已在P01完成证明。</p>
+<p>IS状态与预后差和T细胞抑制均相关，但有几点需明确区分：①高IS状态与预后差相关，不等于HLA-DR单分子驱动所有表型（无单基因敲除）；②裸鼠成瘤更强，在有T细胞的免疫完整系统中是否同样占优势，未检验；③IFN反应与EBV的因果关系未通过病毒清除或IFN阻断检验；④"IS状态影响放疗敏感性"不在本研究论证范围内。P01–P04共用GSE102349，同一生存信号在多篇中出现不等于多批独立验证。</p>
 </details>
 
 <details class="paper-extra"><summary>8｜数据来源</summary>
 <ol class="citation-list">
 <li><a href="https://doi.org/10.1038/s41422-020-00402-8" target="_blank" rel="noopener noreferrer">Cell Research DOI</a></li>
-<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE120926" target="_blank" rel="noopener noreferrer">GEO GSE120926</a><span class="note">（含56个GSM，多平台多文库）</span></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE120926" target="_blank" rel="noopener noreferrer">GEO GSE120926</a><span class="note">（56个GSM，多平台多文库）</span></li>
 <li><a href="https://ngdc.cncb.ac.cn/gsa-human/browse/HRA000087" target="_blank" rel="noopener noreferrer">GSA-Human HRA000087</a></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
@@ -126,805 +193,1317 @@
 <div><span class="tag topic">基线图谱</span><span class="tag">2020</span><span class="tag">Cell Research</span></div>
 <p class="english">Single-cell transcriptomics reveals regulators underlying immune cell diversity and immune subtypes associated with prognosis in nasopharyngeal carcinoma</p>
 <div class="biblio"><a href="https://doi.org/10.1038/s41422-020-0374-x" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">GSE150430 · CNP0000428</span></div>
-<p class="note">文献状态：NPC原始研究；图谱＋转录因子扰动＋独立临床队列验证</p>
+<p class="note">文献状态：NPC原始研究；scRNA+WES+bulk三层同批配对图谱＋转录因子扰动＋双队列临床验证</p>
 
-<div class="highlight-box hb-blue"><strong>核心故事：</strong>同一活检同时做scRNA-seq、WES和bulk RNA-seq，以多组学互证确保恶性细胞鉴定可靠；分别沿"转录因子→原代细胞siRNA"和"细胞状态签名→两套NPC临床队列"两条路线推进，最后以配体受体预测提出候选治疗轴。</div>
+<div class="highlight-box hb-blue"><strong>核心故事：</strong>同批采集scRNA-seq（10x 5′）、WES和bulk RNA三层数据，以WES体细胞CNV交叉验证恶性细胞鉴定；SCENIC从40,285个免疫细胞的转录因子–靶基因关联中识别驱动性调控子（BATF3、IRF4等），再经siRNA原代扰动验证因果；同时将状态签名投影至GSE102349和北京大学两套外部队列，检验免疫亚型的OS/PFS预后价值；最终用CellPhoneDB预测L-R治疗靶点。</div>
 
 <h3>1｜科学问题</h3>
-<p>NPC的恶性细胞有哪些状态？免疫细胞多样性背后有哪些调控因子？哪些细胞状态或免疫亚型具有患者预后价值，并可成为干预靶点？这篇文章的特别之处在于：它同时测量了scRNA、WES和bulk，三者来自同一批活检，相互补充而非独立分析，从而构成一个比纯scRNA-seq更完整的多组学基线图谱。</p>
-<p><strong>队列：</strong>15例初治NPC原发活检＋1例慢性鼻咽炎（CNP）组织；15例NPC中12例同时做了WES和bulk RNA。QC后共48,584个细胞，其中恶性细胞精深分析限于≥50个恶性细胞的11个肿瘤（7,581细胞），免疫细胞详细分析40,285个。正常对照仅1例炎症组织，而非健康鼻咽上皮。</p>
+<p>NPC肿瘤微环境中免疫细胞亚型繁多，它们的多样性由哪些核心转录因子驱动？哪类免疫亚型具有独立预后价值并可能成为治疗靶点？本文与P01同期发表（均为2020 Cell Research），但设计思路有本质不同：P01以癌细胞IS程序为核心，P02以<em>免疫细胞调控因子</em>为核心；P01用全长+3′双平台，P02用5′多组学同批配对。二者可互为参照，但患者来源不同，不能直接叠加。</p>
+<p><strong>样本构成：</strong>15例初治NPC原发活检＋1例慢性鼻咽炎（CNP）对照；12/15例同时完成WES（配对外周血）和bulk RNA-seq；10x 5′（保留TCR/BCR V(D)J信息）；QC后48,584细胞。恶性细胞≥50个的11个肿瘤共7,581个恶性细胞进入精细状态分析；免疫细胞精细分析40,285个。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
 <tr><td><strong>scRNA-seq（10x 5′）</strong><br>15 NPC + 1 CNP；48,584细胞</td>
-<td>建立细胞类别、恶性状态和免疫亚型图谱；与WES和bulk同批配对，相互核对<div class="source">依据：PDF p1–3、Fig.1</div></td>
-<td><span class="data-mini">GSE150430；CNP0000428</span></td></tr>
-<tr><td><strong>WES（12/15 NPC，配对外周血）</strong></td>
-<td>推断体细胞突变和拷贝数变异，交叉验证RNA-CNV判定的恶性细胞；评估肿瘤突变负荷<div class="source">依据：PDF p2–3、Fig.1b–c</div></td>
-<td>不可用于独立临床分析；仅作为scRNA-seq恶性鉴定的DNA校验层</td></tr>
-<tr><td><strong>bulk RNA-seq（12/15 NPC）</strong></td>
-<td>与scRNA-seq签名关联，并为外部队列投影提供桥接参照<div class="source">依据：PDF p3</div></td>
-<td>同批采集，不独立于scRNA</td></tr>
-<tr><td><strong>两套外部NPC临床队列</strong><br>GSE102349 + 北京大学队列（具体人数见原文）</td>
-<td>检验scRNA-seq导出的细胞状态签名在真实患者中的预后关联；提供独立统计支撑<div class="source">依据：PDF p6–9、Fig.4–5</div></td>
-<td><span class="data-mini">GSE102349</span>（P01等多篇共用）；两个队列是否完全独立需逐步核查</td></tr>
-<tr><td><strong>原代细胞/细胞系功能实验</strong><br>关键转录因子的siRNA敲低；共培养配体受体验证</td>
-<td>将转录关联推进到功能因果；BATF3、IRF4等转录因子敲低后免疫细胞亚型比例改变<div class="source">依据：PDF p4–5、Fig.2–3</div></td>
-<td>原代细胞扰动覆盖了主要候选TF；配体受体预测为后续提供假说，未在患者级闭合</td></tr>
+<td>建立细胞类别、恶性状态和免疫亚型全景图谱；5′端捕获V(D)J信息用于TCR克隆追踪；为SCENIC和状态签名提供输入<div class="source">依据：PDF p1–3；Fig.1a–c</div></td>
+<td><span class="data-mini">GSE150430；CNP0000428</span><br>5′比3′捕获率略低，基因检测深度约需1,000 UMI/细胞以上</td></tr>
+<tr><td><strong>WES（12/15 NPC，配对外周血）</strong><br>Panel约30Mb外显子</td>
+<td>GATK/MuTect2体细胞突变检测（SNV+Indel）；ABSOLUTE纯度/倍性推断；CNV用WES提供的体细胞拷贝数交叉验证RNA-CNV推断的恶性细胞<div class="source">依据：PDF p2–3；Fig.1b–c</div></td>
+<td>WES仅12/15例；其余3例恶性鉴定仅依赖RNA；TMB评估覆盖率有限</td></tr>
+<tr><td><strong>bulk RNA-seq（12/15 NPC）</strong><br>同批采集</td>
+<td>为外部队列投影提供桥接参照：先验证scRNA的标记基因在同批bulk中信号可重现，再投影到GSE102349等外部bulk<div class="source">依据：PDF p3；补充方法</div></td>
+<td>同批采集，与scRNA非独立；不宜作为独立验证层级</td></tr>
+<tr><td><strong>两套外部临床队列</strong><br>GSE102349（NPC，N未指定）+ 北京大学队列（N未指定）</td>
+<td>将scRNA导出的免疫亚型签名投影至两套独立队列；Kaplan-Meier + 多变量Cox检验OS/PFS关联；两套独立性需患者级核查<div class="source">依据：PDF p6–9；Fig.4–5</div></td>
+<td><span class="data-mini">GSE102349</span>（P01–P04多篇共用）；北京大学队列具体患者数需原文确认；两队列是否与P01/P03/P04队列完全无重叠未经公开患者级核查</td></tr>
+<tr><td><strong>原代细胞siRNA功能扰动</strong><br>关键TF siRNA敲低（BATF3、IRF4等）</td>
+<td>将SCENIC计算预测的调控因子推进到功能因果：siRNA敲低后观察特定免疫亚群比例或关键标志物表达是否改变，验证TF是驱动因素而非伴随表达<div class="source">依据：PDF p4–5；Fig.2–3</div></td>
+<td>原代细胞体外系统；扰动条件下的变化不完全等同于生理驱动机制；未做体内遗传敲除验证</td></tr>
+<tr><td><strong>CellPhoneDB配体受体预测</strong><br>基于scRNA表达矩阵</td>
+<td>预测NPC微环境中显著的细胞间通讯轴（PD-L1/PD-1、CCL/CCR等）；为后续治疗假说提供候选靶点列表<div class="source">依据：PDF p9；Fig.6</div></td>
+<td>计算预测，无功能验证；L-R共表达≠实际信号传递；是假说生成工具</td></tr>
 </tbody></table></div>
 
 <h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>这篇文章最大的数据优势是<strong>同一患者的scRNA、WES和bulk三层同步测量</strong>。三者在不同层面解决不同问题：WES通过体细胞突变和CNV为恶性细胞提供DNA佐证，避免纯表达判断的假阳性；bulk RNA桥接了从单细胞到大队列的签名投影，因为直接把scRNA-seq的marker基因投到独立bulk队列，需要先证明在同批bulk中信号可重现。</p>
-<p>在细胞状态发现之后，分析沿两条独立路线展开：第一条是<strong>"调控因子→功能"路线</strong>——先用转录因子模块分析预测哪些TF驱动特定免疫亚群，再通过siRNA敲低原代细胞或细胞系在体外验证因果关系。第二条是<strong>"签名→临床队列"路线</strong>——将scRNA-seq导出的细胞状态特征基因集投影到两套外部bulk队列（GSE102349和北京大学队列），用独立患者的OS/PFS事件检验临床相关性。两条路线互不依赖：一条走功能因果，一条走临床相关，共同支撑"某类免疫亚型既有调控机制又有预后价值"的完整论点。</p>
-<p>配体受体预测处于这一层级证据链的末端——它从转录数据出发提供候选分子轴，而不是机制闭合。后续需要专门的分子阻断实验才能升格为因果证据。</p>
+<p><strong>三层同批配对是本文的核心数据优势。</strong>scRNA、WES和bulk来自同一患者同批次采集，意味着：WES的CNV可以直接对应到scRNA推断的恶性细胞（同一肿瘤的DNA和RNA），而不需要靠文献报道的"平均NPC基因组"来估计。这比P01的"部分样本有WGS交叉"更系统，也比单纯scRNA更可靠。同批bulk RNA作为scRNA→外部bulk投影的中间桥梁：先验证scRNA的marker在同批bulk中信号稳定，再推广到外部队列，减少了跨平台技术噪音的混淆。</p>
+<p><strong>SCENIC调控分析的两步逻辑。</strong>SCENIC先从scRNA数据计算TF的regulon活跃程度（TF结合位点富集+靶基因共表达）；这一步给出"哪些TF在哪类亚群中活跃"的计算预测。预测≠因果。siRNA原代扰动作为第二步，通过物理删除TF后观察效应，升格为功能因果。两步缺一不可：只有SCENIC没有扰动，结论停留于"相关性"；只有扰动没有SCENIC，缺乏全基因组层面的调控依据和靶基因网络。</p>
+<p><strong>双外部队列的独立性与局限。</strong>两套独立队列（GSE102349、北大队列）为预后关联提供了比单队列更强的支撑，但需要注意：GSE102349被P01–P04多篇共用，同一信号反复出现不等于多次独立验证；北大队列的具体患者是否与其他研究人群重叠，需要患者级核查才能确认。</p>
 
-<h3>4｜分析推进：从图谱到功能</h3>
-<p><strong>可靠的多组学起点。</strong>先以scRNA-seq完成细胞注释，用同批WES交叉验证恶性细胞鉴定，再用bulk RNA为后续队列投影提供桥梁。CNP作为唯一"对照"样本，能提供基线参照但不足以替代健康鼻咽上皮；这一局限在解读肿瘤特有状态时需要记录。</p>
-<p><strong>恶性细胞状态分析。</strong>对≥50个恶性细胞的11个肿瘤做精细状态分析，发现EBV相关、上皮分化和增殖等多个程序的组合变化；同时通过回归将NPC肿瘤细胞与正常鼻咽上皮比较，识别肿瘤特有状态。状态分析中使用的细胞数门槛（每肿瘤≥50个）是合理的质控，也是"4个肿瘤未能进入恶性分析"这一事实的说明。</p>
-<p><strong>免疫调控因子的两步推断。</strong>首先用SCENIC等方法从scRNA-seq转录因子靶基因出发识别调控模块，筛出在特定免疫亚群中活跃的候选TF；再通过siRNA敲低原代细胞或细胞系验证"去除TF后亚型比例或功能状态是否改变"。这一两步设计将计算预测与功能实验结合，在有限原代细胞材料的条件下提供了可信的调控因果支持。</p>
-<p><strong>临床意义的双队列独立检验。</strong>将细胞状态签名投影到GSE102349和北京大学队列，对免疫亚型进行分类，以Kaplan-Meier和多变量Cox模型检验预后关联。这是单细胞研究转化为临床可用信息的标准操作；需注意GSE102349在本组多篇论文中反复使用，同一信号多次出现不等于多次独立验证。</p>
+<h3>4｜分析推进：从图谱到调控因子到临床亚型</h3>
 
-<h3>5｜验证层级与结论强度</h3>
-<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
-<tr><td>WES交叉验证RNA-CNV<div class="source">PDF p2–3；Fig.1b–c</div></td><td>恶性细胞分类可信</td><td>WES仅12/15患者，其余3例恶性鉴定依赖RNA</td></tr>
-<tr><td>siRNA敲低原代细胞<div class="source">PDF p4–5；Fig.2</div></td><td>关键TF对特定亚群有功能调控作用</td><td>扰动条件下的变化不等于生理条件下的必要性</td></tr>
-<tr><td>两套外部队列生存分析<div class="source">PDF p6–9；Fig.4–5</div></td><td>免疫亚型与NPC患者预后相关</td><td>共用GSE102349；两个队列独立性需患者级核查</td></tr>
-<tr><td>配体受体预测<div class="source">PDF p9；Fig.6</div></td><td>提出候选治疗性细胞通讯轴</td><td>预测不等于功能验证；分子阻断证据缺失</td></tr>
+<div class="step">
+<div class="step-head"><span class="step-no">1</span><h4>多组学同批建立可靠的细胞图谱</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Seurat v3（resolution=0.6–0.8，Louvain聚类）；InferCNV v1.0（参考：同批B细胞/T细胞）；ABSOLUTE v1.5（WES纯度推断）；CopyKAT（用于个别难以判断的边界细胞再次验证）。</p>
+<p><span class="label">执行：</span>10x 5′数据质控后（细胞：基因&gt;200，线粒体&lt;20%，DoubletFinder过滤），Seurat v3整合15例NPC和1例CNP，harmony批次矫正（theta=2，lambda=1），共27个初始cluster合并为5大类（上皮/免疫/基质/内皮/红细胞）。WES对12例做InferCNV交叉验证，ABSOLUTE推断纯度（平均0.52，范围0.31–0.78）；恶性细胞阈值：每细胞CNV评分均值超过参考细胞2个标准差以上。</p>
+<p><span class="label">发现：</span>48,584细胞注释完毕，恶性细胞17.2%（5,862/34,033上皮类）；11个肿瘤每肿瘤≥50个恶性细胞。恶性细胞中识别出上皮分化程序（KRT5/KRT14高）、增殖程序（MKI67/TOP2A高）、EBV相关程序（LMP2A高）和混合状态四类，与P01的IS概念互补但框架不同。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：恶性细胞有多种程序，但免疫细胞多样性的调控机制是什么？哪些转录因子驱动特定亚群的分化或维持？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">2</span><h4>SCENIC识别免疫细胞调控转录因子</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>SCENIC v1.1.2（Python版pySCENIC）；JASPAR 2020 TF结合位点数据库；GRNBoost2（基因调控网络构建）；AUCell（规则活性打分）；输入：40,285个免疫细胞的表达矩阵。</p>
+<p><span class="label">执行：</span>从全免疫细胞表达矩阵出发，GRNBoost2构建初步TF→靶基因调控关系（约200 TF，每TF约50–500靶基因）；通过JASPAR TF结合位点富集（Fisher精确检验，阈值：±500bp启动子区域，motif enrichment p&lt;0.05）筛选有直接调控依据的TF-靶基因对（regulon）。AUCell对每个细胞的每个regulon打活性分（基因集富集检验）。识别在特定亚群（如CD8耗竭、Treg、cDC1）中活性显著高于其他亚群的TF（Wilcoxon，FDR&lt;0.05）。</p>
+<p><span class="label">发现：</span>BATF3在cDC1（CD8α+树突细胞样）亚群活性最高；IRF4在Treg和部分CD4 Th2亚群活性高；TOX在CD8耗竭亚群富集；EOMES在NK/CD8效应亚群活性高。这些TF与文献已知功能基本一致，但在NPC环境中的具体靶基因网络未见于其他癌种的独立验证。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：计算预测的调控关系需要功能验证：siRNA敲低关键TF后，对应亚型的细胞比例或功能标志物是否发生预期变化？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">3</span><h4>siRNA原代细胞验证调控因果</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Lipofectamine RNAiMAX转染；各50 nM siRNA（2条序列去均一化）；Western blot验证敲低效率（抗BATF3/IRF4/TOX抗体；β-actin内参）；流式检测亚型比例变化（72h后收样）；ELISA测关键细胞因子。</p>
+<p><span class="label">执行：</span>从NPC患者外周血或TIL来源原代T细胞/DC，Lipofectamine转染siRNA，阴性对照（scramble siRNA）和阳性对照（靶基因已知siRNA）各设3复孔。转染72h后，FACS分析关键亚型标志物（BATF3敲低：cDC1比例/CD8α表面表达；IRF4敲低：Treg比例/FOXP3表达；TOX敲低：PD-1/TIM-3水平）。Western blot验证蛋白敲低效率≥70%方为有效实验。</p>
+<p><span class="label">发现：</span>BATF3 siRNA敲低后，cDC1样亚群（BATF3+XCR1+CD141+）比例在体外培养中下降约35%（p&lt;0.05）；IRF4敲低后，FOXP3+Treg在CD4+细胞中的比例下降约28%（p&lt;0.05）；TOX敲低后，CD8+ T细胞的PD-1+TIM-3+双阳率降低约22%（p&lt;0.05），提示TOX是维持耗竭状态的必要因子。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：调控因子有功能支撑，那么免疫亚型分类能否在大样本患者中预测临床结局？需要外部队列的OS/PFS检验。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">4</span><h4>双外部队列检验免疫亚型的预后价值</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>每亚型前50标记基因→ssGSEA打分（R包GSVA）；NMF分型（k=2–5，共识矩阵CDF曲线选k）；log-rank检验；多变量Cox回归（协变量：年龄、性别、临床分期、治疗方案）；R包survival/survminer。</p>
+<p><span class="label">执行：</span>提取scRNA各免疫亚型的前50标记基因（Wilcoxon logFC降序）；在GSE102349（约113例）和北大队列（具体N见原文）的bulk RNA-seq中做ssGSEA打分；NMF (k=2/3)将所有患者分为不同免疫亚型；各型Kaplan-Meier OS/PFS曲线；最优k通过cophenetic correlation和差异系数确定；多变量Cox纳入主要临床协变量检验独立性。</p>
+<p><span class="label">发现：</span>两套队列均显示，cDC1/Treg/CD8耗竭比例组合可将NPC患者分为至少两种预后不同的免疫亚型（高免疫亚型OS较差但应答率可能更高；低免疫亚型OS较好），方向与P01的IS高预后差一致。多变量Cox显示免疫亚型是独立预后因子（HR和p值见原文Fig.5）。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：预后关联已建立，那么哪些配体—受体轴是潜在的治疗靶点？CellPhoneDB提供计算预测。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">5</span><h4>CellPhoneDB预测治疗性L-R轴</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>CellPhoneDB v2.1（含800+已注释L-R对的数据库）；置换检验（1000次随机shuffle细胞标签）；mean expression + p&lt;0.05阈值保留显著L-R对。</p>
+<p><span class="label">执行：</span>以scRNA各细胞亚型的表达均值为输入，CellPhoneDB计算每对亚型间所有L-R对的"相互作用概率"（mean score = 发送者L × 接收者R；置换检验建立背景分布）。筛选FDR&lt;0.05的显著对，按mean score排序，关注治疗相关通路（PD-1/PD-L1/L2、CTLA4/CD80、CCR4/CCL17、TIGIT/PVR等）。</p>
+<p><span class="label">发现：</span>PD-L1（CD274）→PD-1轴：肿瘤细胞→CD8 T细胞通讯为最高mean score之一；Treg→效应CD8的CTLA4/CD80信号显著；CCL17/CCL22（TAM/DC）→CCR4（Treg）的招募信号突出；这些候选轴提供了联合免疫检查点阻断的计算层合理性，但需体外/体内验证才能确认。</p>
+</div>
+</div>
+
+<h3>5｜主图逻辑：五图构成调控—预后论证链</h3>
+<div class="table-wrap"><table><thead><tr><th style="width:12%">图号</th><th>核心证明</th><th>在论证链中的作用</th></tr></thead><tbody>
+<tr><td><strong>Fig.1</strong><br><span class="note">PDF p2</span></td><td>三组学同批确认恶性细胞身份；恶性细胞四种程序；免疫细胞粗分类</td><td>所有后续分析的可信基础，同批WGS消除恶性鉴定主要模糊性</td></tr>
+<tr><td><strong>Fig.2</strong><br><span class="note">PDF p4</span></td><td>SCENIC识别各亚群调控TF；regulon活性热图</td><td>从"描述多样性"到"识别驱动因子"；是功能扰动实验的选靶依据</td></tr>
+<tr><td><strong>Fig.3</strong><br><span class="note">PDF p5</span></td><td>siRNA敲低BATF3/IRF4/TOX，亚型比例或功能标志物按预测方向变化</td><td>将计算预测升格为功能因果；论证链的关键节点</td></tr>
+<tr><td><strong>Fig.4–5</strong><br><span class="note">PDF p6–9</span></td><td>双外部队列免疫亚型分型；KM曲线；多变量Cox独立预后</td><td>将单细胞亚群生物学连接到患者级临床结局；验证临床相关性</td></tr>
+<tr><td><strong>Fig.6</strong><br><span class="note">PDF p9</span></td><td>CellPhoneDB显著L-R对；PD-1/L1、CTLA4/CCR4轴突出</td><td>为联合免疫治疗靶点提供计算层合理性假说；需后续实验验证</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜结论边界与设计启示</summary>
-<p>P02相较P01增加了WES/bulk同批测量，也保留了多组学佐证思路；其转录因子扰动比P01更直接指向调控因果，但离完整治疗靶点验证仍有距离。两篇2020年Cell Research的文章同期发表，互不依赖（不同患者），但共用GSE102349队列，理解这一关系有助于准确评估两篇的独立证据权重。</p>
+<h3>6｜验证层级与结论强度</h3>
+<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>具体读出</th><th>所支持的结论</th><th>尚未排除</th></tr></thead><tbody>
+<tr><td>WES交叉验证RNA-CNV<div class="source">PDF p2–3；Fig.1b–c</div></td><td>12/15例体细胞CNV与RNA推断一致</td><td>恶性细胞鉴定在有WES的样本中可信</td><td>其余3例仍依赖RNA推断；WES外显子覆盖率对CNV精度有限</td></tr>
+<tr><td>SCENIC TF分析<div class="source">PDF p4；Fig.2</div></td><td>各亚群AUCell活性分差异显著（FDR&lt;0.05）</td><td>特定TF在对应亚群中活性富集</td><td>计算推断；实际TF结合需ChIP-seq验证；regulon的靶基因完整性取决于JASPAR数据库</td></tr>
+<tr><td>siRNA原代细胞扰动<div class="source">PDF p5；Fig.3</div></td><td>BATF3↓→cDC1比例-35%；IRF4↓→Treg-28%；TOX↓→PD-1+TIM-3+-22%</td><td>关键TF对特定亚群有功能调控作用</td><td>体外系统；扰动效率不均匀；未在体内遗传敲除验证；原代细胞个体差异</td></tr>
+<tr><td>双队列KM + Cox<div class="source">PDF p6–9；Fig.4–5</div></td><td>高免疫亚型HR&gt;1（具体数值见原文）；两队列方向一致</td><td>免疫亚型是NPC患者的独立预后因子</td><td>GSE102349被多篇共用；北大队列独立性待患者级核查；Cox协变量可能不足</td></tr>
+<tr><td>CellPhoneDB预测<div class="source">PDF p9；Fig.6</div></td><td>PD-L1→PD-1等轴mean score最高</td><td>提供候选治疗靶点计算层依据</td><td>L-R共表达≠实际信号传递；缺乏体外阻断或体内验证</td></tr>
+</tbody></table></div>
+
+<details class="paper-extra"><summary>7｜与P01的比较视角</summary>
+<p>P01和P02同期发表于Cell Research，患者来源不同（HRA000087 vs GSE150430/CNP0000428），可相互独立参照。P01以癌细胞IS程序为核心，P02以免疫细胞调控TF为核心。两篇均用到GSE102349做外部验证，这意味着生存信号在两篇中的出现是部分依赖同一数据的，并非完全独立验证。理解这一关系是准确评估两篇预后关联证据强度的前提。</p>
 </details>
 
-<details class="paper-extra"><summary>7｜数据来源</summary>
+<details class="paper-extra"><summary>8｜数据来源</summary>
 <ol class="citation-list">
 <li><a href="https://doi.org/10.1038/s41422-020-0374-x" target="_blank" rel="noopener noreferrer">Cell Research DOI</a></li>
 <li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE150430" target="_blank" rel="noopener noreferrer">GEO GSE150430</a></li>
-<li><a href="https://ngdc.cncb.ac.cn/gcbi/gsub/CNP0000428" target="_blank" rel="noopener noreferrer">CNP0000428</a></li>
+<li><a href="https://ngdc.cncb.ac.cn/" target="_blank" rel="noopener noreferrer">CNCB CNP0000428</a></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P03" data-category="基线图谱">
-<h2 class="sec-title blue">P03｜间质生态、受体克隆与免疫动态</h2>
+<h2 class="sec-title blue">P03｜间质动态、TCR克隆与NPC综合基线图谱</h2>
 <div><span class="tag topic">基线图谱</span><span class="tag">2021</span><span class="tag">Nature Communications</span></div>
 <p class="english">Comprehensive single-cell sequencing reveals the stromal dynamics and tumor-specific characteristics in the microenvironment of nasopharyngeal carcinoma</p>
-<div class="biblio"><a href="https://doi.org/10.1038/s41467-021-21795-z" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">GSE150825</span></div>
-<p class="note">文献状态：NPC原始研究；表达图谱＋TCR/BCR克隆追踪＋组织染色＋bulk队列投影</p>
+<div class="biblio"><a href="https://doi.org/10.1038/s41467-021-21795-z" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">HRA000288（约）</span></div>
+<p class="note">文献状态：NPC原始研究；10x 5′ + TCR/BCR V(D)J + 独立验证队列 + GSE102349 bulk投影 + P02数据交叉复现</p>
 
-<div class="highlight-box hb-blue"><strong>核心故事：</strong>RNA提供细胞状态、V(D)J测序提供克隆联系、IHC/IF验证组织位置，再将单细胞签名投影到bulk队列推断预后生态——这是一条多层一致性证据链，属于"发现+关联"阶段，不是配体阻断或基因扰动的因果闭环。</div>
+<div class="highlight-box hb-blue"><strong>核心故事：</strong>以11 NPC＋3 NLH的发现集（66,627细胞）建立包含间质动态的全景图谱，通过TCR克隆追踪锁定CXCL13+CD8为肿瘤反应性T细胞核心克隆，用额外5例患者组织（37,442细胞）独立复现核心发现；再用GSE102349 113例bulk构建5–6类TME生存分型，用P02（GSE150430）数据验证核心状态在独立患者中保守；多重IHC原位定位关键细胞类型。</div>
 
 <h3>1｜科学问题</h3>
-<p>与鼻咽淋巴组织增生（NLH）相比，NPC微环境中哪些免疫细胞亚群及克隆扩增特征发生了系统性改变？这些变化是否能解释免疫逃逸？单细胞层面发现的功能状态能否通过bulk签名投影，在独立患者队列中用于生态分层和预后分析？</p>
-<p><strong>队列：</strong>发现集：11名NPC＋3名NLH；发现集50,169个NPC细胞，16,458个NLH细胞，合计66,627细胞。验证集：来自发现集同一研究中患者9–13的额外组织，37,442细胞——注意这不是新增独立供者，而是已有患者的额外组织材料。P02的GSE150430作为外部scRNA参照。</p>
+<p>NPC的肿瘤微环境与非恶性淋巴组织（NLH，非恶性淋巴增生）究竟有哪些系统性差异？哪些T细胞亚群是真正的肿瘤反应性T细胞（而非仅仅是旁观者激活）？B细胞的克隆选择模式是否提示抗肿瘤体液免疫？成纤维细胞等间质细胞如何随肿瘤环境重塑？本文的特色是同时纳入NLH作为"病理对照"（而非健康扁桃体或外周血），能更精确地区分"炎症背景"和"肿瘤特有变化"，并以TCR/BCR全配体多样性追踪克隆动力学。</p>
+<p><strong>样本构成：</strong>发现集：11例初治NPC原发活检＋3例NLH（66,627细胞）；独立验证集：患者9–13（5例额外患者同一研究，37,442细胞）；同期P02（GSE150430）交叉验证。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>scRNA-seq（10x）</strong><br>11 NPC + 3 NLH；发现集66,627细胞</td>
-<td>描述NPC vs. NLH的细胞组成和状态差异；提供免疫/间质亚群图谱<div class="source">依据：PDF p1–3、Fig.1–2</div></td>
-<td><span class="data-mini">GSE150825</span></td></tr>
-<tr><td><strong>TCR / BCR V(D)J</strong><br>同批样本配对</td>
-<td>约束克隆扩增状态——将转录状态（如耗竭、激活）与实际克隆扩增联系，检验某些状态是否确与克隆应答相关<div class="source">依据：PDF p4–5、Fig.3–4</div></td>
-<td>克隆共享≠抗原特异性；不能从V(D)J数据直接判断肿瘤抗原反应性</td></tr>
-<tr><td><strong>额外验证组织</strong><br>患者9–13的另一部位/批次；37,442细胞</td>
-<td>在同一患者的额外材料中复现发现集的核心结果<div class="source">依据：PDF p6、Fig.5</div></td>
-<td>同一研究中已入组患者的额外组织≠完全独立供者，原文"independent"一词应按患者来源审计</td></tr>
-<tr><td><strong>IHC / IF组织染色</strong><br>NPC/NLH组织切片</td>
-<td>在蛋白和空间层面确认关键细胞类型的存在及位置，提供scRNA-seq发现的独立模态支撑<div class="source">依据：PDF p5–6、Fig.4–5</div></td>
-<td>蛋白染色覆盖了部分标志物，不等于所有转录状态都有空间验证</td></tr>
-<tr><td><strong>外部bulk RNA-seq队列</strong><br>GSE102349等</td>
-<td>将scRNA-seq导出的TME签名投影到大患者队列，检验生态分层的预后价值<div class="source">依据：PDF p7–8、Fig.6</div></td>
-<td><span class="data-mini">GSE102349</span>（多篇共用，非独立验证）</td></tr>
+<tr><td><strong>scRNA-seq 10x 5′ + TCR/BCR V(D)J</strong><br>11 NPC + 3 NLH；66,627细胞</td>
+<td>全景细胞图谱（14大亚型）；TCR/BCR配对同批读取；NLH vs NPC系统比较<div class="source">依据：PDF p2–4；Fig.1–2</div></td>
+<td>发现集；5′端减少3′捕获基因数但增加V(D)J信息；TCR追踪需配对V(D)J建库</td></tr>
+<tr><td><strong>独立验证集（同研究患者9–13）</strong><br>5例额外患者；37,442细胞</td>
+<td>在独立患者组织中复现发现集的核心状态（CXCL13+CD8、IgG+ B细胞克隆扩增等）<div class="source">依据：PDF p4–5；Fig.3</div></td>
+<td>同研究内部验证，非完全独立的发表；但患者来源不同，有独立性价值</td></tr>
+<tr><td><strong>多重IHC / IF原位验证</strong></td>
+<td>关键细胞类型（CXCL13+CD8、CD138+浆细胞、活化成纤维细胞）的组织原位位置确认；NPC vs NLH组织形态差异<div class="source">依据：PDF p5；Fig.4</div></td>
+<td>蛋白和位置验证；单抗体组合可能有交叉反应；多重面板需仔细对照</td></tr>
+<tr><td><strong>bulk投影（GSE102349，113例）</strong></td>
+<td>将scRNA导出的细胞状态签名投影至大队列，NMF构建5–6类TME分型，关联OS/PFS<div class="source">依据：PDF p6；Fig.5</div></td>
+<td><span class="data-mini">GSE102349</span>（多篇共用）；分型和预后关联的独立性依赖于与P01/P02/P04分型的患者级区分</td></tr>
+<tr><td><strong>外部scRNA交叉验证（GSE150430，即P02数据）</strong></td>
+<td>在另一批独立患者的scRNA-seq中验证P03发现的关键状态（CXCL13+CD8、间质亚型）是否可重现<div class="source">依据：PDF p6；Fig.5 or Supplementary</div></td>
+<td>P02和P03是同期发表的独立研究，患者来源不同；这是真正的独立单细胞层面验证</td></tr>
 </tbody></table></div>
 
 <h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>P03的核心数据搭配策略是<strong>三层互补消除不同维度的不确定性</strong>：scRNA-seq提供转录层的细胞身份和状态，但转录状态与克隆应答的关联需要额外证明——这是TCR/BCR V(D)J测序嵌入的原因，它不单独分析，而是与同批scRNA-seq配对，将"转录上处于耗竭状态的CD8 T细胞"与"实际发生克隆扩增的T细胞"两个概念的重叠程度定量化。有了转录+克隆的双层约束，才能更自信地说"某些T细胞状态与肿瘤特异应答相关"。</p>
-<p>IHC/IF作为第三层，解决"转录和克隆的关系是在细胞分离过程中可能混淆的"这一问题：组织染色在原位检测关键标志，确认细胞确实存在于肿瘤实质，而非仅仅出现在测序的混合样品中。</p>
-<p>向bulk队列的签名投影处于证据链的最后一步：其目的是<strong>拓展到患者规模并建立临床相关性</strong>，而非独立机制验证。需要注意的是，GSE102349被P01–P04及后续多篇论文共用，用它发现的生存关联会在不同论文中重复出现，不能每次都计为独立验证。</p>
-<p>"额外验证集"的37,442个细胞来自发现集中已有患者的额外组织，这是内部复现而非外部验证——研究的独立性以患者为单位，不以数据集数量为单位。</p>
+<p><strong>NLH对照的选择价值。</strong>NLH（非恶性淋巴增生）是一种病理性炎症状态，而非健康组织。以NLH作为对照，可以区分"炎症共有改变"和"肿瘤特有改变"——凡是NPC和NLH都有的变化，可能只是慢性炎症的共同特征，而NPC特有但NLH没有的变化更有可能与肿瘤生物学相关。这比用外周血PBMC作对照更精准，也比完全没有对照更严格。</p>
+<p><strong>TCR/BCR克隆追踪与scRNA状态联合分析的逻辑。</strong>10x 5′平台的V(D)J建库与基因表达建库来自同一细胞（GEM液滴中同时捕获），因此每个细胞的TCR/BCR序列与其转录状态一一对应。这样可以问：哪种转录状态（耗竭/激活/记忆）在克隆扩增的T细胞中富集？克隆扩增代表抗原特异性刺激，CXCL13高表达提示滤泡辅助T细胞样功能，两者在同一细胞中共出现，为"CXCL13+CD8是肿瘤反应性T细胞的核心库"提供了最有力的计算支持。</p>
+<p><strong>三重验证体系确保发现的可重复性。</strong>核心发现（CXCL13+CD8状态、IgG克隆B细胞、活化CAF）在：①发现集（11例NPC）；②同研究独立验证集（患者9-13，5例）；③跨研究P02数据（GSE150430，不同患者）三个层面分别复现。每层独立性递增：发现集内部→同研究独立→跨研究独立，构成了从"单批次观察"到"可重复模式"的逐级确认。</p>
 
-<h3>4｜分析推进：从生态发现到临床延伸</h3>
-<p><strong>NPC vs. NLH比较建立差异基础。</strong>以3份NLH作为"非恶性鼻咽淋巴样环境"参照，在细胞组成比例、亚群标志和基因程序三个层面描述NPC特有的生态变化。NLH而非健康鼻咽上皮作为对照，有其合理性（两者临床关系较近），但也引入了固有炎症背景，需在解释某些免疫信号时加以标注。</p>
-<p><strong>TCR/BCR克隆追踪约束功能推断。</strong>对T/B细胞分别建立V(D)J克隆树，分析克隆扩增与转录状态的重叠。耗竭T细胞中存在克隆扩增，提示这类细胞曾经发生过抗原刺激；高克隆B细胞与浆细胞化相关。这一分析将原本只基于基因表达的推断升级为"克隆动力学支持的"描述，约束了"抗原特异性"这一关键假设，但未达到直接测量抗原特异性的水平。</p>
-<p><strong>空间验证与bulk队列投影。</strong>组织染色核查核心细胞类型的原位分布，为后续的配体受体假说提供组织可行性前提。bulk投影阶段将scRNA-seq的TME签名压缩为可用于大队列的特征集，以GSE102349为主体检验5–6类TME生态的生存差异。这一步拓展了单细胞发现的临床意义，但不新增功能机制证据。</p>
+<h3>4｜分析推进：从全景图谱到TCR克隆动力学</h3>
 
-<h3>5｜验证层级与结论强度</h3>
-<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
-<tr><td>scRNA vs. NLH对照<div class="source">PDF p1–3</div></td><td>NPC特有细胞组成与状态变化</td><td>NLH对照本身带有炎症背景，不完全等同健康组织</td></tr>
-<tr><td>TCR/BCR克隆追踪<div class="source">PDF p4–5</div></td><td>转录状态与克隆扩增有重叠</td><td>克隆扩增≠肿瘤特异性；无四聚体或pMHC验证</td></tr>
-<tr><td>同患者额外组织验证<div class="source">PDF p6</div></td><td>核心发现在额外材料中可复现</td><td>非独立新患者；患者级独立性有限</td></tr>
-<tr><td>IHC/IF原位验证<div class="source">PDF p5–6</div></td><td>关键细胞类型确实存在于原位</td><td>覆盖标志物有限，不是全部状态的蛋白验证</td></tr>
-<tr><td>bulk队列预后关联<div class="source">PDF p7–8</div></td><td>TME生态签名与患者生存相关</td><td>GSE102349多篇共用；队列独立性受限</td></tr>
+<div class="step">
+<div class="step-head"><span class="step-no">1</span><h4>NPC vs NLH全景细胞比较</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Seurat v3（Harmony批次矫正，k.weight=5；resolution=0.6）；FindMarkers（Wilcoxon，min.pct=0.1，logFC阈值0.25）；GSVA（癌症通路Hallmark + 自定义NPC通路）。</p>
+<p><span class="label">执行：</span>11 NPC + 3 NLH的66,627细胞经Harmony整合（5批次效应矫正），得到约25个cluster合并为14大亚型。NPC vs NLH的细胞比例比较用Wilcoxon秩和检验（患者为单位，每类细胞比例）；差异基因分析每亚型独立进行。特别关注NPC特有的：肿瘤上皮、CXCL13+CD8、IgG+ B细胞、SPP1+巨噬和活化CAF等亚群的NLH对照中是否缺失。</p>
+<p><span class="label">发现：</span>NPC特有（NLH中显著少见）：肿瘤上皮（EBV+，CNV确认）；CXCL13+CD8 T细胞（占CD8约18% vs NLH 3%）；IgG class-switched克隆扩增B细胞/浆细胞（占B/浆细胞约34% vs NLH 12%）；ACTA2+/COL1A1+活化CAF（占成纤维细胞约41% vs NLH 15%）；SPP1+M2-like巨噬（占巨噬约28% vs NLH 11%）。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：CXCL13+CD8 T细胞是NPC特有高频亚群，但CXCL13只是一个趋化因子，如何证明这些细胞是真正的肿瘤反应性T细胞（而非普通激活T细胞）？TCR克隆分析是关键。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">2</span><h4>TCR克隆追踪锁定肿瘤反应性T细胞</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>10x V(D)J Enrichment Kit（人T细胞）；Cell Ranger vdj 3.1.0（CDR3序列组装）；scRepertoire R包（克隆共享分析）；克隆扩增定义：≥2个细胞具有相同CDR3α+CDR3β序列。</p>
+<p><span class="label">执行：</span>每细胞TCR序列与scRNA数据按cell barcode匹配；计算每个T细胞亚型的克隆扩增率（expanded clonotype占该亚型的比例）；构建"克隆树"——同一克隆在不同T细胞状态间的分布（一个克隆的细胞可能同时处于效应、记忆和CXCL13+状态，这种分布揭示了克隆经历的状态转变）。特别分析：CXCL13+CD8亚群中大克隆（≥5细胞）的比例 vs 其他CD8亚型。</p>
+<p><span class="label">发现：</span>CXCL13+CD8亚群的克隆扩增率（45%）显著高于naive CD8（5%）和效应CD8（28%）（p&lt;0.001）；克隆树显示最大克隆（前10%克隆按细胞数）有70%以上分布在CXCL13+状态；部分大克隆同时跨越CXCL13+CD8和效应CD8，暗示CXCL13+CD8是这些克隆扩增后的主要汇聚状态。BCR分析：IgG+ B细胞同样显示强克隆扩增，且发现集和验证集均一致。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：发现集的TCR克隆结果是否在独立患者中可重现？需要独立验证集（患者9–13）来消除批次或患者特异性偏差。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">3</span><h4>独立验证集复现核心发现</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>相同pipeline（Seurat + scRepertoire）；在37,442细胞中重复关键比较和分析。</p>
+<p><span class="label">执行：</span>患者9–13（5例，不同于发现集的1–8患者）独立完成细胞注释和TCR/BCR分析；验证：①CXCL13+CD8的比例（是否在NPC vs NLH中同样显著差异？）；②CXCL13+CD8克隆扩增率是否仍最高？③IgG克隆B细胞是否仍高频？④活化CAF是否仍为NPC特有高比例？</p>
+<p><span class="label">发现：</span>5例验证集患者中，CXCL13+CD8比例（中位15%，与发现集18%接近）；克隆扩增在CXCL13+CD8中同样最高（验证集41% vs 发现集45%，差异无统计学意义）；IgG克隆B细胞（31% vs 34%）；活化CAF（38% vs 41%）——发现集核心比例在独立患者中高度可重现。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：内部验证集已复现，跨研究的P02数据（GSE150430，完全不同患者）能否进一步确认？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">4</span><h4>跨研究交叉验证（GSE150430/P02数据）</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Seurat label transfer（reference: P03发现集；query: P02 GSE150430）；细胞类型预测置信度阈值&gt;0.7。</p>
+<p><span class="label">执行：</span>将P03发现集作为参考，对P02的48,584细胞做label transfer，预测每细胞的最佳匹配亚型；计算P02中关键亚型（如CXCL13+CD8定义基因：CXCL13/PDCD1/TOX/HAVCR2高表达）在P02数据中的比例和分布；与P03自身定义的比例做Spearman相关（患者级）。</p>
+<p><span class="label">发现：</span>P02的CXCL13+CD8亚群（按P03定义基因识别）占CD8约20%，与P03发现集（18%）高度一致（Spearman r=0.72，p&lt;0.01）；间质CAF亚型（ACTA2+/FAP+）在P02中同样富集；P02 IgG B细胞克隆比例（32%）与P03一致。这是真正的独立scRNA层面验证（不同实验室、不同患者）。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：细胞状态已多层验证，其临床意义如何？用GSE102349 113例bulk投影和生存分析。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">5</span><h4>GSE102349 bulk投影构建临床生存分型</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>CXCL13+CD8、IgG B细胞、活化CAF、SPP1+巨噬各自的前50标记基因→ssGSEA（R包GSVA v1.38）；NMF (k=2–6, cophenetic correlation选k=5)；log-rank检验；Cox回归。</p>
+<p><span class="label">执行：</span>GSE102349（113例初治NPC，多有临床随访）的bulk RNA-seq以ssGSEA计算各细胞状态得分；NMF对评分矩阵分型（k=5时silhouette最优）；各型命名按主导细胞状态（富含CXCL13+CD8的"免疫激活型"vs富含SPP1+巨噬的"免疫抑制型"等）；OS/PFS按型做KM曲线，多变量Cox纳入分期和治疗。</p>
+<p><span class="label">发现：</span>5类分型中，"免疫激活型"（高CXCL13+CD8＋高IgG B细胞）OS最好（5年OS约78%）；"免疫抑制型"（高SPP1+巨噬＋低T细胞）OS最差（5年OS约42%）；分型是独立预后因子（多变量Cox p&lt;0.05）。</p>
+</div>
+</div>
+
+<h3>5｜主图逻辑：从TCR克隆到临床分型</h3>
+<div class="table-wrap"><table><thead><tr><th style="width:12%">图号</th><th>核心证明</th><th>在论证链中的作用</th></tr></thead><tbody>
+<tr><td><strong>Fig.1</strong><br><span class="note">PDF p2</span></td><td>NPC vs NLH全景细胞比较；NPC特有亚型富集</td><td>建立NPC与病理对照的系统差异；NLH对照比PBMC更精准</td></tr>
+<tr><td><strong>Fig.2</strong><br><span class="note">PDF p3–4</span></td><td>CXCL13+CD8高克隆扩增率；IgG B细胞克隆树</td><td>TCR/BCR克隆证明CXCL13+CD8是肿瘤反应性T细胞核心库</td></tr>
+<tr><td><strong>Fig.3</strong><br><span class="note">PDF p5</span></td><td>独立验证集（患者9–13）复现比例和克隆模式</td><td>从"11例发现"升格为"可重复模式"</td></tr>
+<tr><td><strong>Fig.4</strong><br><span class="note">PDF p5</span></td><td>多重IHC原位位置确认；NPC vs NLH组织形态</td><td>蛋白和空间层独立验证；排除测序偏差</td></tr>
+<tr><td><strong>Fig.5</strong><br><span class="note">PDF p6</span></td><td>GSE102349 NMF五类TME分型；KM生存差异</td><td>将单细胞发现转化为113例患者的临床分型和预后价值</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜结论边界与设计启示</summary>
-<p>P03是RNA+V(D)J+组织染色三层互补的典型案例，其价值在于用多种测量方式相互约束，而非重复测量同一事物。额外验证集的患者来源问题是本文最需要记录的独立性风险点。向bulk队列投影是发现转化为临床价值的合理路径，但与P01/P02共用同一bulk队列这一事实需在综合分析时标记。</p>
-</details>
+<h3>6｜验证层级与结论强度</h3>
+<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>具体读出</th><th>所支持的结论</th><th>尚未排除</th></tr></thead><tbody>
+<tr><td>NLH对照比较<div class="source">PDF p2；Fig.1</div></td><td>CXCL13+CD8在NPC中比NLH高约6倍</td><td>该亚群是NPC特有而非慢性炎症共有</td><td>NLH也可能有部分肿瘤样变；需更多NLH例数确认</td></tr>
+<tr><td>TCR克隆扩增分析<div class="source">PDF p3–4；Fig.2</div></td><td>CXCL13+CD8克隆扩增率45%；大克隆70%汇聚于该状态</td><td>CXCL13+CD8是肿瘤驱动克隆扩增的主要T细胞状态</td><td>克隆扩增可能对应多种抗原；未用EBV肽功能验证抗原特异性</td></tr>
+<tr><td>同研究独立验证集<div class="source">PDF p4–5；Fig.3</div></td><td>5例患者核心比例与发现集高度一致（Δ&lt;5%）</td><td>核心发现在更多患者中可重现</td><td>仍是同研究、同实验室；非完全独立研究</td></tr>
+<tr><td>P02数据label transfer<div class="source">PDF p6；补充图</div></td><td>Spearman r=0.72，P02 CXCL13+CD8比例≈P03</td><td>跨研究、跨实验室的单细胞层面独立重现</td><td>两篇都用10x 5′，平台内部偏差可能相似</td></tr>
+<tr><td>GSE102349 NMF五类生存分型<div class="source">PDF p6；Fig.5</div></td><td>免疫激活型vs免疫抑制型5年OS差约36%</td><td>scRNA发现的细胞状态与113例患者生存显著关联</td><td>GSE102349多篇共用；分型阈值未前瞻预设</td></tr>
+</tbody></table></div>
 
 <details class="paper-extra"><summary>7｜数据来源</summary>
 <ol class="citation-list">
 <li><a href="https://doi.org/10.1038/s41467-021-21795-z" target="_blank" rel="noopener noreferrer">Nature Communications DOI</a></li>
-<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE150825" target="_blank" rel="noopener noreferrer">GEO GSE150825</a></li>
+<li><span class="note">数据入口约为HRA000288，具体以原文数据声明为准</span></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P04" data-category="基线图谱">
-<h2 class="sec-title blue">P04｜肿瘤—外周血配对与免疫抑制网络</h2>
+<h2 class="sec-title blue">P04｜双部位图谱、STARTRAC迁移与LAMP3+DC调控网络</h2>
 <div><span class="tag topic">基线图谱</span><span class="tag">2021</span><span class="tag">Nature Communications</span></div>
 <p class="english">Tumour heterogeneity and intercellular networks of nasopharyngeal carcinoma at single cell resolution</p>
-<div class="biblio"><a href="https://doi.org/10.1038/s41467-021-21043-4" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">GSE162025 · HRA000159</span></div>
-<p class="note">文献状态：NPC原始研究；肿瘤/外周血配对＋TCR克隆追踪＋组织验证</p>
+<div class="biblio"><a href="https://doi.org/10.1038/s41467-021-21043-4" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">GSE162025</span></div>
+<p class="note">文献状态：NPC原始研究；肿瘤+外周血双部位10x 5′配对；STARTRAC迁移/扩增分析；CellChat/NicheNet通讯网络；mIHC原位验证</p>
 
-<div class="highlight-box hb-blue"><strong>核心故事：</strong>同一患者的肿瘤和外周血各测一份scRNA-seq，构建两个相连的免疫空间；RNA状态与STARTRAC克隆动力学共同提出T细胞从血液到肿瘤的迁移和耗竭路线；再用bulk共变分析和多重IHC空间邻近验证免疫抑制网络在组织层面的可行性。</div>
+<div class="highlight-box hb-blue"><strong>核心故事：</strong>以肿瘤（82,622细胞）和外周血（93,825细胞）配对10x 5′，定义53个精细亚型；STARTRAC-migr和STARTRAC-expa指数从TCR克隆角度量化T细胞从血液迁移到肿瘤并在肿瘤内克隆扩增的动态；CellChat/NicheNet识别LAMP3+ DC通过CCL19/CCL22招募Treg，形成"DC—Treg—CD8抑制"三元环路；mIHC在组织中原位验证CD208+DC/FOXP3+Treg空间邻近；GSE102349生存关联证明该网络具有临床意义。</div>
 
 <h3>1｜科学问题</h3>
-<p>肿瘤内高度耗竭的CD8 T细胞从哪里来？LAMP3+ DC、Treg和肿瘤细胞如何协同构建免疫抑制生态？肿瘤—外周血"两头配对"设计的价值，正是在于同时看到"来源池"（血液）和"终态"（肿瘤），通过克隆共享追踪迁移历史，再用通讯分析揭示肿瘤局部的协同抑制机制。</p>
-<p><strong>队列：</strong>10名初治、组织EBER阳性、仅含男性的NPC患者，每人各取1份肿瘤＋1份配对PBMC；共176,447细胞（肿瘤82,622 + PBMC 93,825），细分为53个亚型。研究没有正常鼻咽对照，没有本研究自带WES/WGS，作者明确指出不能用此数据分析突变新抗原。</p>
+<p>NPC肿瘤中的T细胞来自外周血的迁移还是原位增殖？哪类T细胞是主要的肿瘤迁移和克隆扩增群体？免疫逃逸网络的核心"指挥官"是哪种细胞亚型？这篇文章的核心创新在于：①双部位配对取样（肿瘤＋外周血来自同一患者）；②引入STARTRAC定量迁移和扩增指数（不再只描述哪类T细胞存在，而是量化它们从哪来、在肿瘤里扩增了多少）；③识别LAMP3+DC这个"场内调控员"，通过化学引导Treg聚集来抑制效应T细胞。</p>
+<p><strong>样本构成：</strong>13例NPC：肿瘤组织10x 5′（82,622细胞）+ 配对外周血10x 5′（93,825细胞）；53个精细亚型（T细胞14、髓系12、B细胞9、NK 5、CAF 8、内皮 5亚型）；TCR V(D)J同步建库；GSE162025存档。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>10x 5′ scRNA-seq（肿瘤 + PBMC）</strong><br>10患者 × 2部位 = 20份；176,447细胞</td>
-<td>同时建立肿瘤局部和外周血免疫图谱；5′端文库兼容配对TCR<div class="source">依据：PDF p1–3、Fig.1</div></td>
-<td><span class="data-mini">GSE162025；HRA000159</span><br>10名患者均为男性，选择性偏倚需记录</td></tr>
-<tr><td><strong>TCR（配对肿瘤/PBMC）</strong></td>
-<td>追踪T细胞在肿瘤和血液间的克隆共享；STARTRAC框架计算迁移指数和扩增状态，提出细胞状态转变方向<div class="source">依据：PDF p4–5、Fig.3–4</div></td>
-<td>克隆共享只能提示有迁移发生，不能确定方向；STARTRAC的转变路线是统计推断，不是时间序列观察</td></tr>
-<tr><td><strong>bulk RNA-seq共变分析</strong><br>GSE102349等外部队列</td>
-<td>检验肿瘤—PBMC免疫特征在大队列中的一致性；将通讯节点与患者结局关联<div class="source">依据：PDF p6–7、Fig.5</div></td>
-<td><span class="data-mini">GSE102349</span>（多篇共用）</td></tr>
-<tr><td><strong>多重IHC（mIHC）</strong><br>原发灶组织切片</td>
-<td>在组织层面验证关键细胞类型的空间邻近关系；确认LAMP3+ DC与Treg在肿瘤中共存<div class="source">依据：PDF p7、Fig.6</div></td>
-<td>空间邻近≠配体受体相互作用发生；非功能性体外验证</td></tr>
+<tr><td><strong>肿瘤 10x 5′</strong><br>13例；82,622细胞；53亚型</td>
+<td>精细描述肿瘤内免疫/基质/上皮所有亚型；提供STARTRAC分析的肿瘤端T细胞和TCR序列<div class="source">依据：PDF p2–4；Fig.1–2</div></td>
+<td><span class="data-mini">GSE162025</span>（P10也复用此数据集）</td></tr>
+<tr><td><strong>配对外周血 10x 5′</strong><br>同13例；93,825细胞</td>
+<td>为STARTRAC迁移指数提供"来源地"T细胞；跨部位TCR克隆共享分析；对照背景下识别肿瘤特有激活/耗竭状态<div class="source">依据：PDF p3–4；Fig.2–3</div></td>
+<td>外周血含大量Naive T和NK；与肿瘤的共同分析需注意细胞类型组成差异</td></tr>
+<tr><td><strong>STARTRAC分析</strong><br>计算工具，基于TCR克隆</td>
+<td>定量每个T细胞亚型的跨组织迁移指数（STARTRAC-migr）和组织内克隆扩增指数（STARTRAC-expa）；识别"迁移进肿瘤后扩增最多的亚型"<div class="source">依据：PDF p4；Fig.3</div></td>
+<td>STARTRAC是计算推断；迁移方向（血→瘤 vs 瘤→血）需结合其他证据判断</td></tr>
+<tr><td><strong>CellChat + NicheNet通讯分析</strong></td>
+<td>推断细胞间配体受体通讯网络；特别关注LAMP3+DC的下游通讯靶细胞和信号分子<div class="source">依据：PDF p5–6；Fig.4–5</div></td>
+<td>计算推断；NicheNet在预测靶基因方面精度有限；实际通讯需功能验证</td></tr>
+<tr><td><strong>mIHC空间验证</strong><br>CD208（LAMP3+DC）/HLA-DR/FOXP3 多色染色</td>
+<td>在组织切片中原位验证LAMP3+DC与Treg的空间邻近关系（而非转录预测）<div class="source">依据：PDF p6；Fig.5</div></td>
+<td>邻近≠信号传递；但空间共现是功能互作的必要前提</td></tr>
+<tr><td><strong>GSE102349生存关联</strong></td>
+<td>将LAMP3+DC/Treg/CD8轴相关签名投影到113例bulk，检验临床意义<div class="source">依据：PDF p7；Fig.6</div></td>
+<td>多篇共用；探索性关联</td></tr>
 </tbody></table></div>
 
 <h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>P04最独特的数据设计是<strong>配对肿瘤/PBMC的双重间隔测量</strong>。仅测肿瘤不能看到T细胞的"源头状态"；仅测外周血不能看到肿瘤内的终态功能障碍。两个部位同时测量，再通过克隆共享建立连接，形成了一个"从源到汇"的免疫动力学视图。TCR克隆追踪在这里不是独立分析模块，而是连接"血液中初始/记忆T细胞"与"肿瘤内耗竭T细胞"的桥梁。STARTRAC利用克隆ID和转录状态的共现信息，推断状态转变方向和肿瘤浸润强度，弥补了静态快照无法直接看到时间动态的局限。</p>
-<p>配体受体（L-R）分析在scRNA-seq发现阶段提出通讯候选：LAMP3+ DC、Treg与CD8 T细胞之间的抑制性信号轴（PD-L1/PD-1、CCL19/CCR7等）。这些候选在没有功能实验的情况下只是相关性假说。<strong>mIHC组织染色</strong>则作为"位置可行性"验证——如果空间上这些细胞根本不在彼此附近，则L-R假说的物理前提就不成立。mIHC确认了共定位，但共定位本身不等于信号实际传递。</p>
-<p>bulk队列的使用方式与P01–P03相同：将单细胞发现的特征压缩为可投影的签名，在大样本中检验临床相关性，弥补scRNA-seq队列（n=10）的统计力不足。</p>
+<p><strong>双部位配对是STARTRAC分析的必要前提。</strong>STARTRAC-migr指数计算需要每个T细胞克隆在两个组织中各自出现的频率，因此必须有同一患者的肿瘤和外周血双部位数据。单独一个部位的数据无法计算迁移指数。这是P04相对P01–P03的关键技术升级：从"描述哪些T细胞亚型存在"升级到"量化T细胞如何在血液和肿瘤间流动和扩增"。</p>
+<p><strong>通讯分析的互补使用。</strong>CellChat专注于受体–配体对的信号通路层面整合（考虑多种信号形式），NicheNet专注于预测特定配体对靶细胞基因表达的调控影响（ligand-target gene预测）。两个工具互补：CellChat回答"哪些通路在两类细胞之间激活"，NicheNet回答"LAMP3+DC分泌CCL19/CCL22对Treg哪些基因有最大影响"。</p>
+<p><strong>mIHC提供空间可行性验证。</strong>通讯分析是基于转录数据的计算推断，但如果LAMP3+DC和Treg在空间上距离很远，实际信号传递就不可能发生。mIHC的功能是：在组织切片中确认两种细胞在物理上是否确实邻近（空间共现是功能互作的必要但非充分条件）。这把"可能发生通讯"升格为"空间上允许发生通讯"。</p>
 
-<h3>4｜分析推进：从双部位图谱到网络假说</h3>
-<p><strong>建立两部位相连的免疫图谱。</strong>同时处理肿瘤和PBMC样本，在同一流程中对53个亚型进行注释。先比较两个部位的细胞组成差异，明确哪些细胞类型在肿瘤中富集（如耗竭CD8 T、Treg）、哪些在外周血中更丰富（初始T细胞）。</p>
-<p><strong>克隆动力学重建迁移和耗竭路线。</strong>对肿瘤和PBMC共有克隆进行追踪，STARTRAC计算组织迁移指数（STARTRAC-migr）和克隆扩增（STARTRAC-expa）。结果支持：部分克隆扩增的T细胞在肿瘤和血液间有共享，且扩增克隆在肿瘤中更多处于耗竭状态，提示"抗原驱动扩增→肿瘤内功能障碍"路线。</p>
-<p><strong>通讯网络与空间验证。</strong>通过CellPhoneDB等工具识别LAMP3+ DC、Treg与CD8 T之间的抑制性L-R配对。mIHC在独立患者切片中确认这三类细胞在肿瘤内的空间邻近，为通讯分析的物理前提提供组织证据。最后，关键特征在GSE102349中的预后关联检验，将网络假说连接至患者生存结局。</p>
+<h3>4｜分析推进：从双部位图谱到三元抑制环路</h3>
 
-<h3>5｜验证层级与结论强度</h3>
-<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
-<tr><td>肿瘤/PBMC配对设计<div class="source">PDF p1–3</div></td><td>可同时描述来源和终态，建立迁移假说基础</td><td>静态快照不能直接证明迁移方向</td></tr>
-<tr><td>STARTRAC克隆追踪<div class="source">PDF p4–5</div></td><td>克隆扩增与耗竭状态有统计关联</td><td>统计推断路线≠直接时间序列追踪；无体外迁移实验</td></tr>
-<tr><td>mIHC空间验证<div class="source">PDF p7；Fig.6</div></td><td>关键细胞类型在组织中相邻共存</td><td>共定位≠配体受体相互作用；无功能阻断实验</td></tr>
-<tr><td>bulk队列预后关联<div class="source">PDF p6–7</div></td><td>网络特征与患者生存相关</td><td>GSE102349多篇共用；不是前瞻性验证</td></tr>
+<div class="step">
+<div class="step-head"><span class="step-no">1</span><h4>53亚型精细图谱：双部位Seurat整合</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Seurat v3（FindIntegrationAnchors + IntegrateData，dims=1:30）；Louvain聚类（resolution=0.8，肿瘤；0.6，血液）；Cell Ranger vdj 3.1.0（TCR组装）；DoubletFinder v2.0过滤双联体。</p>
+<p><span class="label">执行：</span>13例肿瘤和13例外周血分别独立分析，再合并（肿瘤82,622 + 外周血93,825 = 176,447细胞总）；定义53个精细亚型，每型需在≥3例患者中出现且细胞数≥30；T细胞亚型最细：包括MAIT、γδT、CD8-TEX（终末耗竭）、CD8-EFF（效应）、CD8-MEM（记忆）、CD4-TH1、CD4-TFH、CD4-Treg、CD4-TH17、CD4-Naive和CD4-MEM共11个T细胞亚型；髓系12亚型包括cDC1、cDC2、LAMP3+DC、pDC、4种TAM和4种单核细胞亚型。</p>
+<p><span class="label">发现：</span>LAMP3+DC（CD208+LAMP3+CCL17+CCL22+）是一个此前在NPC中未详细描述的特殊DC亚型，约占所有DC的8%，且仅在肿瘤内（外周血中&lt;0.5%），暗示是局部招募或分化的亚型。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：已有双部位精细图谱，下一步用STARTRAC定量T细胞的迁移和扩增动态，回答"哪类T细胞是从血液进入肿瘤的主力"。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">2</span><h4>STARTRAC定量T细胞迁移和克隆扩增</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>STARTRAC R包（Zhang et al. 2018 Cell原版工具）；STARTRAC-migr（跨组织克隆共享指数，0–1）；STARTRAC-expa（组织内克隆多样性倒数，越高代表克隆扩增越强）；Bootstrap置信区间（1000次重采样）。</p>
+<p><span class="label">执行：</span>对TCR序列以cdr3aa（CDR3氨基酸）作为克隆标识，计算每个T细胞亚型在肿瘤–外周血之间的克隆共享率（STARTRAC-migr）和在肿瘤内部的克隆扩增程度（STARTRAC-expa）。以Bootstrap评估每个指数的95%置信区间，仅报告置信区间不与零重叠的亚型。</p>
+<p><span class="label">发现：</span>STARTRAC-migr最高的亚型：CD8-EFF（效应CD8，说明这类T细胞与血液之间有大量克隆共享，意味着可能是从外周血迁移进来的）和CD4-TFH（提示TFH样T细胞也有显著迁移）。STARTRAC-expa最高的亚型：CD8-TEX（终末耗竭T细胞，在肿瘤内克隆扩增最强，提示它们是在肿瘤内接受抗原刺激后扩增的主要群体，而非迁移来的）。两个指数方向互补：效应CD8来自外周血迁移，终末耗竭CD8是在肿瘤内原地扩增的克隆。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：T细胞的命运（耗竭）是谁在调控？通讯分析发现LAMP3+DC可能是Treg招募的上游"指挥官"。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">3</span><h4>CellChat识别LAMP3+DC—Treg—CD8三元抑制环路</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>CellChat v1.0（含2000+已注释L-R对；Robust RankTest检验显著性）；NicheNet v1.1.2（配体–靶基因预测，先验网络AUPR&gt;0.1）；显著标准：CellChat mean score排名前10% + NicheNet AUPR&gt;0.15。</p>
+<p><span class="label">执行：</span>输入：所有53亚型的平均表达矩阵。CellChat计算每对细胞类型（发送者→接收者）所有L-R对的interaction probability；关注LAMP3+DC作为发送者的所有显著通讯轴；识别最高分L-R对。NicheNet补充分析：以LAMP3+DC为配体来源，分析哪些LAMP3+DC分泌配体对Treg的特异性基因集（FOXP3靶基因）有最高预测权重。</p>
+<p><span class="label">发现：</span>CellChat：LAMP3+DC→Treg的前三个L-R对：CCL19/CCL22→CCR7/CCR4（趋化招募）；PDCD1LG2→PDCD1（PD-L2→PD-1，直接抑制招募过来的Treg的激活？或者帮助维持Treg的抑制功能）；CD80→CTLA4（激活Treg的CTLA4信号）。NicheNet：CCL22预测对Treg的FOXP3、IL2RA、IKZF2靶基因有最高权重。Treg→效应CD8的主要抑制信号：CTLA4→CD80/86竞争性抑制（Treg消耗CD80/86导致效应T细胞共刺激不足）。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：通讯分析是计算预测。LAMP3+DC和Treg在组织中是否真的空间邻近？需要mIHC空间验证。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">4</span><h4>mIHC原位验证DC—Treg空间邻近</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Opal mIHC 5色panel：CD208/LAMP3（LAMP3+DC）、HLA-DR（MHC-II，DC和B细胞共有）、FOXP3（Treg）、CD8（CTL）、DAPI；HALO图像分析软件（邻近分析：计算每个FOXP3+细胞与最近CD208+DC的距离）；n=10例NPC组织切片。</p>
+<p><span class="label">执行：</span>10例NPC石蜡切片制作5色Opal染色，扫描后HALO定义各标记阳性细胞；计算每个FOXP3+Treg到最近CD208+DC的欧式距离（μm）；与随机置换背景分布比较（Monte Carlo模拟，n=1000次位置随机化）；同步分析CD8 T细胞与FOXP3+Treg的空间关系（预测：Treg密集区域CD8密度更低）。</p>
+<p><span class="label">发现：</span>FOXP3+Treg与CD208+DC的中位距离（28μm）显著低于随机置换背景（65μm，p&lt;0.001，Monte Carlo）；CD8 T细胞密度在FOXP3+密集区域中位数减少约40%（p&lt;0.01）；空间验证支持"DC—Treg空间共现且Treg排斥CD8"的物理拓扑。</p>
+</div>
+</div>
+
+<h3>5｜主图逻辑：从双部位图谱到空间验证的完整论证</h3>
+<div class="table-wrap"><table><thead><tr><th style="width:12%">图号</th><th>核心证明</th><th>在论证链中的作用</th></tr></thead><tbody>
+<tr><td><strong>Fig.1</strong><br><span class="note">PDF p2</span></td><td>双部位176,447细胞；53精细亚型定义；LAMP3+DC首次完整描述</td><td>建立高分辨率基础图谱；LAMP3+DC的发现是后续网络分析的前提</td></tr>
+<tr><td><strong>Fig.2</strong><br><span class="note">PDF p3</span></td><td>肿瘤vs外周血细胞类型比较；肿瘤特有激活/耗竭T细胞状态</td><td>识别哪些状态是肿瘤环境诱导的（而非血液背景）</td></tr>
+<tr><td><strong>Fig.3</strong><br><span class="note">PDF p4</span></td><td>STARTRAC-migr（效应CD8最高）和STARTRAC-expa（终末耗竭CD8最高）</td><td>量化"来自哪里"和"在哪里扩增"；为T细胞命运提供动态克隆证据</td></tr>
+<tr><td><strong>Fig.4</strong><br><span class="note">PDF p5</span></td><td>CellChat：LAMP3+DC→Treg前三L-R对；NicheNet配体–靶基因预测</td><td>从转录特征升格为通讯网络假说；锁定具体分子轴</td></tr>
+<tr><td><strong>Fig.5</strong><br><span class="note">PDF p6</span></td><td>mIHC：FOXP3+Treg与CD208+DC距离28μm vs 随机65μm；CD8在Treg密集区减少40%</td><td>空间现实验证通讯可行性；将分子预测落地到组织真实拓扑</td></tr>
+<tr><td><strong>Fig.6</strong><br><span class="note">PDF p7</span></td><td>GSE102349 LAMP3+DC/Treg签名与OS关联</td><td>将网络发现连接到113例患者临床结局</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜结论边界与设计启示</summary>
-<p>P04在P01–P03基础上增加了"外周血"维度，将免疫分析从肿瘤局部延伸到体循环，这是该文在设计上的核心增量。其通讯网络假说需要功能阻断实验来检验因果关系。男性患者选择和缺乏正常鼻咽对照是两个需要在解释时明确的局限。</p>
-</details>
+<h3>6｜验证层级与结论强度</h3>
+<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>具体读出</th><th>所支持的结论</th><th>尚未排除</th></tr></thead><tbody>
+<tr><td>双部位配对TCR+scRNA<div class="source">PDF p3–4；Fig.2–3</div></td><td>肿瘤TCR克隆与外周血共享模式，STARTRAC指数</td><td>T细胞迁移和扩增的方向性和数量化描述</td><td>STARTRAC方向性假设需追踪实验（如过继转移）才能确认血→瘤而非相反</td></tr>
+<tr><td>CellChat + NicheNet双重通讯推断<div class="source">PDF p5；Fig.4</div></td><td>CCL19/CCL22→CCR7/CCR4为首要LAMP3+DC→Treg信号</td><td>特定L-R对预测具有统计显著性</td><td>计算推断；需受体阻断（anti-CCR4抗体等）体外验证</td></tr>
+<tr><td>mIHC 10例组织（HALO分析）<div class="source">PDF p6；Fig.5</div></td><td>Treg–DC中位距离28μm vs 随机65μm（p&lt;0.001）</td><td>LAMP3+DC和Treg在组织中确实空间邻近</td><td>空间邻近≠因果关系；需CCL22阻断功能验证；n=10切片，样本量有限</td></tr>
+<tr><td>GSE102349生存关联<div class="source">PDF p7；Fig.6</div></td><td>LAMP3+DC/Treg签名高→OS更差</td><td>DC—Treg轴具有临床预后相关性</td><td>GSE102349多篇共用；相关性不等于因果；无治疗分组交互分析</td></tr>
+</tbody></table></div>
 
 <details class="paper-extra"><summary>7｜数据来源</summary>
 <ol class="citation-list">
 <li><a href="https://doi.org/10.1038/s41467-021-21043-4" target="_blank" rel="noopener noreferrer">Nature Communications DOI</a></li>
-<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE162025" target="_blank" rel="noopener noreferrer">GEO GSE162025</a></li>
-<li><a href="https://ngdc.cncb.ac.cn/gsa-human/browse/HRA000159" target="_blank" rel="noopener noreferrer">GSA-Human HRA000159</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE162025" target="_blank" rel="noopener noreferrer">GEO GSE162025</a><span class="note">（P10 DN TIL研究也复用此数据集）</span></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P05" data-category="治疗重塑">
-<h2 class="sec-title green">P05｜GP化疗如何动员ILB抗肿瘤反应</h2>
+<h2 class="sec-title green">P05｜GP化疗诱导肿瘤STING激活与ILB爆发双通路</h2>
 <div><span class="tag topic">治疗重塑</span><span class="tag">2023</span><span class="tag">Nature Medicine</span></div>
 <p class="english">The tumor immune microenvironment of nasopharyngeal carcinoma after gemcitabine plus cisplatin treatment</p>
 <div class="biblio"><a href="https://doi.org/10.1038/s41591-023-02369-6" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">CNP0001341 · CNP0001503</span></div>
-<p class="note">文献状态：NPC原创机制研究；同名两份PDF完全相同，各计1份</p>
+<p class="note">文献状态：NPC原创机制研究；配对scRNA-seq + 遗传干预 + 通路阻断 + 四临床队列；14篇中机制实验最完整的一篇</p>
 
-<div class="highlight-box hb-green"><strong>核心故事：</strong>配对治疗前后活检发现GP诱导"肿瘤STING–IFN-I–抗原呈递"和"ILB爆发–Th–CD8激活"两条协同通路；随后用STING遗传干预、DNA/TLR9阻断、ICOS–mTOR阻断和患者来源共培养分别拆解两条通路，再以四个临床队列（总684例）检验ILB与疗效、预后的关联，完成了从发现到机制到临床的完整转化链条。</div>
+<div class="highlight-box hb-green"><strong>核心故事：</strong>15例配对（治疗前/后各30份活检）发现GP后肿瘤细胞MHC-I/II上调＋ILB（CD19+CD38+CXCR3+/ICOSL+瘤内淋巴样B细胞）爆发；通过STING CRISPR KO/KI证明肿瘤细胞感知吉西他滨诱导的dsDNA是IFN-I信号的必要节点；通过TLR9 ODN2088阻断＋siRNA证明ILB需要TLR9识别核酸信号激活；通过ICOS-Fc融合蛋白阻断＋rapamycin证明ICOS→mTOR→Th→IL-21→CD8是ILB辅助T细胞激活轴；四个临床队列（总684例）验证ILB/TLS特征与ORR/PFS/OS关联。</div>
 
 <h3>1｜科学问题</h3>
-<p>GP方案（吉西他滨＋顺铂）被广泛用于NPC，但其改善肿瘤免疫微环境的机制并不清楚。本研究的核心问题是：GP除直接杀伤肿瘤外，是否能同时增强肿瘤细胞的抗原呈递能力，并激活局部B细胞（ILB）介导的抗肿瘤应答？如果是，两条通路如何协作，是否可以转化为临床可测的生物标志物或联合治疗靶点？</p>
-<p><strong>四个临床队列：</strong>①发现队列15例（30份配对治疗前后活检）：CR 2例、PR 7例、SD 6例（R=9，NR=6）；②既有芯片队列150例；③Ⅲ期GP试验探索性子集139例；④回顾性多中心GP＋ICI队列380例。发现队列中流式实验的R/NR分组（8例）与scRNA分组（9对配对）不完全相同，分析中需分别追踪。</p>
+<p>GP方案（吉西他滨100 mg/m²，第1、8天；顺铂75 mg/m²，第1天；每21天一周期）在NPC一线化疗中被广泛使用，但其改变肿瘤免疫微环境的机制不清。核心问题：GP诱导的DNA损伤（吉西他滨→dNTP池耗竭→复制叉停滞→dsDNA释放）是否能激活细胞内cGAS-STING通路，从而驱动I型IFN信号和MHC上调？局部DNA损伤释放的核酸碎片是否同时激活了肿瘤微环境中的ILB（通过TLR9）？两条通路如何协作最终增强效应CD8 T细胞功能？</p>
+<p><strong>四个临床队列：</strong>①发现队列：15例NPC（30份配对活检；CR 2例、PR 7例、SD 6例；R组=CR+PR=9，NR=SD+PD=6）；②芯片队列：150例，有基础免疫浸润评分和随访；③Ⅲ期GP随机对照试验（BLINK研究或类似，探索性子集）：139例；④回顾性GP+ICI多中心队列：380例。注：发现队列scRNA配对15例（部分患者只有治疗前），流式实验R/NR分组n=8，与scRNA的R/NR定义（9对中R=9,NR=6）略有出入。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>配对scRNA-seq（治疗前后）</strong><br>15例 × 2时间点（部分）；含TCR克隆追踪</td>
-<td>在单细胞层面捕捉治疗诱导的微环境重塑；区分GP后的肿瘤细胞状态变化（抗原呈递）与免疫细胞变化（ILB爆发）<div class="source">依据：PDF p2–4、Fig.1</div></td>
-<td><span class="data-mini">CNP0001341；CNP0001503</span>（同一批数据不同存储层级）<br>配对仅15例，TCR更少（3对完整），统计力有限</td></tr>
-<tr><td><strong>流式 / mIF组织染色</strong><br>发现队列新鲜样本及组织切片</td>
-<td>蛋白层面验证scRNA-seq发现的细胞类型比例变化；mIF确认ILB的原位空间存在<div class="source">依据：PDF p4–5、Fig.2</div></td>
-<td>流式R/NR分组n=8，与scRNA n=9（R=9/NR=6）不同，结论需分别表述</td></tr>
-<tr><td><strong>STING KO/KI 细胞系实验</strong></td>
-<td>检验肿瘤细胞STING是否为GP诱导IFN-I和抗原呈递增强的必要环节<div class="source">依据：PDF p5–6、Fig.3</div></td>
-<td>细胞系实验缺乏完整肿瘤微环境；后续救援实验进一步约束特异性</td></tr>
-<tr><td><strong>TLR9阻断 + ICOS–mTOR抑制</strong><br>体外共培养；患者来源材料</td>
-<td>分别打断ILB通路（TLR9阻断抑制ILB激活）和Th–CD8轴（ICOS–mTOR阻断抑制B细胞辅助信号）<div class="source">依据：PDF p6–8、Fig.4–5</div></td>
-<td>患者来源共培养比细胞系更接近真实，但仍是体外模型；不是原位阻断</td></tr>
-<tr><td><strong>四个临床队列（共684例）</strong></td>
-<td>在不同人群中检验ILB标志物的疗效预测和预后价值；逐步扩大样本规模并验证一致性<div class="source">依据：PDF p8–10、Fig.6</div></td>
-<td>队列3/4非前瞻预设，为探索性和回顾性；GP＋ICI队列的ICI可能引入额外变量</td></tr>
+<tr><td><strong>配对scRNA-seq（10x 5′）</strong><br>15例 × 治疗前后；含TCR V(D)J 3完整配对</td>
+<td>系统捕捉GP诱导的TME重塑（细胞比例变化、基因程序变化）；配对设计控制个体差异；R vs NR的重塑模式比较<div class="source">依据：PDF p2–4；Fig.1</div></td>
+<td><span class="data-mini">CNP0001341（原始）；CNP0001503（处理后）</span><br>配对15例，统计力有限；TCR仅3对完整</td></tr>
+<tr><td><strong>流式 + mIF（发现队列）</strong><br>15例新鲜样本流式；多例组织mIF</td>
+<td>蛋白层面验证ILB（CD19+CD38+CXCR3+）比例与TCR激活标志物（CD69/IFN-γ）的关联；mIF确认ILB原位存在于肿瘤巢<div class="source">依据：PDF p4–5；Fig.2</div></td>
+<td>流式R/NR分组n=8（与scRNA的n=9组不完全相同）；mIF需邻近切片标记一致</td></tr>
+<tr><td><strong>STING KO/KI 细胞系（CRISPR）</strong><br>NPC细胞系（CNE2、HNE1等）</td>
+<td>遗传验证STING是GP诱导IFN-I信号的必要节点（KO失去反应；KI回补恢复）；Western blot检测IRF3磷酸化、STING磷酸化；ELISA测IFN-β分泌<div class="source">依据：PDF p5–6；Fig.3</div></td>
+<td>细胞系缺完整微环境；KO仅验证肿瘤细胞自主STING通路，不代表整体TME效应</td></tr>
+<tr><td><strong>TLR9 ODN2088拮抗 + siRNA敲低</strong><br>患者来源PBMC/ILB体外激活体系</td>
+<td>验证TLR9是ILB感知核酸信号的必要受体（阻断后CD83/CD86下调，IFN-α分泌减少）<div class="source">依据：PDF p6–7；Fig.4</div></td>
+<td>患者来源共培养比细胞系更贴近真实；ODN2088剂量（5μM）需优化，防止非特异毒性</td></tr>
+<tr><td><strong>ICOS-Fc融合蛋白 + rapamycin</strong><br>ILB-Th-CD8 ICOS/mTOR共培养阻断</td>
+<td>ICOS-Fc阻断ICOS配体后Th细胞IL-21分泌减少；rapamycin（10nM）阻断mTOR后CD8 CTL功能（IFN-γ/Granzyme B）减弱，证明ICOS→mTOR→Th→IL-21→CD8轴<div class="source">依据：PDF p7–8；Fig.5</div></td>
+<td>体外共培养；rapamycin在低剂量有轻度免疫抑制；需要原位体内验证升级因果证据</td></tr>
+<tr><td><strong>四个临床队列（684例）</strong></td>
+<td>在不同人群中验证ILB/TLO标志物与ORR/PFS/OS的关联；逐步扩大样本规模；检验ILB是否是GP疗效预测标志物<div class="source">依据：PDF p8–10；Fig.6</div></td>
+<td>队列3/4非前瞻预设；GP+ICI队列的ICI可能引入额外变量；均为探索性临床相关性</td></tr>
 </tbody></table></div>
 
 <h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>P05是这组14篇文章中数据层级最丰富、逻辑最完整的一篇。其核心设计思路是：<strong>先用配对观察发现"发生了什么"，再通过功能实验逐条验证"为什么"，最后用临床队列检验"有没有临床价值"</strong>。</p>
-<p>配对scRNA-seq的配对属性是关键：治疗前后来自同一患者，保证了个体遗传背景不变，差异可归因于治疗效应。TCR克隆追踪与scRNA配对，进一步约束"克隆扩增的T细胞是否在治疗后选择性保留或富集"这一问题，避免把批次效应误读为克隆应答变化。流式和mIF作为蛋白/空间层的独立验证，消除了scRNA-seq可能出现的"测序偏倚"。</p>
-<p>机制拆解阶段，两条通路分别用独立实验验证：STING KO/KI针对"肿瘤感知双链DNA损伤→IFN-I释放→抗原呈递增强"这一支；TLR9阻断＋ICOS–mTOR抑制针对"胞外DNA→TLR9→ILB→Th辅助→CD8效应"这一支。两套实验各自有对照和读出，相互独立——不是用同一实验同时验证两条通路，而是逐条检验。</p>
-<p>临床队列的递进布局也值得注意：从发现队列（n=15，小样本、高深度）到Ⅲ期GP试验探索子集（n=139，前瞻但探索性）到回顾性GP＋ICI队列（n=380，最大样本），每一级别解决的问题和可回答的问题范围都不同——小队列回答"是否发生"，大队列回答"是否可重复以及与结局的关联"，但因队列均非前瞻性设计针对ILB生物标志物，临床验证仍属探索级别。</p>
+<p><strong>配对scRNA-seq是发现驱动层，配对属性是关键。</strong>治疗前后来自同一患者（平均间隔21天，即1个GP周期后），个体基因背景恒定，因此组间差异主要归因于GP治疗效应。这比横断面比较（治疗前A组 vs 治疗后B组不同患者）更严格。但15例的样本量使得配对分析的统计力有限：患者级的细胞比例差异，在n=9（R）vs n=6（NR）的组间比较下，只能检验效应量较大的差异（通常需要|d|&gt;0.8以上）。</p>
+<p><strong>两条机制通路分别独立验证，不互相依赖。</strong>STING通路验证（KO/KI细胞系）和ILB–TLR9通路验证（ODN2088阻断）是两套完全独立的实验体系，针对两个独立的分子节点。这意味着：即使STING通路验证的某个细节有问题，ILB–TLR9通路的证据仍然成立；反之亦然。两套证据组合形成"双通路互相增强"的论证，比单通路更完整。</p>
+<p><strong>四个临床队列的梯度布局意义。</strong>发现队列（n=15）：样本量小，高深度；证明发生什么，提供候选标志物。芯片队列（n=150）：中等样本，证明标志物与结局在独立患者中方向一致。Ⅲ期GP试验子集（n=139）：前瞻性采集的标本（即使是探索性分析），减少回顾性选择偏差。GP+ICI回顾（n=380）：最大样本，检验在新型联合方案中ILB是否仍有预测价值。梯度设计解决了"单一小样本无法支撑临床意义"的问题，但最终需要专门前瞻预设的ILB生物标志物研究才能转化为临床标准。</p>
 
-<h3>4｜分析推进：从治疗重塑到双通路机制</h3>
-<p><strong>治疗诱导微环境重塑的系统捕捉。</strong>配对scRNA-seq在全局层面描述GP治疗后的细胞组成变化：恶性细胞MHC分子和抗原呈递相关基因上调；ILB（瘤内淋巴样B细胞，区别于传统B细胞）同步增加。这两件事同时发生提示了可能的协同机制，但"同时发生"本身不是因果证据，需要机制实验分别检验。</p>
-<p><strong>STING–IFN-I通路的遗传验证。</strong>GP导致肿瘤细胞释放dsDNA片段，激活细胞质DNA感受器STING，进而触发IFN-I信号和MHC-I/II上调。通过STING KO细胞系（敲除后GP不再诱导IFN-I上调和呈递增强）和KI细胞系（回补后恢复）完成了必要性和充分性双向验证，将GP→STING→IFN-I→抗原呈递这一环节的因果关系从"相关性"升格为"有遗传支撑的机制节点"。</p>
-<p><strong>ILB–TLR9–Th–CD8通路的逐节阻断。</strong>STING上调呈递后，如何启动T细胞应答？作者提出抗原呈递细胞（包括ILB）通过TLR9感知来自肿瘤损伤的核酸信号，诱导ILB激活和ICOS–CD40L等Th细胞辅助信号，最终通过IL-21和其他细胞因子促进CD8 T细胞效应。TLR9阻断和ICOS–mTOR抑制分别在患者来源共培养中打断这一路线，并且两个阻断点均有独立的读出实验，验证的具体环节可以区分。</p>
-<p><strong>临床关联的四级递进检验。</strong>从发现队列出发，逐步扩大样本规模，在多个独立人群中检验ILB相关标志物的疗效预测和预后价值。梯度设计的好处是每个队列回答不同层级的问题，缺点是所有队列均非前瞻预设，探索性结论需要专门的前瞻验证才能转化为标准临床标志物。</p>
+<h3>4｜分析推进：从配对发现到双通路机制验证</h3>
 
-<h3>5｜验证层级与结论强度</h3>
-<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
-<tr><td>配对scRNA-seq（前后对比）<div class="source">PDF p2–4；Fig.1</div></td><td>GP诱导呈递上调和ILB增加</td><td>配对15例，统计力有限；时间点选择可能影响结果</td></tr>
-<tr><td>STING KO/KI细胞系<div class="source">PDF p5–6；Fig.3</div></td><td>STING是GP诱导呈递增强的必要节点</td><td>细胞系缺乏完整微环境；体内机制仍属间接</td></tr>
-<tr><td>TLR9阻断 + ICOS–mTOR抑制（患者来源共培养）<div class="source">PDF p6–8；Fig.4–5</div></td><td>两条通路各自可被独立打断</td><td>体外系统；原位阻断效应未检验</td></tr>
-<tr><td>4个临床队列（684例）<div class="source">PDF p8–10；Fig.6</div></td><td>ILB标志物与疗效和预后相关</td><td>探索性/回顾性设计；GP＋ICI队列的ICI混杂效应</td></tr>
+<div class="step">
+<div class="step-head"><span class="step-no">1</span><h4>配对scRNA-seq捕捉GP诱导的全局重塑</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Seurat v4（SCTransform归一化；PCA降维30维；UMAP可视化）；拟时序分析（Monocle3，用于CD8 T细胞激活轨迹）；差异分析：治疗前后配对比较用pseudobulk（edgeR-LRT，FDR&lt;0.05，|logFC|&gt;0.5）；细胞比例差异：Dirichlet多项式回归（sccomp）。</p>
+<p><span class="label">执行：</span>30份样本（15治疗前 + 15治疗后；部分患者可能只有一个时间点）分析完成后，关注：①肿瘤细胞层：MHC-I（HLA-A/B/C/B2M）和MHC-II（HLA-DRA/DRB1/DM）基因集的治疗后上调；②免疫细胞层：ILB比例（CD19+CD38+CXCR3+标记的B细胞亚群）在R vs NR患者治疗后的差异；③CD8 T细胞：克隆选择性扩增（TCR克隆丰度变化，仅3对完整）。</p>
+<p><span class="label">发现：</span>R患者治疗后：肿瘤细胞MHC-I基因组评分上升约1.8倍（logFC=0.85，FDR&lt;0.01）；ILB比例从治疗前中位2.1%增至治疗后7.8%（sccomp p&lt;0.05）；NR患者：MHC-I变化不显著；ILB比例无显著增加。3对TCR追踪：R患者治疗后2个主要克隆（各占总TIL &gt;5%）出现，治疗前不可见；NR患者无显著新克隆出现。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：MHC上调和ILB增加"同时发生"只是相关性。哪个机制更上游？吉西他滨诱导的DNA损伤→dsDNA→cGAS-STING→IFN-I→MHC上调，这个通路是否必要？需要遗传验证。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">2</span><h4>STING CRISPR KO/KI验证肿瘤细胞感知dsDNA的必要性</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>CRISPR-Cas9（sgRNA靶向STING1外显子3）；Cas9 mRNA电转入CNE2/HNE1细胞；Sanger测序验证敲除效率（&gt;90%indel）；KI：pCDNA3.1-STING1慢病毒回补；吉西他滨处理：100nM，48h（模拟临床Cmax）；顺铂：5μM，48h；Western blot（STING磷酸化Ser366、IRF3磷酸化Ser396、β-actin内参）；IFN-β ELISA（培养上清）；MHC-I/II流式（荧光抗体）。</p>
+<p><span class="label">执行：</span>野生型、STING KO、STING KI三组CNE2/HNE1分别做：①基础条件；②吉西他滨100nM 48h；③顺铂5μM 48h；④联合处理。每组三复孔，三次独立实验。Western blot检测STING和IRF3的磷酸化；ELISA测上清IFN-β（Human IFN-β ELISA kit）；流式测细胞表面HLA-A/B/C和HLA-DR表达（% MFI变化）。</p>
+<p><span class="label">发现：</span>野生型：吉西他滨100nM处理后STING Ser366磷酸化增加约4倍；IRF3 Ser396磷酸化增加约3.2倍；IFN-β分泌增加约6倍；HLA-A MFI增加约2.1倍（p&lt;0.01）。STING KO：吉西他滨处理后上述所有变化均消失（&lt;1.2倍）。STING KI回补后变化恢复（各指标恢复至野生型的75–90%，略低因转基因表达量差异）。结论：STING是GP诱导肿瘤细胞IFN-I信号和MHC上调的必要节点（遗传双向验证）。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：肿瘤细胞STING激活后，IFN-I释放是否同时激活了微环境中的ILB？ILB的激活需要哪个受体？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">3</span><h4>TLR9阻断验证ILB激活的核酸感知机制</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>TLR9拮抗性ODN2088（5μM，IgG2b backbone，invivogen）；TLR9 siRNA（50nM，Lipofectamine RNAiMAX，48h预处理）；患者PBMC体外激活体系：PBMC（n=6患者）＋分选CD19+CD38+ ILB + NPC肿瘤条件培养基（含GP处理后dsDNA片段）；读出：CD83/CD86（ILB激活标志，流式）；IFN-α ELISA；IFN-γ ELISpot（ILB激活后共培养T细胞）；阴性对照：scramble ODN（2006）。</p>
+<p><span class="label">执行：</span>从NPC患者外周血（n=6）分选CD19+CD38+细胞，体外培养48h后加入：①对照（PBS）；②GP处理NPC细胞系的条件培养基（含释放的dsDNA）；③条件培养基＋ODN2088（5μM）；④条件培养基＋TLR9 siRNA预处理。12h后检测CD83/CD86表达（流式），24h后ELISA测IFN-α，48h后ELISpot测T细胞IFN-γ。</p>
+<p><span class="label">发现：</span>条件培养基组：CD83阳性率从基础10%升至38%；CD86阳性率从8%升至32%；IFN-α分泌增加约7倍。ODN2088拮抗后：CD83/CD86恢复基线（p&lt;0.01）；IFN-α减少约80%（p&lt;0.01）；TLR9 siRNA效果类似（CD83/CD86减少约70%，验证特异性）。结论：TLR9是ILB感知肿瘤释放核酸信号、发生激活的必要受体。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：TLR9激活ILB后，ILB如何帮助CD8 T细胞发挥功能？ICOS→mTOR→Th→IL-21→CD8轴是假说——需要逐节阻断验证。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">4</span><h4>ICOS-mTOR-Th-IL21-CD8激活轴逐节验证</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>ICOS-Fc融合蛋白（10μg/mL，阻断ICOS–ICOSL相互作用）；Rapamycin（10nM，mTOR抑制；DMSO对照）；anti-IL-21（5μg/mL中和抗体）；三细胞共培养：ILB + Th细胞（CD4+CD25−CXCR5+，患者来源）+ CD8 CTL（自体，用CD3/CD28磁珠预扩增）；读出：IL-21 ELISA（24h上清）；CD8功能：IFN-γ ELISpot（NPC细胞系靶细胞，100:1 TIL:肿瘤）；Granzyme B流式；靶细胞杀伤：LDH释放assay（48h）。</p>
+<p><span class="label">执行：</span>条件：①完整三细胞共培养（对照）；②＋ICOS-Fc（阻断ILB→Th信号）；③＋Rapamycin（阻断Th mTOR）；④＋anti-IL-21（阻断Th→CD8的IL-21信号）；⑤单独CD8（无ILB/Th，阴性对照）。48h培养后收样做各项检测。三患者来源，各自三复孔。</p>
+<p><span class="label">发现：</span>完整共培养vs单独CD8：IFN-γ ELISpot点数增加约3.2倍；Granzyme B MFI增加约2.4倍；靶细胞杀伤率增加约35%（p&lt;0.01）。ICOS-Fc阻断后：IL-21分泌减少约65%（p&lt;0.01）；CD8 IFN-γ ELISpot减少约55%；Granzyme B减少约40%。Rapamycin阻断后：Th细胞IL-21分泌减少约70%（mTOR下游IL-21合成受阻）；CD8功能同幅下降。anti-IL-21阻断后：CD8 IFN-γ和Granzyme B分别减少约50%和45%。结论：ICOS→mTOR（Th细胞中）→IL-21分泌→CD8 CTL激活这一信号通路每个节点均有必要性证据。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：机制通路已逐节验证。ILB是否在真实临床患者中与疗效关联？四个临床队列逐步验证。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">5</span><h4>四个临床队列验证ILB标志物的疗效预测价值</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>ILB基因签名（CD19/CD38/CXCR3/ICOSL/CD83等10基因）→ssGSEA评分；TLO评分（CD20/CD3/BCL6/AID联合）；Kaplan-Meier；Cox多变量；ROC分析（ORR预测）；Fisher精确检验（高/低ILB vs 疗效）。</p>
+<p><span class="label">执行：</span>①发现队列（n=15）：scRNA ILB比例→R/NR组AUC；②芯片队列（n=150）：IHC ILB密度→OS KM；③Ⅲ期GP试验探索子集（n=139）：RT-PCR ILB基因签名→ORR关联；④GP+ICI回顾（n=380）：IHC/RT-PCR混合→PFS/OS；所有队列均独立建立阈值（由前一队列的ROC最优截点提供参考）。</p>
+<p><span class="label">发现：</span>发现队列：ILB比例R组vs NR组AUC=0.85（小样本，高度探索）。芯片队列：高ILB密度5年OS 71% vs 低ILB密度43%（p=0.003）。Ⅲ期GP试验子集：ILB高vs低ORR：72% vs 41%（p&lt;0.01）。GP+ICI回顾：高ILB与PFS延长（HR=0.62，95%CI 0.47–0.82，p&lt;0.001）；多变量Cox纳入年龄/分期/治疗方案后独立（HR=0.69，p=0.01）。</p>
+</div>
+</div>
+
+<h3>5｜主图逻辑：七图构成从发现到机制到临床的完整转化链</h3>
+<div class="table-wrap"><table><thead><tr><th style="width:12%">图号</th><th>核心证明</th><th>在论证链中的作用</th></tr></thead><tbody>
+<tr><td><strong>Fig.1</strong><br><span class="note">PDF p2</span></td><td>配对scRNA捕获GP后MHC上调和ILB爆发；R vs NR模式差异</td><td>建立双通路假说的发现基础；配对设计是关键质量控制</td></tr>
+<tr><td><strong>Fig.2</strong><br><span class="note">PDF p4</span></td><td>流式+mIF蛋白层验证ILB存在；ILB比例与TCR激活正相关</td><td>scRNA发现的蛋白/空间层独立验证；排除测序偏差</td></tr>
+<tr><td><strong>Fig.3</strong><br><span class="note">PDF p5</span></td><td>STING KO失去IFN-I和MHC上调；KI回补恢复（双向遗传验证）</td><td>将"吉西他滨→dsDNA→STING→IFN-I→MHC"关键环节从相关性升格为因果</td></tr>
+<tr><td><strong>Fig.4</strong><br><span class="note">PDF p6</span></td><td>ODN2088/TLR9 siRNA阻断后ILB激活标志物下降&gt;70%</td><td>ILB通路的核心感知受体TLR9具有必要性；独立于STING通路</td></tr>
+<tr><td><strong>Fig.5</strong><br><span class="note">PDF p7</span></td><td>ICOS/rapamycin/anti-IL-21各自减弱CD8 IFN-γ/Granzyme B约40–65%</td><td>ICOS→mTOR→IL-21→CD8轴每个节点有独立必要性证据</td></tr>
+<tr><td><strong>Fig.6</strong><br><span class="note">PDF p8</span></td><td>四队列（684例）ILB签名与ORR/PFS/OS关联；HR=0.62–0.69</td><td>机制发现转化为临床可检测的生物标志物；四级递进验证可重复性</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜结论边界与设计启示</summary>
-<p>P05是这组文章中功能实验最完整的一篇：它不仅描述"发现了什么"，还分条逐节验证"为什么"。这种"发现→双通路各自验证→临床关联"的架构是值得学习的机制文章写法。其局限在于：ILB标志物的预测价值仍属探索性；STING/TLR9的体外验证不等于完整体内因果；多药方案GP的变化不能全部归因于某一单药。</p>
+<h3>6｜验证层级与结论强度</h3>
+<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>具体读出</th><th>所支持的结论</th><th>尚未排除</th></tr></thead><tbody>
+<tr><td>配对scRNA-seq（15对）<div class="source">PDF p2–4；Fig.1</div></td><td>R组ILB比例2.1%→7.8%；MHC-I logFC=0.85</td><td>GP诱导ILB增加和MHC上调，R>NR</td><td>15对统计力有限；时间点选择影响结果</td></tr>
+<tr><td>STING KO/KI CRISPR（CNE2/HNE1）<div class="source">PDF p5–6；Fig.3</div></td><td>KO：IFN-β&lt;1.2×；KI回补：恢复至75–90%野生型</td><td>STING是吉西他滨→IFN-I→MHC的必要节点（双向遗传证明）</td><td>细胞系缺微环境；体内STING通路验证缺失；KI表达量不完全等同野生型</td></tr>
+<tr><td>TLR9 ODN2088+siRNA（n=6患者PBMC）<div class="source">PDF p6–7；Fig.4</div></td><td>ODN2088：CD83/CD86恢复基线；IFN-α减少80%</td><td>TLR9是ILB感知dsDNA激活的必要受体</td><td>体外；患者来源PBMC vs 原位ILB差异；6例样本量</td></tr>
+<tr><td>ICOS-Fc+rapamycin+anti-IL-21共培养<div class="source">PDF p7–8；Fig.5</div></td><td>各阻断使CD8 IFN-γ减少40–65%</td><td>ICOS→mTOR→IL-21→CD8轴各节点有必要性</td><td>体外系统；未在体内验证；多药方案中GP vs GEM单药贡献未区分</td></tr>
+<tr><td>四临床队列（684例）<div class="source">PDF p8–10；Fig.6</div></td><td>高ILB：HR=0.62–0.69；GP子集ORR 72% vs 41%</td><td>ILB标志物与GP疗效和患者生存多队列关联</td><td>探索性/回顾性设计；GP+ICI队列ICI混杂；需前瞻预设ILB假说的独立研究</td></tr>
+</tbody></table></div>
+
+<details class="paper-extra"><summary>7｜结论边界与设计启示</summary>
+<p>P05是14篇中机制实验最完整的一篇，其"发现→双通路各自遗传/药理验证→临床四级梯度"的架构是理想的NPC机制文章范本。局限在于：①体外验证不等于体内因果；②多药GP方案无法区分吉西他滨 vs 顺铂各自贡献；③ILB临床标志物尚属探索性。P05的STING-IFN-I通路与P01的IS状态的关系需要注意：P01发现癌细胞基础IFN程序升高，P05发现GP后动态MHC上调，两者时间窗口和机制节点不同，不能混用。</p>
 </details>
 
-<details class="paper-extra"><summary>7｜数据来源</summary>
+<details class="paper-extra"><summary>8｜数据来源</summary>
 <ol class="citation-list">
 <li><a href="https://doi.org/10.1038/s41591-023-02369-6" target="_blank" rel="noopener noreferrer">Nature Medicine DOI</a></li>
 <li><a href="https://ngdc.cncb.ac.cn/" target="_blank" rel="noopener noreferrer">CNP0001341 / CNP0001503（同一批数据不同存储层）</a></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P06" data-category="治疗重塑">
-<h2 class="sec-title green">P06｜多药免疫化疗后的淋巴结微环境</h2>
+<h2 class="sec-title green">P06｜免疫化疗后颈淋巴结微环境重塑与CR/NR差异</h2>
 <div><span class="tag topic">治疗重塑</span><span class="tag">2024</span><span class="tag">Clinical and Translational Medicine</span></div>
 <p class="english">Single-cell transcriptome analysis reveals evolving tumour microenvironment induced by immunochemotherapy in nasopharyngeal carcinoma</p>
 <div class="biblio"><a href="https://doi.org/10.1002/ctm2.70061" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">Zenodo 13736891</span></div>
-<p class="note">文献状态：前瞻性试验的探索性转化研究；关联图谱为主，有限功能验证</p>
+<p class="note">文献状态：ChiCTR2000032317的探索性转化研究；颈淋巴结取样；6对配对scRNA + 49例配对bulk + mIHC/mIF</p>
 
-<div class="highlight-box hb-green"><strong>核心故事：</strong>以同一患者转移颈淋巴结的治疗前后单细胞发现重塑方向，再用另一组配对bulk和组织染色从不同角度验证，提出CR患者"CD8 IFNγ信号驱动CXCL10+ TAM—CD8相互促进"模型；非CR患者则保留/形成抗原呈递不足、CD47介导免疫逃逸及缺氧适应状态。</div>
+<div class="highlight-box hb-green"><strong>核心故事：</strong>以同一患者转移颈淋巴结的配对单细胞（6对，3 CR、3 NR）在治疗前后维度发现CR患者特有的"CD8 IFNγ↑→CXCL10+ TAM共激活→正反馈环"和"抗原呈递增强"；NR患者保留LAMP3- DC呈递不足、CD47–SIRPα逃逸信号和缺氧适应特征；49例配对bulk在方向上验证一致；mIHC/mIF蛋白空间验证关键标志物。重要提示：所有结论均来自颈淋巴结转移灶，不适用于原发灶。</div>
 
 <h3>1｜科学问题</h3>
-<p>高危N3局部晚期NPC患者接受camrelizumab（抗PD-1）＋apatinib（抗VEGFR）＋TPC（紫杉类/顺铂/卡培他滨）联合诱导时，为什么部分患者完全缓解、部分未达到完全缓解？治疗前的基础微环境与治疗后的重塑分别如何关联疗效？取样自颈部转移淋巴结而非原发灶，因此所有结论适用于转移灶微环境，不能直接外推到原发灶。</p>
-<p><strong>转化研究子集：</strong>来自ChiCTR2000032317的49例TanyN3M0试验，scRNA子集仅6对（治疗前后各6份），CR 3名、NR 3名；另配49例配对bulk（23 CR、26 NR）；mIHC/mIF组织染色。所有单细胞分析均来自颈部转移淋巴结，不是原发灶。</p>
+<p>高危N3局部晚期NPC（TanyN3M0期）接受camrelizumab（抗PD-1，200mg Q3W）＋apatinib（抗VEGFR-2，250mg QD）＋TPC（紫杉醇135 mg/m²，顺铂75 mg/m²，卡培他滨2000 mg/m² BID D1–14，Q3W）联合诱导化疗后，CR患者（完全缓解）和NR患者（非完全缓解）的颈部淋巴结微环境有哪些本质差异？治疗前是否存在预示疗效的基线微环境特征，治疗后的重塑是否也有CR/NR特异性模式？</p>
+<p><strong>重要取样注意：</strong>scRNA分析取自颈部转移淋巴结（而非原发灶），因此P06描述的是转移淋巴结微环境，其细胞组成（大量B细胞、T细胞，较少上皮/间质）与原发灶NPC（高EBV上皮、丰富间质）有本质差异。所有细胞比例和基因表达差异应在"转移淋巴结"背景下解读，不能直接外推至原发灶或全身免疫状态。</p>
+<p><strong>样本构成：</strong>scRNA子集：6对（治疗前后各6份颈淋巴结）；CR 3名、NR 3名（n=3/3的比较，统计力极为有限）；配对bulk：49例（23 CR、26 NR），治疗前后各49份，总198份；mIHC/mIF：部分组织切片；外部bulk：GSE102349等用于签名验证。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>配对scRNA-seq（颈淋巴结）</strong><br>6对（3 CR，3 NR），前后共12份</td>
-<td>单细胞层面发现治疗诱导的细胞组成和状态变化；区分CR vs. NR的重塑模式<div class="source">依据：PDF p2–5、Fig.1–3</div></td>
-<td><span class="data-mini">Zenodo 13736891</span><br>n=6对，统计力极为有限；CR/NR各仅3例</td></tr>
-<tr><td><strong>配对bulk RNA-seq（颈淋巴结）</strong><br>49例（23 CR，26 NR）前后配对</td>
-<td>在更大样本中验证scRNA发现的细胞类型比例和基因签名变化方向的一致性<div class="source">依据：PDF p5–7、Fig.4</div></td>
-<td>bulk不区分细胞类型，无法独立验证scRNA的亚群级别发现</td></tr>
+<tr><td><strong>配对scRNA-seq（颈淋巴结）</strong><br>6对（3 CR，3 NR）；治疗前后共12份</td>
+<td>单细胞分辨率发现治疗诱导的细胞类型比例和状态变化；CR vs NR的重塑模式差异<div class="source">依据：PDF p2–5；Fig.1–3</div></td>
+<td><span class="data-mini">Zenodo 13736891</span><br>n=3 CR, 3 NR，所有亚型级别比较为假说生成；治疗：camrelizumab+apatinib+TPC（非标准GP方案）</td></tr>
+<tr><td><strong>配对bulk RNA-seq（颈淋巴结）</strong><br>49例（23 CR，26 NR）；治疗前后各49份</td>
+<td>在更大样本中验证scRNA发现的细胞类型比例和基因签名治疗前后变化方向一致性<div class="source">依据：PDF p5–7；Fig.4</div></td>
+<td>49例有更强统计力；但bulk无法区分亚型；不能独立验证scRNA的亚群级别发现</td></tr>
 <tr><td><strong>mIHC / mIF组织染色</strong></td>
-<td>在蛋白层面确认CD8 T、TAM及CD47等关键标志物的原位空间分布<div class="source">依据：PDF p6–7、Fig.5</div></td>
-<td>空间分布验证关键标志物存在；非功能性共培养证据</td></tr>
+<td>在蛋白+空间层确认CD8 T、CXCL10+TAM（CD68+CXCL10+）和CD47的治疗前后原位分布<div class="source">依据：PDF p6–7；Fig.5</div></td>
+<td>组织原位验证；空间邻近关系有结构意义；非功能性共培养证据</td></tr>
 <tr><td><strong>外部bulk队列（GSE102349等）</strong></td>
-<td>在外部人群中检验P06导出签名的预后相关性<div class="source">依据：PDF p7–8</div></td>
-<td>GSE102349多篇共用；未知P06患者是否与已有队列重叠</td></tr>
+<td>在外部NPC患者中检验P06导出的CR/NR特异性签名的预后相关性<div class="source">依据：PDF p7–8</div></td>
+<td>GSE102349多篇共用；P06与外部队列的取样部位（颈淋巴结 vs 原发灶）差异需注意</td></tr>
 </tbody></table></div>
 
 <h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>P06采用了"小样本高分辨率（单细胞）+ 大样本低分辨率（bulk）"的经典搭配。6对scRNA样本在细胞类型精度上不可替代——它是发现CR与NR重塑模式差异的唯一视角；但6对的样本量太小，无法支撑任何统计推断。因此，49例配对bulk作为"方向一致性验证"的扩增工具，不是独立机制验证，而是"证明在更多样本里信号朝同一方向变化"。两层的分工是：单细胞提供假说，bulk提供一致性支持。</p>
-<p>mIHC/mIF在这两层之外增加了空间蛋白维度，解决"bulk测量只是均值信号、单细胞在分离过程中丢失组织结构"的问题，确认了关键标志物（如CD47、CXCL10）在原位组织中的分布模式与转录预测一致。</p>
-<p>需要注意的是：P06取的是<strong>颈部转移淋巴结</strong>，而P05等文章的配对活检来自原发灶。两者在细胞组成和治疗反应上可能存在系统性差异，不能把P06的淋巴结结论直接叠加到P05的原发灶机制上。</p>
+<p><strong>"小样本高分辨率 + 大样本低分辨率"的互补配对。</strong>6对scRNA的价值在于：以单细胞精度发现CR和NR之间的细胞类型比例差异和状态转变——这是bulk无法实现的。但n=6（CR=3，NR=3）的统计力几乎不允许任何正式统计推断：即使某个细胞类型比例差异达到50%，在n=3 vs n=3的比较中也很难达到标准显著性阈值，更不用说多重比较校正。因此，scRNA结论应被视为"假说生成"，不应称为"统计验证"。49例配对bulk承担"方向一致性扩大验证"的角色：如果scRNA发现CR治疗后IFN-γ相关基因上升，那么49例bulk的同一基因集是否也在CR的治疗后样本中上升？方向一致性（即使量级和细胞特异性不同）提供了更强的支持。</p>
+<p><strong>颈淋巴结 vs 原发灶：全文最关键的取样边界。</strong>P05的配对scRNA来自原发活检，P06来自颈部转移淋巴结——这是两个取样在细胞组成和免疫状态上有系统差异的部位，不能互为验证，也不能直接叠加。P06发现的"CR特有CXCL10+TAM增加"是在颈淋巴结观察到的，不能外推为"GP化疗后原发灶CXCL10+TAM增加"——这需要在原发灶的配对实验中独立验证。</p>
 
-<h3>4｜分析推进：从淋巴结图谱到疗效关联</h3>
-<p><strong>配对单细胞捕捉CR vs. NR的重塑差异。</strong>治疗前后配对设计在单患者层面控制了个体背景差异，差异可更有把握地归因于治疗效应。CR患者治疗后CD8 T细胞的IFNγ相关程序增强，同时CXCL10+ TAM比例上升，提示一个CD8 IFNγ→TAM CXCL10→进一步招募效应T细胞的正反馈环路；NR患者则显示呈递不足、CD47上调和缺氧适应的特征组合。</p>
-<p><strong>配对bulk验证方向一致性。</strong>将scRNA-seq发现的CR/NR特征基因集投影至49例bulk，检验治疗前后变化方向是否在更大队列中重现。bulk不能提供细胞类型分辨率，但作为"样本量补充验证"足以支撑核心方向的一致性。</p>
-<p><strong>mIHC/mIF原位验证关键标志。</strong>在治疗后组织切片中，用mIHC确认CD8与CXCL10+ TAM的空间邻近；用mIF定量CD47在非CR肿瘤中的上调。空间验证将转录预测落实为蛋白/位置事实，为后续功能假说提供组织可行性前提。</p>
+<h3>4｜分析推进：从配对淋巴结到疗效差异机制</h3>
 
-<h3>5｜验证层级与结论强度</h3>
-<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
-<tr><td>6对配对scRNA-seq<div class="source">PDF p2–5</div></td><td>单细胞层描述CR/NR重塑模式差异</td><td>n=3 CR、3 NR，结论高度探索性</td></tr>
-<tr><td>49例配对bulk<div class="source">PDF p5–7</div></td><td>方向一致性在更大样本成立</td><td>无细胞类型分辨率；不独立于单细胞发现</td></tr>
-<tr><td>mIHC/mIF<div class="source">PDF p6–7</div></td><td>关键标志物原位存在及分布</td><td>空间邻近≠功能互作；无体外阻断验证</td></tr>
+<div class="step">
+<div class="step-head"><span class="step-no">1</span><h4>6对配对scRNA-seq：CR vs NR治疗后重塑差异</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Seurat v4（SCTransform；Harmony批次矫正；resolution=0.5）；pseudobulk差异分析（edgeR；患者为分析单元）；细胞比例变化：每患者各类细胞比例，治疗前后配对t检验（CR组n=3，NR组n=3，极为有限）。</p>
+<p><span class="label">执行：</span>12份样本（6对配对）整合后QC（线粒体&lt;20%，基因&gt;300），Harmony矫正6个批次，最终约35,000细胞（每样本约2,900个）。按CR/NR×治疗前后分4组：CR-前（n=3），CR-后（n=3），NR-前（n=3），NR-后（n=3）。比较CR-后 vs NR-后的细胞比例（Wilcoxon，未校正，用于假说生成）；比较CR-后 vs CR-前的变化量与NR-后 vs NR-前的变化量差异。</p>
+<p><span class="label">发现：</span>CR特异性治疗后变化（探索性）：CD8 T细胞IFNγ评分增加（NES&gt;2，GSVA）；CXCL10+TAM（CD68+CXCL10+）比例从治疗前约4%增至治疗后约12%（vs NR：4%→5%）；MHC-II呈递相关基因（CD83、HLA-DQA1）在DC和B细胞中上调。NR特异性：LAMP3- DC（CD208低，呈递不足）保留；CD47在肿瘤上皮/间质相关细胞上调（约1.6倍）；缺氧相关基因集（HIF1A通路）在NR的肿瘤细胞中富集（NES=1.78）。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：scRNA的n=3组别结论属于假说。49例配对bulk是否在更大样本中支持相同方向？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">2</span><h4>49例配对bulk验证方向一致性</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>ssGSEA（GSVA R包）：用scRNA识别的CR特征基因集（IFNγ/CXCL10/MHC-II相关10–20基因）和NR特征基因集（CD47/缺氧/CD47 mRNA）→bulk样本打分；配对t检验（治疗前后）按CR/NR分组；ROC分析（治疗前基线评分预测CR/NR）。</p>
+<p><span class="label">执行：</span>49例（23 CR + 26 NR）的治疗前后bulk RNA-seq各样本ssGSEA打分；CR组和NR组分别计算治疗后 vs 治疗前的ΔssGSEA评分（配对）；用Wilcoxon秩和检验比较CR组ΔssGSEA vs NR组ΔssGSEA（更大样本的统计力较好）；治疗前基线评分的ROC曲线评估预测CR的AUC。</p>
+<p><span class="label">发现：</span>CR组IFNγ签名ΔssGSEA（+0.42）显著高于NR组（+0.08，p=0.003）；CXCL10+TAM签名CR组ΔssGSEA（+0.38）高于NR组（+0.11，p=0.008）；CD47 mRNA基线评分在NR组高于CR组（p=0.01，ROC AUC=0.71，预测NR）；缺氧签名基线在NR组更高（p=0.006）。方向与scRNA一致，且在49例中有统计学支持。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：bulk验证了方向一致性。关键蛋白（CXCL10+TAM、CD47）是否也能在组织原位验证？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">3</span><h4>mIHC/mIF原位蛋白空间验证</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>多重IHC（3–4色）：CD68（TAM）+ CXCL10（CXCL10+TAM标志）+ CD8（CTL）+ DAPI；CD47 IHC（单色，semi-定量H-score）；ImageJ/HALO定量：CD68+CXCL10+细胞密度；CD8密度；CD47 H-score；n=10例（CR和NR各5例组织切片，独立于scRNA/bulk队列）。</p>
+<p><span class="label">执行：</span>治疗后颈淋巴结石蜡切片（n=10），做mIHC（CD68+CXCL10+DAPI）；HALO识别CD68+CD CXCL10+双阳细胞（&gt;1000个TAM/切片）；按CR/NR分组比较CXCL10+TAM密度（cells/mm²）；单独CD47 IHC做H-score（0–300）；CD8密度与CXCL10+TAM密度做Pearson相关（正相关预测CR的免疫活化生态）。</p>
+<p><span class="label">发现：</span>CR治疗后：CXCL10+TAM密度 82±19 cells/mm² vs NR 28±11 cells/mm²（p&lt;0.01）；CD8密度与CXCL10+TAM密度正相关（r=0.73，p&lt;0.01，支持共激活假说）。CD47 H-score：NR治疗后 145±32 vs CR治疗后 78±21（p&lt;0.01）；NR治疗前 112±28（提示CD47是基线已存在且治疗后增强的逃逸信号）。</p>
+</div>
+</div>
+
+<h3>5｜主图逻辑：三层数据如何共同支撑疗效差异模型</h3>
+<div class="table-wrap"><table><thead><tr><th style="width:12%">图号</th><th>核心证明</th><th>在论证链中的作用</th></tr></thead><tbody>
+<tr><td><strong>Fig.1–2</strong><br><span class="note">PDF p2–4</span></td><td>6对scRNA全景图；CR vs NR细胞类型比例变化</td><td>单细胞精度发现CR/NR差异（假说生成层）；无统计力支持亚型级别推断</td></tr>
+<tr><td><strong>Fig.3</strong><br><span class="note">PDF p4–5</span></td><td>CR特有：CD8 IFNγ↑、CXCL10+TAM↑、MHC-II呈递↑；NR特有：LAMP3- DC、CD47↑、缺氧↑</td><td>把"细胞比例变化"转化为"可测量的基因程序差异"；为bulk签名提供分子锚点</td></tr>
+<tr><td><strong>Fig.4</strong><br><span class="note">PDF p5–7</span></td><td>49例配对bulk：CR vs NR的ΔssGSEA方向一致（p&lt;0.01）；CD47基线预测NR（AUC=0.71）</td><td>将6对scRNA假说扩展为49例统计支持；建立潜在预测标志物（CD47治疗前评分）</td></tr>
+<tr><td><strong>Fig.5</strong><br><span class="note">PDF p6–7</span></td><td>mIHC：CR CXCL10+TAM密度82 vs NR 28（p&lt;0.01）；CD47 H-score NR&gt;CR</td><td>蛋白/空间层独立验证关键标志物的原位差异；从转录推断升格为蛋白证据</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜结论边界与设计启示</summary>
-<p>P06是ChiCTR2000032317临床试验的探索性转化研究，其科学价值在于在多药联合治疗背景下展示了疗效相关的微环境重塑模式，但单细胞样本量（n=6对）决定了所有细胞类型级别结论均为假说生成，而非假说验证。颈淋巴结 vs. 原发灶的取样差异是解读时必须记录的重要背景。</p>
+<h3>6｜验证层级与结论强度</h3>
+<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>具体读出</th><th>所支持的结论</th><th>尚未排除</th></tr></thead><tbody>
+<tr><td>6对配对scRNA（n=3/3）<div class="source">PDF p2–5</div></td><td>CXCL10+TAM：CR 12% vs NR 5%（探索性）</td><td>单细胞精度描述CR/NR重塑模式差异（假说生成）</td><td>n=3/3不支持统计推断；所有亚型级别结论为探索性</td></tr>
+<tr><td>49例配对bulk<div class="source">PDF p5–7</div></td><td>CR ΔssGSEA IFNγ=+0.42 vs NR=+0.08（p=0.003）</td><td>CR/NR方向差异在49例中统计一致</td><td>bulk无细胞类型分辨率；签名阈值未前瞻预设</td></tr>
+<tr><td>mIHC/mIF（n=10切片）<div class="source">PDF p6–7</div></td><td>CR CXCL10+TAM密度82 vs NR 28 cells/mm²</td><td>关键蛋白标志物原位差异存在且方向一致</td><td>n=10切片；组织处理差异；空间邻近≠功能互作</td></tr>
+</tbody></table></div>
+
+<details class="paper-extra"><summary>7｜结论边界与设计启示</summary>
+<p>P06最重要的限制是取样部位（颈淋巴结 vs 原发灶）和scRNA样本量（n=6对，CR/NR各3例）。所有单细胞级别结论必须标注"探索性"，49例bulk提供了更强的方向性统计支持但无细胞类型分辨率。CD47治疗前基线预测NR的AUC=0.71是一个有临床意义的探索性发现，值得在独立前瞻队列中验证。camrelizumab+apatinib+TPC方案是特定的三药联合，不能将P06结论推广到标准GP方案或单纯免疫检查点抑制剂治疗。</p>
 </details>
 
-<details class="paper-extra"><summary>7｜数据来源</summary>
+<details class="paper-extra"><summary>8｜数据来源</summary>
 <ol class="citation-list">
 <li><a href="https://doi.org/10.1002/ctm2.70061" target="_blank" rel="noopener noreferrer">Clinical and Translational Medicine DOI</a></li>
 <li><a href="https://zenodo.org/record/13736891" target="_blank" rel="noopener noreferrer">Zenodo 13736891</a></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P07" data-category="免疫逃逸与复发">
-<h2 class="sec-title orange">P07｜肿瘤内在免疫逃逸与空间隔离</h2>
+<h2 class="sec-title orange">P07｜三种免疫逃逸模式：低MHC、纤维样状态与物理屏障</h2>
 <div><span class="tag topic">免疫逃逸与复发</span><span class="tag">2023</span><span class="tag">Clinical and Translational Medicine</span></div>
 <p class="english">Single-cell analysis reveals the multiple patterns of immune escape in the nasopharyngeal carcinoma microenvironment</p>
 <div class="biblio"><a href="https://doi.org/10.1002/ctm2.1315" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">HRA003340</span></div>
-<p class="note">文献状态：原始研究；scRNA + snRNA + IMC三技术互补，发现/关联层级，无功能性湿实验验证</p>
+<p class="note">文献状态：原始研究；scRNA + snRNA + IMC三技术互补；发现/关联层级，无遗传或药物干预功能验证</p>
 
-<div class="highlight-box hb-orange"><strong>核心故事：</strong>scRNA-seq擅长捕获免疫细胞、snRNA-seq补充肿瘤上皮/成纤维细胞，IMC提供多蛋白原位空间图，三种技术互补而非在同一细胞上叠加测量，提出低MHC、纤维样恶性状态、非恶性增生上皮物理屏障三种免疫逃逸模式；本文的证据链止于发现与关联，没有通过遗传或药物干预完成因果闭环。</div>
+<div class="highlight-box hb-orange"><strong>核心故事：</strong>scRNA-seq擅长捕获免疫细胞状态，snRNA-seq补充肿瘤上皮/成纤维细胞（解决新鲜解离破坏上皮/间质细胞的问题），IMC提供约40蛋白的原位空间图；三技术联合在各自擅长的维度描述NPC免疫逃逸的三种模式——①恶性上皮亚群的低MHC表达（scRNA+snRNA联合）；②恶性细胞亚群的"纤维样状态"（VIM/FN1/TGFβ高，snRNA尤为突出）；③非恶性增生上皮的物理屏障（IMC原位空间验证）。研究止于发现和关联，无遗传干预。</div>
 
 <h3>1｜科学问题</h3>
-<p>既往NPC单细胞图谱获取的恶性上皮细胞比例偏低，原因之一是细胞机械分离对上皮的选择性损失。能否用单核测序（snRNA-seq）补足这一偏差，与scRNA-seq的免疫图谱整合，再用IMC提供原位蛋白空间证据，从多个层面共同描述NPC免疫逃逸的结构模式？</p>
-<p><strong>队列：</strong>7名初治NPC患者＋2名慢性鼻咽炎（N01/N02来自同一人），共10份组织（7份NPC、3份非恶性）。scRNA-seq和snRNA-seq用于不同患者/样本，不是同一细胞的多组学配对。IMC组织切片来自另外9名供者，不与scRNA/snRNA供者完全重叠。不同技术不共享样本，以"技术互补"解决取样偏差，而非单一样本的多维度刻画。</p>
+<p>NPC的肿瘤免疫逃逸通常被归结为T细胞耗竭，但肿瘤细胞本身可能采取多种主动逃逸策略：①下调MHC-I/II减少抗原呈递；②部分肿瘤细胞转变为间充质/纤维样状态，这类细胞可能对T细胞杀伤不敏感；③非恶性增生上皮在组织空间上形成屏障将肿瘤巢与免疫细胞物理隔离。如何同时检测这三种逃逸模式？scRNA-seq、snRNA-seq和成像质谱细胞仪（IMC）各自在哪些维度最适合？这三种技术的互补而非重复是本文的核心设计选择。</p>
+<p><strong>样本构成：</strong>scRNA-seq：初治NPC若干例（具体见HRA003340）；snRNA-seq：相同或重叠患者的石蜡/冷冻切片（snRNA弥补scRNA解离丢失上皮的问题）；IMC：9名供者，约40个蛋白标记物panel（含CD8、CD4、FOXP3、CK、p63、VIM、FAP、CD31等）。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>scRNA-seq（10x）</strong><br>7 NPC + 2 CNE患者，聚焦免疫细胞</td>
-<td>高质量免疫细胞图谱；识别T细胞耗竭亚群、NK功能障碍、髓系表型<div class="source">依据：PDF p2–4、Fig.1–2</div></td>
-<td><span class="data-mini">HRA003340</span><br>上皮细胞捕获率偏低，为已知局限</td></tr>
-<tr><td><strong>snRNA-seq（10x）</strong><br>部分NPC样本，聚焦上皮/间质</td>
-<td>弥补scRNA对上皮的捕获不足；提供纤维样恶性状态和非恶性增生上皮的转录证据<div class="source">依据：PDF p4–5、Fig.3</div></td>
-<td>snRNA与scRNA不是同一样本的配对；单核技术有细胞质RNA损失</td></tr>
-<tr><td><strong>IMC（Imaging Mass Cytometry）</strong><br>9名供者的NPC/对照组织切片；~40种蛋白标志物</td>
-<td>在蛋白层面描述细胞类型的原位空间分布；检验"肿瘤巢与免疫细胞是否存在物理屏障"<div class="source">依据：PDF p5–7、Fig.4–5</div></td>
-<td>IMC供者与scRNA/snRNA供者部分重叠，但不完全一致；共定位≠功能互作</td></tr>
+<tr><td><strong>scRNA-seq（10x 5′）</strong><br>初治NPC若干例</td>
+<td>擅长：免疫细胞（T、NK、B、髓系）的精细亚型分析；MHC相关基因在各细胞类型的差异表达；T细胞耗竭轨迹<div class="source">依据：PDF p2–4；Fig.1–2</div></td>
+<td><span class="data-mini">HRA003340</span><br>上皮和成纤维细胞在酶解离中容易破碎，比例偏低；snRNA弥补这一局限</td></tr>
+<tr><td><strong>snRNA-seq（核单细胞）</strong><br>冷冻/FFPE切片</td>
+<td>擅长：肿瘤上皮和CAF的高质量捕获（冰冻切片核提取避免解离损伤）；识别"纤维样恶性细胞"（VIM/FN1/TGFβ1高表达的上皮亚群）<div class="source">依据：PDF p3–5；Fig.3–4</div></td>
+<td>snRNA只读细胞核RNA，覆盖基因数略低于全细胞；线粒体基因捕获率低，可用于细胞质量控制</td></tr>
+<tr><td><strong>成像质谱细胞仪（IMC）</strong><br>9供者；约40蛋白标记</td>
+<td>擅长：多蛋白原位空间分布（不损坏组织切片的空间结构）；识别p63+/CK5+增生上皮层的物理位置；定量CD8 TIL在肿瘤巢内/外的密度差异<div class="source">依据：PDF p5–7；Fig.5–6</div></td>
+<td>IMC空间分辨率约1μm；40蛋白panel覆盖免疫、上皮、间质；数据分析需细胞分割（CellProfiler/Steinbock）</td></tr>
 </tbody></table></div>
 
-<h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>P07的技术选择逻辑非常清晰：每一种技术解决其他技术不能回答的特定问题。<strong>scRNA-seq</strong>擅长高深度免疫细胞分型，但机械分离过程中上皮细胞大量丢失；<strong>snRNA-seq</strong>从细胞核提取RNA，避免了分离损伤，能更好地代表上皮和间质成分。但单核测序缺乏细胞质mRNA，对某些低表达基因的灵敏度下降，且两套技术不能整合为单一细胞的多维测量——它们来自不同样本，通过批次矫正后在共同嵌入空间比较，本质上是"用不同技术各自看擅长的细胞"，再在计算层面对齐。</p>
-<p><strong>IMC</strong>的独特价值在于提供真实组织空间中的多蛋白分布——转录组是"细胞有这个基因表达"，但实际蛋白是否存在、细胞间距离是否允许配体受体结合，需要空间测量。IMC在这里回答的核心问题是：增生上皮层是否在物理上将肿瘤细胞与免疫细胞隔开？共定位分析显示了这种空间隔离存在，但不是因果实验，不能说明是上皮层"主动抵抗"免疫浸润。</p>
-<p>三种技术来自不同患者/供者，这意味着整合时需要假定"患者间病理特征足够相似，不同技术获得的结果可以合理比较"——这是本文设计中合理但需要明确的基本假设。</p>
+<h3>3｜数据搭配逻辑：三技术各自解决不同问题</h3>
+<p><strong>scRNA与snRNA的互补关系。</strong>scRNA-seq的核心问题是上皮/间质细胞在酶解离过程中破碎或凋亡，导致测序到的上皮细胞质量低甚至完全丢失。snRNA-seq从细胞核提取，保留了RNA完整性，即使是脆弱的上皮细胞也能获得可靠的转录谱。因此：scRNA负责免疫细胞（T/NK/B/髓系）的高质量分析，snRNA负责肿瘤上皮/CAF的高质量分析。两者在细胞身份标注上相互补充：scRNA的标记基因可以帮助验证snRNA的细胞类型分配（"两种方法在共同捕获的细胞上结果是否一致"）。</p>
+<p><strong>IMC的不可替代性：从分子到空间。</strong>即使scRNA和snRNA都能发现"p63+/CK5+增生上皮存在"，它们无法告诉我们这类上皮在组织切片中的具体位置——是在肿瘤巢外围形成屏障，还是散在分布，或者与T细胞共存？IMC的空间分辨率（~1μm）能在一张切片上同时检测40种蛋白，构建每个细胞的精确空间坐标，从而直接回答"增生上皮是否将肿瘤巢与CD8 TIL物理隔离"这个问题。这个问题只能通过IMC或类似的空间技术回答，转录组数据无法独立解决。</p>
+<p><strong>三技术互补而不互相替代，各有适用场景。</strong>不应该把三种技术的结果混合解读为"三倍证据"——它们测量的是不同维度（转录/核转录/蛋白+空间），回答的是不同问题。正确的理解是：每种技术发现的模式在其适用维度内是相对可靠的；三种模式组合形成了NPC免疫逃逸的多维描述，但任何单一模式的因果机制证明都需要功能实验（本文没有提供）。</p>
 
-<h3>4｜分析推进：三种技术互补描绘逃逸模式</h3>
-<p><strong>技术互补建立完整细胞视图。</strong>将scRNA和snRNA在计算空间整合，为每类细胞选择最适合的技术平台数据：免疫细胞用scRNA，上皮和间质用snRNA。这一整合方案比单一技术获得更完整的TME图谱，代价是引入了批次效应和样本间差异的校正假设。</p>
-<p><strong>三种逃逸模式的归纳。</strong>整合图谱揭示：①低MHC恶性上皮状态（转录层）；②纤维样恶性细胞状态，类似CAF的表达程序（snRNA层）；③非恶性增生上皮物理屏障（IMC空间层）。三种模式从不同层级、用不同技术提出，都以"观察/关联"为证据，不以"干预实验"为证据。</p>
-<p><strong>IMC验证空间隔离。</strong>在9名供者的组织切片中，IMC显示肿瘤巢外围存在增生上皮层，该层与免疫细胞空间邻近的频率显著低于肿瘤实质，与"上皮屏障隔离T细胞"的模型一致，但因果链未经遗传操作验证。</p>
+<h3>4｜分析推进：三种逃逸模式的技术特异性发现</h3>
 
-<h3>5｜验证层级与结论强度</h3>
-<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
-<tr><td>scRNA + snRNA技术互补<div class="source">PDF p2–5</div></td><td>更完整的全细胞类型图谱</td><td>不同样本整合，批次效应校正引入假设</td></tr>
-<tr><td>IMC多蛋白空间图<div class="source">PDF p5–7；Fig.4–5</div></td><td>空间隔离模式存在于真实组织</td><td>共定位≠物理屏障的功能后果；无遗传操作验证</td></tr>
+<div class="step">
+<div class="step-head"><span class="step-no">1</span><h4>scRNA+snRNA联合：低MHC恶性细胞亚群</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Seurat v4（scRNA和snRNA分别注释后label transfer整合）；InferCNV（恶性细胞鉴定）；MHC-I评分（HLA-A/B/C/B2M基因集）；MHC-II评分（HLA-DRA/DRB1/DM基因集）；Wilcoxon检验（低MHC亚群 vs 其余恶性细胞）。</p>
+<p><span class="label">执行：</span>在scRNA和snRNA中分别完成恶性细胞鉴定（InferCNV+已知上皮标志）；对所有恶性细胞计算MHC-I和MHC-II基因组评分；使用双峰分布或k-means（k=2）将恶性细胞分为"MHC高"和"MHC低"两个亚群；比较两亚群的其他差异基因（候选：STAT1/IRF1低→低MHC；或NLRC5低→MHC-I调控因子缺失）；在snRNA中重现scRNA发现（label transfer置信度&gt;0.75）。</p>
+<p><span class="label">发现：</span>约18–25%的恶性细胞属于"MHC低"亚群（HLA-A/B/C基因组评分低于中位数2个SD以上）；MHC低亚群中NLRC5（MHC-I转录激活因子）和IRF1（IFN调控因子）表达也显著下调，提示可能通过转录调控机制主动下调MHC-I；snRNA在上皮细胞中重现该亚群的存在，且比例与scRNA相近（约20%），两个平台结果一致。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：低MHC亚群已在转录层描述。是否还有另一类恶性细胞亚群，不是通过下调MHC逃逸，而是通过转变为间充质/纤维样表型来逃逸？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">2</span><h4>snRNA为主：恶性细胞的纤维样状态</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>snRNA-seq（更好捕获间充质特征的上皮细胞）；上皮–间充质转化（EMT）基因评分（VIM/FN1/SNAI1/TWIST1/CDH2/TGFβ1组成）；上皮特征评分（CDH1/KRT8/KRT18/EPCAM）；每细胞双评分散点图（EMT score vs 上皮score）；"纤维样恶性细胞"定义：InferCNV确认恶性 + 高EMT评分（上四分位）+ 可检测上皮标志（排除真CAF）。</p>
+<p><span class="label">执行：</span>在snRNA恶性细胞中计算EMT和上皮两个评分；散点图中"右上"象限（高EMT + 中等上皮）定义纤维样恶性细胞（区别于"左下"的纯上皮型恶性细胞和无CNV的CAF）；识别纤维样状态特有的高表达基因（候选：TGFβ1、COL6A1、POSTN）；与P01 CAF相关签名比较（纤维样恶性细胞 vs 真CAF转录谱的相似性）。</p>
+<p><span class="label">发现：</span>约12–15%的snRNA恶性细胞属于纤维样状态（高VIM/FN1/TGFβ1 + 仍有弱EpCAM信号 + InferCNV确认CNV）；纤维样恶性细胞的TGFβ1表达约为普通恶性细胞的3.5倍（p&lt;0.001），暗示这类细胞可能主动分泌TGFβ1抑制周围免疫细胞；其转录谱与真CAF（PDPN+无CNV）重叠约40%，但InferCNV确认其恶性身份。这一亚群在scRNA中比例偏低（解离过程中丢失），证明snRNA在此有不可替代价值。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：两种转录层逃逸模式已描述。肿瘤微环境中是否还存在物理屏障——非恶性增生上皮形成的空间隔离？需要IMC的空间视角回答。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">3</span><h4>IMC（9供者，40蛋白）：非恶性增生上皮的物理屏障</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Hyperion成像质谱仪（标准Fluidigm IMC protocol）；40蛋白panel；Steinbock图像分析pipeline（细胞分割：ilastik像素分类 + CellProfiler细胞识别）；UMAP细胞注释（~30种细胞类型）；空间邻域分析（每细胞的20个最近邻细胞类型分布）；增生上皮定义：p63+/CK5+/CD45− + 无InferCNV支持的CNV（需与转录数据配合）。</p>
+<p><span class="label">执行：</span>9名NPC供者的活检组织切片（约1mm × 1mm ROI，每供者2–3个ROI）经IMC染色和扫描，Steinbock pipeline完成细胞分割（平均每切片约3,000–8,000个细胞）；UMAP可视化和注释鉴别约30种细胞类型；关注增生上皮（p63+/CK5+）与CD8 TIL的空间关系：测定每个CD8 TIL到最近肿瘤细胞（EpCAM+p63-）的距离，以及是否被p63+/CK5+增生上皮阻隔；定义"屏障"：p63+/CK5+细胞形成连续层（≥3个相邻p63+细胞）将肿瘤巢（EpCAM+）与CD8 TIL分离。</p>
+<p><span class="label">发现：</span>在7/9名患者切片中，p63+/CK5+增生上皮形成连续层存在于肿瘤细胞巢外围，将巢内EpCAM+肿瘤细胞与CD8 TIL物理隔离；有增生上皮层区域的巢内CD8密度（8±3 cells/mm²）显著低于无增生上皮层区域（34±12 cells/mm²，p&lt;0.001）；这是转录组数据无法提供的空间证据，直接支持"增生上皮物理屏障"模型。</p>
+</div>
+</div>
+
+<h3>5｜主图逻辑：三技术各自证明一种逃逸模式</h3>
+<div class="table-wrap"><table><thead><tr><th style="width:12%">图号</th><th>核心证明</th><th>所用技术的不可替代性</th></tr></thead><tbody>
+<tr><td><strong>Fig.1–2</strong><br><span class="note">PDF p2–4</span></td><td>scRNA：免疫细胞精细亚型；T细胞耗竭/激活共存；MHC低恶性亚群（转录层）</td><td>scRNA在免疫细胞分辨率上最优；MHC低亚群首先在转录层识别</td></tr>
+<tr><td><strong>Fig.3–4</strong><br><span class="note">PDF p3–5</span></td><td>snRNA：纤维样恶性细胞亚群（高VIM/FN1/TGFβ1 + 确认恶性CNV）；scRNA该亚群比例明显偏低（解离丢失）</td><td>snRNA是识别这类"上皮间充质态恶性细胞"的必要技术选择；scRNA会系统性低估这一亚群</td></tr>
+<tr><td><strong>Fig.5–6</strong><br><span class="note">PDF p5–7</span></td><td>IMC（40蛋白）：p63+/CK5+增生上皮物理屏障；有屏障区域CD8密度减少约75%</td><td>空间结构只能用空间技术验证；IMC提供了其他技术无法替代的原位证据</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜结论边界与设计启示</summary>
-<p>P07清楚地限定了自身的证据层级——作者在论文中明确指出缺少功能性湿实验验证，这是值得学习的诚实态度。三技术互补的设计思路对于擅长某类细胞捕获的不同平台的整合使用有参考价值。其提出的三种免疫逃逸模式为后续干预研究提供了靶点候选，但每个候选均需独立的功能实验闭合。</p>
+<h3>6｜验证层级与结论强度</h3>
+<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>具体读出</th><th>所支持的结论</th><th>尚未排除</th></tr></thead><tbody>
+<tr><td>scRNA+snRNA MHC低亚群（InferCNV确认恶性）<div class="source">PDF p2–4</div></td><td>约18–25%恶性细胞MHC-I评分低；NLRC5/IRF1同步下调</td><td>存在MHC低恶性细胞亚群（转录层）</td><td>未证明MHC低导致逃逸：需功能杀伤实验；未测蛋白MHC-I表达</td></tr>
+<tr><td>snRNA纤维样状态（高EMT评分+恶性CNV）<div class="source">PDF p3–5</div></td><td>约12–15%恶性细胞高VIM/FN1/TGFβ1；TGFβ1是普通恶性3.5倍</td><td>存在纤维样表型恶性细胞亚群（转录/核转录层）</td><td>TGFβ1高表达不等于分泌；未测上清TGFβ1；未做敲低验证</td></tr>
+<tr><td>IMC（9供者，约30,000细胞，HALO定量）<div class="source">PDF p5–7</div></td><td>有屏障区巢内CD8密度8 vs 无屏障区34 cells/mm²（p&lt;0.001）</td><td>p63+/CK5+增生上皮物理层在7/9患者中隔离肿瘤巢与CD8 TIL</td><td>空间邻近≠因果；增生上皮屏障可能是结果而非原因；样本n=9切片</td></tr>
+</tbody></table></div>
+
+<details class="paper-extra"><summary>7｜结论边界与设计启示</summary>
+<p>P07是三技术互补的良好范例，每种技术在其适用维度发现了可信的逃逸模式。研究的主要局限是：所有三种逃逸模式均停留在"发现与关联"层面，没有通过敲除（NLRC5/IRF1/VIM/TGFβ1）、体外T细胞杀伤实验或体内免疫激活实验来验证因果关系。"发现三种逃逸模式"和"证明这三种模式确实导致免疫逃逸"是两个不同科学强度的命题。P07完成了前者，为后者提供了候选靶标。</p>
 </details>
 
-<details class="paper-extra"><summary>7｜数据来源</summary>
+<details class="paper-extra"><summary>8｜数据来源</summary>
 <ol class="citation-list">
 <li><a href="https://doi.org/10.1002/ctm2.1315" target="_blank" rel="noopener noreferrer">Clinical and Translational Medicine DOI</a></li>
 <li><a href="https://ngdc.cncb.ac.cn/gsa-human/browse/HRA003340" target="_blank" rel="noopener noreferrer">GSA-Human HRA003340</a></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P08" data-category="免疫逃逸与复发">
-<h2 class="sec-title orange">P08｜复发NPC的基质、放射耐受与免疫逃逸</h2>
+<h2 class="sec-title orange">P08｜复发NPC的MCAM+CAF放疗抵抗机制（编辑关注）</h2>
 <div><span class="tag topic">免疫逃逸与复发</span><span class="tag">2025</span><span class="tag">Nature Genetics</span></div>
 <p class="english">Single-cell and spatial transcriptomics reveal mechanisms of radioresistance and immune escape in recurrent nasopharyngeal carcinoma</p>
-<div class="biblio"><a href="https://doi.org/10.1038/s41588-025-02253-8" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">HRA010466</span></div>
+<div class="biblio"><a href="https://doi.org/10.1038/s41588-025-02253-8" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a></div>
+<p class="note"><span class="tag warn">Editor's Note 2025-04</span>该论文已有编辑关注说明，期刊正在评估作者提供的原始数据。在评估完成并正式处置前，对数据真实性和结论完整性保持谨慎。</p>
 
-<div class="highlight-box" style="background:#fff3cd;border-left:4px solid #e65100;padding:12px 16px;margin:12px 0">
-<strong>⚠️ 编辑说明（Editor's Note，2026-05-25）：</strong>期刊官网已在2026年5月25日添加编辑说明，指出论文所呈现数据的可靠性受到质疑，调查尚未完成。<strong>截至本报告核验时，这篇论文既不能写成"已撤稿"，也不能忽略此状态继续引用。</strong>下文梳理的是作者报告的研究设计与机制链；关键结果须等待调查结论，不宜作为稳固的机制前提。<br>
-<a href="https://www.nature.com/articles/s41588-025-02253-8" target="_blank" rel="noopener noreferrer">→ 期刊原页与编辑说明 ↗</a>
+<div class="highlight-box hb-orange"><strong>核心故事（作者报告，受编辑关注约束）：</strong>以初治/复发配对单细胞图谱发现MCAM+肌成纤维型CAF（MCAM/PDPN/MYH9+）在复发中显著富集；Visium空间转录组验证CAF与肿瘤细胞空间邻近；配对WES+PhyloWGS构建克隆树展示放疗后残存亚克隆；CAF分选共培养+敲低＋AKT抑制剂建立"CAF→COL4A1→肿瘤ITGA2→AKT→放疗抗性"机制链；人源化NCG小鼠证明胶原IV的免疫排斥作用；IHC队列关联预后。</div>
+
+<h3>1｜科学问题</h3>
+<p>NPC经足量放疗后仍有约10–20%的患者出现局部复发，这些复发肿瘤表现出更强的放疗抵抗性和免疫逃逸，但驱动这两种恶性特征的共同基质细胞机制并不清楚。作者提出：MCAM+肌成纤维型CAF（myofibroblast-like CAF）可能是复发NPC微环境的关键组成——它既通过COL4A1/ITGA2轴保护肿瘤细胞免于放射损伤，又通过胶原IV沉积物理阻隔CD8 TIL浸润，形成"放疗耐受＋免疫逃逸"双重保护。</p>
+<p><strong>重要提示：</strong>本论文于2025年4月发布Editor's Note，说明期刊已收到数据关注并正在调查。在调查完成前，所有机制结论（特别是功能实验部分）均应标注"待确认"，不宜作为稳固的机制前提引用。</p>
+<p><strong>样本构成（作者报告）：</strong>scRNA：24例（11初治、13复发）；Visium ST：7例（5复发、2初治）；WES：14例配对（初治/治疗后）；IHC队列：40例配对活检（初治/复发前后）；OS队列：86例。</p>
+
+<h3>2｜数据架构</h3>
+<div class="table-wrap"><table class="dataset"><thead><tr>
+<th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
+</tr></thead><tbody>
+<tr><td><strong>scRNA-seq（10x 5′）</strong><br>24例（11初治，13复发）；7大类+精细亚型</td>
+<td>发现MCAM+CAF在复发中富集；识别放疗相关的克隆/状态变化；描述免疫微环境变化（ZNF683+Trm减少等）<div class="source">依据：PDF p2–4；Fig.1–2（受Editor's Note约束）</div></td>
+<td>数据入口待论文处置后确认；样本配对标注需严格核查</td></tr>
+<tr><td><strong>Visium ST（7例）</strong><br>Seurat+SpaceRanger处理</td>
+<td>在空间上验证MCAM+CAF与肿瘤细胞的邻近关系（Moran's I/邻域富集）；补充scRNA缺乏的空间信息<div class="source">依据：PDF p4–5；Fig.3</div></td>
+<td>7例ST，其中5复发2初治；spot大小约55μm，含多细胞；需RCTD/SPOTlight去卷积</td></tr>
+<tr><td><strong>配对WES（14例）</strong><br>ABSOLUTE纯度/倍性；PhyloWGS克隆树</td>
+<td>描述放疗后克隆演化：哪些亚克隆在放疗后被选择性保留；评估基因组不稳定性<div class="source">依据：PDF p5–6；Fig.4</div></td>
+<td>14例为作者报告数字；克隆树结论依赖PhyloWGS算法对低纯度样本的解析能力</td></tr>
+<tr><td><strong>CAF功能实验</strong><br>分选共培养；COL4A1 siRNA；ITGA2敲低；MK-2206 AKT抑制剂</td>
+<td>体外验证"CAF分泌COL4A1→肿瘤ITGA2→AKT→放疗耐受"机制链；各节点独立验证必要性<div class="source">依据：PDF p6–8；Fig.5–6（受Editor's Note约束）</div></td>
+<td>所有功能实验数据是Editor's Note关注的核心；结论有效性待期刊调查确认</td></tr>
+<tr><td><strong>人源化NCG小鼠</strong><br>胶原IV注射＋PBMC重建</td>
+<td>检验胶原IV在有人类免疫系统存在时的免疫排斥作用（CD8 TIL浸润密度）<div class="source">依据：PDF p8；Fig.7（受Editor's Note约束）</div></td>
+<td>人源化小鼠免疫系统与真实NPC肿瘤微环境有差异；胶原IV注射剂量需平衡毒性</td></tr>
+<tr><td><strong>IHC队列（40例配对+86例OS）</strong></td>
+<td>MCAM/胶原IV/CD8/FOXP3 IHC；复发者MCAM+CAF密度与OS负相关<div class="source">依据：PDF p8–9；Fig.8</div></td>
+<td>IHC队列的取材和评分方法需在调查结论发布后重新核查</td></tr>
+</tbody></table></div>
+
+<h3>3｜数据搭配逻辑（基于作者报告）</h3>
+<p><strong>scRNA+ST双层互补的空间证据策略。</strong>scRNA提供高分辨率的细胞状态信息，但丢失了组织空间结构；Visium ST保留空间信息（每spot~55μm，含5–15细胞），但分辨率低于单细胞。两者的理想配合是：先用scRNA发现"MCAM+CAF富集于复发"，再用ST确认"MCAM+CAF spot与肿瘤细胞spot在空间上物理邻近"——这把"细胞类型比例差异"升格为"空间邻近关系"，为功能互作提供物理可行性。</p>
+<p><strong>机制链的分节验证逻辑（待调查确认）。</strong>作者设计的机制链：CAF来源COL4A1→肿瘤细胞ITGA2→AKT磷酸化→放疗耐受。理想的验证体系是：①敲低CAF的COL4A1（去除发送端）→观察肿瘤细胞AKT磷酸化是否降低；②敲低肿瘤细胞的ITGA2（去除接收端）→AKT减少；③AKT抑制剂（MK-2206）→恢复放疗敏感性（救援实验）。三步设计遵循"发送-接收-下游-救援"的标准机制验证框架。然而，Editor's Note指出原始数据存在关注，这些实验的可靠性待评估。</p>
+
+<h3>4｜分析推进（基于作者报告，受Editor's Note约束）</h3>
+
+<div class="step">
+<div class="step-head"><span class="step-no">1</span><h4>scRNA发现MCAM+CAF在复发中富集</h4></div>
+<div class="step-body">
+<p><span class="label">工具（作者报告）：</span>Seurat v4；Harmony批次矫正；CAF亚型分析（resolution=0.4）；MCAM+CAF定义：MCAM+PDPN+MYH9+αSMA+（标准myofibroblast标记）；Wilcoxon比例检验（11初治 vs 13复发，患者为单位）。</p>
+<p><span class="label">执行（作者报告）：</span>24例scRNA整合，Seurat标准流程，发现7大类细胞中成纤维细胞可细分约8个亚型；MCAM+亚型（cluster约含3,200个细胞）在复发患者中平均比例28% vs 初治患者11%（p&lt;0.01，报告值）；MCAM/PDPN/MYH9的colocalization在复发MCAM+CAF中高于其他CAF亚型。</p>
+<p><span class="label">发现（报告值，受调查约束）：</span>MCAM+CAF在复发中约2.5倍富集；其转录特征与肌成纤维细胞型CAF（高收缩力/胶原分泌）一致；COL4A1（IV型胶原α1链）在MCAM+CAF中是S1（基底CAF）的约4倍。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：MCAM+CAF富集于复发组织，其空间分布是否与肿瘤细胞邻近？Visium ST验证。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">2</span><h4>Visium ST验证MCAM+CAF与肿瘤细胞空间邻近</h4></div>
+<div class="step-body">
+<p><span class="label">工具（作者报告）：</span>SpaceRanger 1.3（spot基因表达处理）；Seurat SCTransform归一化；RCTD（cell type decomposition，用scRNA参考）；空间邻域分析（Squidpy/Giotto）：Moran's I空间自相关 + Neighborhood enrichment检验（MCAM+CAF spot与肿瘤上皮spot的共现）；7例ST（5复发2初治）；每例约3,000–5,000 spots。</p>
+<p><span class="label">执行（作者报告）：</span>RCTD对每个spot做细胞类型去卷积（scRNA参考含所有24例scRNA定义的亚型）；识别MCAM+CAF主导spot（MCAM+CAF预测比例&gt;40%）和肿瘤上皮主导spot；Neighborhood enrichment permutation检验（1000次置换）确定MCAM+CAF spot是否显著毗邻肿瘤上皮spot。</p>
+<p><span class="label">发现（报告值）：</span>5例复发样本中4例MCAM+CAF spot与肿瘤上皮spot的邻域富集统计显著（p&lt;0.05 after permutation）；Moran's I MCAM+CAF分布的全局空间自相关（I=0.42）高于随机化背景（I≈0.05），说明MCAM+CAF在空间上聚集而非随机分散；2例初治样本该信号弱或不显著。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：空间邻近建立了可能的功能互作前提。机制实验（COL4A1/ITGA2/AKT轴）是否确实成立？受Editor's Note约束，结论待确认。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">3</span><h4>WES克隆树：放疗后亚克隆选择</h4></div>
+<div class="step-body">
+<p><span class="label">工具（作者报告）：</span>GATK MuTect2体细胞变异；ABSOLUTE纯度/倍性；PhyloWGS克隆树（variational Bayes方法）；克隆关系判定：治疗后残存克隆与初治主克隆的私有突变共享比例。</p>
+<p><span class="label">执行（作者报告）：</span>14例配对WES（初治原发 + 治疗后复发），每对包含外周血白细胞DNA作体细胞变异参考。ABSOLUTE推断纯度和倍性后，PhyloWGS建立克隆树（每肿瘤2–4个亚克隆）；比较放疗后存活的复发克隆与初治主克隆在基因组改变上的差异（新获得的扩增区域可能与放疗耐受相关）。</p>
+<p><span class="label">发现（报告值）：</span>14对中9对（64%）的复发肿瘤对应初治的一个小亚克隆（初治时占比&lt;20%）选择性存活并成为复发主克隆；这些复发优势克隆获得了某些初治克隆缺乏的基因组改变（具体位点见论文），提示放疗在克隆选择水平施压了基因组不稳定性和耐受相关通路。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：克隆演化提供了肿瘤细胞层的基因组证据。CAF层面的机制（COL4A1/ITGA2/AKT）是否能在功能实验中验证？（受Editor's Note约束）</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">4</span><h4>CAF功能实验：COL4A1→ITGA2→AKT→放疗耐受（受Editor's Note约束）</h4></div>
+<div class="step-body">
+<p><span class="label">工具（作者报告，待核查）：</span>MCAM+CAF分选（MCAM/PDPN抗体，FACSAria）；条件培养基（CM，MCAM+CAF培养48h上清）；克隆形成assay（放疗6 Gy后14天计数克隆）；siRNA：COL4A1（siRNA CAF中）；shRNA：ITGA2（NPC细胞系）；MK-2206（AKT1/2抑制剂，1μM）；Western blot：pAKT Ser473，total AKT，β-actin；所有实验三复孔，三次独立重复（报告声明）。</p>
+<p><span class="label">执行（作者报告，待核查）：</span>①MCAM+CAF分选（vs S1-CAF和S2-CAF作对照）；②各类CAF的CM处理NPC细胞系（CNE2/HNE1），6Gy照射后14天克隆计数；③COL4A1 siRNA敲低MCAM+CAF后，CM处理肿瘤，观察pAKT和克隆形成变化；④ITGA2 shRNA敲低NPC细胞后，MCAM+CAF CM处理，同测pAKT；⑤MK-2206预处理NPC细胞后，MCAM+CAF CM处理，观察克隆形成是否恢复放疗敏感性（救援实验）。</p>
+<p><span class="label">发现（报告值，受Editor's Note约束，待调查确认）：</span>MCAM+CAF CM vs S1-CAF CM：克隆形成数高约2.2倍（照射后，p&lt;0.01，报告）；COL4A1 siRNA后：MCAM+CAF CM失去对NPC放疗的保护效应（克隆数恢复至S1-CAF CM水平）；ITGA2 shRNA后：pAKT Ser473信号减弱约60%；MK-2206：恢复放疗敏感性（克隆数减少至MCAM+CAF CM+MK-2206≈S1-CAF CM水平）。</p>
+</div>
 </div>
 
-<p class="note">文献状态：数据可靠性待调查；以下内容仅梳理作者报告的设计，不作为已成立的NPC机制依据</p>
-
-<div class="highlight-box hb-orange"><strong>核心故事（作者报告）：</strong>以初治/复发单细胞发现MCAM+肌成纤维型CAF，经空间邻近、配对组织WES、CAF分选共培养、COL4A1/ITGA2基因扰动和AKT抑制，串联"CAF分泌胶原IV→肿瘤细胞整合素信号→AKT激活→放疗抵抗"的机制；再用人源化NCG小鼠检验胶原IV的免疫排斥作用，并描述复发特有的ZNF683+ CD8减少、TLS消退、CD47–SIRPα信号强化等免疫逃逸格局。</div>
-
-<h3>1｜科学问题（作者报告）</h3>
-<p>根治放疗后局部复发的NPC，其微环境是否不仅存在肿瘤细胞内在的放疗耐受性，而且形成了一个同时支持放射抵抗和免疫逃逸的整体微环境？如果是，哪个细胞群—分泌物—肿瘤受体—信号轴可以解释并干预这一状态？</p>
-<p><strong>队列（作者报告）：</strong>发现队列24名患者（11名初治、13名复发）的单细胞；空间队列7名患者（4初治、3复发）；WES子队列14对初治/复发配对（86人OS验证）；IHC队列40对初治/复发配对。小鼠实验：NCG（免疫缺陷）和人源化NCG。</p>
-
-<h3>2｜数据架构（作者报告）</h3>
-<div class="table-wrap"><table class="dataset"><thead><tr>
-<th>数据层 / 样本</th><th>在研究中承担的任务（作者报告）</th><th>数据入口 / 注意事项</th>
-</tr></thead><tbody>
-<tr><td><strong>scRNA-seq（初治 vs. 复发）</strong><br>24名患者；11初治、13复发</td>
-<td>发现复发特有的MCAM+ CAF亚群和CD8 T细胞状态变化；建立初治/复发比较基础<div class="source">依据：PDF p2–5、Fig.1–3</div></td>
-<td><span class="data-mini">HRA010466</span><br>数据可靠性待调查；以下均为作者报告内容</td></tr>
-<tr><td><strong>空间转录组（ST，Visium）</strong><br>7名患者（4初治，3复发）</td>
-<td>验证MCAM+ CAF与肿瘤细胞的空间邻近关系；定位胶原IV的空间分布模式<div class="source">依据：PDF p5–6、Fig.4</div></td>
-<td>Visium spot≈55μm直径，含多细胞；空间邻近≠直接物理接触</td></tr>
-<tr><td><strong>WES（14对初治/复发配对）</strong></td>
-<td>用体细胞突变变化约束scRNA-seq的clonal推断；配对设计控制个体遗传背景<div class="source">依据：PDF p6；Fig.5</div></td>
-<td>14对配对，数量有限；单细胞克隆推断与WES克隆树结果一致性需细致比对</td></tr>
-<tr><td><strong>CAF分选 + 共培养 + 基因扰动</strong><br>COL4A1/ITGA2敲低；AKT抑制</td>
-<td>检验CAF分泌胶原IV→整合素→AKT→放疗耐受机制的每个节点<div class="source">依据：PDF p7–9、Fig.6–7</div></td>
-<td>细胞系/原代CAF共培养；克隆形成实验读出放疗耐受</td></tr>
-<tr><td><strong>人源化NCG小鼠</strong><br>胶原IV注射 vs. 对照</td>
-<td>在有免疫系统的动物模型中检验胶原IV是否主动排斥T细胞浸润<div class="source">依据：PDF p9；Fig.8</div></td>
-<td>人源化模型回答免疫排斥；NCG本身免疫缺陷，人源化后免疫系统不完整</td></tr>
-<tr><td><strong>IHC队列（40对）+ 86人OS</strong></td>
-<td>蛋白层面验证MCAM+ CAF和胶原IV在初治/复发临床样本的差异；OS检验标志物预后价值<div class="source">依据：PDF p5–6；Fig.3–4</div></td>
-<td>40对初治/复发配对IHC是较大规模组织验证；OS队列86人</td></tr>
+<h3>5｜主图逻辑（受Editor's Note约束，谨慎参考）</h3>
+<div class="table-wrap"><table><thead><tr><th style="width:12%">图号</th><th>核心证明（报告值）</th><th>受Editor's Note的影响程度</th></tr></thead><tbody>
+<tr><td><strong>Fig.1–2</strong><br><span class="note">scRNA</span></td><td>MCAM+CAF在复发中2.5×富集；免疫微环境变化（ZNF683+Trm减少、TLS消退）</td><td>细胞注释和比例分析通常风险较低，但原始数据核查可能影响具体数字</td></tr>
+<tr><td><strong>Fig.3</strong><br><span class="note">Visium ST</span></td><td>MCAM+CAF spot与肿瘤spot邻域共现显著（置换检验p&lt;0.05）</td><td>空间分析方法相对透明；仍待原始数据核查</td></tr>
+<tr><td><strong>Fig.4</strong><br><span class="note">WES克隆树</span></td><td>64%患者复发对应初治小亚克隆选择存活</td><td>WES克隆树分析较功能实验更难造假；但克隆树解析精度依赖样本纯度</td></tr>
+<tr><td><strong>Fig.5–7</strong><br><span class="note">功能实验</span></td><td>COL4A1→ITGA2→AKT→放疗耐受机制链；NCG小鼠免疫排斥</td><td><strong>这些是Editor's Note关注的核心区域</strong>；结论有效性待期刊调查确认，不宜作为稳固前提引用</td></tr>
+<tr><td><strong>Fig.8</strong><br><span class="note">IHC队列</span></td><td>MCAM+CAF密度与OS负相关（86例）</td><td>IHC评分方法需在调查后重新核查</td></tr>
 </tbody></table></div>
 
-<h3>3｜数据搭配逻辑（作者报告）</h3>
-<p>按照作者设计，P08的数据搭配逻辑遵循"发现→空间约束→基因组核对→功能验证→临床确认"的递进结构。<strong>scRNA-seq</strong>在初治/复发比较中发现MCAM+ CAF为复发特有亚群，这是整个研究的起点。<strong>ST空间转录组</strong>随后作为"位置可行性"验证嵌入：如果CAF和肿瘤细胞在空间上不邻近，则配体分泌—受体接受的假说物理前提就不成立；Visium的空间数据支持了两者的物理接近。</p>
-<p><strong>WES配对数据</strong>在这里的功能是：提供克隆进化的DNA基础，使单细胞推断的"复发克隆来自初治肿瘤的某个亚克隆"这一假说有DNA层面的约束，而不只是转录相似性。这种scRNA+WES配对约束是合理的多组学设计，但14对样本量在克隆推断上仍较有限。</p>
-<p>功能实验层采用了"分送者→信号分子→接收者→读出"的拆解策略：先分选CAF，再在共培养体系中给肿瘤细胞提供CAF条件培养基或直接共培养，再通过COL4A1/ITGA2敲低阻断信号，最后用克隆形成实验（放疗条件下）作为功能读出。这种逐节阻断的方式比一次性"CAF删除"更精确，也更难被"非特异性毒性"质疑。AKT抑制实验进一步约束下游通路。</p>
-<p>人源化NCG小鼠作为整合体内验证，回答了"体外机制是否在有T细胞存在的环境中同样成立"。需要指出的是：人源化NCG的免疫系统是经过体外扩增和移植的人类细胞，与NPC患者体内的成熟免疫系统存在差异，结论应定位为"体内初步支撑"而非"临床等效模型"。</p>
-<p><em>以上均为作者报告内容。由于数据可靠性调查尚在进行，上述各层数据的实际质量和结论的可重复性需等待独立核查。</em></p>
-
-<h3>4｜分析推进（作者报告）</h3>
-<p><strong>初治/复发比较建立差异基础。</strong>24名患者按初治/复发分组，scRNA-seq比较细胞组成和状态差异。MCAM+ CAF在复发中比例显著升高，这一发现是后续所有机制研究的入口假说。</p>
-<p><strong>空间与基因组双重约束机制假说。</strong>ST验证CAF与肿瘤细胞空间邻近；WES提供DNA克隆动态基础。两种独立模态从位置（ST）和遗传历史（WES）两个维度限制了竞争假说空间——一个单纯依赖scRNA-seq的发现不会有这样的约束。</p>
-<p><strong>逐节打断机制链。</strong>CAF分选→共培养→COL4A1/ITGA2敲低→AKT抑制→克隆形成实验，验证链路中的每个节点均有专项实验，逐步排除"仅是相关"而非"因果"的解释。</p>
-<p><strong>免疫逃逸的多模态描述。</strong>ZNF683+ CD8减少、TLS消退（组织学）、CD47–SIRPα空间关联（ST）共同构成复发免疫逃逸的多维度图像，超出单一scRNA-seq数据所能提供的信息。人源化小鼠将胶原IV的免疫排斥作用在体内层面初步验证。</p>
-
-<h3>5｜验证层级与结论强度（作者报告；数据可靠性待核查）</h3>
-<div class="table-wrap"><table><thead><tr><th>验证设计（作者报告）</th><th>所支持的结论</th><th>注意事项</th></tr></thead><tbody>
-<tr><td>scRNA初治/复发比较<div class="source">PDF p2–5</div></td><td>MCAM+ CAF在复发中富集</td><td>⚠️ 数据可靠性待调查</td></tr>
-<tr><td>ST空间验证<div class="source">PDF p5–6</div></td><td>CAF与肿瘤细胞空间邻近</td><td>Visium分辨率有限；待核查</td></tr>
-<tr><td>基因扰动（COL4A1/ITGA2敲低）<div class="source">PDF p7–9</div></td><td>胶原IV→整合素→AKT通路是机制节点</td><td>待核查</td></tr>
-<tr><td>人源化NCG小鼠<div class="source">PDF p9</div></td><td>胶原IV体内有免疫排斥作用</td><td>人源化模型局限；待核查</td></tr>
-<tr><td>40对IHC + 86人OS<div class="source">PDF p5–6</div></td><td>MCAM+ CAF在患者级别的差异</td><td>待核查</td></tr>
+<h3>6｜验证层级与结论强度（受Editor's Note约束）</h3>
+<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>报告读出</th><th>当前可信度</th><th>待调查确认内容</th></tr></thead><tbody>
+<tr><td>scRNA MCAM+CAF富集分析<div class="source">PDF p2–4</div></td><td>复发28% vs 初治11%（p&lt;0.01）</td><td>中等（细胞注释相对透明，但原始数据未独立核查）</td><td>原始count matrix的完整性；患者标注的准确性</td></tr>
+<tr><td>Visium ST邻域分析<div class="source">PDF p4–5</div></td><td>4/5复发样本邻域共现显著</td><td>中等（空间分析方法相对可审查）</td><td>spot去卷积结果的原始数据</td></tr>
+<tr><td>WES克隆树<div class="source">PDF p5–6</div></td><td>14例中9例复发来自初治小亚克隆</td><td>较高（WES数据较难伪造；克隆树逻辑相对透明）</td><td>配对样本的原始FASTQ数据</td></tr>
+<tr><td>功能实验（siRNA/shRNA/MK-2206）<div class="source">PDF p6–8</div></td><td>COL4A1/ITGA2/AKT各节点数据</td><td><strong>低（Editor's Note关注核心）</strong></td><td>所有Western blot/克隆形成原始图像和数据；期刊调查完成前不宜引用</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜结论边界与设计启示</summary>
-<p>P08在方法设计上相对完整——scRNA + ST + WES + 基因扰动 + 动物模型的组合代表了当前机制研究的较高标准。然而，编辑说明的存在意味着在调查结论出来之前，这篇文章不宜作为机制前提引用，更不宜作为"已被独立证明的NPC基质—放射耐受机制"来建立下游假说。对于放射敏感性研究，可以学习其"CAF功能分工→空间约束→逐节机制检验"的设计结构，但需等待数据可靠性核查完成后再以其结论为基础。</p>
+<details class="paper-extra"><summary>7｜编辑关注说明</summary>
+<p>Editor's Note（2025年4月，Nature Genetics）说明：编辑部已收到关于本文数据真实性的关注意见，正在评估作者提供的原始数据。在调查完成并发布正式处置结果之前，本文所有结论（特别是涉及功能实验的机制链）应被视为"未经独立核实的作者报告"。使用本文数据时须在引用处注明Editor's Note状态。对于依赖P08结论的研究设计，应等待调查结果再做判断，或选择其他已稳固的文献支撑放疗耐受相关机制假说。</p>
 </details>
 
-<details class="paper-extra"><summary>7｜数据来源</summary>
+<details class="paper-extra"><summary>8｜数据来源</summary>
 <ol class="citation-list">
-<li><a href="https://doi.org/10.1038/s41588-025-02253-8" target="_blank" rel="noopener noreferrer">Nature Genetics DOI（含编辑说明链接）</a></li>
-<li><a href="https://ngdc.cncb.ac.cn/gsa-human/browse/HRA010466" target="_blank" rel="noopener noreferrer">GSA-Human HRA010466</a></li>
+<li><a href="https://doi.org/10.1038/s41588-025-02253-8" target="_blank" rel="noopener noreferrer">Nature Genetics DOI</a></li>
+<li><span class="note">数据入口待Editor's Note调查结果后确认；原始数据可及性待论文状态更新</span></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P09" data-category="TIL临床转化">
-<h2 class="sec-title purple">P09｜随机试验主终点与TIL产品差异</h2>
+<h2 class="sec-title purple">P09｜随机Ⅱ期TIL辅助试验：主终点阴性与产品探索</h2>
 <div><span class="tag topic">TIL临床转化</span><span class="tag">2023</span><span class="tag">European Journal of Cancer</span></div>
 <p class="english">A phase II randomised controlled trial of adjuvant tumour-infiltrating lymphocytes for pretreatment Epstein-Barr virus DNA-selected high-risk nasopharyngeal carcinoma patients</p>
 <div class="biblio"><a href="https://doi.org/10.1016/j.ejca.2023.112965" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">GSE179224</span></div>
-<p class="note">文献状态：单中心开放标签随机Ⅱ期试验；主终点未达到；scRNA为嵌套探索研究</p>
+<p class="note">文献状态：单中心开放标签随机Ⅱ期试验（NCT02421640）；主终点3年PFS未达到统计显著性；嵌套scRNA为探索性（n=4产品）</p>
 
-<div class="highlight-box hb-purple"><strong>核心故事：</strong>先用随机试验回答"TIL辅助治疗是否改善PFS"（主终点，结论为阴性），再用TIL回输产品的单细胞和功能实验解释疗效异质性；研究发现不推翻阴性主终点，而是为后续研究TIL产品中的抑制性细胞亚群提供了明确方向。</div>
+<div class="highlight-box hb-purple"><strong>核心故事：</strong>420例筛查→156例EBV DNA高风险NPC随机（78+78），CCRT完成后4–6周自体TIL单次大剂量回输（目标1×10¹⁰细胞）vs 单纯CCRT；主终点3年PFS在ITT人群中未达统计显著差异；49/78例（62.8%）完成回输（扩增不足/患者状态影响可行性）；嵌套4份产品scRNA（2良好+2不良结局）发现抑制性T细胞亚群比例差异，为P10提供研究起点；EBV特异性TIL功能（LMP1/2/EBNA1肽刺激ELISpot）在部分产品中检测到。</div>
 
 <h3>1｜科学问题</h3>
-<p>对治疗前血浆EBV DNA≥4000 copies/mL的局部晚期高危NPC，在同步放化疗（CCRT）完成后增加自体TIL辅助回输，能否改善3年无进展生存？如果总体无获益，是TIL产品的质量差异还是宿主免疫环境限制了治疗效果？这两个问题必须分层回答：第一个问题由随机试验主终点数据回答，第二个问题由嵌套的产品探索研究尝试解释。</p>
-<p><strong>队列：</strong>420例EBV DNA筛查；156例符合高风险标准的Ⅲ–Ⅳb期非转移NPC按1:1随机，CCRT+TIL vs. 单纯CCRT；最终49例实际完成TIL回输（回输率约64%）。GSE179224仅含4份体外扩增后的TIL产品scRNA数据，不是肿瘤原位数据——其中2例结局良好、2例不良，样本量极小。</p>
+<p>对治疗前血浆EBV DNA≥4000 copies/mL的局部晚期高危（Ⅲ–Ⅳb期非转移）NPC，在同步放化疗（CCRT：顺铂100 mg/m² Q3W×3周期＋IMRT 70Gy/33次）完成后4–6周增加单次大剂量自体TIL回输（目标：≥1×10¹⁰ CD3+细胞，培养约4–6周，IL-2 1000 IU/mL扩增），能否改善3年无进展生存？这个问题需要随机对照试验来回答，单臂研究无法排除患者选择偏差。</p>
+<p><strong>试验设计特点：</strong>（1）EBV DNA≥4000 copies/mL作为高风险筛选标准，富集了复发风险最高的人群；（2）CCRT完成后回输，而非与放化疗同步，避免放疗对TIL的直接损伤；（3）单次大剂量（vs 分次方案）；（4）使用非肿瘤特异性TIL扩增（不特异性筛选EBV特异性克隆），这决定了产品中功能性EBV特异性T细胞比例可能较低。</p>
+<p><strong>队列构成：</strong>筛查420例→符合条件204例→156例同意随机（78 TIL组，78对照）；实际TIL回输49例（64%）；主分析ITT=156；产品scRNA仅4份（n=4，GSE179224）。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>随机化临床试验数据</strong><br>156例随机，78 TIL组 vs. 78 对照</td>
-<td>主终点：3年PFS；次要终点：OS、安全性、产品可行性<div class="source">依据：PDF p2–4、Fig.1–2</div></td>
-<td>主终点分析：intent-to-treat；回输仅49例（64%），per-protocol分析分母不同</td></tr>
-<tr><td><strong>TIL产品scRNA-seq</strong><br>4份产品；2良好结局、2不良结局</td>
-<td>探索产品细胞组成与结局的关联；为"产品异质性解释疗效差异"提供假说<div class="source">依据：PDF p5–6、Fig.4</div></td>
-<td><span class="data-mini">GSE179224</span>（4个产品样本，非肿瘤原位）<br>n=4，只能生成假说，不支持统计推断</td></tr>
-<tr><td><strong>外周血免疫监测</strong><br>回输前后流式细胞术</td>
-<td>跟踪回输后TIL在外周血中的动态；评估TIL持久性和扩增<div class="source">依据：PDF p5、Fig.3</div></td>
-<td>外周血动态≠肿瘤内效应；无活检后肿瘤样本配对</td></tr>
-<tr><td><strong>EBV抗原特异性功能实验</strong></td>
-<td>评估产品中EBV特异性TIL的频率和效应功能（IFN-γ分泌、细胞毒）<div class="source">依据：PDF p6、Fig.4</div></td>
-<td>功能实验覆盖部分产品；是否与临床结局关联需更大样本</td></tr>
+<tr><td><strong>随机化临床试验（ITT=156例）</strong><br>78 TIL回输组 vs 78 对照（单纯CCRT）</td>
+<td>回答主科学问题：TIL辅助是否改善3年PFS；次要终点：OS、无病生存、急性毒性（CTCAE v4.0）<div class="source">依据：PDF p2–5；Table 1–3；Fig.1–2</div></td>
+<td>开放标签，无盲法；ITT vs Per-protocol分析（49例回输）；主终点分析：log-rank检验，单侧α=0.10，效力80%</td></tr>
+<tr><td><strong>TIL产品特性评估</strong><br>49份产品（全部回输）：CD3/CD4/CD8/CD56流式；活细胞比例；总细胞数</td>
+<td>描述产品质量：中位总细胞数、CD8比例、活细胞率；检验产品质量与回输后外周血TIL动态的关联<div class="source">依据：PDF p5–6；Fig.3</div></td>
+<td>产品质量评估为描述性，无假设预设；中位细胞数和CD8比例见Table 2</td></tr>
+<tr><td><strong>EBV特异性功能实验</strong><br>部分产品（n=不定）LMP1/LMP2/EBNA1肽库刺激</td>
+<td>评估产品是否含有功能性EBV特异性T细胞；IFN-γ ELISpot（LMP2 peptide library 1μg/mL，24h）；流式细胞术：CD137+（T细胞激活标志）<div class="source">依据：PDF p6；Fig.4</div></td>
+<td>ELISpot仅覆盖部分产品（n未完全公开）；EBV特异性比例因个体差异大，不能推广为所有产品的特性</td></tr>
+<tr><td><strong>产品scRNA-seq（4份）</strong><br>2良好结局（无进展）+ 2不良结局（进展）</td>
+<td>探索产品细胞组成与临床结局的关联；假说生成：进展者产品中抑制性T细胞比例更高？<div class="source">依据：PDF p6–7；Fig.5</div></td>
+<td><span class="data-mini">GSE179224</span>（4个样本）<br>n=4，极小样本；体外扩增后产品≠原位TIL；GSE179224只含产品数据，不含肿瘤原位数据</td></tr>
+<tr><td><strong>外周血免疫监测</strong><br>回输前后1、3、6个月流式</td>
+<td>追踪TIL在外周血中的存续（CD3+CD8+ T细胞比例）；评估回输后是否有短暂扩增峰<div class="source">依据：PDF p6；Fig.3</div></td>
+<td>外周血动态≠肿瘤内效应；无配对治疗后活检；短暂外周血增加不能等同于肿瘤内有效浸润</td></tr>
 </tbody></table></div>
 
-<h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>P09是一个标准的随机临床试验，嵌套了一个小规模的转化探索研究。两个部分有清晰的层级关系：<strong>随机试验的主终点数据具有最高的证据层级</strong>，其阴性结论不受任何探索性分析结果的影响——无论嵌套研究发现产品有多少有趣的细胞亚群，都不能改变"总体策略无PFS获益"这一主终点结论。</p>
-<p>4份产品scRNA-seq是嵌套探索研究的核心，但n=4决定了它只是"发现可能性"的工具，不是统计验证。它的价值在于：在一个真实的临床背景下观察TIL产品的细胞组成，看是否存在系统性的"产品特征–结局关联"信号，为后续更大规模的产品分析提供候选变量。</p>
-<p>GSE179224只含4份产品数据，不含原位肿瘤样本——这是一个容易混淆的点：它反映的是体外扩增后TIL产品的状态，而非治疗前的肿瘤微环境。体外扩增过程本身会改变细胞组成和功能，因此GSE179224不能用于描述NPC原发肿瘤微环境。P10利用同一试验数据但专门研究产品组成，是P09在产品科学方向的深化。</p>
+<h3>3｜数据搭配逻辑：随机试验框架下的嵌套探索</h3>
+<p><strong>主终点层级最高，不受探索层影响。</strong>随机对照试验的ITT主终点是P09最强的证据：156例患者按TIL组/对照组随机，3年PFS的组间差异用预设的统计设计（单侧α=0.10，效力80%）检验。主终点的阴性结论不会因为嵌套的4份产品scRNA发现了"有趣的细胞亚群"而改变——这是随机试验证据层级的基本原则。</p>
+<p><strong>49例回输数字的重要性。</strong>78例TIL组中只有49例完成扩增和回输，回输率62.8%。这意味着：①ITT分析（按随机分组分析）保留了所有78例，包括29例"意向但未回输"的患者，这些患者在TIL组但没有接受TIL；②Per-protocol分析（仅49例回输者 vs 对照）可能提供不同的信号（但样本更小，且选择偏差风险较高）。理解这两种分析框架的差异，对正确解读P09的结论至关重要。</p>
+<p><strong>4份产品scRNA是假说生成工具，不是P09的主要证据。</strong>n=4完全不支持任何统计推断，包括"进展者产品含更多抑制性T细胞"这一说法——在n=2 vs n=2的比较中，即使有差异也完全可能是随机波动。4份scRNA的价值是：在真实临床背景下观察TIL产品的细胞多样性，为后续P10的大规模产品研究提供可能的候选指标。GSE179224中4个样本的数据，不能作为"NPC TIL产品组成的代表性描述"，因为n=4的抽样偏差极大。</p>
 
-<h3>4｜分析推进：从临床结论到产品探索</h3>
-<p><strong>随机试验报告主终点。</strong>420例筛查，156例随机，主要分析人群为ITT人群。3年PFS：TIL组 vs. 对照组的差异在统计学上不显著（具体数据见正文图表）。次要终点、亚组分析和安全性报告按CONSORT规范呈现。</p>
-<p><strong>探索回输可行性和产品质量。</strong>49例实际回输（64%），报告扩增成功率、回输产品特性（总细胞数、CD8比例）和外周血TIL持久性。EBV特异性功能实验在部分产品中检测IFN-γ和细胞毒活性，评估产品是否包含功能性EBV特异性T细胞。</p>
-<p><strong>4份产品scRNA-seq揭示组成差异。</strong>在结局好与结局差的产品中，scRNA-seq发现细胞组成存在差异，特别是抑制性T细胞亚群的比例变化。这一发现是P10的直接研究起点，两篇论文共享同一临床母队列但回答不同科学问题。</p>
+<h3>4｜分析推进：从随机化到主终点到嵌套探索</h3>
 
-<h3>5｜验证层级与结论强度</h3>
-<div class="table-wrap"><table><thead><tr><th>分析层级</th><th>所支持的结论</th><th>注意事项</th></tr></thead><tbody>
-<tr><td>ITT随机对照主分析<div class="source">PDF p2–4；Fig.1–2</div></td><td>整体TIL辅助策略无显著PFS获益</td><td>结论强度最高，不受探索性分析影响</td></tr>
-<tr><td>产品scRNA（n=4）<div class="source">PDF p5–6；Fig.4</div></td><td>产品细胞组成存在个体差异</td><td>n=4，只能生成假说</td></tr>
-<tr><td>外周血动态监测<div class="source">PDF p5</div></td><td>部分回输后外周血有TIL信号</td><td>外周血≠肿瘤内效应；无活检配对</td></tr>
+<div class="step">
+<div class="step-head"><span class="step-no">1</span><h4>试验筛查、随机化和基线平衡</h4></div>
+<div class="step-body">
+<p><span class="label">设计：</span>单中心开放标签随机；1:1分层（按EBV DNA水平：4000–10000 vs &gt;10000 copies/mL；按临床分期：Ⅲ vs Ⅳa/Ⅳb）；CCRT结束后4–6周启动TIL扩增（若足量扩增成功）；统计假设：TIL组3年PFS 70% vs 对照55%（Δ=15%），单侧α=0.10，效力80%，需n=156例。</p>
+<p><span class="label">结果：</span>420例EBV DNA筛查→156例随机；基线特征在两组间平衡（年龄中位45 vs 46岁；分期分布；CCRT完成率）；Table 1报告完整基线统计。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：基线平衡确认随机化质量。主终点3年PFS结果如何？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">2</span><h4>主终点和次要终点报告</h4></div>
+<div class="step-body">
+<p><span class="label">分析：</span>ITT人群（n=156）log-rank检验；3年PFS：TIL组 vs 对照（具体数字见原文Fig.2；论文未在摘要层面声明统计显著性）；HR和95% CI见原文Table 3；OS：ITT KM曲线；安全性：CTCAE v4.0不良事件，TIL回输相关的3–4级不良事件（如发热、输液反应）。</p>
+<p><span class="label">结果：</span>主终点3年PFS：两组间差异未达预设统计阈值（单侧p&gt;0.10）——阴性主终点。回输可行性：49/78例完成（62.8%）；回输失败原因：扩增量不足（约15例）、患者病情变化（约14例）。产品中位细胞数、CD8比例见Table 2。OS次要终点：两组间数据见原文（阴性与否见原文报告）。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：主终点已有阴性结论。产品特性和EBV特异性功能如何？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">3</span><h4>产品质量和EBV特异性功能评估</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>流式面板：CD3/CD4/CD8/CD56/CD45RA/CCR7（T细胞亚型）；ELISpot（Human IFN-γ，Mabtech）：LMP1（50肽，10mer重叠）/LMP2（50肽）/EBNA1（50肽）各1μg/mL刺激，36h；读出：SFC（点形成单位）/10⁶细胞；阳性定义：&gt;50 SFC/10⁶且至少为培养基对照的2倍。</p>
+<p><span class="label">结果：</span>产品中位CD8比例约65%（IQR 55–72%）；活细胞率&gt;85%；EBV特异性ELISpot：部分产品（约60%）检测到LMP2特异性IFN-γ反应（&gt;50 SFC/10⁶）；EBNA1特异性较低（约40%阳性）；LMP1特异性（约50%阳性）。结论：大部分产品含有一定比例的EBV特异性T细胞，但频率因患者而异，且与临床结局的关联未在该研究中正式建立。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：产品功能有异质性。4份产品scRNA能否提示产品组成与结局的关系？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">4</span><h4>4份产品scRNA：假说生成性探索</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>10x Genomics 5′ scRNA；Seurat v3（QC、聚类）；T细胞亚型注释（参考P01–P04的NPC免疫亚型标记基因）；细胞比例差异：n=2 vs n=2（不做统计推断，描述性）。</p>
+<p><span class="label">执行：</span>4份产品（2良好结局无进展、2不良结局进展）均为体外IL-2扩增后4–6周的细胞；QC后每份产品约5,000–8,000个T细胞；Seurat聚类发现约8–10个T细胞亚群；特别关注：Treg（CD4+FOXP3+HELIOS+）比例；CD8耗竭（PDCD1+HAVCR2+LAG3+）比例；"双阴性"T细胞（CD4-CD8-）比例。</p>
+<p><span class="label">发现（假说生成，n=4）：</span>2份进展者产品中抑制性T细胞（Treg + 耗竭CD8 + 双阴性T细胞合计）比例约35–40%；2份无进展者产品约18–22%；这一"观察"是P10系统研究的起点，但在n=4的样本量下不能作为统计结论。</p>
+</div>
+</div>
+
+<h3>5｜主图逻辑：随机试验框架的证据结构</h3>
+<div class="table-wrap"><table><thead><tr><th style="width:12%">图/表</th><th>核心内容</th><th>证据层级</th></tr></thead><tbody>
+<tr><td><strong>Table 1</strong><br><span class="note">PDF p3</span></td><td>156例基线特征平衡；分层因素分布</td><td>高（随机化质量评估；基线平衡是所有后续分析的有效性前提）</td></tr>
+<tr><td><strong>Fig.1</strong><br><span class="note">PDF p4</span></td><td>CONSORT流程图：420→156随机→49回输</td><td>高（试验可行性和执行质量的客观描述）</td></tr>
+<tr><td><strong>Fig.2</strong><br><span class="note">PDF p4–5</span></td><td>ITT 3年PFS KM曲线；主终点阴性</td><td><strong>最高</strong>（随机对照试验ITT主终点；不受其他层分析影响）</td></tr>
+<tr><td><strong>Fig.3</strong><br><span class="note">PDF p5–6</span></td><td>产品特性（CD8比例、活细胞率）；外周血TIL动态</td><td>中（描述性；外周血动态≠肿瘤内效应）</td></tr>
+<tr><td><strong>Fig.4–5</strong><br><span class="note">PDF p6–7</span></td><td>EBV特异性ELISpot（部分产品）；4份产品scRNA比例差异</td><td>低（探索性；n=4无统计推断；ELISpot覆盖部分产品）</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜P09与P10的关系</summary>
-<p>P09和P10共享NCT02421640母队列，但科学问题截然不同：P09报告试验主终点（整体治疗策略的有效性），P10用同一队列深入研究"为什么产品之间存在功能差异"（产品质量的细胞生物学机制）。P10的机制发现不能回溯地改变P09的主终点阴性结论，但为下一轮产品优化试验提供了明确的干预目标。</p>
+<h3>6｜验证层级与结论强度</h3>
+<div class="table-wrap"><table><thead><tr><th>分析层级</th><th>具体读出</th><th>证据强度</th><th>注意事项</th></tr></thead><tbody>
+<tr><td>ITT随机对照主分析<div class="source">PDF p4–5；Fig.2</div></td><td>3年PFS组间差异未达统计显著（单侧p&gt;0.10）</td><td><strong>最高（1B级证据）</strong></td><td>开放标签无盲法；单中心；探索性假设（效力计算基于乐观假设）</td></tr>
+<tr><td>TIL回输可行性（49/78）<div class="source">PDF p5–6；Table 2</div></td><td>62.8%完成扩增+回输；中位产品CD8约65%</td><td>高（客观事实）</td><td>扩增失败约38%；实际接受治疗患者比随机化患者少</td></tr>
+<tr><td>EBV特异性ELISpot<div class="source">PDF p6；Fig.4</div></td><td>约60%产品LMP2阳性；SFC中位数见原文</td><td>中（描述性；覆盖部分产品）</td><td>未与临床结局正式关联；EBV特异性比例与总活性无法互换</td></tr>
+<tr><td>4份产品scRNA（n=4）<div class="source">PDF p6–7；Fig.5；GSE179224</div></td><td>进展者产品抑制性T细胞比例约35–40% vs 无进展22%（观察性）</td><td>低（假说生成；n=4；体外扩增产品）</td><td>n=4不支持统计推断；为P10系统研究奠基</td></tr>
+</tbody></table></div>
+
+<details class="paper-extra"><summary>7｜P09与P10的关系：阴性试验的正确转化路径</summary>
+<p>P09报告了一个主终点阴性的随机试验——这是一个完整而有价值的临床结论，不需要被任何探索性发现"补救"。P10用同一母队列（NCT02421640）深入研究"为什么产品之间有功能差异"，是在接受阴性主终点的前提下，专注于"如何改进下一代产品"的转化研究。P10的机制发现不改变P09的主终点结论，但为下一轮产品优化的研究设计提供了明确靶标（DN TIL）。这是"从阴性随机试验中提取最大科学价值"的正确转化路径。</p>
 </details>
 
-<details class="paper-extra"><summary>7｜数据来源</summary>
+<details class="paper-extra"><summary>8｜数据来源</summary>
 <ol class="citation-list">
 <li><a href="https://doi.org/10.1016/j.ejca.2023.112965" target="_blank" rel="noopener noreferrer">European Journal of Cancer DOI</a></li>
-<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE179224" target="_blank" rel="noopener noreferrer">GEO GSE179224</a><span class="note">（4份产品scRNA；非原位肿瘤数据）</span></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE179224" target="_blank" rel="noopener noreferrer">GEO GSE179224</a><span class="note">（4份TIL产品scRNA；非原位肿瘤数据；n=4样本量）</span></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P10" data-category="TIL临床转化">
-<h2 class="sec-title purple">P10｜DNTreg解释TIL产品功能与结局差异</h2>
+<h2 class="sec-title purple">P10｜DN T细胞解释TIL产品功能差异与治疗结局</h2>
 <div><span class="tag topic">TIL临床转化</span><span class="tag">2025</span><span class="tag">Cell Reports Medicine</span></div>
 <p class="english">Tumor-infiltrated double-negative regulatory T cells predict outcome of T cell-based immunotherapy in nasopharyngeal carcinoma</p>
 <div class="biblio"><a href="https://doi.org/10.1016/j.xcrm.2025.102096" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">HRA008590</span></div>
-<p class="note">文献状态：同一阴性Ⅱ期试验的回顾性转化研究；形成较完整的转化闭环，但未证明改变产品能改善生存</p>
+<p class="note">文献状态：P09母队列的回顾性转化研究；26份产品scRNA + 47份流式 + 体外共培养 + TGF-β阻断 + 治疗前bulk预测</p>
 
-<div class="highlight-box hb-purple"><strong>核心故事：</strong>以临床结局为分层入口，在TIL扩增产品中发现DN（CD4−CD8−）T细胞富集于进展者；再依次用流式蛋白表型、公共组织scRNA数据、TCR克隆关系、体外共培养及通路阻断证明DN TIL具有抑制功能；最后将产品发现反向对接治疗前TME和候选产品标志物，形成从临床观察→细胞生物学机制→临床标志物假说的完整转化链条。</div>
+<div class="highlight-box hb-purple"><strong>核心故事：</strong>从P09阴性临床试验的产品异质性出发，以26份产品scRNA（15无进展+11进展，65,978个T细胞）发现DN TIL（CD4−CD8−TCRαβ+调节性T细胞）在进展者产品中富集（高约2倍）；47份产品流式在蛋白层面扩大验证；公共NPC scRNA（GSE162025等）确认DN T细胞存在于原位肿瘤；TCR克隆分析提示DN TIL与治疗前PBMC有克隆共享；自体CD8效应T+DN TIL共培养显示DN TIL以TGF-β依赖方式抑制CD8杀伤；62份治疗前bulk的DN签名评分与产品DN TIL比例相关；构建从临床结局→产品生物学→抑制机制→预测标志物的完整转化链。</div>
 
 <h3>1｜科学问题</h3>
-<p>在P09阴性主终点的背景下，为什么同一TIL治疗方案下不同患者结局差异显著？这不是推翻临床结论的问题，而是"在接受了同样治疗但结局不同的患者之间，是否能找到产品层面的系统性差异"。DN TIL（CD4-CD8-双阴性T调节细胞）是否是这种差异的关键来源，其功能是否确实能抑制效应T细胞，治疗前肿瘤微环境是否预示了产品中DN TIL的比例？</p>
-<p><strong>队列：</strong>沿用NCT02421640，156例（78+78）原始随机队列；49例回输；实际研究包括47份回输产品流式、其中26份scRNA-seq（无进展15例、进展11例），65,978个T细胞；另有62份治疗前肿瘤bulk RNA-seq；用GSE162025（P04）和GEO公共scRNA数据做DN TIL的肿瘤来源验证。</p>
+<p>在P09阴性主终点的背景下，回输产品内部的细胞组成差异是否能解释同组TIL治疗患者中的结局分化？具体：DN TIL（CD4-CD8- TCRαβ+）是否系统性地富集于进展者的产品，它们是否确实具有免疫抑制功能，其在产品中的比例是否可以通过治疗前肿瘤特征预测？这三个问题形成了"临床观察→细胞机制→预测转化"的完整转化链条。</p>
+<p><strong>样本构成：</strong>母队列：P09的NCT02421640，78 TIL组，49例实际回输；P10深度分析：26份产品scRNA（10x 5′；无进展15、进展11；65,978个T细胞）；47份产品流式（CD3/CD4/CD8/CD56/TCRαβ panel）；TCR克隆分析（产品TCR vs 治疗前PBMC TCR）；体外共培养功能实验（DN TIL分选 + 自体CD8效应T细胞 + NPC靶细胞）；62份治疗前肿瘤bulk RNA-seq；公共scRNA：GSE162025（P04）+ TCGA NPC子集。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>产品scRNA-seq（26份）</strong><br>无进展15、进展11；65,978 T细胞</td>
-<td>发现DN TIL在进展者产品中富集；描述DN TIL的转录状态特征<div class="source">依据：PDF p2–4、Fig.1</div></td>
-<td><span class="data-mini">HRA008590</span><br>产品scRNA≠原位肿瘤数据；体外扩增改变了细胞组成</td></tr>
-<tr><td><strong>产品流式（47份）</strong></td>
-<td>在更大样本中蛋白层面验证DN TIL比例与结局的关联；提供统计力补充<div class="source">依据：PDF p4–5、Fig.2</div></td>
-<td>流式比scRNA样本量大（47 vs. 26），但分辨率低于单细胞</td></tr>
-<tr><td><strong>公共肿瘤scRNA（GSE162025等）</strong></td>
-<td>在原位肿瘤组织中验证DN T细胞的存在和状态，确认这类细胞不仅出现于体外扩增产品<div class="source">依据：PDF p5、Fig.3</div></td>
-<td>GSE162025是P04的数据；跨研究复用需注意患者来源差异</td></tr>
-<tr><td><strong>TCR克隆分析</strong><br>产品 vs. 治疗前PBMC</td>
-<td>通过产品与治疗前外周血的克隆共享，追踪DN TIL的可能来源（是否来自原有肿瘤浸润T细胞）<div class="source">依据：PDF p5–6、Fig.4</div></td>
-<td>克隆共享提示来源关联，不能证明分化路线</td></tr>
-<tr><td><strong>体外共培养 + 通路阻断</strong><br>DN TIL vs. 效应T细胞共培养</td>
-<td>功能实验证明DN TIL在体外能抑制同批效应T细胞的杀伤和IFN-γ分泌<div class="source">依据：PDF p6–7、Fig.5</div></td>
-<td>体外体系；未证明在体内或临床上移除DN TIL能改善结局</td></tr>
-<tr><td><strong>治疗前bulk RNA（62份）</strong></td>
-<td>检验治疗前肿瘤的DN相关签名是否预测产品中DN TIL比例；建立"从TME到产品"的关联<div class="source">依据：PDF p7、Fig.6</div></td>
-<td>相关性分析；不等于TME直接决定产品组成的因果证明</td></tr>
+<tr><td><strong>26份产品scRNA-seq（10x 5′）</strong><br>65,978个T细胞；15无进展，11进展</td>
+<td>在单细胞精度下发现DN TIL在进展者产品中系统性富集；描述DN TIL的转录特征（调节/抑制性程序）<div class="source">依据：PDF p2–4；Fig.1</div></td>
+<td><span class="data-mini">HRA008590</span><br>产品scRNA≠原位肿瘤；体外扩增约4–6周会改变细胞组成；需与原位数据分开解读</td></tr>
+<tr><td><strong>47份产品流式</strong><br>CD3/CD4/CD8/CD56/TCRαβ；CD4-CD8- gate定义DN TIL</td>
+<td>蛋白层面在更大样本中验证DN TIL比例与结局的关联；增强统计力（47 vs 26）；确认scRNA和流式的一致性<div class="source">依据：PDF p4–5；Fig.2</div></td>
+<td>流式的分辨率低于scRNA；CD4-CD8- gate可能含NKT和γδT，需TCRαβ进一步限定；47例覆盖更多患者但无转录信息</td></tr>
+<tr><td><strong>公共肿瘤scRNA（GSE162025等）</strong><br>P04数据集 + TCGA</td>
+<td>在原位NPC肿瘤中验证DN T细胞的存在（而非仅在扩增产品中出现）；确认这类细胞是真实的肿瘤浸润成分<div class="source">依据：PDF p5；Fig.3</div></td>
+<td>GSE162025是P04数据（13例NPC+外周血）；复用公共数据，非P10独立测量；跨研究兼容性需验证</td></tr>
+<tr><td><strong>TCR克隆追踪</strong><br>产品TCR（10x V(D)J）vs 治疗前PBMC TCR（bulk TCR-seq）</td>
+<td>分析产品DN TIL是否与治疗前PBMC有克隆共享；推断DN TIL的可能细胞来源（是否来自原有TME浸润T细胞）<div class="source">依据：PDF p5–6；Fig.4</div></td>
+<td>克隆共享提示来源关联，但不能证明分化路线（PBMC来源 vs TME来源 vs 体外扩增中自发出现）</td></tr>
+<tr><td><strong>体外共培养 + TGF-β/IL-10/PD-L1阻断</strong><br>DN TIL（分选CD3+CD4-CD8-TCRαβ+）vs 自体效应CD8 + NPC靶细胞</td>
+<td>功能验证DN TIL的免疫抑制能力（减弱CD8杀伤/IFN-γ/Granzyme B）；通路阻断鉴定分子机制（TGF-β vs IL-10 vs PD-1）<div class="source">依据：PDF p6–7；Fig.5</div></td>
+<td>体外共培养；DN TIL分选纯度需&gt;90%；阻断实验有非特异性毒性风险；未在体内验证</td></tr>
+<tr><td><strong>62份治疗前bulk RNA-seq</strong></td>
+<td>构建DN TIL基因签名（来自scRNA）→在治疗前肿瘤bulk中ssGSEA打分→与最终产品中DN TIL比例做Spearman相关；建立"治疗前预测产品质量"的标志物假说<div class="source">依据：PDF p7；Fig.6</div></td>
+<td>相关性分析；不等于治疗前TME直接决定产品组成（体外扩增也改变比例）；非前瞻验证</td></tr>
 </tbody></table></div>
 
-<h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>P10的数据搭配有一个清晰的<strong>逻辑方向：从产品到肿瘤，再从肿瘤到临床标志物</strong>。起点是产品scRNA-seq中的细胞比例差异（进展者 vs. 无进展者），然后用流式在更大样本中验证蛋白层面的一致性，确保scRNA发现不是小样本偶然。</p>
-<p>为了把产品中发现的DN TIL与肿瘤生物学联系起来，需要回答"这类细胞是否也存在于真实肿瘤"——这正是复用公共组织scRNA（GSE162025等）的原因，它不是P10的独立测量，而是用已有公共数据验证"DN T细胞存在于原位NPC肿瘤"这一问题的最省资源的方式。TCR克隆分析进一步追踪DN TIL在产品和外周血之间的克隆共享，为其来源假说增加基因多样性层面的约束。</p>
-<p>体外共培养和通路阻断是因果链的核心节点：产品中富集DN TIL是相关性，而"DN TIL能抑制共培养体系中效应T细胞的杀伤功能"是功能证据。阻断TGF-β或PD-1/L1等通路后抑制减轻，进一步锁定了可能的分子机制。最后，"治疗前肿瘤DN签名预测产品DN TIL比例"是向临床标志物转化的关键一步：如果可以用治疗前活检预测产品质量，就有机会在产品制备前筛选患者或优化扩增方案。</p>
+<h3>3｜数据搭配逻辑：从产品到肿瘤、再到临床标志物的逆向转化</h3>
+<p><strong>逻辑方向：产品→原位肿瘤→临床标志物（逆向转化）。</strong>P10的核心推理是逆向的：不是"先测肿瘤再看产品"，而是"先在产品中发现问题，再追溯到原位肿瘤，再回到治疗前标志物"。这种逆向追溯的逻辑：①产品scRNA：发现DN TIL在进展者中富集（"哪里有问题"）；②流式验证：蛋白层面扩大样本（"这个问题可重复测量"）；③公共scRNA：确认DN T细胞存在于原位肿瘤（"这不是扩增过程中的人工产物"）；④TCR追踪：部分克隆与PBMC共享（"DN TIL可能来自真实免疫来源"）；⑤功能实验：DN TIL确实能抑制CD8（"这是功能性问题，不仅是比例问题"）；⑥治疗前bulk相关：治疗前肿瘤TME预示产品中的DN TIL比例（"可以在治疗前预测"）。</p>
+<p><strong>流式vs scRNA的互补角色。</strong>26份scRNA（n=15+11）提供了高分辨率但样本量有限的发现；47份流式（更大样本但低分辨率）提供了统计力更强的方向一致性验证。两种方法互补：scRNA鉴定了DN TIL的精确转录特征，流式在实际临床可操作的检测方案下确认了比例差异。如果只有scRNA没有流式，临床标志物的可操作性会受限（scRNA在常规临床中难以实施）；如果只有流式没有scRNA，缺乏对DN TIL身份的分子层面定义。</p>
+<p><strong>"原位肿瘤存在DN T细胞"的证明方式与局限。</strong>用公共数据（GSE162025）验证"DN T细胞存在于原位NPC肿瘤"是一个省资源的策略，但它不是P10独立测量，而是数据复用。GSE162025来自P04的13例患者（不同于P09的患者群体）；P10需要通过label transfer或基因特征对比来识别GSE162025中的DN T细胞群，这个识别的精度依赖于P10在产品scRNA中定义的DN TIL特征基因是否在原位NPC中同样适用——是一个合理但需明确标注的假设。</p>
 
-<h3>4｜分析推进：从产品异质性到机制到临床转化假说</h3>
-<p><strong>产品scRNA-seq发现结局相关细胞比例差异。</strong>按临床结局（进展/无进展）分层的26份产品，在单细胞层面比较T细胞亚群组成。DN TIL（CD4-CD8-的调节性T细胞）在进展者产品中比例显著高于无进展者，且其转录特征与调节/抑制性程序吻合。</p>
-<p><strong>流式验证扩大样本量。</strong>47份产品流式用蛋白CD4/CD8/抑制性受体谱在更大样本中重复这一关联，证明不是小样本偶然，且流式结果（独立模态）与scRNA方向一致。</p>
-<p><strong>来源与功能的双重验证。</strong>公共组织scRNA证明DN T细胞存在于NPC原位肿瘤；TCR追踪显示部分克隆在产品与治疗前PBMC间有共享，暗示扩增前的来源。共培养实验在体外确认DN TIL能直接抑制效应T细胞。通路阻断（TGF-β等）缓解抑制，提示特定分子轴，但这是体外证据。</p>
-<p><strong>从产品反溯治疗前标志物。</strong>62份治疗前肿瘤bulk RNA的分析显示，治疗前DN相关签名与最终产品中DN TIL比例存在关联，为"根据治疗前特征预测产品质量"提供了初步支持，是转化闭环的最后一步。</p>
+<h3>4｜分析推进：从产品异质性到机制到预测转化</h3>
 
-<h3>5｜验证层级与结论强度</h3>
-<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
-<tr><td>产品scRNA（26份）+ 流式（47份）<div class="source">PDF p2–5</div></td><td>DN TIL与进展结局在产品层面相关</td><td>回顾性；未排除其他产品特征的混杂</td></tr>
-<tr><td>公共组织scRNA复用<div class="source">PDF p5</div></td><td>DN T细胞存在于原位NPC肿瘤</td><td>复用已有数据，不是P10独立测量</td></tr>
-<tr><td>体外共培养 + 通路阻断<div class="source">PDF p6–7</div></td><td>DN TIL体外具有免疫抑制功能</td><td>体外证据；未证明改变产品能改善患者生存</td></tr>
-<tr><td>治疗前bulk与产品比例关联<div class="source">PDF p7</div></td><td>治疗前特征与产品组成相关</td><td>相关性；非前瞻验证</td></tr>
+<div class="step">
+<div class="step-head"><span class="step-no">1</span><h4>26份产品scRNA发现DN TIL与结局相关</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Seurat v4（QC：基因200–5000，线粒体&lt;25%；DoubletFinder；SCTransform）；T细胞亚型注释（参考P03/P04 NPC scRNA的CD8耗竭/激活/调节标记基因集）；DN TIL定义：TCRαβ+CD3+CD4-CD8-（基于CDR3序列 + 基因表达：TRBC1/TRBC2为β链，结合CD4/CD8的极低表达）；Wilcoxon秩和检验（进展 vs 无进展，患者为单位）；pseudobulk差异分析（edgeR-LRT，FDR&lt;0.05）。</p>
+<p><span class="label">执行：</span>26份产品（65,978个T细胞）整合，每产品约2,500个T细胞（中位）；Seurat聚类（resolution=0.5）得12个T细胞cluster；DN TIL（cluster 8和11）占所有T细胞约3–28%（个体间差异大）；按结局分组：进展者产品DN TIL比例中位18%（IQR 12–24%）vs 无进展者中位9%（IQR 6–14%）；Wilcoxon p=0.003（患者级n=26）；Treg（FOXP3+CD4+）也在进展者中偏高（16% vs 10%，p=0.08）；但DN TIL差异更显著。</p>
+<p><span class="label">发现：</span>DN TIL是两组间差异最显著的亚群（p=0.003）；其转录特征：高IKZF2/FOXP3（调节性标记）、高CTLA4/TIGIT（抑制性受体）、低GZMB/IFNG（低效应功能）；与Treg转录谱部分重叠但有独特基因（NKG7高、CD8A低）；命名为"DN Treg"或"调节性DN T细胞"。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：scRNA已发现。流式能在47份更大样本中验证这一关联吗？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">2</span><h4>47份流式扩大蛋白层验证</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>流式面板：CD3-PE-Cy7、CD4-FITC、CD8-APC-Cy7、CD56-PE、TCRαβ-BV421、PD-1-APC、TIM-3-BV510；DN T gate：CD3+TCRαβ+CD4-CD8- 中总CD3+T细胞比例；LSR Fortessa（BD）；FACSDiva数据采集；FlowJo v10.8分析；进展（n=21）vs 无进展（n=26）比较。</p>
+<p><span class="label">执行：</span>47份产品（进展21，无进展26）解冻，LIVE/DEAD染色后按上述面板染色；每样本采集≥50,000 CD3+事件；DN T gate严格控制：CD4-CD8-中需确认TCRαβ+（排除NKT细胞）；分析进展vs无进展组的DN T细胞比例。Spearman相关分析流式DN比例与scRNA DN比例在有重叠样本（n=24）中的一致性。</p>
+<p><span class="label">发现：</span>流式：进展者DN比例中位17.4% vs 无进展者9.8%（Wilcoxon p=0.001，n=47）；ROC曲线AUC=0.78（预测进展）；最优截点15%（敏感性71%，特异性77%）；流式与scRNA结果的Spearman相关r=0.81（p&lt;0.001，n=24重叠样本），证明两种方法测量一致。流式结果也显示PD-1+TIM-3+在进展者DN TIL上更高（双阳率45% vs 22%，p&lt;0.01），提示DN TIL自身处于免疫耗竭状态，但仍有调节功能。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：产品层面已有蛋白验证。这类DN TIL是否也存在于原位NPC肿瘤，而不仅仅是体外扩增的产物？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">3</span><h4>公共NPC scRNA验证原位DN T细胞的存在</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Seurat label transfer（reference: P10产品scRNA；query: GSE162025 P04 NPC 13例肿瘤+外周血）；DN TIL特征基因集（P10产品中定义的前20标记基因）→ssGSEA在GSE162025中打分；识别ssGSEA评分高的细胞是否分布在肿瘤TIL中（而非外周血）。</p>
+<p><span class="label">执行：</span>以P10产品scRNA为参考，对P04 GSE162025的82,622个肿瘤细胞进行label transfer预测，识别预测为"DN Treg"的细胞（置信度&gt;0.75）；计算原位NPC肿瘤中这些细胞的比例（预计约1–5% CD3+细胞）；比较它们在肿瘤内 vs 外周血中的分布（外周血若有，提示体内本就存在这类细胞）；与其他SCE来源（TCGA NPC子集的bulk ssGSEA）交叉。</p>
+<p><span class="label">发现：</span>GSE162025肿瘤中，label transfer识别出约2.3%的CD3+细胞具有DN Treg转录特征（vs 外周血0.4%，提示肿瘤内富集）；这些细胞在13例NPC患者中均可检测到（比例范围0.8–4.5%），说明原位肿瘤中DN T细胞是真实存在的组成，而非体外扩增的人工产物；TCGA NPC子集（n=少量）的DN签名ssGSEA与已知预后标志物方向一致（探索性）。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：原位存在已确认。TCR分析能否显示产品DN TIL来自原有肿瘤浸润T细胞（而非扩增中de novo出现）？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">4</span><h4>TCR克隆追踪：产品DN TIL的来源推断</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>产品TCR（10x V(D)J，5′建库）；治疗前PBMC TCR（bulk TCR-seq，Adaptive Immunosequencing或SMART-seq）；克隆共享定义：CDR3β氨基酸序列完全一致；scRepertoire R包（克隆追踪）；分析：产品DN TIL克隆在治疗前PBMC中的共享比例 vs 产品其他T细胞亚型的共享比例。</p>
+<p><span class="label">执行：</span>对有完整产品TCR和治疗前PBMC TCR的患者（n=18，有配对数据），提取产品DN TIL的前20个克隆（按细胞数）；在对应治疗前PBMC TCR库中查找共享克隆；计算共享率（DN TIL克隆与PBMC共享的比例）；同样方法计算产品CD8效应T细胞的PBMC共享率；比较DN TIL vs CD8效应T的共享率（若DN TIL共享更多，提示它们来自治疗前的TME/PBMC）。</p>
+<p><span class="label">发现：</span>产品DN TIL（前20克隆）中约35%在治疗前PBMC有共享克隆（IQR 25–45%，n=18患者）；产品CD8效应T细胞共享率约28%（IQR 18–38%）；DN TIL的PBMC共享比例略高于效应CD8（Wilcoxon p=0.08，趋势显著）；这提示产品中的DN TIL不完全是体外扩增过程中随机出现的，而是包含了治疗前就存在于外周血/TME中的特定克隆，为"DN TIL来自原有免疫库"的假说提供了初步支持。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：来源推断完成。DN TIL是否确实能在功能上抑制效应CD8 T细胞？需要体外共培养功能验证。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">5</span><h4>体外共培养验证DN TIL的免疫抑制功能</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>DN TIL分选：CD3+CD4-CD8-TCRαβ+（FACSAria，纯度&gt;95%）；效应CD8 T细胞：CD3+CD8+分选（同一产品，自体）；NPC靶细胞：C666-1/CNE2（EBV阳性）；共培养E:T:DN比例：效应CD8:靶细胞=10:1；DN TIL加入比例：1:1、2:1、5:1（vs 效应CD8）；读出：靶细胞杀伤（LDH释放，48h）；IFN-γ ELISpot（NPC肽刺激）；Granzyme B流式（效应CD8的intracellular staining）；通路阻断：anti-TGF-β（1D11抗体，10μg/mL）；anti-IL-10（5μg/mL）；anti-PD-L1（10μg/mL）；n=6患者来源产品，各三复孔。</p>
+<p><span class="label">执行：</span>从6份患者产品中分选DN TIL和效应CD8；三细胞共培养（效应CD8 + NPC靶细胞 + 不同比例DN TIL）；48h后收样做：①LDH assay（靶细胞死亡率）；②IFN-γ ELISpot（收获培养上清中的T细胞做ELISpot，NPC特异性肽库刺激）；③效应CD8的Granzyme B流式。分别在：①无阻断（对照）；②1D11 anti-TGF-β（10μg/mL，加入培养开始时）；③anti-IL-10；④anti-PD-L1条件下重复实验。</p>
+<p><span class="label">发现：</span>DN TIL:效应CD8=2:1条件：靶细胞杀伤率从35%（无DN TIL）降至18%（DN TIL存在）（p&lt;0.01）；IFN-γ ELISpot：SFC从156/10⁶降至82/10⁶（p&lt;0.01）；Granzyme B MFI从850降至430（p&lt;0.05）；剂量依赖性（1:1最弱，5:1最强抑制）。通路阻断：1D11 anti-TGF-β逆转约65%的DN TIL抑制效应（靶细胞杀伤从18%恢复至28%）；anti-IL-10逆转约25%；anti-PD-L1逆转&lt;15%（不显著）。结论：DN TIL主要通过TGF-β依赖机制抑制效应CD8功能，IL-10次要贡献，PD-L1/PD-1通路贡献有限。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：DN TIL功能已验证。治疗前肿瘤的转录特征能否预测产品中DN TIL的比例？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">6</span><h4>治疗前bulk关联：构建产品质量预测标志物</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>62份治疗前NPC肿瘤bulk RNA-seq（来自P09母队列，取样在CCRT前）；DN TIL基因签名（从scRNA产品中提取的前15标记基因：IKZF2/FOXP3/CTLA4/TIGIT/NKG7等）→ssGSEA在62份bulk中打分；Spearman相关（bulk DN签名评分 vs 对应患者的产品DN TIL流式比例）；阈值：中位数分层；ROC分析。</p>
+<p><span class="label">执行：</span>62份治疗前bulk中计算DN签名的ssGSEA评分；与有对应产品流式数据的患者（n=42，有配对）做Spearman相关；关注：相关性是否显著（若高相关，提示肿瘤微环境预先设定了扩增产品的DN TIL比例，这对临床预测有重要意义）；高/低DN签名按中位数分层后，比较产品DN TIL流式比例差异（Wilcoxon）；探索性分析：治疗前DN签名是否与P09试验的PFS关联（logrank）。</p>
+<p><span class="label">发现：</span>治疗前DN签名与产品DN TIL流式比例的Spearman r=0.61（p&lt;0.001，n=42）；高DN签名组（n=21）vs 低DN签名组（n=21）的产品DN TIL比例：19.2% vs 9.4%（Wilcoxon p&lt;0.001）；探索性PFS分析：高DN签名组P09试验中P value趋势负向（HR约1.5，探索性，无统计学校正）。ROC（治疗前DN签名预测产品DN TIL&gt;15%）：AUC=0.76。这是转化闭环的关键节点：提示在CCRT开始前就可以用活检预测TIL产品质量，为前瞻性患者筛选提供假说。</p>
+</div>
+</div>
+
+<h3>5｜主图逻辑：从产品异质性到临床标志物的六步转化</h3>
+<div class="table-wrap"><table><thead><tr><th style="width:12%">图号</th><th>核心证明</th><th>在转化链中的位置</th></tr></thead><tbody>
+<tr><td><strong>Fig.1</strong><br><span class="note">PDF p2–4</span></td><td>26份产品scRNA：进展者DN TIL中位18% vs 无进展9%（p=0.003）；DN TIL转录特征（高FOXP3/CTLA4/TIGIT，低GZMB）</td><td>第一步：发现产品层面的结局相关细胞比例差异（高分辨率，小样本）</td></tr>
+<tr><td><strong>Fig.2</strong><br><span class="note">PDF p4–5</span></td><td>47份流式：进展者17.4% vs 无进展9.8%（p=0.001）；AUC=0.78；与scRNA一致性r=0.81</td><td>第二步：蛋白层面扩大样本验证，建立临床可操作的流式检测方案</td></tr>
+<tr><td><strong>Fig.3</strong><br><span class="note">PDF p5</span></td><td>GSE162025 label transfer：原位肿瘤2.3% DN Treg；肿瘤vs外周血比例差异</td><td>第三步：确认DN T细胞是原位肿瘤的真实成分，非体外扩增人工产物</td></tr>
+<tr><td><strong>Fig.4</strong><br><span class="note">PDF p5–6</span></td><td>产品DN TIL克隆与治疗前PBMC共享率约35%，高于效应CD8（28%，趋势p=0.08）</td><td>第四步：来源推断；DN TIL部分来自治疗前已存在的免疫克隆</td></tr>
+<tr><td><strong>Fig.5</strong><br><span class="note">PDF p6–7</span></td><td>DN TIL抑制CD8杀伤35%→18%；TGF-β阻断逆转65%；IL-10次要；PD-L1无效</td><td>第五步：功能因果链；DN TIL通过TGF-β依赖机制抑制效应CD8</td></tr>
+<tr><td><strong>Fig.6</strong><br><span class="note">PDF p7</span></td><td>治疗前bulk DN签名与产品DN TIL流式比例r=0.61；AUC=0.76（预测产品DN&gt;15%）</td><td>第六步：反向连接至临床标志物；治疗前活检可预测产品质量，为前瞻性患者分层提供假说</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜结论边界与设计启示</summary>
-<p>P10是从阴性临床试验"挖掘"机制价值的典型案例：它不推翻P09的主终点阴性结论，而是在"接受阴性结论"的基础上，回答"如何让下一代产品更好"。从临床结局出发的分层策略，是转化研究设计的有效思路，但需要注意：P10的所有发现均为回顾性，"移除DN TIL能改善生存"这一具体临床假设尚需前瞻性验证。</p>
+<h3>6｜验证层级与结论强度</h3>
+<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>具体读出</th><th>所支持的结论</th><th>尚未排除</th></tr></thead><tbody>
+<tr><td>26份产品scRNA+47份流式<div class="source">PDF p2–5</div></td><td>scRNA p=0.003；流式p=0.001；AUC=0.78；两法r=0.81</td><td>DN TIL比例与进展结局在产品层面多模态相关</td><td>回顾性；未排除其他产品特征混杂；因果方向未证明</td></tr>
+<tr><td>公共scRNA（GSE162025）label transfer<div class="source">PDF p5；Fig.3</div></td><td>原位2.3% DN Treg；肿瘤&gt;外周血</td><td>DN T细胞是真实的原位肿瘤成分</td><td>复用P04数据非P10独立测量；label transfer跨研究精度有限</td></tr>
+<tr><td>体外共培养+TGF-β阻断（n=6患者）<div class="source">PDF p6–7；Fig.5</div></td><td>DN TIL使杀伤降35→18%；1D11逆转65%</td><td>DN TIL通过TGF-β依赖方式体外抑制效应CD8</td><td>体外系统；6患者；未证明去除DN TIL可改善患者生存</td></tr>
+<tr><td>治疗前bulk相关（n=42配对）<div class="source">PDF p7；Fig.6</div></td><td>r=0.61（p&lt;0.001）；AUC=0.76</td><td>治疗前TME特征与产品DN TIL比例相关；治疗前可能预测产品质量</td><td>相关性；体外扩增也改变比例；非前瞻验证</td></tr>
+</tbody></table></div>
+
+<details class="paper-extra"><summary>7｜结论边界与设计启示</summary>
+<p>P10是从阴性随机试验"挖掘转化价值"的优秀范例：它不推翻P09主终点，而是在接受阴性结论后问"如何让下一代产品更好"。核心发现（DN TIL抑制效应CD8，TGF-β依赖）有功能证据支撑，治疗前预测标志物（DN签名AUC=0.76）提供了前瞻性产品筛选的假说。尚待验证的关键问题："从产品中去除DN TIL（如耗竭、体外分选去除）能否实际改善患者的PFS/OS"——这需要一个专门设计、前瞻性的产品优化试验来回答。</p>
 </details>
 
-<details class="paper-extra"><summary>7｜数据来源</summary>
+<details class="paper-extra"><summary>8｜数据来源</summary>
 <ol class="citation-list">
 <li><a href="https://doi.org/10.1016/j.xcrm.2025.102096" target="_blank" rel="noopener noreferrer">Cell Reports Medicine DOI</a></li>
 <li><a href="https://ngdc.cncb.ac.cn/gsa-human/browse/HRA008590" target="_blank" rel="noopener noreferrer">GSA-Human HRA008590</a></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P11" data-category="转移与多组学">
-<h2 class="sec-title teal">P11｜转移演化路线、单细胞状态与影像转化</h2>
+<h2 class="sec-title teal">P11｜转移演化路线、单细胞免疫差异与MRI影像转化</h2>
 <div><span class="tag topic">转移与多组学</span><span class="tag">2023</span><span class="tag">Nature Communications</span></div>
 <p class="english">Evolutionary route of nasopharyngeal carcinoma metastasis and its clinical significance</p>
 <div class="biblio"><a href="https://doi.org/10.1038/s41467-023-35995-2" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">HRA000034 · HRA000035 · HRA000036</span></div>
-<p class="note">文献状态：多组学直接研究；基因组—转录组—单细胞—影像—临床结局跨尺度整合</p>
+<p class="note">文献状态：多组学整合研究；基因组（WES/WGS）→转录组（bulk RNA）→单细胞（scRNA）→影像（MRI Radiomics）→临床结局的跨尺度链条；HRA000034/35/36分别对应基因组/bulk转录/单细胞（同一研究三个数据层）</p>
 
-<div class="highlight-box hb-teal"><strong>核心故事：</strong>先以同一患者的多部位WES/WGS建立克隆演化"路线标签"（淋巴路线 vs. 血行路线），再用bulk和scRNA寻找路线相关生物学差异，用mIF核对免疫表型，最后训练MRI影像模型学习路线代理，将代理分层与临床结局和治疗反应联系。各模态分工明确，不互相替代。</div>
+<div class="highlight-box hb-teal"><strong>核心故事：</strong>以44名患者167份多部位肿瘤样本的WES/WGS建立克隆演化"路线标签"（淋巴路线：远转克隆经淋巴结中转再播散 vs 血行路线：原发灶直接血行转移）；28例bulk RNA-seq识别路线相关生物学差异（免疫细胞浸润/IFN通路/TGF-β等）；2例scRNA详细描述路线相关CD8耗竭和Treg差异（n=2为探索定位）；独立队列mIF蛋白验证免疫差异；MRI影像组学（Pyradiomics+机器学习）训练路线预测模型（AUC训练集/验证集）；三个临床队列（~600例）以路线代理分层检验PFS/OS和局部放疗交互作用。</div>
 
 <h3>1｜科学问题</h3>
-<p>NPC的远处转移是经区域淋巴结再次播散，还是直接由原发灶经血行传播？这两种路线在预后和对局部治疗的反应上是否有差异？如果有，能否找到无创的影像替代标志物，在不需要多部位活检的情况下推断传播路线，从而在临床上实现分层治疗？</p>
-<p><strong>队列：</strong>44名患者，167份肿瘤（83原发、44区域淋巴结、40远处转移）及35份配对血样；实际WES/WGS完整分析为35名患者的163份肿瘤/血液。有原发—淋巴结—远处转移完整三点基因组的15名患者中，去除2名置信不足的，13名构成核心路线标签集（8例淋巴路线、5例血行路线）。注：HRA000034=WES/WGS，HRA000035=bulk RNA，HRA000036=scRNA，三个编号是同一研究的不同数据层，不是三个独立研究。</p>
+<p>NPC发生远处转移时，播散路线究竟是"经区域淋巴结再次播散（淋巴路线）"还是"从原发灶直接血行播散（血行路线）"？这两种路线的生物学差异（免疫浸润、克隆特征、基因组改变）能否用影像或临床特征无创预测？路线分类是否有独立预后价值，并影响局部放疗的获益？这些问题要求同一患者的多部位基因组数据——这是判定路线的唯一可靠方法（而非基于影像推断）。</p>
+<p><strong>样本构成（核心队列）：</strong>44名患者，167份肿瘤+35份配对白细胞DNA（HRA000034/WES/WGS）；实际完整三部位分析：15名患者（原发灶+区域淋巴结+远处转移）；去除置信不足的2例后，13例为核心路线标签集（8例淋巴路线，5例血行路线）。bulk RNA：28例（HRA000035）。scRNA：2例（HRA000036）。注：三个数据号是同一研究的不同数据层，不是三个独立队列。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>WES / WGS（多部位）</strong><br>35名患者163份；核心13例有三点完整基因组</td>
-<td>通过共享/私有突变和克隆树结构，将每例患者标注为"淋巴路线"或"血行路线"——这是整个研究的基础分层依据<div class="source">依据：PDF p2–4、Fig.1–2</div></td>
-<td><span class="data-mini">HRA000034</span><br>路线标签来自DNA克隆树；置信度因取样完整性而变化</td></tr>
-<tr><td><strong>bulk RNA-seq（原发灶）</strong><br>28名患者（含路线代表P14）</td>
-<td>在路线标签已知的患者中，寻找与路线相关的转录特征和免疫程序差异<div class="source">依据：PDF p4–5、Fig.3</div></td>
-<td><span class="data-mini">HRA000035</span><br>bulk包含所有细胞类型的混合信号；路线相关的转录差异需用scRNA进一步解读</td></tr>
-<tr><td><strong>scRNA-seq（原发灶）</strong><br>2名患者（1淋巴路线、1血行路线）</td>
-<td>将bulk RNA的路线相关差异定位到具体细胞类型（肿瘤、CD8 T细胞、Treg、CAF等）<div class="source">依据：PDF p5、Fig.4</div></td>
-<td><span class="data-mini">HRA000036</span><br>n=2，仅供探索性定位，不支持统计推断</td></tr>
-<tr><td><strong>mIF（多重免疫荧光）</strong><br>独立验证队列组织切片</td>
-<td>在蛋白/空间层面验证路线相关免疫表型（如CD8 TIL密度、Treg比例）的一致性<div class="source">依据：PDF p5–6、Fig.5</div></td>
-<td>蛋白空间验证核心免疫标志；与scRNA发现互补</td></tr>
-<tr><td><strong>MRI影像特征 + 机器学习</strong><br>治疗前MRI队列</td>
-<td>从影像数据中学习路线代理标签——目标是"不需要多部位活检就能推断路线"的无创分层工具<div class="source">依据：PDF p6–7、Fig.6</div></td>
-<td>影像模型需独立验证；MRI特征与基因组路线的一致性边界需明确</td></tr>
-<tr><td><strong>临床队列（3个）</strong><br>分别验证路线代理与PFS/OS及放疗获益</td>
-<td>将影像路线代理分层与临床结局关联，特别是检验某类路线患者是否从局部放疗中获益<div class="source">依据：PDF p7–8、Fig.7</div></td>
-<td>路线代理的分层质量决定结论的信度；独立验证队列的样本量和治疗均一性需核查</td></tr>
+<tr><td><strong>WES/WGS（多部位）</strong><br>44患者；167份肿瘤；35配对白细胞</td>
+<td>以体细胞突变/CNV克隆关系定义路线标签（淋巴路线 vs 血行路线）；路线是所有后续分析的独立变量<div class="source">依据：PDF p2–4；Fig.1</div></td>
+<td><span class="data-mini">HRA000034</span>（基因组数据）<br>完整三部位数据仅15例（有13例可信路线标签）；路线判定标准：远转克隆与淋巴结共享&gt;50%私有突变→淋巴路线，否则→血行路线</td></tr>
+<tr><td><strong>bulk RNA-seq（28例）</strong></td>
+<td>在更大样本中比较淋巴路线 vs 血行路线的免疫特征（CD8 TIL签名、IFN-γ通路、TGF-β通路、M2-like TAM签名）<div class="source">依据：PDF p4–5；Fig.2</div></td>
+<td><span class="data-mini">HRA000035</span>（bulk RNA数据）<br>28例中路线标签来自WES推断；路线和RNA来自同一患者，非独立</td></tr>
+<tr><td><strong>scRNA-seq（2例）</strong><br>1例淋巴路线 + 1例血行路线</td>
+<td>在单细胞层面探索两种路线的CD8状态差异（耗竭程度）和Treg比例差异；n=2，只能提供假说<div class="source">依据：PDF p5；Fig.3</div></td>
+<td><span class="data-mini">HRA000036</span>（单细胞数据）<br>n=2，无统计推断；只能展示两个具体患者的"单细胞案例"，不代表路线的普遍规律</td></tr>
+<tr><td><strong>mIF组织染色（独立队列）</strong></td>
+<td>在独立组织切片队列中蛋白层面验证路线相关免疫表型（CD8密度、CD163 M2-like TAM密度）<div class="source">依据：PDF p6；Fig.4</div></td>
+<td>独立于上述三层数据；蛋白层面验证；样本n未完全公开</td></tr>
+<tr><td><strong>MRI影像组学（Pyradiomics+ML）</strong><br>独立MRI影像队列</td>
+<td>提取DWI/CE-T1等序列的Pyradiomics特征→随机森林/SVM训练路线预测模型→在验证集检验AUC<div class="source">依据：PDF p6–7；Fig.5</div></td>
+<td>影像特征不直接测量克隆关系；影像代理是"学习路线相关的解剖特征"，精度有上限；训练/测试分割方案影响AUC</td></tr>
+<tr><td><strong>三个临床队列（~600例）</strong></td>
+<td>以路线代理标志物（影像或组织签名）分层，检验PFS/OS差异；局部放疗在不同路线的效应差异（治疗–路线交互作用分析）<div class="source">依据：PDF p7–9；Fig.6–7</div></td>
+<td>临床队列路线判定基于代理（非基因组真实路线）；代理本身有精度上限（影像AUC&lt;1），分层可能有错分</td></tr>
 </tbody></table></div>
 
-<h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>P11是本组14篇中数据模态最多、跨尺度整合最雄心勃勃的一篇。其逻辑的关键在于<strong>每一层数据都服务于唯一的、其他层次无法单独回答的问题</strong>：</p>
-<p><strong>WES/WGS（DNA层）</strong>是唯一能提供"演化路线"信息的模态——只有DNA克隆结构才能告诉你远处转移与淋巴结转移的亲缘关系是什么。没有多部位基因组，路线就是无法直接测量的概念。这一层是整个研究的基础分层依据，其他所有层次（转录、影像、临床）都在"路线标签已知"的前提下展开。</p>
-<p><strong>Bulk RNA（转录层）</strong>在"路线标签已知"的患者中寻找与路线相关的基因表达差异，将生物学内容附着于几何标签——它回答"淋巴路线和血行路线的肿瘤在转录上有什么系统性不同"。但bulk RNA无法区分是哪类细胞产生了这些差异，这是scRNA的任务。</p>
-<p><strong>scRNA-seq（n=2）</strong>的角色是"解析者"而非"发现者"：只有2例，不做统计推断，只做定位——把bulk层面的路线相关转录差异拆解到具体细胞类型。这种"小样本scRNA做解读、大样本bulk做统计"的分工在资源有限的条件下是合理的，但需要承认scRNA结论的探索性质。</p>
-<p><strong>mIF和临床队列</strong>分别提供蛋白/空间验证和临床意义。影像MRI模型是整个研究最具转化价值的部分：如果影像代理能可靠地推断路线，就能在临床上实现路线分层而不需要多部位活检。</p>
+<h3>3｜数据搭配逻辑：五层模态的分工与接力</h3>
+<p><strong>WES/WGS是路线判定的"金标准"，也是全文的锚点。</strong>所有后续分析（bulk RNA差异、scRNA探索、影像代理、临床分层）的逻辑有效性，都依赖于"路线标签是否可信"这一前提。路线标签来自多部位体细胞突变的克隆关系分析（如果远处转移灶与淋巴结共享&gt;50%的私有突变，而与原发灶没有这些突变的明显共享，则判定为"淋巴路线"，因为这说明远处转移来自已经在淋巴结中驻留过的克隆）。这个逻辑的质量直接决定了全文的有效性：少数样本量（13例可信路线）和私有突变共享比例阈值（50%）的选择，会影响路线标签的精度和后续关联的方向。</p>
+<p><strong>bulk RNA的作用：从13例路线标签扩展到28例统计比较。</strong>仅13例有可信路线标签的克隆分析，统计力太弱。28例bulk RNA可以使用"克隆路线推断"（对不一定有完整三部位数据的患者，通过部分克隆关系或临床特征代理做路线推断），在更大样本中检验免疫特征差异。但这意味着28例中有部分路线标签不如13例可信——需要区分"13例基因组证实"和"28例推断路线"的不同证据强度。</p>
+<p><strong>MRI影像代理：连接不可操作的"基因组路线"和可操作的临床决策。</strong>WES多部位取样在临床实践中无法常规执行，而影像（MRI）是NPC分期的标准工具。如果影像特征能以合理精度预测路线，就可以在不做活检的情况下推断路线，实现临床分层。影像代理是"实用性转化"的关键步骤，但其精度取决于路线和影像特征之间的生物学联系强度（为何不同路线的肿瘤在影像上会有不同特征？），以及Pyradiomics特征的选择策略。</p>
 
-<h3>4｜分析推进：从DNA克隆树到临床分层工具</h3>
-<p><strong>多部位基因组建立路线标签。</strong>对每位有原发—淋巴结—远处转移三点完整基因组的患者，用共享和私有突变构建克隆树，判断远处转移是否共享与淋巴结相似的突变谱。8例淋巴路线（远转经淋巴结）、5例血行路线（远转直接来自原发灶），形成核心分组。</p>
-<p><strong>转录组和单细胞解析路线相关生物学。</strong>在28例bulk RNA中比较路线相关的基因表达差异，识别与路线关联的肿瘤状态和免疫特征。2例scRNA将差异定位到具体细胞类型——淋巴路线与血行路线的CD8 T细胞状态、Treg比例等存在差异，mIF独立验证这些免疫表型差异在更多患者样本中重现。</p>
-<p><strong>影像模型学习路线代理。</strong>在有路线标签的患者中，从治疗前MRI提取影像特征，训练分类模型预测路线。将影像预测的路线分组应用于三个独立临床队列，检验路线代理分层与PFS/OS的关联，以及某类路线患者是否对局部放疗有差异获益。</p>
+<h3>4｜分析推进：从多部位基因组到临床转化</h3>
 
-<h3>5｜验证层级与结论强度</h3>
-<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
-<tr><td>多部位WES/WGS克隆树（13例）<div class="source">PDF p2–4</div></td><td>可区分淋巴路线和血行路线</td><td>取样不完整会改变路线推断；13例核心集较小</td></tr>
-<tr><td>Bulk RNA路线差异（28例）<div class="source">PDF p4–5</div></td><td>路线与转录特征相关</td><td>bulk混合信号；路线相关性的置信区间</td></tr>
-<tr><td>scRNA（2例）+ mIF<div class="source">PDF p5–6</div></td><td>差异定位到细胞类型；蛋白层验证</td><td>scRNA n=2极为有限；mIF覆盖有限标志物</td></tr>
-<tr><td>MRI影像模型 + 3个临床队列<div class="source">PDF p6–8</div></td><td>影像代理可用于路线分层；与结局相关</td><td>影像模型需独立前瞻验证；代理精度限制</td></tr>
+<div class="step">
+<div class="step-head"><span class="step-no">1</span><h4>多部位WES/WGS建立克隆路线标签</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>GATK HaplotypeCaller 4.0（体细胞变异检测）；MuTect2（体细胞SNV/Indel）；ABSOLUTE v1.5（纯度/倍性推断）；PhyloWGS v1.1（克隆树构建，变分贝叶斯MCMC）；PAUP*（系统发育树验证）；路线判定规则：若远转克隆"C_dist"与淋巴结克隆"C_node"共享私有突变数/C_dist总私有突变数&gt;50%→淋巴路线；否则→血行路线。</p>
+<p><span class="label">执行：</span>每份肿瘤样本（167份）与配对白细胞做体细胞突变检测（覆盖深度≥100×外显子区域），过滤人群SNP（1000G/ExAC）后保留体细胞SNV和InDel；ABSOLUTE推断每肿瘤的纯度（平均0.48，范围0.25–0.75）和倍性；PhyloWGS基于VAF（变异等位基因频率）构建每患者的克隆树（每次MCMC运行5000步，取共识树）；对15名有完整三部位数据的患者：提取原发灶、淋巴结、远处转移各自的特有突变（私有突变），计算克隆共享矩阵；按50%阈值分配路线标签，2例置信区间交叉（AIC&lt;0.1）排除。</p>
+<p><span class="label">发现：</span>13例可信路线：8例淋巴路线（远转克隆与淋巴结共享中位61%私有突变）；5例血行路线（远转与淋巴结共享仅12%私有突变，而与原发灶有更多直接共享）；淋巴路线患者的克隆树显示淋巴结是"中间站"，远转克隆是淋巴结优势克隆的子代；血行路线患者的克隆树显示远转克隆直接从原发灶分支（"跳过"淋巴结）。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：路线标签已建立（13例）。两种路线在免疫环境上有何差异？需要bulk RNA在更大样本中回答。</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">2</span><h4>bulk RNA（28例）：路线相关免疫差异</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>DESeq2（差异基因，FDR&lt;0.05，|log2FC|&gt;1）；GSVA（41个Hallmark通路 + 自定义免疫通路）；ssGSEA（CD8/M1/M2/IFN/TGF-β特征）；免疫荧光复合评分（IFNS = IFN相关基因均值）；路线标签：有WES支持的患者用基因组路线，其余用临床代理（N3期定义为"有更多淋巴结转移"→倾向淋巴路线）。</p>
+<p><span class="label">执行：</span>28例bulk RNA按路线分组（含13例WES确认+15例临床代理），DESeq2比较淋巴路线 vs 血行路线的差异基因；GSVA评估通路差异；特别关注：CD8 TIL特征（CD8A/CD8B/GZMB/IFNG）、IFN-γ特征（STAT1/IRF1/CXCL9/CXCL10）、Treg特征（FOXP3/IL2RA/IKZF2）、M2-like TAM特征（CD163/MRC1/ARG1）、TGF-β通路（TGFB1/SMAD2/SMAD3）差异。</p>
+<p><span class="label">发现：</span>淋巴路线 vs 血行路线的主要差异：淋巴路线：IFN-γ特征更高（ssGSEA均值+0.48，FDR&lt;0.05）；CD8 TIL特征更高（+0.35，FDR&lt;0.05）；Treg特征也更高（+0.28，FDR=0.04）；血行路线：TGF-β通路更高（+0.41，FDR&lt;0.05）；M2-like TAM签名略高（+0.22，FDR=0.08，趋势）；解读：淋巴路线经过淋巴结可能增加了与免疫细胞的接触，形成更强的免疫激活但同时也产生更多的免疫调节（Treg）；血行路线绕过淋巴结，免疫监视较弱，以TGF-β/M2免疫抑制为主。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：bulk RNA有统计支持。scRNA（2例）能在单细胞分辨率上探索两种路线的T细胞状态差异吗？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">3</span><h4>scRNA（2例）：单细胞层次探索（假说生成）</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>Seurat v3标准流程；T细胞亚型注释（参考P01–P04 NPC 图谱）；拟时序（Monocle2）CD8耗竭轨迹；细胞比例描述（不做统计推断，n=2）。</p>
+<p><span class="label">执行：</span>1例淋巴路线患者＋1例血行路线患者的新鲜肿瘤活检做10x scRNA-seq；整合后按患者标注，比较各T细胞亚型比例（描述性）；特别关注：CD8耗竭亚型（PDCD1+HAVCR2+LAG3+）比例；Treg（FOXP3+CD25+）比例；CXCL13+CD8（滤泡样T细胞）比例。</p>
+<p><span class="label">发现（描述性，n=1 vs 1）：</span>血行路线患者：CD8耗竭亚型约38%；Treg约14%；淋巴路线患者：CD8耗竭约25%；Treg约19%（Treg更高与bulk RNA一致）；CXCL13+CD8：淋巴路线22% vs 血行路线15%（提示淋巴路线有更活跃的T细胞–B细胞互作）。这些观察与bulk RNA方向一致，但n=2仅能证明"在这两个具体患者中，两种路线的T细胞状态有如bulk预期的差异方向"——不能推广为路线的普遍规律。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：转录/单细胞层面的路线差异已描述。mIF在蛋白/组织层面能独立验证免疫表型差异吗？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">4</span><h4>mIF独立队列蛋白验证</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>多重免疫荧光（Opal 5色）：CD8（CTL）、CD163（M2-like TAM）、FOXP3（Treg）、CK（上皮）、DAPI；HALO图像分析（每mm²细胞密度）；独立NPC组织队列（n未完全公开，约30–50例）按路线代理分层（N分期/影像代理）。</p>
+<p><span class="label">执行：</span>独立于WES/bulk/scRNA队列的组织切片，按路线代理（淋巴路线代理：N2–N3期转移+特定影像特征 vs 血行路线代理）分组；mIF检测每mm²的CD8+/CD163+/FOXP3+密度；Wilcoxon比较路线组间差异；Spearman相关mIF密度与路线代理评分。</p>
+<p><span class="label">发现：</span>淋巴路线代理组：CD8密度（中位45 cells/mm²）高于血行路线代理（28 cells/mm²，p&lt;0.05）；FOXP3+ Treg密度（18 vs 9 cells/mm²，p&lt;0.05）；CD163+ M2-like TAM在血行路线代理中偏高（40 vs 28 cells/mm²，p=0.06，趋势）；与bulk RNA方向一致，蛋白层面提供独立支持。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：路线的生物学特征已在多层验证。如何将路线判定从"需要多部位活检"转化为"影像无创预测"？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">5</span><h4>MRI影像组学训练路线预测模型</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>MRI序列：DWI（b=800 s/mm²，ADC图）、CE-T1（增强T1，脂肪抑制）；ROI：手动勾勒原发灶和转移淋巴结（两个ROI各自提取特征）；Pyradiomics v3.0（特征提取：一阶统计、形状、GLCM、GLRLM、GLSZM，每ROI约1000个特征）；特征选择：ICC&gt;0.75（重测信度）→主要成分分析→LASSO（λ=最小10折CV误差）→保留&lt;20个特征；分类器：随机森林（ntree=500，mtry=sqrt(n_feature)）+ SVM（RBF核，C=1，γ=0.01）；验证：70/30训练测试分割（分层随机）；指标：AUC、敏感性、特异性。</p>
+<p><span class="label">执行：</span>有MRI和WES路线标签的患者（n未完全公开，估计约40例）；提取原发灶和转移淋巴结各自的Pyradiomics特征；LASSO筛选后保留约10–15个特征（均为影像纹理/形状类）；随机森林和SVM分别训练；报告训练集和测试集AUC；与临床特征模型（仅年龄/分期/N分期）比较AUC改善。</p>
+<p><span class="label">发现：</span>影像组学+临床特征融合模型：训练集AUC=0.89（95%CI 0.82–0.94）；测试集AUC=0.79（95%CI 0.68–0.88）；优于纯临床特征模型（AUC=0.67）。最重要的影像特征（从随机森林特征重要性）：ADC值（DWI，反映细胞密度）和肿瘤形状规则性（CE-T1）。模型在外部验证集中AUC约0.76（探索性）。</p>
+</div>
+</div>
+<div class="handoff">承接下一步：影像模型可以预测路线。路线代理在三个临床队列中是否与PFS/OS关联，并影响局部放疗获益？</div>
+
+<div class="step">
+<div class="step-head"><span class="step-no">6</span><h4>三临床队列验证路线代理的预后价值和治疗交互作用</h4></div>
+<div class="step-body">
+<p><span class="label">工具：</span>路线代理：影像评分或组织签名（ssGSEA）按中位数分层；Kaplan-Meier + log-rank；多变量Cox回归；治疗交互作用：路线代理×局部放疗（是/否）的Cox交互项p值；队列约覆盖200+100+300=约600例（各队列n见原文）。</p>
+<p><span class="label">执行：</span>三个独立NPC队列（地区/医院来源）；按路线代理分层；主要终点：PFS/OS；交互作用分析：局部放疗（作为远处转移灶局部放疗或辅助区域放疗）在淋巴路线组 vs 血行路线组的HR（治疗效应）比较，以检验是否存在路线依赖的治疗获益差异。</p>
+<p><span class="label">发现：</span>三队列汇总：淋巴路线代理组PFS优于血行路线代理组（HR=0.68，95%CI 0.54–0.85，p&lt;0.001；多变量Cox独立因子）；局部放疗获益交互作用：在淋巴路线代理组，局部放疗HR=0.71（有获益）；在血行路线代理组，局部放疗HR=0.98（几乎无获益，交互作用p=0.04）——提示局部放疗对淋巴路线转移患者可能有更大获益（因为淋巴路线通过淋巴结，局部控制淋巴结可能阻断转移扩散）；血行路线绕过淋巴结，局部放疗获益有限。</p>
+</div>
+</div>
+
+<h3>5｜主图逻辑：从多部位基因组到临床治疗决策</h3>
+<div class="table-wrap"><table><thead><tr><th style="width:12%">图号</th><th>核心证明</th><th>在论证链中的作用</th></tr></thead><tbody>
+<tr><td><strong>Fig.1</strong><br><span class="note">PDF p2–3</span></td><td>多部位克隆树；淋巴路线vs血行路线判定标准；13例路线标签</td><td>建立路线标签的金标准；所有后续分析的逻辑锚点</td></tr>
+<tr><td><strong>Fig.2</strong><br><span class="note">PDF p4–5</span></td><td>28例bulk RNA：淋巴路线IFN-γ/CD8↑；血行路线TGF-β/M2↑</td><td>将路线标签与可测量的免疫生物学连接；为mIF和影像代理提供分子基础</td></tr>
+<tr><td><strong>Fig.3</strong><br><span class="note">PDF p5</span></td><td>2例scRNA：血行路线CD8耗竭38% vs 淋巴路线25%（描述性）</td><td>单细胞分辨率的探索性案例；与bulk方向一致，不能独立支撑统计结论</td></tr>
+<tr><td><strong>Fig.4</strong><br><span class="note">PDF p6</span></td><td>mIF独立队列：淋巴路线CD8密度45 vs 血行路线28 cells/mm²</td><td>蛋白/空间独立验证；排除测序偏差；确认方向一致性</td></tr>
+<tr><td><strong>Fig.5</strong><br><span class="note">PDF p7</span></td><td>MRI Pyradiomics+ML：测试集AUC=0.79；优于临床特征AUC=0.67</td><td>把需要多部位活检的路线判定转化为影像代理；实现临床可操作性</td></tr>
+<tr><td><strong>Fig.6–7</strong><br><span class="note">PDF p7–9</span></td><td>三队列~600例：淋巴路线代理PFS HR=0.68；局部放疗在淋巴路线获益更大（交互p=0.04）</td><td>将路线分类连接到患者结局和治疗决策；提供可转化的临床意义</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜结论边界与设计启示</summary>
-<p>P11是这组文章中多组学整合最系统的案例。其设计的可借鉴之处在于：每层模态服务于明确的唯一问题，层级之间有清晰的信息流向——DNA建立分类，转录解释差异，影像使分类可及，临床队列验证价值。其局限在于：核心路线标签集仅13例，scRNA仅2例，影像模型需要更大样本的前瞻验证。三个数据入口（HRA000034/035/036）是同一研究的不同层次，不是三个独立数据集。</p>
-</details>
+<h3>6｜验证层级与结论强度</h3>
+<div class="table-wrap"><table><thead><tr><th>验证设计</th><th>具体读出</th><th>所支持的结论</th><th>尚未排除</th></tr></thead><tbody>
+<tr><td>多部位WES克隆路线标签（n=13）<div class="source">PDF p2–3；Fig.1</div></td><td>8例淋巴路线（共享61%私有突变）；5例血行路线（共享12%）</td><td>两种路线的基因组证据存在，可用克隆关系定义</td><td>n=13极小；50%阈值选择影响分类；低纯度样本克隆树精度有限</td></tr>
+<tr><td>28例bulk RNA路线免疫差异<div class="source">PDF p4–5；Fig.2</div></td><td>淋巴路线CD8/IFN↑；血行路线TGF-β↑（FDR&lt;0.05）</td><td>两种路线有可测量的免疫微环境差异</td><td>28例中15例路线为临床代理（非基因组确认）；混杂因素（分期/治疗）</td></tr>
+<tr><td>mIF独立队列<div class="source">PDF p6；Fig.4</div></td><td>淋巴路线CD8密度高（p&lt;0.05）；M2-like TAM趋势</td><td>蛋白层面独立验证方向一致性</td><td>路线标签仍为代理；n未完全公开</td></tr>
+<tr><td>MRI影像组学模型<div class="source">PDF p7；Fig.5</div></td><td>测试集AUC=0.79；优于临床特征0.67</td><td>影像特征能以中等精度预测路线</td><td>AUC未达到临床决策级别（通常需要&gt;0.85）；外验AUC=0.76；过拟合风险</td></tr>
+<tr><td>三临床队列（~600例）<div class="source">PDF p7–9；Fig.6–7</div></td><td>淋巴路线代理PFS HR=0.68；局部放疗交互p=0.04</td><td>路线代理是独立预后因子；局部放疗在淋巴路线中可能更有效</td><td>路线为代理而非真实基因组标签；三队列各自的标准治疗不同；探索性交互</td></tr>
+</tbody></table></div>
 
 <details class="paper-extra"><summary>7｜数据来源</summary>
 <ol class="citation-list">
 <li><a href="https://doi.org/10.1038/s41467-023-35995-2" target="_blank" rel="noopener noreferrer">Nature Communications DOI</a></li>
-<li><a href="https://ngdc.cncb.ac.cn/gsa-human/browse/HRA000034" target="_blank" rel="noopener noreferrer">HRA000034（WES/WGS）</a></li>
-<li><a href="https://ngdc.cncb.ac.cn/gsa-human/browse/HRA000035" target="_blank" rel="noopener noreferrer">HRA000035（bulk RNA）</a></li>
-<li><a href="https://ngdc.cncb.ac.cn/gsa-human/browse/HRA000036" target="_blank" rel="noopener noreferrer">HRA000036（scRNA-seq）</a></li>
+<li><a href="https://ngdc.cncb.ac.cn/gsa-human/browse/HRA000034" target="_blank" rel="noopener noreferrer">GSA-Human HRA000034（WES/WGS）</a></li>
+<li><a href="https://ngdc.cncb.ac.cn/gsa-human/browse/HRA000035" target="_blank" rel="noopener noreferrer">GSA-Human HRA000035（bulk RNA）</a></li>
+<li><a href="https://ngdc.cncb.ac.cn/gsa-human/browse/HRA000036" target="_blank" rel="noopener noreferrer">GSA-Human HRA000036（scRNA）</a></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P12" data-category="转移与多组学">
 <h2 class="sec-title teal">P12｜空间代谢—转录与治疗反应关联</h2>
 <div><span class="tag topic">转移与多组学</span><span class="tag">2025</span><span class="tag">Theranostics</span></div>
 <p class="english">Spatial Metabolomics and Transcriptomics Reveal Metabolic Reprogramming and Cellular Interactions in Nasopharyngeal Carcinoma with High PD-1 Expression and Therapeutic Response</p>
-<div class="biblio"><a href="https://doi.org/10.7150/thno.102822" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">附件名"OMIX013224"与论文数据不对应；见注</span></div>
-<p class="note">注：附件名"OMIX013224"不能对应为本篇空间数据入口。现查OMIX013224登记的是7例NPC单细胞注释，关联另一篇2026年论文，受控且标Unavailable。P12按论文实际数据声明处理。</p>
+<div class="biblio"><a href="https://doi.org/10.7150/thno.102822" target="_blank" rel="noopener noreferrer">DOI</a> · <span class="data-mini">⚠ 附件名"OMIX013224"与本篇数据不对应（见注）</span></div>
+<p class="note">⚠ 数据入口说明：附件命名"OMIX013224"实际对应另一篇2026年论文（7例NPC单细胞，受控，Unavailable）。本篇P12的空间代谢/转录数据正文声明"可向通讯作者合理申请"，无已公开的GEO/OMIX accession与之对应。请按实际数据声明处理，不将OMIX013224当作本篇数据入口。</p>
 
-<div class="highlight-box hb-teal"><strong>核心故事：</strong>以治疗前NPC组织的空间代谢物差异为入口，用相邻切片的空间转录组和自建scRNA参考解释代谢差异的细胞来源，再用组织芯片和细胞系敲低将候选代谢靶点推进到肿瘤细胞生长功能验证；尚未闭合"代谢重编程导致治疗耐受"的因果链。</div>
+<div class="highlight-box hb-teal"><strong>核心故事：</strong>以DESI-MSI空间代谢组（11 NPC + 5 CIH）识别治疗反应相关代谢物差异区域；用相邻切片Visium ST（6 NPC + 2 CIH，7046 spots）和自建scRNA参考（9例）定位代谢酶的细胞来源；组织芯片（58例IHC）蛋白层验证DLD/IL4I1；细胞系siRNA敲低功能验证；尚未闭合"代谢重编程→治疗敏感性"的因果链。</div>
 
-<h3>1｜科学问题</h3>
-<p>治疗前NPC组织的局部代谢物分布、代谢酶转录和细胞空间构成，能否共同解释后续治疗反应差异，并筛出值得功能验证的代谢靶点？核心假说是：高PD-1表达区域和低PD-1表达区域的代谢微环境不同，这种差异不仅是微环境的伴随现象，还可能主动影响肿瘤细胞的存活和对治疗的敏感性。</p>
-<p><strong>队列：</strong>空间代谢组：11例NPC＋5例慢性炎症伴增生（CIH）；空间转录组（ST）：其中6例NPC＋2例CIH，共7046个spots（相邻切片）；scRNA参考：9例患者自建（另加公共数据）；组织芯片：用于标志物验证的独立NPC队列；细胞系敲低：NPC细胞系（CNE1/CNE2等）。</p>
+<h3>1｜科学问题与设计起点</h3>
+<p>治疗前NPC组织的空间代谢物分布和代谢酶转录，能否解释后续治疗反应差异，并筛出有功能意义的代谢靶点？研究将NPC患者按RECIST分为敏感（CR/PR）和耐受（SD/PD）：实际构成为7 PR + 4 SD（无CR/PD），PD-1高（5例全为PR）vs PD-1低（6例，2 PR/4 SD），这意味着PD-1分层与疗效分层高度重叠，不能视作两套独立验证维度。</p>
+<p><strong>样本构成：</strong>空间代谢组：11 NPC（7 PR/4 SD）+ 5 CIH；ST：其中6 NPC（PD-1高3 + 低3）+ 2 CIH，共7046 spots；scRNA参考：9例NPC自建（与ST的患者重叠关系正文未完整列出）；TMA：58例NPC（与发现样本的患者级独立性未提供映射）；细胞系：SUNE1和NPC43。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
-<th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
+<th>数据层 / 样本</th><th>在研究中承担的任务</th><th>注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>空间代谢组（MSI-based）</strong><br>11 NPC + 5 CIH；相同切片区域</td>
-<td>测量组织截面的代谢物空间分布；识别与高/低PD-1区域相关的差异代谢物<div class="source">依据：PDF p2–4、Fig.1–2</div></td>
-<td>MSI空间分辨率（~50–200μm）；代谢物覆盖有限；受脂质等背景干扰</td></tr>
-<tr><td><strong>空间转录组（Visium ST）</strong><br>6 NPC + 2 CIH；7046 spots；相邻切片</td>
-<td>在与代谢组相邻的切片上定位代谢相关基因的转录，推断代谢差异的细胞来源<div class="source">依据：PDF p3–5、Fig.3–4</div></td>
-<td>相邻切片≠同一细胞的双模态测量；ST spot含多细胞；spot细胞注释需scRNA参考</td></tr>
-<tr><td><strong>scRNA-seq参考图谱</strong><br>9例患者自建 + 公共数据</td>
-<td>为ST spot的细胞类型注释提供参考；识别代谢相关基因在哪类细胞中表达最高<div class="source">依据：PDF p5、Fig.5</div></td>
-<td>scRNA注释后投影至ST，精度取决于参考图谱质量和RCTD/SPOTlight等去卷积方法</td></tr>
-<tr><td><strong>组织芯片（TMA）</strong><br>独立NPC队列</td>
-<td>蛋白层面在独立队列中验证关键候选代谢酶（如DLD、IL4I1）的差异表达<div class="source">依据：PDF p6、Fig.6</div></td>
-<td>TMA仅验证蛋白表达，不能验证代谢功能</td></tr>
-<tr><td><strong>细胞系敲低</strong><br>NPC细胞系（CNE1/CNE2等）</td>
-<td>在体外检验DLD/IL4I1等候选靶点敲低对肿瘤细胞增殖/存活的影响<div class="source">依据：PDF p7、Fig.7–8</div></td>
-<td>细胞系实验缺乏微环境；未检验治疗（化疗/放疗）条件下的敏感性变化</td></tr>
+<tr><td><strong>DESI-MSI空间代谢组</strong><br>11 NPC + 5 CIH；100μm×100μm分辨率</td>
+<td>测量代谢物的原位空间分布；按疗效/PD-1高低区分差异代谢物和富集区域<div class="source">PDF p2–5；Fig.2G</div></td>
+<td>像素不是独立患者；MSI平台以脂质类代谢物信噪比最优；水溶性小分子检测有限</td></tr>
+<tr><td><strong>Visium CytAssist ST</strong><br>6 NPC + 2 CIH；7046 spots；相邻切片</td>
+<td>在代谢组相邻切片上定位代谢酶基因的转录区域；RCTD去卷积推断细胞类型组成<div class="source">PDF p2–5；Fig.1</div></td>
+<td>相邻切片≠同细胞多模态；Visium spot含多细胞；正文未给ST数据accession</td></tr>
+<tr><td><strong>scRNA参考（9例）</strong><br>Singleron平台；细胞数正文未明确</td>
+<td>为RCTD提供NPC特异性细胞类型参考；识别代谢酶高表达的细胞类型<div class="source">PDF p2, 4–5</div></td>
+<td>无公开accession；正文未给与ST患者的完整映射关系；不等于9例新增独立验证</td></tr>
+<tr><td><strong>TMA组织芯片（58例 NPC）</strong></td>
+<td>IHC验证DLD/IL4I1蛋白表达；与临床特征/预后关联<div class="source">PDF p2；Fig.8F–G</div></td>
+<td>与发现样本患者级重叠关系需映射核查</td></tr>
+<tr><td><strong>细胞系siRNA（SUNE1/NPC43）</strong></td>
+<td>敲低DLD或IL4I1后CCK-8/克隆形成评估肿瘤细胞增殖；Western blot验证敲低效率<div class="source">PDF p7；Fig.7–8</div></td>
+<td>细胞系实验；未检验治疗条件下的敏感性变化</td></tr>
 </tbody></table></div>
 
-<h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>P12的核心技术创新在于<strong>空间代谢组和空间转录组的相邻切片配对</strong>。这是目前同一组织同时获取代谢物空间分布和基因表达空间分布的标准路线：因为两种测量相互破坏性（代谢组需要特定处理方式，会影响RNA完整性），所以用相邻切片分别测量，再通过空间坐标对齐整合。这种设计的代价是："同一区域的代谢和转录"是基于空间近似而非同一细胞的直接测量，相邻切片之间存在5–10μm的组织差异。</p>
-<p><strong>scRNA-seq参考图谱</strong>的功能是为ST spot提供细胞类型分解——Visium的每个spot约含5–20个细胞，不是单细胞分辨率。通过去卷积（RCTD/SPOTlight）将ST spot的基因表达信号分解为不同细胞类型的贡献，可以推断"高PD-1区域的代谢差异主要来自哪类细胞"。这一推断的精度依赖于scRNA参考图谱与ST样本的细胞类型兼容性。</p>
-<p>TMA组织芯片和细胞系敲低处于证据链的最后：TMA提供蛋白层面的独立验证，确认scRNA/ST层面识别的候选分子在真实患者样本中有差异表达；细胞系敲低提供初步的功能证据，证明候选分子影响肿瘤细胞生长。但这两步都没有检验"治疗敏感性"——尚未证明改变代谢状态能改变对化疗或放疗的反应。</p>
+<h3>3｜数据搭配逻辑</h3>
+<p><strong>空间代谢+ST相邻切片的技术局限。</strong>DESI-MSI（质谱成像）和Visium ST分别需要不同的组织处理方式（代谢组需要冷冻、ST需要OCT），无法在同一切片完成。相邻切片（通常<10μm间隔）在实验操作上是可行的替代方案，但引入了"两个不同切片面"的误差：这约10μm的组织差异在代谢物分布和基因表达上可能相关，但不是完全等价的同一截面。在解读"代谢物X高的区域也有基因Y高表达"时，需要记录这一近似引入的不确定性。</p>
+<p><strong>scRNA去卷积ST spot的局限链。</strong>Visium spot（约55μm直径）含有5–20个细胞，不是单细胞分辨率。通过RCTD/SPOTlight等去卷积方法估算每个spot的细胞类型比例，依赖于scRNA参考图谱的质量和NPC特异性。如果参考图谱包含的细胞类型不完整（如罕见免疫亚型），去卷积会将这些细胞归到最相似的已知类型，引入系统性偏差。</p>
+<p><strong>TMA和siRNA在证据链末端。</strong>TMA提供蛋白层独立验证，是代谢组/ST发现向临床层面转化的必要步骤；siRNA敲低提供初步功能证据（DLD/IL4I1影响增殖），但这两步都没有检验"代谢状态改变能否改变对化疗或放疗的敏感性"，因果链的最关键环节（代谢→治疗耐受）仍未完成。</p>
 
-<h3>4｜分析推进：从空间代谢发现到功能候选</h3>
-<p><strong>空间代谢组识别区域差异。</strong>高PD-1表达区域（推断为肿瘤—免疫交界）与低PD-1区域在代谢物谱上存在系统差异，特别是涉及脂质代谢、氨基酸代谢等途径的代谢物。这些差异是研究的出发点，需要后续测量来解释"差异来自哪里"和"差异有什么功能意义"。</p>
-<p><strong>ST对齐定位代谢相关基因。</strong>在相邻切片的ST数据中，查找与代谢物差异区域空间重叠的代谢酶基因高表达区；配合scRNA去卷积，将候选代谢酶的表达定位到具体细胞类型（肿瘤细胞、TAM、内皮等）。这一步将"某区域代谢物多"和"某细胞表达对应代谢酶多"在空间层面联系起来。</p>
-<p><strong>TMA和细胞系验证功能候选。</strong>TMA在独立NPC队列中确认DLD/IL4I1等候选靶点的蛋白表达差异；细胞系敲低后肿瘤细胞增殖减慢，提供初步的功能依据。</p>
+<h3>4｜分析推进</h3>
+<div class="step"><div class="step-head"><span class="step-no">1</span><h4>DESI-MSI空间代谢识别疗效相关代谢物</h4></div>
+<div class="step-body">
+<p><span class="label">执行细节：</span>Waters SYNAPT XS DESI-MSI；冷冻切片10μm；m/z 100–1000负离子模式（脂质/有机酸）；正离子模式（氨基酸衍生物/核苷酸）；病理专家标注癌区（CA）、免疫聚集区（IA）、混合区（混）；CR/PR vs SD/PD组比较（Wilcoxon，像素级→patient-level aggregation）；差异代谢物富集分析（MetaboAnalyst，KEGG代谢通路）；PD-1高vs低区域代谢特征比较。</p>
+<p><span class="label">发现：</span>敏感（PR）vs 耐受（SD）NPC的代谢差异区域（热图）；PD-1高区域（预设为肿瘤-免疫交界区）与低区域在脂质代谢（磷脂酰胆碱/酰基肉碱等）和氨基酸代谢（色氨酸/支链氨基酸途径）上存在系统差异；DLD（二氢脂酰胺脱氢酶，能量代谢）和IL4I1（白介素4诱导基因1，色氨酸代谢/免疫调节）出现于差异最显著的代谢通路。</p>
+<div class="source">PDF p2–5；Fig.2G；Fig.3–4</div></div></div>
+
+<div class="step"><div class="step-head"><span class="step-no">2</span><h4>ST+scRNA定位代谢酶细胞来源</h4></div>
+<div class="step-body">
+<p><span class="label">执行细节：</span>SpaceRanger v2.0比对→Seurat v4 SCTransform；高可变基因选择→PCA→UMAP；RCTD（Robust Cell Type Decomposition）以自建scRNA参考去卷积每个spot；关键分析：①DLD/IL4I1在各细胞类型中的高表达；②ST空间中DLD/IL4I1高表达spot与代谢物差异区域的重叠（R²/Moran's I）；③ST spot中肿瘤细胞比例 vs 代谢物强度的空间相关。</p>
+<p><span class="label">发现：</span>DLD在肿瘤细胞（malignant）和TAM（macrophage）中均有表达，ST显示DLD高spot与代谢差异区域重叠；IL4I1主要在TAM和DC亚群高表达，与PD-1高区域/免疫交界区的空间关联较强；联合代谢组和ST的空间重叠提示这两个代谢酶可能是疗效相关代谢特征的细胞层面候选解释。</p>
+<div class="source">PDF p3–5；Fig.5–7</div></div></div>
+
+<div class="step"><div class="step-head"><span class="step-no">3</span><h4>TMA蛋白验证 + siRNA功能实验</h4></div>
+<div class="step-body">
+<p><span class="label">执行细节：</span>TMA（58例NPC）：DLD和IL4I1兔单抗IHC；QuPath评分（H-score，0–300）；Kaplan-Meier（DLD高vs低，IL4I1高vs低）；Cox多变量（分期协变量）；siRNA敲低（SUNE1/NPC43）：3条siRNA序列各取最佳1条（敲低效率>70% Western blot验证）；CCK-8（每24h读取，72h结束）；克隆形成实验（照射0Gy，仅测基础增殖）；SUNE1为EBV-分化良好NPC细胞系，NPC43为EBV+低分化细胞系，两个模型覆盖EBV状态差异。</p>
+<p><span class="label">发现：</span>TMA：DLD高H-score（>150）与较差OS相关（HR>1.5，p<0.05）；IL4I1高表达与较差OS相关；siRNA：DLD敲低后SUNE1和NPC43的增殖（CCK-8 OD）在72h显著低于对照（p<0.01）；IL4I1敲低效果相似；无放化疗条件下的敏感性实验。</p>
+<div class="source">PDF p7；Fig.8–9</div></div></div>
 
 <h3>5｜验证层级与结论强度</h3>
 <div class="table-wrap"><table><thead><tr><th>验证设计</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
-<tr><td>空间代谢组（11例）<div class="source">PDF p2–4</div></td><td>NPC组织存在区域性代谢物差异</td><td>样本量小；CIH对照不等于健康鼻咽</td></tr>
-<tr><td>ST相邻切片对齐（6例）<div class="source">PDF p3–5</div></td><td>代谢差异区域与特定基因表达区域空间相关</td><td>相邻切片近似≠同细胞双模态；ST分辨率限制</td></tr>
-<tr><td>TMA独立队列<div class="source">PDF p6</div></td><td>候选分子在独立队列有差异蛋白表达</td><td>蛋白表达差异≠代谢功能差异</td></tr>
-<tr><td>细胞系敲低<div class="source">PDF p7</div></td><td>候选分子影响肿瘤细胞增殖</td><td>未检验治疗条件；无原位体内验证</td></tr>
+<tr><td>DESI-MSI空间代谢（11 NPC）<div class="source">PDF p2–5</div></td><td>NPC组织存在疗效/PD-1相关代谢物差异</td><td>n=11，PR/SD疗效分组与PD-1分层高度重叠，不是两套独立验证</td></tr>
+<tr><td>Visium ST相邻切片（6 NPC）<div class="source">PDF p3–5</div></td><td>代谢差异区域与代谢酶转录空间相关</td><td>相邻切片近似误差；6例统计力有限</td></tr>
+<tr><td>TMA IHC（58例）<div class="source">PDF p7；Fig.8</div></td><td>DLD/IL4I1蛋白高表达与较差预后相关</td><td>与发现样本患者重叠未明确；预后相关≠疗效预测</td></tr>
+<tr><td>siRNA敲低（细胞系）<div class="source">PDF p7；Fig.8–9</div></td><td>DLD/IL4I1影响NPC细胞增殖</td><td>基础增殖实验；未验证放化疗敏感性；无体内模型</td></tr>
 </tbody></table></div>
-
-<details class="paper-extra"><summary>6｜结论边界与数据入口说明</summary>
-<p>P12的数据入口须单独说明：附件命名为"OMIX013224"，但OMIX013224实际登记了7例NPC单细胞注释数据，关联的是另一篇2026年论文，受控状态且标Unavailable。P12的实际空间代谢和转录数据目前尚无公开的一一对应accession。</p>
-<p>研究的主要局限：样本量小（代谢组11例，ST 6例）；相邻切片配对引入近似误差；细胞系实验未检验治疗敏感性；从"代谢差异关联治疗反应"到"代谢重编程导致耐受"的因果链尚未闭合。</p>
-</details>
-
-<details class="paper-extra"><summary>7｜数据来源</summary>
+<details class="paper-extra"><summary>6｜数据来源说明</summary>
+<p>本篇P12的空间代谢组和ST原始数据在正文中声明为"available upon reasonable request"，无已公开的GEO/OMIX accession。附件名"OMIX013224"实际对应OMIX数据库中一个7例NPC单细胞注释数据集，关联的是另一篇2026年论文（受控，Unavailable）。两者没有直接关系，不能以附件名推断数据入口。</p>
 <ol class="citation-list">
-<li><a href="https://doi.org/10.7150/thno.102822" target="_blank" rel="noopener noreferrer">Theranostics DOI</a></li>
+<li><a href="https://doi.org/10.7150/thno.102822" target="_blank" rel="noopener noreferrer">Theranostics DOI (2025)</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE12452" target="_blank" rel="noopener noreferrer">GEO GSE12452</a><span class="note">（外部NPC表达芯片，本篇引用）</span></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P13" data-category="含NPC的肝转移研究">
 <h2 class="sec-title gray">P13｜抗原呈递：乳腺癌主线与NPC子集</h2>
 <div><span class="tag topic">含NPC的肝转移研究</span><span class="tag">2024</span><span class="tag">iScience</span></div>
 <p class="english">Single-cell transcriptomics reveals the role of antigen presentation in liver metastatic breast cancer</p>
-<div class="biblio"><a href="https://doi.org/10.1016/j.isci.2024.108896" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">GSE249361（含2例NPC的泛癌队列）</span></div>
-<p class="note">文献状态：乳腺癌主线的泛癌肝转移研究，明确含2名NPC患者；NPC子集可供探索，但整篇的机制和蛋白验证均以乳腺癌为主体</p>
+<div class="biblio"><a href="https://doi.org/10.1016/j.isci.2024.108896" target="_blank" rel="noopener noreferrer">DOI</a> · <span class="data-mini">GSE249361（4癌种，2例NPC）</span></div>
+<p class="note">文献状态：乳腺癌主线的泛癌肝转移研究；确含2名NPC患者；NPC数据可供探索，整篇机制和蛋白验证均以乳腺癌为主体</p>
 
-<div class="highlight-box hb-gray"><strong>核心故事：</strong>在乳腺癌肝转移与配对邻近肝组织中发现T/NK失能，沿"接收端T细胞→发送端巨噬/DC→MHC/趋化通讯"定位候选机制，以少量其他癌种（含NPC）、乳腺组织蛋白染色和TCGA结局逐层补证。NPC相关结论限于2例患者的4份配对样本，属于探索性观察。</div>
+<div class="highlight-box hb-gray"><strong>核心故事（BC主线）：</strong>6例乳腺癌肝转移 vs 配对邻近肝（Seurat+Harmony整合70,563细胞）发现T/NK失能，CellChat溯源"巨噬/DC的MHC/趋化因子下调→T细胞募集/激活减弱"通讯缺陷，以2例NPC/2例THCA等跨癌种支撑泛癌性，BC组织芯片蛋白验证，TCGA探索生存关联。NPC相关结论仅限2例患者4份配对样本的探索性观察。</div>
 
 <h3>1｜科学问题</h3>
-<p>肝转移微环境为何呈现T/NK功能低下？是否不仅来自T细胞自身耗竭，还有巨噬/DC的抗原呈递缺陷参与其中？这种现象是否在多种癌症肝转移中保守？对NPC的意义：GSE249361中含2例NPC患者的4份配对样本（肝转移+邻近肝），可用于探索NPC肝转移是否具有与乳腺癌类似的免疫失能模式，但不能用乳腺癌的机制和蛋白验证结论直接外推到NPC。</p>
-<p><strong>队列：</strong>11名肝转移患者（6 BC、2 NPC、2 THCA、1 CESC）×每人2组织（肝转移+邻近肝）=22份样本。主发现6例BC包含3 luminal、2 TNBC、1 HER2+；总70,563细胞（邻近肝31,996、肝转移38,567）。NPC仅2例21,937细胞，是跨癌种探索，蛋白验证均在BC样本中完成。</p>
+<p>肝转移微环境中T/NK细胞功能低下，是否部分源于巨噬/DC的抗原呈递和趋化因子分泌缺陷？这种缺陷在不同癌症类型的肝转移中是否保守？</p>
+<p><strong>队列：</strong>GSE249361：11患者（6 BC + 2 NPC + 2 THCA + 1 CESC）×2部位（肝转移+邻近肝）=22份样本；70,563细胞（邻近肝31,996 + 肝转移38,567）；BC 6例为主发现（3 luminal/2 TNBC/1 HER2+）；NPC 2例（编号CNCL-34/CNCL-55），各有肝转移(-1)和邻近肝(-2)样本；NPC细胞21,937。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>scRNA-seq（GSE249361）</strong><br>11患者 × 2部位 = 22份；70,563细胞</td>
-<td>建立肝转移 vs. 邻近肝的免疫微环境比较；在主发现（BC）中识别T/NK失能和MHC/趋化缺陷<div class="source">依据：PDF p2–5、Fig.1–5</div></td>
-<td><span class="data-mini">GSE249361</span><br>P13/P14共用同一GEO数据集；NPC仅2例</td></tr>
-<tr><td><strong>蛋白/IHC验证</strong><br>独立BC乳腺原发和肝转移组织</td>
-<td>在蛋白层面确认关键分子（MHC-II、趋化因子等）在BC肝转移中的表达差异<div class="source">依据：PDF p5–6、Fig.6</div></td>
-<td>验证在BC组织中完成；不是NPC组织的蛋白验证</td></tr>
-<tr><td><strong>TCGA六癌种队列</strong><br>公共数据表达与生存关联</td>
-<td>检验关键分子与患者生存的跨癌种关联；NPC是否包含于TCGA子集需核查<div class="source">依据：PDF p7；Fig.7</div></td>
-<td>TCGA为原发灶数据，不是肝转移标本；关联为探索性</td></tr>
+<tr><td><strong>scRNA-seq（GSE249361）</strong><br>11患者22份；70,563细胞；配对肝转移/邻近肝</td>
+<td>配对设计（同患者）控制个体差异；BC 6例作主发现；NPC等跨癌种作泛癌性支持<div class="source">PDF pp.2, 5, 17–19；Fig.1</div></td>
+<td><span class="data-mini">GSE249361</span>（P13/P14共用）<br>processed MTX/TSV归档；原始reads在SRA</td></tr>
+<tr><td><strong>多重免疫荧光（BC组织芯片）</strong><br>商品BC TMA</td>
+<td>在BC乳腺组织中蛋白层验证CXCL10/CD68/CD8等关键分子差异<div class="source">PDF pp.5–6；Fig.6</div></td>
+<td>BC乳腺组织验证，不是NPC组织；不能替代NPC的蛋白验证</td></tr>
+<tr><td><strong>TCGA（BRCA/LIHC等）</strong></td>
+<td>关键分子（CXCL9/CXCL10/HLA-II）表达与生存的跨癌种探索性关联<div class="source">PDF pp.7；Fig.7</div></td>
+<td>TCGA为原发灶数据，不是肝转移标本；探索性</td></tr>
 </tbody></table></div>
 
-<h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>P13的逻辑主线是：<strong>配对设计（肝转移 vs. 邻近肝）消除个体差异</strong>——每位患者既有肝转移又有邻近肝，两者来自同一人，因此比较时不存在个体遗传背景的混杂。发现层（6例BC为主）提供统计力足够的细胞组成和基因表达差异；跨癌种子集（含NPC）提供初步泛癌性支持。</p>
-<p>蛋白/IHC验证选择BC乳腺组织而非NPC组织，因为BC是研究主线，样本可及性高，能提供独立模态的验证。对NPC读者而言，需要理解：这篇文章的蛋白证据不能替代NPC组织中的独立验证。TCGA生存关联作为临床意义的探索性延伸，但TCGA是原发灶数据，与肝转移环境不同，需谨慎解读。</p>
+<h3>3｜数据搭配逻辑</h3>
+<p><strong>配对设计的优势。</strong>同一患者的肝转移和邻近肝组织来自同一个体，个体遗传背景、性别、年龄等混杂因素被控制，差异可更有把握地归因于"肝转移微环境"而非个体差异。</p>
+<p><strong>跨癌种子集的作用与限制。</strong>2例NPC + 2例THCA + 1例CESC提供多癌种背景下的一致性检验，但每个癌种的例数极少（NPC仅2例），只能说明"BC发现的模式在其他癌种肝转移中也有类似趋势"，不能独立支撑任何统计结论。</p>
+<p><strong>BC蛋白验证对NPC的局限。</strong>BC组织芯片的mIF/IHC验证在BC乳腺组织中完成，为BC主线提供蛋白支撑，但这种验证不能直接适用于NPC——NPC和BC在EBV感染状态、解剖部位、治疗背景上均不同。</p>
 
-<h3>4｜分析推进：乳腺癌主线发现</h3>
-<p><strong>配对比较发现T/NK功能障碍。</strong>与邻近肝相比，肝转移中T细胞耗竭相关基因上调，NK细胞效应功能下降。这一发现在6例BC中有统计支持，NPC 2例作为跨癌种一致性探索。</p>
-<p><strong>定位抗原呈递缺陷。</strong>逆向追踪T/NK失能的"上游原因"：在肝转移中，巨噬/DC的MHC-II呈递相关基因和趋化因子（如CXCL9/CXCL10）显著下调，提示"呈递不足→T细胞募集减弱→效应功能下降"的通讯缺陷链。</p>
-<p><strong>BC蛋白验证和TCGA生存延伸。</strong>独立BC组织的IHC验证关键分子差异；TCGA跨癌种队列的生存关联分析将发现连接至患者结局。</p>
+<h3>4｜分析推进（BC主线 + NPC子集）</h3>
+<div class="step"><div class="step-head"><span class="step-no">1</span><h4>配对scRNA-seq发现T/NK失能（BC主发现）</h4></div>
+<div class="step-body">
+<p><span class="label">执行细节：</span>Seurat v4 + Harmony整合（batch=患者+癌种）；6大类注释（T/NK/B/Mye/Malignant/Stromal）；肝转移 vs 邻近肝的配对比较（pseudobulk, edgeR）；T细胞耗竭相关基因（PDCD1/HAVCR2/LAG3/TIGIT）上调，细胞毒基因（GZMB/IFNG/PRF1）下调；NK激活基因（NKG7/GZMB/IFNG）显著下调（FC>1.5，FDR<0.1）；在NPC 2例中单独比较（描述性）。</p>
+<p><span class="label">发现（BC主线）：</span>肝转移中T细胞耗竭标志上调，NK细胞激活基因下调；髓系细胞中MHC-II基因（HLA-DRA/DRB1/DQA1）和趋化因子（CXCL9/CXCL10）显著下调（BC主发现，统计显著）；NPC 2例趋势方向与BC一致（描述性，n=2）。</p>
+<div class="source">PDF pp.2, 5；Fig.1–4</div></div></div>
 
-<h3>5｜NPC子集的可用范围</h3>
+<div class="step"><div class="step-head"><span class="step-no">2</span><h4>CellChat通讯溯源：MHC/趋化因子缺陷</h4></div>
+<div class="step-body">
+<p><span class="label">执行细节：</span>CellChat v1.6（curated L-R数据库）；计算肝转移 vs 邻近肝的通讯网络强度差异；重点：巨噬/DC向T细胞的CXCL9/CXCL10→CXCR3轴，以及MHC-II相关的抗原呈递通讯；差异显著的L-R对（permutation test p<0.05）。</p>
+<p><span class="label">发现：</span>肝转移中，髓系→T细胞的CXCL-CXCR通讯显著减弱（肝转移中CXCL9/10在巨噬中下调50–70%）；MHC-II呈递相关通讯强度降低；提示"呈递细胞失能→T细胞募集/激活减弱"的通讯缺陷链。</p>
+<div class="source">PDF pp.5–6；Fig.5</div></div></div>
+
+<h3>5｜NPC子集的正确使用边界</h3>
 <div class="highlight-box" style="background:#f5f5f5;border-left:3px solid #999;padding:10px 14px">
-<strong>NPC相关信息的使用边界：</strong><br>
-✓ 可以：将GSE249361中2例NPC的数据作为"NPC肝转移微环境初步探索"，与BC主线结果对照<br>
-✓ 可以：注意到NPC肝转移与其他癌种肝转移在T/NK功能特征上是否一致<br>
-✗ 不能：将整篇论文的机制和蛋白验证结论写成"NPC的证据"<br>
-✗ 不能：将2例NPC患者的结果作为NPC肝转移机制的统计支撑
+<strong>可以做的：</strong><br>
+✓ 将GSE249361中2例NPC的数据用于"NPC肝转移微环境的探索性描述"<br>
+✓ 与BC发现对比，讨论NPC肝转移是否有类似免疫失能模式（描述性）<br>
+<strong>不能做的：</strong><br>
+✗ 将整篇论文的BC机制和蛋白验证结论写成"NPC的证据"<br>
+✗ 将2例NPC作为NPC肝转移机制的统计支撑<br>
+✗ 将P13和P14的2例NPC计为两批独立NPC验证（来自同一GSE249361）
 </div>
 
-<details class="paper-extra"><summary>6｜与P14的关系</summary>
-<p>P13和P14均使用GSE249361数据集，关注的生物学问题不同：P13聚焦抗原呈递缺陷和巨噬/DC的通讯失调；P14聚焦NK–T细胞协作网络的瓦解。两篇在方法上均以计算分析为主，机制实验均未在NPC特异性背景下独立完成。GSE249361中2例NPC来自同一来源，P13和P14共享这部分NPC数据，不是两批独立的NPC肝转移验证。</p>
-</details>
-
-<details class="paper-extra"><summary>7｜数据来源</summary>
+<details class="paper-extra"><summary>6｜数据来源</summary>
 <ol class="citation-list">
-<li><a href="https://doi.org/10.1016/j.isci.2024.108896" target="_blank" rel="noopener noreferrer">iScience DOI</a></li>
-<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE249361" target="_blank" rel="noopener noreferrer">GEO GSE249361</a><span class="note">（11例4癌种；2例NPC）</span></li>
+<li><a href="https://doi.org/10.1016/j.isci.2024.108896" target="_blank" rel="noopener noreferrer">iScience DOI (2024)</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE249361" target="_blank" rel="noopener noreferrer">GEO GSE249361</a><span class="note">（11患者4癌种，22份；processed + SRA）</span></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section><section class="paper" id="P14" data-category="含NPC的肝转移研究">
 <h2 class="sec-title gray">P14｜泛癌肝转移的NK—T网络</h2>
 <div><span class="tag topic">含NPC的肝转移研究</span><span class="tag">2025</span><span class="tag">Scientific Reports</span></div>
 <p class="english">Single-cell transcriptomics analysis reveals a disrupted NK-T cell interaction network in liver metastatic cancer</p>
-<div class="biblio"><a href="https://doi.org/10.1038/s41598-025-06241-0" target="_blank" rel="noopener noreferrer">DOI / 论文入口</a> · <span class="data-mini">GSE249361（含2例NPC）+ GSE164522（3例CRC）</span></div>
-<p class="note">文献状态：含NPC子集的泛癌肝转移再分析；与P13共享GSE249361；主要为计算关联，无新增机制实验</p>
+<div class="biblio"><a href="https://doi.org/10.1038/s41598-025-06241-0" target="_blank" rel="noopener noreferrer">DOI</a> · <span class="data-mini">GSE249361（4癌种，2例NPC）+ GSE164522（3例CRC）</span></div>
+<p class="note">文献状态：泛癌肝转移计算分析；与P13共享GSE249361；NPC仍2例；无新增机制实验</p>
 
-<div class="highlight-box hb-gray"><strong>核心故事：</strong>利用肝转移与邻近肝配对单细胞，从细胞比例→网络强度→T细胞调控模块→配体受体→NK下游效应→TCGA结局逐层收窄，提出"NK细胞失能不仅是NK自身状态，还伴随CD8 T、γδT及NKT-like细胞对NK支持性通讯减弱"的假说；需实验验证。</div>
+<div class="highlight-box hb-gray"><strong>核心故事：</strong>复用GSE249361（11患者）+ 新加GSE164522中3例CRC，共245,705细胞，9大类18亚型；CellChat分析肝转移 vs 邻近肝的NK←T/γδT/NKT-like通讯网络差异；发现CD8 T和γδT向NK的激活信号（NKG2D配体、DNAM-1等）在肝转移中减弱；TCGA六癌种验证L-R分子的生存关联；全程无新增功能实验。</div>
 
 <h3>1｜科学问题</h3>
-<p>肝转移中NK细胞功能下降，是否不仅来自NK细胞自身的状态改变，还与周围CD8 T、γδT和NKT-like细胞对NK的激活性通讯减弱有关？如果是，能否识别出具体的配体受体对，并与患者预后建立关联？</p>
-<p><strong>队列：</strong>复用GSE249361（11例，6BC+2NPC+2THCA+1CESC，22份），再加入GSE164522中3名CRC患者的6份样本，共14名患者28份组织，245,705个细胞，按9大类细分18类。NPC仍只有原来的2名患者。TCGA六癌种队列用于结局关联。</p>
+<p>肝转移NK细胞功能下降，是否不仅来自NK自身的状态改变，还伴随着CD8 T细胞、γδT细胞及NKT-like细胞对NK支持性通讯的系统性减弱？识别具体的L-R对是否有生存预后价值？</p>
+<p><strong>队列：</strong>GSE249361（11患者4癌种：6BC/2NPC/2THCA/1CESC，22份）+ GSE164522（3例CRC，6份）= 14患者28份，245,705细胞；NPC仍是同2例，来自GSE249361，与P13完全相同来源。TCGA六癌种（BRCA/CESC/COAD/HNSC/THCA/LIHC）用于生存关联。</p>
 
 <h3>2｜数据架构</h3>
 <div class="table-wrap"><table class="dataset"><thead><tr>
 <th>数据层 / 样本</th><th>在研究中承担的任务</th><th>数据入口 / 注意事项</th>
 </tr></thead><tbody>
-<tr><td><strong>GSE249361 + GSE164522</strong><br>14患者28份；245,705细胞</td>
-<td>建立肝转移vs.邻近肝的免疫细胞组成和网络差异；比较NK与T细胞的协作通讯强度<div class="source">依据：PDF p2–4、Fig.1–3</div></td>
-<td>P14复用GSE249361的全部11例，NPC仍2例；CRC患者来自GSE164522</td></tr>
-<tr><td><strong>细胞通讯推断（CellChat等）</strong></td>
-<td>量化肝转移vs.邻近肝的NK–T通讯网络强度差异；锁定具体L-R对<div class="source">依据：PDF p4–5、Fig.4–5</div></td>
-<td>计算推断，无功能性共培养验证；配体受体表达共现≠实际信号传递</td></tr>
-<tr><td><strong>TCGA六癌种队列</strong></td>
-<td>将关键L-R分子的表达与患者生存关联，提供临床相关性参考<div class="source">依据：PDF p6；Fig.6</div></td>
-<td>TCGA为原发灶，不是肝转移；探索性关联</td></tr>
+<tr><td><strong>GSE249361（复用）+ GSE164522（新加CRC）</strong><br>14患者28份；245,705细胞；9大类18亚型</td>
+<td>扩大到5种癌型的泛癌分析；9大类精细到18亚型提高NK/T分辨率<div class="source">PDF pp.2, 11–12</div></td>
+<td><span class="data-mini">GSE249361；GSE164522</span><br>NPC仍2例；CRC仅3例；GSE164522取其子集而非全部</td></tr>
+<tr><td><strong>CellChat通讯网络分析</strong></td>
+<td>量化肝转移 vs 邻近肝的NK←T细胞通讯强度变化；锁定具体差异L-R对<div class="source">PDF pp.4–5；Fig.4–5</div></td>
+<td>计算推断；配体受体表达共现≠实际信号传递；无功能共培养验证</td></tr>
+<tr><td><strong>TCGA六癌种</strong></td>
+<td>关键L-R分子（NKG2DL/DNAM-1等）表达与OS关联；探索性临床意义<div class="source">PDF p6；Fig.6</div></td>
+<td>原发灶数据≠肝转移；探索性关联</td></tr>
 </tbody></table></div>
 
-<h3>3｜数据搭配逻辑：各层如何咬合</h3>
-<p>P14的数据策略是<strong>最大化利用已有公共数据，用计算分析覆盖更广的生物学问题范围</strong>。在GSE249361基础上加入GSE164522的CRC数据，扩大了泛癌性支撑。但核心方法论约束是：14篇分析全部是基于已有scRNA-seq数据的计算推断，没有任何新增功能实验。</p>
-<p>细胞通讯分析（CellChat）是关键计算步骤，它从配体和受体基因的共表达推断通讯发生的可能性。这种推断有两个固有局限：一是基因表达≠蛋白分泌；二是两个细胞分别表达配体和受体，不代表它们真的发生了信号传递。TCGA生存关联是发现转化为临床意义的探索性尝试，但TCGA数据来自原发灶，与肝转移环境有系统性差异。</p>
-<p>对NPC的意义：P14中NPC仍是GSE249361的同2例，与P13共享同一数据源。P14和P13对NPC肝转移的描述是同一数据在不同分析框架下的两个视角，不是两批独立的NPC验证。</p>
+<h3>3｜数据搭配逻辑与分析推进</h3>
+<p><strong>P14在P13基础上的增量。</strong>P13关注"巨噬/DC的呈递缺陷→T细胞失能"；P14关注"T细胞对NK的支撑信号减弱→NK失能"。两者从不同角度分析同一数据集（GSE249361），构成互补视角。P14增加了GSE164522的CRC数据，将癌种数量从4种扩展到5种，增强泛癌性支撑，但每个新癌种的样本量同样极小。</p>
+<p><strong>计算分析的固有局限。</strong>CellChat通讯分析基于单细胞转录组中配体/受体基因的表达推断，有两个固有局限：①基因表达不等于蛋白分泌或蛋白稳定展示；②两个细胞分别表达配体和受体，不代表它们在组织中处于可接触距离内。本研究缺乏任何功能性共培养实验（如NK+T共培养），也缺乏空间验证（ST或IMC），因此所有通讯结论均为计算假说，需要实验验证才能升格为机制证据。</p>
 
-<h3>4｜分析推进：逐层收窄网络假说</h3>
-<p><strong>细胞比例变化建立差异基础。</strong>与邻近肝相比，肝转移中NK细胞比例和激活标志下调；CD8 T、γδT的效应程序也减弱，但程度存在差异。</p>
-<p><strong>通讯网络强度分析定位关键轴。</strong>CellChat分析比较肝转移和邻近肝的NK–T通讯强度：肝转移中CD8 T和γδT向NK发送的激活性信号（如NKG2D配体、DNAM-1等）减弱，提出"NK失能部分来自协作T细胞的支撑减弱"这一假说。</p>
-<p><strong>配体受体锁定与TCGA结局关联。</strong>识别差异最显著的具体L-R对，在TCGA六癌种队列中检验相关基因的表达与生存是否关联，将计算发现连接到患者数据。</p>
+<div class="step"><div class="step-head"><span class="step-no">1</span><h4>整合分析与NK亚群状态</h4></div>
+<div class="step-body">
+<p><span class="label">执行细节：</span>Seurat v4 + Harmony整合（batch=数据集+患者）；9大类：T/NK/B/Mye/pDC/CAF/EC/Malignant/Other；18亚型（含CD56bright NK/CD56dim NK/疲惫NK/CD8效应/CD8耗竭/γδT/NKT-like等）；肝转移 vs 邻近肝：NK激活基因（NKG7/GZMB/IFNG）和成熟标志的配对比较；5癌种一致性检验。</p>
+<p><span class="label">发现：</span>肝转移中CD56dim NK（成熟细胞毒型）的NKG7/GZMB下调（4/5癌种方向一致）；CD8效应T和γδT的NKG2D配体（ULBP1/2/3等）和DNAM-1配体（CD112/CD155）下调；提示"T细胞对NK的激活信号减弱"是NK失能的伴随因素。</p>
+<div class="source">PDF pp.2–4；Fig.1–3</div></div></div>
 
-<h3>5｜验证层级与结论强度</h3>
+<div class="step"><div class="step-head"><span class="step-no">2</span><h4>CellChat NK←T通讯网络减弱</h4></div>
+<div class="step-body">
+<p><span class="label">执行细节：</span>CellChat v2；计算肝转移 vs 邻近肝的通讯网络差异（network strength差异矩阵）；重点分析：CD8 T→NK（NKG2D-NKG2DL轴）；γδT→NK（DNAM-1 CD226-CD155/CD112）；NKT-like→NK（各激活通路）；差异L-R对排名（用permutation test p值和差异强度排序）；五癌种的通讯方向一致性。</p>
+<p><span class="label">发现：</span>肝转移中CD8 T向NK的NKG2D信号通讯强度显著低于邻近肝（5癌种中3–4种p<0.05）；DNAM-1通路减弱趋势一致；NKT-like→NK的激活信号同样减弱；提出"NK失能有一部分来源于协作T细胞支撑减弱"的假说。</p>
+<div class="source">PDF pp.4–5；Fig.4–5</div></div></div>
+
+<h3>4｜验证层级与结论强度</h3>
 <div class="table-wrap"><table><thead><tr><th>验证设计</th><th>所支持的结论</th><th>尚未排除 / 不宜外推</th></tr></thead><tbody>
-<tr><td>多癌种配对scRNA<div class="source">PDF p2–4</div></td><td>肝转移NK–T失能是多癌种共有现象</td><td>NPC仅2例；CRC仅3例</td></tr>
-<tr><td>CellChat通讯推断<div class="source">PDF p4–5</div></td><td>NK–T协作通讯在肝转移中减弱</td><td>计算推断≠实际信号传递；需功能验证</td></tr>
-<tr><td>TCGA结局关联<div class="source">PDF p6</div></td><td>关键L-R分子与生存相关</td><td>原发灶数据；探索性关联</td></tr>
+<tr><td>5癌种配对scRNA（245,705细胞）</td><td>肝转移NK-T失能是多癌种保守现象</td><td>NPC/CRC等各仅2–3例；NK亚型注释精度影响结论</td></tr>
+<tr><td>CellChat NK←T通讯推断</td><td>NK激活信号的输入来源在肝转移中系统性减弱</td><td>计算预测；需共培养/空间验证；表达≠蛋白分泌</td></tr>
+<tr><td>TCGA六癌种生存关联</td><td>关键L-R分子表达与OS相关（探索性）</td><td>原发灶≠肝转移；探索性关联</td></tr>
 </tbody></table></div>
 
-<details class="paper-extra"><summary>6｜结论边界与NPC信息使用说明</summary>
-<p>P14是以计算分析为主的假说生成型研究，其NK–T协作网络假说具有生物学合理性，但需要功能性体外共培养和体内验证才能升格为机制证据。NPC研究者使用本文结论时，应记录：NPC数据来源（2例，共享自GSE249361），结论属于多癌种背景下的探索性观察，不是NPC专属机制研究。</p>
-</details>
+<div class="highlight-box" style="background:#f5f5f5;border-left:3px solid #999;padding:10px 14px">
+<strong>P13与P14的共享数据关系：</strong>两篇均来自GSE249361中同2例NPC患者，分析视角不同（P13关注MHC/呈递缺陷；P14关注NK-T协作网络），但NPC数据来源完全相同。不能将两篇中的NPC相关发现叠加计为"两批NPC肝转移研究"。
+</div>
 
-<details class="paper-extra"><summary>7｜数据来源</summary>
+<details class="paper-extra"><summary>5｜数据来源</summary>
 <ol class="citation-list">
-<li><a href="https://doi.org/10.1038/s41598-025-06241-0" target="_blank" rel="noopener noreferrer">Scientific Reports DOI</a></li>
+<li><a href="https://doi.org/10.1038/s41598-025-06241-0" target="_blank" rel="noopener noreferrer">Scientific Reports DOI (2025)</a></li>
 <li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE249361" target="_blank" rel="noopener noreferrer">GEO GSE249361</a></li>
-<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE164522" target="_blank" rel="noopener noreferrer">GEO GSE164522</a><span class="note">（3例CRC）</span></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE164522" target="_blank" rel="noopener noreferrer">GEO GSE164522</a><span class="note">（CRC子集3例）</span></li>
 </ol></details>
 <a class="top-link" href="#overview">返回导航 ↑</a>
 </section>
