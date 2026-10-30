@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>肿瘤纳米治疗研究精读：科学问题、数据搭配与验证逻辑</title>
+<style>*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:96px}body{margin:0;background:#f2f4f7;color:#1e2530;font-family:"SimSun","Songti SC","Noto Serif CJK SC",serif;font-size:10.5pt;line-height:1.68}a{color:#1a6596;text-decoration:none}a:hover{text-decoration:underline}b,strong{font-weight:700;color:#1d3448}p{margin:5px 0 10px}h1,h2,h3,h4{line-height:1.45}h3{font-size:11pt;margin:16px 0 6px;color:#243e55}h4{font-size:10.3pt;margin:8px 0 5px;color:#2c4a60}ul,ol{padding-left:20px;margin:5px 0 10px}li{margin:3px 0}section{scroll-margin-top:96px}#page-wrap{width:800px;max-width:calc(100% - 24px);margin:108px auto 40px;background:#fff;box-shadow:0 4px 24px #0002}#a4-content{padding:30px 36px 36px}.toolbar{position:fixed;z-index:100;top:0;left:0;right:0;background:#263545;color:#fff;padding:9px 18px;box-shadow:0 2px 8px #0003;font-family:"Microsoft YaHei","PingFang SC",sans-serif}.toolbar-inner{max-width:1060px;margin:auto;display:flex;align-items:center;gap:7px;flex-wrap:wrap}.toolbar-title{font-size:11pt;font-weight:700;margin-right:auto}.toolbar small{font-size:8.5pt;color:#d8e8f4}.toolbar input,.toolbar select{padding:5px 8px;border:1px solid #adc3d6;border-radius:3px;background:#fff;color:#253c4c;font:9pt sans-serif;max-width:230px}.toolbar input{width:145px}.toolbar button{border:0;border-radius:3px;color:#fff;background:#486880;padding:6px 10px;font:9pt sans-serif;cursor:pointer}.toolbar button:hover{background:#5a7d96}.toolbar button.primary{background:#c0392b}.toolbar-row{display:flex;gap:8px;width:100%;align-items:center;flex-wrap:wrap}.toolbar a{font-size:9pt;color:#ddeef8}.toolbar .sep{color:#7da5c0}.doc-title{text-align:center;border-bottom:2.5px solid #263545;padding-bottom:14px;margin-bottom:16px}.doc-title h1{font-size:17pt;color:#192532;letter-spacing:.03em;margin:0 0 8px}.doc-title .sub{font-size:9pt;color:#636b72}.kicker{letter-spacing:.12em;color:#52718c;font-size:8.5pt;margin-bottom:7px;font-family:sans-serif}.toc{padding:8px 10px;border:1px solid #d6e0e7;background:#f7fafc;display:flex;gap:8px 15px;flex-wrap:wrap;font-size:9pt}.statline{display:flex;gap:8px;margin:11px 0;flex-wrap:wrap}.statline span{font-size:9pt;background:#f0f4f8;border:1px solid #d6e1eb;border-radius:3px;padding:4px 8px}.sec-title{font-size:12pt;font-weight:700;padding:5px 10px;margin:22px 0 11px;border-left:4px solid;letter-spacing:.02em}.blue{border-color:#2980b9;background:#eaf4fb;color:#1a5276}.green{border-color:#27ae60;background:#eafaf1;color:#1d6a3a}.orange{border-color:#e67e22;background:#fef5e7;color:#784212}.purple{border-color:#8e44ad;background:#f5eef8;color:#5b2c6f}.teal{border-color:#16a085;background:#e8f8f5;color:#0e6655}.navy{border-color:#1a3a5c;background:#e8edf3;color:#1a3a5c}.brown{border-color:#795548;background:#fbe9e7;color:#4e342e}.grid-2,.grid-3{display:grid;gap:10px;margin:10px 0 13px}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.card{border:1px solid;border-radius:4px;padding:10px 11px;min-width:0;break-inside:avoid}.card h3{font-size:10.2pt;margin:0 0 5px}.card p,.card li{font-size:9.6pt;line-height:1.6}.card p:last-child{margin-bottom:0}.blue-c{background:#e0effa;border-color:#aed6f1}.green-c{background:#e2f5e9;border-color:#a9dfbf}.orange-c{background:#fdf0dc;border-color:#f8c471}.purple-c{background:#f1e8f6;border-color:#d2b4de}.red-c{background:#fbe7e4;border-color:#f1948a}.teal-c{background:#e1f5ef;border-color:#a2d9ce}.yellow-c{background:#fff9e6;border-color:#f1dd94}.gray-c{background:#f5f6f7;border-color:#d0d3d4}.hb{border:1px solid;border-radius:4px;padding:10px 13px;margin:11px 0;font-size:10pt;break-inside:avoid}.hb-blue{border-color:#85b8d9;background:#edf6fc}.hb-orange{border-color:#ddb270;background:#fff6e9}.hb-red{border-color:#db9990;background:#fff0ee}.hb-green{border-color:#89bd9d;background:#eef9f2}.hb-warn{border-color:#e5bb7a;background:#fffbf0}.note{font-size:9pt;color:#5e6872}.cite{font-size:8.5pt;color:#687785}.table-wrap{width:100%;margin:8px 0 14px}table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:9.25pt;line-height:1.55}th{text-align:left;font-weight:700;padding:6px 7px;vertical-align:top}td{padding:7px;border-bottom:1px solid #dfe4e8;vertical-align:top;overflow-wrap:anywhere;word-break:normal}td p{margin:0 0 5px}tr:nth-child(even) td{background:#f7f9fb}.th-blue{background:#2980b9;color:#fff}.th-green{background:#278554;color:#fff}.th-orange{background:#bc701e;color:#fff}.th-purple{background:#7d5094;color:#fff}.th-teal{background:#147f70;color:#fff}.th-navy{background:#344f67;color:#fff}.tag{display:inline-block;font-size:8pt;padding:2px 6px;border-radius:3px;background:#e7eef5;color:#344f67;margin:2px 4px 2px 0}.paper{margin:22px 0 28px;scroll-margin-top:100px;border-top:2px solid #2f5776}.paper-summary{cursor:pointer;list-style:none;padding:12px 0 9px;display:block}.paper-summary::-webkit-details-marker{display:none}.paper-summary:after{content:"点击展开 / 收起";font-size:8pt;color:#73818b;display:block;margin-top:5px}.paper-number{display:inline-block;color:#fff;background:#2c5574;border-radius:3px;padding:1px 7px;margin-right:6px;font-size:10pt}.paper-summary h2{display:inline;font-size:13pt;color:#1e3c55;font-weight:700}.paper-en{margin-top:8px;font:9.5pt/1.5 Georgia,serif;color:#4f6270}.paper-meta{font-size:9pt;color:#697682;margin-top:5px}.paper-body>h3{padding-bottom:3px;border-bottom:1px solid #d6e2ec}.story{margin:10px 0 16px;border-left:3px solid #a8c4d7;padding-left:13px}.step{margin:0 0 16px;padding-bottom:12px;border-bottom:1px dashed #d9e2e8}.step:last-child{border-bottom:0;padding-bottom:0}.step h4{color:#1c5b85;font-size:10.7pt;margin-top:0}.qn{font-weight:700;color:#3f4b55}.sl{margin:5px 0;font-size:10pt}.sl .lb{font-weight:700;color:#1c5b85}.sl.interp .lb{color:#80502c}.bridge{font-size:9.5pt;border-left:3px solid #8db8a0;background:#f0f8f3;padding:6px 9px;margin:8px 0 6px}.backtop{font-size:8pt;text-align:right;display:block}.status{font-size:9pt;color:#697682;margin:5px 0 10px}.empty{display:none;border:1px solid #e8c59e;background:#fff5e8;padding:12px}.footer{border-top:2px solid #263545;margin-top:25px;padding-top:10px;font-size:8.5pt;color:#6c7780}.hidden{display:none!important}.src{font-size:8.8pt;line-height:1.8}.src a{display:inline-block;margin-right:12px}@media(max-width:650px){#page-wrap{max-width:100%;width:100%;margin-top:145px;box-shadow:none}#a4-content{padding:18px 14px}.toolbar{padding:8px 10px}.toolbar-title{width:100%;font-size:10pt}.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}.table-wrap{overflow-x:auto}table{min-width:580px}html{scroll-padding-top:145px}.paper,section{scroll-margin-top:145px}}@media print{@page{size:A4;margin:13mm 12mm 14mm}body{background:#fff;font-size:9.5pt;line-height:1.55}.toolbar,.backtop,.toc,.status,.empty{display:none!important}#page-wrap{margin:0;max-width:none;width:auto;box-shadow:none}#a4-content{padding:0}.paper{break-before:page;margin-top:0}.paper-body{display:block!important}.paper-summary:after{display:none}.hidden{display:block!important}h3,h4{break-after:avoid}tr{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:8.8pt}}</style>
+</head>
+<body>
+<div class="toolbar">
+<div class="toolbar-inner">
+<span class="toolbar-title">纳米治疗研究精读 · 13篇</span>
+<input id="srch" type="search" placeholder="筛选论文关键词" aria-label="筛选">
+<select id="jmp" aria-label="跳转文献">
+<option value="">跳转到文献…</option>
+<option value="P01">01 · CD36 与肝转移代谢串扰</option>
+<option value="P02">02 · PTX + shMCL-1 共递送</option>
+<option value="P03">03 · 单原子配位与耐缺氧焦亡</option>
+<option value="P04">04 · OMV 纳米机器人</option>
+<option value="P05">05 · IL-12 + PLX3397</option>
+<option value="P06">06 · TAM xCT 靶向铁死亡</option>
+<option value="P07">07 · PET 示踪双死亡平台</option>
+<option value="P08">08 · 红细胞膜包覆活菌</option>
+<option value="P09">09 · 胰腺癌膜伪装共递送</option>
+<option value="P10">10 · 代谢脂质体与放射免疫</option>
+<option value="P11">11 · PCSK9 与免疫稳态</option>
+<option value="P12">12 · CaCO₃ 化学免疫</option>
+<option value="P13">13 · 离子稳态与放射免疫</option>
+</select>
+<button id="clr">清除</button>
+<button id="expall">全展开</button>
+<button id="colall">全收起</button>
+<button id="prn" class="primary">打印/PDF</button>
+<div class="toolbar-row">
+<a href="#overview">全景</a><span class="sep">/</span>
+<a href="#omics-logic">组学搭配</a><span class="sep">/</span>
+<a href="#papers">13篇精读</a><span class="sep">/</span>
+<a href="#comparison">横向比较</a><span class="sep">/</span>
+<a href="#blueprint">设计蓝图</a>
+<small>精读报告 · 2026-10-28</small>
+</div>
+</div>
+</div>
+<main id="page-wrap">
+<div id="a4-content">
+<div class="doc-title">
+<div class="kicker">RESEARCH READING ATLAS · 13 ORIGINAL STUDIES · 2021–2025</div>
+<h1>肿瘤纳米治疗研究精读<br>科学问题、数据搭配与验证逻辑</h1>
+<div class="sub">13篇逐篇拆解 · 组学数据分组与衔接 · 实验层次证据链 · 可复用研究设计<br>整理日期：2026-10-28</div>
+</div>
+<nav class="toc" aria-label="章节">
+<a href="#overview">全景概览</a>
+<a href="#omics-logic">组学数据搭配</a>
+<a href="#papers">逐篇精读</a>
+<a href="#comparison">横向比较</a>
+<a href="#blueprint">设计蓝图</a>
+<a href="#glossary">术语速查</a>
+<a href="#references">来源目录</a>
+</nav>
+<div class="statline">
+<span>13篇原始研究</span>
+<span>2021–2025年</span>
+<span>逐步验证逻辑</span>
+<span>数据来源审计</span>
+</div>
+
+<section id="overview">
+<h2 class="sec-title blue">一、先看全貌：13篇研究各自解决什么问题</h2>
+
+<p>这13篇论文都围绕同一类核心障碍——肿瘤治疗在特定条件下为什么失效——展开，只是障碍的具体形态不同：有的是肿瘤细胞对化疗耐药，有的是递送载体到不了目标部位，有的是免疫反应被微环境压制。每篇文章的价值在于它把这个具体障碍拆解成一个可实验干预的分子节点，然后用多层数据验证这条干预链。</p>
+
+<div class="grid-3">
+<div class="card blue-c"><h3>机制发现驱动设计</h3><p>先确定靶点在哪类细胞中起作用，再决定干预手段。先做遗传敲除或药理阻断，证明这个节点确实重要，才设计材料。</p><p class="note">代表：文献01（CD36）、文献06（xCT）</p></div>
+<div class="card green-c"><h3>递送瓶颈驱动设计</h3><p>药物本身有效，但稳定性差、进不去目标细胞或被基质屏蔽。材料的价值必须通过"同剂量游离药"对比才能体现。</p><p class="note">代表：文献02、04、09</p></div>
+<div class="card orange-c"><h3>多环节联合治疗</h3><p>单一干预有效但不充分，因为存在多个串行瓶颈。材料设计承担多个任务，必须逐一检验每个模块的独立贡献。</p><p class="note">代表：文献03、05、07、08、10–13</p></div>
+</div>
+
+<div class="table-wrap"><table>
+<colgroup><col style="width:30%"><col style="width:28%"><col style="width:42%"></colgroup>
+<thead class="th-blue"><tr><th>文献</th><th>核心科学问题</th><th>研究主线与数据逻辑</th></tr></thead>
+<tbody>
+<tr><td><a href="#P01"><b>01 · CD36 与肝转移代谢串扰</b></a><br><span class="cite">Nature Commun. · 2022</span></td>
+<td>肝转移的巨噬细胞从哪里获得脂质，这些脂质如何抑制抗肿瘤免疫？</td>
+<td>遗传分解责任细胞 → EV脂质追踪 → 脂质组定量 → 免疫功能 → 人类数据关联</td></tr>
+<tr><td><a href="#P02"><b>02 · PTX + shMCL-1 共递送</b></a><br><span class="cite">Small Methods · 2021</span></td>
+<td>MCL-1支撑细胞逃避凋亡，叶酸受体能否成为共递送入口？</td>
+<td>受体靶向验证 → MCL-1敲低 → 耐药功能恢复 → RNA-seq候选机制 → 动物模型</td></tr>
+<tr><td><a href="#P03"><b>03 · 单原子配位与耐缺氧焦亡</b></a><br><span class="cite">Adv. Mater. · 2025</span></td>
+<td>Fe–N4配位能否改变光动力反应类型，使缺氧条件下仍诱导免疫性死亡？</td>
+<td>配位结构表征 → DFT解释ROS → 缺氧对照 → GSDME裂解 → 免疫共培养 → 动物</td></tr>
+<tr><td><a href="#P04"><b>04 · OMV 纳米机器人</b></a><br><span class="cite">PNAS · 2024</span></td>
+<td>酶驱动运动能否改善膀胱内递送，使siRNA真正到达肿瘤深层？</td>
+<td>运动轨迹 → 三维球穿透 → survivin沉默 → 体内靶点抑制 → 疾病终点</td></tr>
+<tr><td><a href="#P05"><b>05 · IL-12 + PLX3397</b></a><br><span class="cite">ACS Nano · 2024</span></td>
+<td>激活T细胞与抑制M2巨噬细胞能否通过同一载体协同，并用scRNA-seq解释细胞生态？</td>
+<td>双功能臂分别验证 → 两种动物模型 → 流式+组织 → scRNA-seq解释状态</td></tr>
+<tr><td><a href="#P06"><b>06 · TAM xCT 靶向铁死亡</b></a><br><span class="cite">Adv. Science · 2023</span></td>
+<td>TAM高表达xCT以抵抗铁死亡并保持M2状态——干预这个节点能否同时影响两者？</td>
+<td>RNA-seq发现xCT → 宿主/髓系KO → 信号/铁死亡救援 → PD-L1反馈 → 纳米递送联合</td></tr>
+<tr><td><a href="#P07"><b>07 · PET示踪双死亡平台</b></a><br><span class="cite">ACS Nano · 2024</span></td>
+<td>PPVI/顺铂协同体外已证明，PET能否在体内确认到达，p53能否连接两种死亡方式？</td>
+<td>Bliss协同筛选 → 材料表征 → 双死亡标志 → GEO数据找p53机制 → PET分布 → 体内疗效</td></tr>
+<tr><td><a href="#P08"><b>08 · 红细胞膜包覆活菌</b></a><br><span class="cite">ACS Nano · 2022</span></td>
+<td>膜伪装改善静脉输注后，活菌引起的肿瘤死亡是否通过gasdermin介导？</td>
+<td>体内表型差异 → 肿瘤RNA-seq发现GSDMC → 形态/蛋白验证 → 免疫桥梁 → 联合BMS-1</td></tr>
+<tr><td><a href="#P09"><b>09 · 胰腺癌膜伪装共递送</b></a><br><span class="cite">Acta Pharm. Sin. B · 2022</span></td>
+<td>GEM/Er药物拮抗+间质屏障同时存在，能否在一个载体中分别解决两个障碍？</td>
+<td>hENT1/EGFR信号拆分 → dilazep对照 → siIRAK4抗纤维化 → 三维球穿透 → 原位瘤+PDX</td></tr>
+<tr><td><a href="#P10"><b>10 · 代谢脂质体与放射免疫</b></a><br><span class="cite">Adv. Science · 2023</span></td>
+<td>TPP-LND能否同时缓解缺氧和压低放疗诱导的PD-L1升高？</td>
+<td>线粒体OXPHOS抑制 → AMPK/PD-L1通路 → 放疗增效 → 体内联合RT</td></tr>
+<tr><td><a href="#P11"><b>11 · PCSK9 与免疫稳态</b></a><br><span class="cite">ACS Nano · 2024</span></td>
+<td>杀死肿瘤细胞后，低MHC-I和酸性环境仍限制免疫——能否三管齐下？</td>
+<td>RNA-seq → HLA临床关联 → MHC-I/ICD分模块验证 → pH读出 → 双侧瘤联合ICI</td></tr>
+<tr><td><a href="#P12"><b>12 · CaCO₃ 化学免疫</b></a><br><span class="cite">ACS Nano · 2024</span></td>
+<td>erianin促进钙内流，CaCO₃提供外源钙，两者叠加能否超过单纯化疗？</td>
+<td>协同筛选 → 钙通路阻断/救援 → RNA-seq代谢机制 → ICD/DC共培养 → 双侧瘤联合</td></tr>
+<tr><td><a href="#P13"><b>13 · 离子稳态与放射免疫</b></a><br><span class="cite">Adv. Science · 2023</span></td>
+<td>CaCO₃中和胞外酸，乙酰唑胺使胞内酸化——内外方向相反的酸碱调节能协同放疗吗？</td>
+<td>胞内外pH分别测量 → RT损伤增强 → ICD/巨噬细胞极化 → 双侧瘤 → PD-L1反馈联合</td></tr>
+</tbody></table></div>
+
+<p class="note">以上顺序按附件《文献精读顺序》重新编号。CD36论文（01）是机制参照，其余12篇含纳米治疗平台。</p>
+</section>
+
+<section id="omics-logic">
+<h2 class="sec-title green">二、不同组学数据的样本与分组：如何与实验层次逻辑衔接</h2>
+
+<p>这是这组论文最容易被混淆的地方。组学数据有三种本质不同的用途，样本来源和分组设计也截然不同，不能用同一套标准去理解。</p>
+
+<div class="grid-3">
+<div class="card blue-c"><h3>🔍 发现型：自测处理后组学</h3>
+<p>用来从大量基因/代谢物变化中找可追踪的候选机制。典型设计：处理组 vs 对照组，通常是单一细胞系，每组2–3个生物学重复。</p>
+<p><b>它只负责缩小搜索空间，不证明机制。</b>后续必须用靶向实验（WB、敲低、救援）来验证具体候选。</p>
+<p class="note">代表文献：02、05、08、11、12</p></div>
+<div class="card green-c"><h3>📊 关联型：公共数据库分析</h3>
+<p>用来证明动物/细胞实验机制在人类样本中有对应现象。典型设计：从GEO/TCGA提取患者数据，分析靶点表达与预后/疾病的关联。</p>
+<p><b>它提供临床相关性，不等于治疗效果预测。</b>必须区分预后关联与治疗特异预测。</p>
+<p class="note">代表文献：01、06、07、11</p></div>
+<div class="card orange-c"><h3>🔬 解释型：单细胞生态解析</h3>
+<p>在已知疗效差异之后，用scRNA-seq解释治疗改变了哪些细胞亚群。核心价值是揭示异质性，发现候选通讯轴。</p>
+<p><b>细胞数量≠生物学重复数。</b>拟时序和通讯分析是计算推断，关键结论需要功能验证。</p>
+<p class="note">代表文献：05</p></div>
+</div>
+
+<h3>各论文组学数据样本、分组与实验衔接总览</h3>
+<div class="table-wrap"><table>
+<colgroup><col style="width:13%"><col style="width:15%"><col style="width:22%"><col style="width:22%"><col style="width:28%"></colgroup>
+<thead class="th-green"><tr>
+<th>文献</th><th>组学类型</th><th>样本来源与分组</th><th>连接哪些下游实验</th><th>实际能证明什么（边界）</th>
+</tr></thead>
+<tbody>
+<tr><td><a href="#P01">01 · CD36</a></td>
+<td><span style="background:#fff3cd;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">脂质组</span><br>LC-MS非靶向</td>
+<td>WT vs Cd36全敲BMDM（±肿瘤细胞共培养）；TG脂质组n=5，游离脂肪酸n=4</td>
+<td>荧光脂质追踪（EV→巨噬细胞）；Seahorse耗氧；巨噬细胞免疫功能</td>
+<td>明确哪些脂质类别积累减少；不能直接证明代谢通量；是在遗传干预后使用，而非用于发现靶点</td></tr>
+<tr><td></td>
+<td><span style="background:#e8d5f0;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">公共芯片</span><br>GSE68468 / 14095 / 41258</td>
+<td>CRC患者，各队列样本数不同（GSE68468 n=36用于生存，GSE14095 n=116用于相关分析）；来源均为原发肿瘤芯片，非肝转移灶测序</td>
+<td>人类相关性：xCT→M2→转移方向</td>
+<td>提供预后相关性；队列来源、平台（芯片vs测序）和实际分析子集必须按GEO原始记录核对，不能照搬论文描述</td></tr>
+<tr><td><a href="#P02">02 · MCL-1</a></td>
+<td><span style="background:#d4edda;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">Bulk RNA-seq</span></td>
+<td>A2780T耐药细胞；两组比较：①联合 vs shMCL-1单药（18,685基因→70个差异），②联合 vs shNC/PTX（19,522基因→17个差异）</td>
+<td>从差异基因中挑出RCC2、DHRS2、IRF7等候选；这些候选未经独立干预验证</td>
+<td>提出耐药逆转的候选分子机制；两个比较的目的分别是"PTX增量"和"MCL-1敲低增量"，不能合并为同一分析</td></tr>
+<tr><td><a href="#P05">05 · IL-12/PLX</a></td>
+<td><span style="background:#cce5ff;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">scRNA-seq</span><br>10x 3'v3.1</td>
+<td>B16-F10皮下瘤；GS / IL-12 / PLX / 联合4组共90,341细胞、36簇；每组独立动物/文库数主文未明确</td>
+<td>TME细胞组成比较；TAM Mx亚群呈抗原呈递特征；NKT拟时序；CellChat通讯预测</td>
+<td>揭示细胞生态变化，发现候选机制；细胞比例改变不等于绝对数量改变；拟时序/通讯均为计算推断，不是实证通讯</td></tr>
+<tr><td></td>
+<td><span style="background:#e8d5f0;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">公共bulk</span><br>TIMER / OncoLnc</td>
+<td>TCGA COAD和SKCM；8,647是平台全癌种总量，非本文任一癌种实际分析人数</td>
+<td>支持CSF1R作为第二功能臂（PLX靶点）的临床合理性</td>
+<td>提供靶点相关性背景；不证明PLX在这些癌种中有效</td></tr>
+<tr><td><a href="#P06">06 · xCT</a></td>
+<td><span style="background:#d4edda;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">Bulk RNA-seq</span></td>
+<td>两套比较：①分选TAM vs 正常BMDM（发现xCT高表达），②KO vs 对照TAM（理解信号变化）；n=3</td>
+<td>TAM分选为遗传干预铺垫；KO RNA-seq引出SOCS3–STAT6–PPARγ轴和GPX4/RRM2线索</td>
+<td>从无偏发现到靶向验证的经典路径；SOCS3→STAT6→PPARγ为支持性机制，未完成逐级遗传救援</td></tr>
+<tr><td></td>
+<td><span style="background:#e8d5f0;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">公共bulk+scRNA</span><br>GSE14520 / TCGA / GSE140228</td>
+<td>LIHC患者；GSE140228为公共HCC scRNA-seq（41条目，含多部位样本；非41患者）；TCGA生存高/低各185</td>
+<td>SLC7A11表达在巨噬细胞定位；预后/分期关联</td>
+<td>证明TAM-xCT轴在人类HCC中有对应现象；GSE140228是已发表数据的再分析，非本研究新测</td></tr>
+<tr><td><a href="#P07">07 · PET双死亡</a></td>
+<td><span style="background:#e8d5f0;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">公共RNA-seq</span><br>GSE157692 / GSE116192</td>
+<td>GSE157692：A549亲本 vs 顺铂耐药A549/DDP，8个文库（mRNA+miRNA各2+2）；GSE116192：A549多条件16个文库；<b>均为细胞系实验，非患者</b></td>
+<td>发现p53/铁死亡通路在顺铂耐药中变化，为SPR结合实验和PFTα救援提供方向</td>
+<td>支持p53作为候选上游节点；两套数据来自不同研究设计，具体分析子集依赖SI中的GSM选择和预处理方案</td></tr>
+<tr><td><a href="#P08">08 · 活菌</a></td>
+<td><span style="background:#d4edda;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">Bulk RNA-seq</span></td>
+<td>CT26荷瘤小鼠肿瘤整体组织；PBS / 裸菌 / 包覆菌 三组；n=3，主文未见GEO编号</td>
+<td>KEGG富集提示细胞死亡相关通路；STRING网络引出GSDMC等候选；后续以蛋白/形态检测</td>
+<td>这是治疗后整体肿瘤（含免疫细胞）的混合信号；GSDMC表达升高≠GSDMC裂解介导焦亡，"dependent"需要更强干预实验支撑</td></tr>
+<tr><td><a href="#P11">11 · PCSK9</a></td>
+<td><span style="background:#d4edda;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">Bulk RNA-seq</span></td>
+<td>Hepa1-6细胞：PBS vs DECP处理；BGISEQ-500；差异基因2,466个（894上/1,572下）；生物重复数主文未明确</td>
+<td>GO/GSEA富集提示抗原加工/呈递通路 → 引导MHC-I流式验证实验</td>
+<td>肿瘤细胞中出现"T细胞相关通路"富集不等于培养体系中存在T细胞；是机制方向的提示，不是证明</td></tr>
+<tr><td></td>
+<td><span style="background:#e8d5f0;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">公共bulk</span><br>TCGA / KMplot</td>
+<td>泛癌HLA-A/B/C表达与生存关联；另有作者称ICI队列分析，但主文未给出队列名称和编号</td>
+<td>支持MHC-I/HLA的临床意义</td>
+<td>HLA高表达可能反映免疫浸润，不能单独区分是HLA本身还是肿瘤免疫背景的预后作用</td></tr>
+<tr><td><a href="#P12">12 · CaCO₃</a></td>
+<td><span style="background:#d4edda;padding:1px 5px;border-radius:3px;font-size:8pt;font-weight:600">Bulk RNA-seq</span></td>
+<td>Hepa1-6：PBS vs DECaNPs；BGISEQ-500；差异阈值fold change≥1.0、P&lt;0.05（注：未明确是否log2FC；多重检验控制未说明）</td>
+<td>代谢通路富集 → 实测葡萄糖/乳酸/ATP/PC活性 → OAA补救验证丙酮酸羧化酶线索</td>
+<td>OAA补救比单纯富集更接近功能因果；但代谢物静态含量≠代谢通量，需同位素追踪确认</td></tr>
+</tbody></table></div>
+
+<div class="hb hb-blue">
+<b>跨层次衔接的核心原则：</b>相邻两个证据之间必须有"桥梁实验"，否则证据链断裂。
+<ul style="margin:6px 0 0">
+<li><b>组学→功能：</b>富集到某通路后，用靶向敲低/阻断+救援来检验候选节点是否必要。</li>
+<li><b>材料→递送→靶点：</b>"荧光进入细胞"不等于"药物真正作用到靶分子"。需要靶蛋白/RNA变化作为功能读出。</li>
+<li><b>细胞死亡→免疫：</b>死亡标志变化后，需要DAMPs检测+DC共培养+功能性杀伤，才能把死亡和免疫激活连起来。</li>
+<li><b>免疫激活→疗效依赖：</b>流式显示CD8增加是伴随变化；用CD8耗竭或免疫缺陷模型才能判断疗效是否依赖这类细胞。</li>
+</ul>
+</div>
+</section>
+
+<section id="papers">
+<h2 class="sec-title orange">三、13篇论文精读：研究问题、数据衔接与验证逻辑</h2>
+<p>每篇拆解结构：核心科学问题 → 数据层次与实验如何衔接 → 关键对照的作用 → 证据边界与可借鉴的设计逻辑。</p>
+<div class="toc">
+<a href="#P01">01 CD36</a><a href="#P02">02 MCL-1</a><a href="#P03">03 单原子焦亡</a><a href="#P04">04 OMV机器人</a>
+<a href="#P05">05 IL-12/PLX</a><a href="#P06">06 xCT铁死亡</a><a href="#P07">07 PET双死亡</a>
+<a href="#P08">08 活菌</a><a href="#P09">09 胰腺癌共递送</a><a href="#P10">10 代谢脂质体</a>
+<a href="#P11">11 PCSK9</a><a href="#P12">12 CaCO₃</a><a href="#P13">13 离子稳态</a>
+</div>
+<p id="fstatus" class="status" aria-live="polite">显示 13/13 篇</p>
+<div id="empty" class="empty">没有匹配的论文。请更换关键词或点击"清除"。</div>
+
+<!-- ===== P01 ===== -->
+<details class="paper" id="P01" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 01</span><h2>CD36：肿瘤EV如何把巨噬细胞变成代谢伙伴</h2>
+<div class="paper-en">CD36-mediated metabolic crosstalk between tumor cells and macrophages affects liver metastasis</div>
+<div class="paper-meta">Nature Communications 13, 5782 · 2022 · <a href="https://doi.org/10.1038/s41467-022-33349-y" target="_blank" rel="noopener">10.1038/s41467-022-33349-y</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">生物机制参照——无纳米药物</div>
+
+<div class="hb hb-blue"><b>核心科学问题：</b>肝转移微环境中的巨噬细胞从哪里获得脂质？谁控制脂质进入？这些脂质如何抑制抗肿瘤免疫？——这三个问题形成一条递进的因果链，研究依次回答每一步。</div>
+
+<h3>研究故事如何一步步推进</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：宿主CD36是否影响肝转移？</h4>
+<p class="qn">逻辑起点：转移表型。</p>
+<p class="sl"><span class="lb">实验设计：</span>同样的LLC细胞经脾注入WT或Cd36全敲鼠，比较12/18天肝负荷。早期到达/滞留作为阴性对照（两组无明显差别）。</p>
+<p class="sl"><span class="lb">结果：</span>敲除降低肝内肿瘤负荷、Ki67、CD31；早期到达无差异。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>CD36影响的是定植后的生长支持，而非肿瘤细胞输送。这个区分直接决定后续研究方向。</p>
+<div class="bridge">→ 确认了表型，但还不知道哪类宿主细胞负责。</div>
+</div>
+<div class="step">
+<h4>第二步：把责任细胞定位到巨噬细胞</h4>
+<p class="qn">逻辑：通过排他法缩小范围。</p>
+<p class="sl"><span class="lb">关键实验组合：</span>肝细胞特异敲除（Alb-Cre）→阴性；氯膦酸脂质体消除巨噬细胞→WT/全敲差异消失；LysM-Cre髓系敲除→减轻转移。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>三种操作互相印证，把机制收敛到髓系/MAM。肝细胞敲除阴性是关键的"排他对照"，没有它就不能排除CD36在肝实质细胞中的可能作用。</p>
+<div class="bridge">→ 锁定责任细胞后，追问这些细胞发生了什么代谢变化。</div>
+</div>
+<div class="step">
+<h4>第三步：肿瘤教育后的巨噬细胞代谢异常</h4>
+<p class="sl"><span class="lb">实验：</span>比较原位MAM与正常肝巨噬细胞、以及LLC共培养前后的BMDM；测脂滴、TG/DG、OCR、脂肪酸摄取。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>建立表型关联，但"肿瘤共培养后脂质增加"不能说明脂质来自肿瘤细胞本身。需要追踪。</p>
+<div class="bridge">→ 引入供体标记追踪脂质转移路径。</div>
+</div>
+<div class="step">
+<h4>第四步：用EV分级追踪脂质转移路径（关键实验）</h4>
+<p class="sl"><span class="lb">实验设计：</span>给肿瘤细胞标记BODIPY-C16，再洗涤后追踪巨噬细胞；进行直接共培养、Transwell共培养、100kDa分级、差速离心EV分级。</p>
+<p class="sl"><span class="lb">结果：</span>巨噬细胞逐渐获得标记信号（部分定位线粒体）；高分子量组分和EV富集沉淀可转移信号。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>追踪+分级共同支持"肿瘤→EV→巨噬细胞"的路径。这比"两种细胞脂质都变化了"强得多。荧光追踪不等于稳定同位素代谢通量，但已是可行的最好替代。</p>
+<div class="bridge">→ 脂质转移的路径有了，再问CD36是否控制这个进入过程。</div>
+</div>
+<div class="step">
+<h4>第五步：CD36基因控制脂质摄取并改变代谢——脂质组数据在这里发挥作用</h4>
+<p class="sl"><span class="lb">实验：</span>WT/敲除BMDM接受相同的标记肿瘤细胞/EV，配合LC-MS脂质组（n=5）、靶向脂肪酸谱（n=4）、Seahorse（n=3）。</p>
+<p class="sl"><span class="lb">结果：</span>敲除减少EV摄取、TG/长链脂肪酸积累及OCR。</p>
+<p class="sl interp"><span class="lb">数据搭配逻辑：</span>脂质组放在这里，是在"遗传干预"之后用来描述改变的脂质类别，而不是用脂质组来"发现靶点"。这个定位很准确——组学服务于已经明确的问题。</p>
+<div class="bridge">→ 代谢变化有了，最后检验是否有免疫后果，并与人类数据关联。</div>
+</div>
+<div class="step">
+<h4>第六步：脂质积累→M2样免疫抑制→人类关联</h4>
+<p class="sl"><span class="lb">实验：</span>OA/SA刺激、敲除巨噬细胞与CD8 T共培养；体内流式；公共人表达队列（GSE68468 n=36、GSE14095 n=116）和75份临床血样。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>OA比SA更强促进M2样状态（区分了脂肪酸种类的影响）；敲除巨噬细胞增强CD8 T细胞杀伤；人类数据提供相关性关联。</p>
+<p class="sl interp"><span class="lb">边界：</span>CD8共培养改善不等于CD8是疗效必要条件；人类相关性不等于临床阻断CD36有效。GSE14095的原始组织是CRC原发切除标本，不是肝转移灶，阅读时须注意。</p>
+</div>
+</div>
+
+<h3>数据总览与可获取性</h3>
+<div class="table-wrap"><table>
+<colgroup><col style="width:20%"><col style="width:40%"><col style="width:40%"></colgroup>
+<thead class="th-green"><tr><th>数据层</th><th>样本、数量与方法</th><th>在故事中的作用</th></tr></thead>
+<tbody>
+<tr><td>遗传动物实验（自测）</td>
+<td>LLC为主，另有B16F10/Hepa1-6/CT26；全身KO、肝细胞KO、髓系条件KO、氯膦酸清除；Fig.1/2每组5–6只</td>
+<td>确定责任细胞——这是全文的骨干</td></tr>
+<tr><td>脂质组&脂肪酸谱（自测）</td>
+<td>WT/KO BMDM±肿瘤教育；TG脂质组n=5，脂肪酸n=4，OCR n=3</td>
+<td>说明基因型影响了哪些脂质类别——在遗传干预后使用，不是用来筛靶点</td></tr>
+<tr><td>公共表达芯片（GEO复用）</td>
+<td>GSE68468（36例CRC组织）、GSE14095（n=116相关分析）、GSE41258；均为芯片，非RNA-seq</td>
+<td>人类相关性支撑；三套数据来源各异，不可当作独立患者队列叠加</td></tr>
+<tr><td>临床血样（自收集）</td>
+<td>75份肝癌患者血浆/PBMC；sCD36 ELISA和PBMC CD36流式</td>
+<td>补充可测生物标志物的关联性</td></tr>
+</tbody></table></div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>先定位细胞、再追踪物质、再用遗传干预连接因果——三步递进比"测到变化就下结论"强得多。</li>
+<li>脂质组在遗传干预后使用，用来"解释"而不是"发现"——这是组学服务于问题的正确用法。</li>
+<li>这篇是纳米药设计之前的靶点论证范本：先证明靶点值得干预，再谈载体。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>三套GEO公共数据均为表达芯片，原始记录与论文描述存在差异（GSE14095为CRC原发组织，非189个肝转移灶）。</li>
+<li>LysM-Cre影响多种髓系细胞，不能写成"专一巨噬细胞敲除"。</li>
+<li>M1/M2是简化框架；脂肪酸补充实验（OA/SA）→免疫功能，中间缺少CD36回补救援实验。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1038/s41467-022-33349-y" target="_blank" rel="noopener">论文DOI</a><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE68468" target="_blank" rel="noopener">GSE68468</a><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE14095" target="_blank" rel="noopener">GSE14095</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P02 ===== -->
+<details class="paper" id="P02" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 02</span><h2>叶酸靶向共递送PTX与shMCL-1：先解除抗凋亡耐药，再恢复化疗敏感性</h2>
+<div class="paper-en">Co-Delivery of Paclitaxel and shMCL-1 by Folic Acid-Modified Nonviral Vector to Overcome Cancer Chemotherapy Resistance</div>
+<div class="paper-meta">Small Methods 5, 2001132 · 2021 · <a href="https://doi.org/10.1002/smtd.202001132" target="_blank" rel="noopener">10.1002/smtd.202001132</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">耐药逆转与基因/药物共递送</div>
+
+<div class="hb hb-blue"><b>核心科学问题：</b>PTX耐药卵巢癌的失效机制是什么？两个并行障碍：①MCL-1过高使细胞逃脱凋亡；②核酸难以有效进入肿瘤细胞。叶酸受体（FR）高表达提供了递送入口。材料设计必须同时解决这两个障碍。</div>
+
+<h3>研究主线：从递送验证到耐药逆转</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：确认靶点和递送入口——临床组织放在故事末，逻辑上是背景验证</h4>
+<p class="sl"><span class="lb">实验：</span>卵巢癌患者PTX治疗前/后组织IHC检测MCL-1和FR；细胞系（Skov3和诱导耐药A2780T）流式测FR。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>耐药后MCL-1和FR均升高，支持"靶点+递送入口"的设计逻辑。患者数量未在主文详列，属于支持性证据，不是因果验证。</p>
+</div>
+<div class="step">
+<h4>第二步：证明FA靶向依赖受体，而非一般化学修饰</h4>
+<p class="sl"><span class="lb">关键实验：</span>比较F-DMC（含FA）与DMC（无FA）的GFP转染率；在CRISPR/Cas9敲除FOLR1的细胞中，两者差异消失。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>受体敲除对照把"荧光多进去了"升级为"受体依赖性进入"——这是主动靶向研究必须做的区分。注意：这个关键图在SI中，主文只转述结论。</p>
+</div>
+<div class="step">
+<h4>第三步：以耐药模型建立功能联合效果</h4>
+<p class="sl"><span class="lb">实验：</span>A2780T不同PTX浓度×时间点CCK-8；设置载体、shNC、shMCL-1、PTX、联合五组。</p>
+<p class="sl"><span class="lb">代表性结果：</span>1µM PTX、72h时，联合组存活约45%，PTX单药约86%，shMCL-1约79%。同时观察到：凋亡↑、EdU↓、G2/M比例增加（约35%）、Bcl-2↓、Bax↑、活化caspase-3↑、cdc2/Cyclin B1↓。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>多个表型读数互相补充，支持"MCL-1敲低恢复PTX作用"。但联合优于单药≠严格药理协同；这些WB变化仍是相关性，未完成MCL-1回补救援实验。</p>
+</div>
+<div class="step">
+<h4>第四步：RNA-seq提候选机制（发现型组学）</h4>
+<p class="sl"><span class="lb">两组比较设计：</span>①联合 vs 单独shMCL-1（揭示PTX增量改变，18,685基因中70个差异），②联合 vs shNC/PTX（揭示MCL-1敲低增量，19,522基因中17个差异）。</p>
+<p class="sl"><span class="lb">突出候选：</span>RCC2、DHRS2、IRF7（从比较①）；BARX2、DUSP16、FN1、FSTL1（从比较②）。</p>
+<p class="sl interp"><span class="lb">数据衔接逻辑：</span>两组比较分别回答不同的"增量"问题，设计清晰。候选基因是假说，作者也明确"精确机制留待后续"。不能把差异基因数（70/17）当成患者数或细胞数。</p>
+</div>
+<div class="step">
+<h4>第五步：动物模型验证靶点抑制与疗效</h4>
+<p class="sl"><span class="lb">实验：</span>BALB/c裸鼠腹腔接种Skov3-luc或A2780T；7组含葡萄糖溶液、shNC、PTX、shNC/PTX、shMCL-1、无FA联合和FA联合；PTX 5mg/kg、质粒20µg，每周2次21天。</p>
+<p class="sl"><span class="lb">体内闭环：</span>靶点下降（MCL-1）→死亡增加（TUNEL）→增殖减少（PCNA）→瘤负荷下降→生存延长。</p>
+<p class="sl interp"><span class="lb">边界：</span>裸鼠缺完整免疫系统，CD31下降不等于直接抗血管生成机制已证明；方法记每组15只，Fig.8/9标n=5，两个层级应分别保留。</p>
+</div>
+</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>受体敲除对照把"主动靶向"从形态描述升级为功能验证——这个思路可直接复用。</li>
+<li>RNA-seq比较设计有明确目的（PTX增量 vs MCL-1增量），组学服务于特定问题，而不是开放式扫描。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>受体敲除关键图在SI（未随附件提供）；RNA-seq无GEO编号，只能按需向作者申请。</li>
+<li>RCC2等差异基因是候选，未完成MCL-1→RCC2→PTX敏感性的完整因果链。</li>
+<li>TEM约23nm与DLS 272.5nm差异较大；复现时需核对分散状态和测量条件。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1002/smtd.202001132" target="_blank" rel="noopener">论文DOI</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P03 ===== -->
+<details class="paper" id="P03" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 03</span><h2>单原子Fe–N4配位：从光物理差异到缺氧下GSDME激活</h2>
+<div class="paper-en">Creating Single Atomic Coordination for Hypoxia-Resistant Pyroptosis Nano-Inducer to Boost Anti-Tumor Immunotherapy</div>
+<div class="paper-meta">Advanced Materials, 2414697 · 2025 · <a href="https://doi.org/10.1002/adma.202414697" target="_blank" rel="noopener">10.1002/adma.202414697</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">结构→光物理→死亡→免疫：跨尺度论证</div>
+<div class="hb hb-blue"><b>核心科学问题：</b>PDT在缺氧肿瘤中效果差，因为type II ROS（单线态氧）依赖底物氧。如果通过配位结构改变光化学反应类型为type I（电子转移，对氧依赖低），能否在缺氧下仍诱导具有免疫刺激潜力的肿瘤死亡？</div>
+
+<h3>研究主线：结构差异驱动多层比较</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：结构表征——确认Fe–N4配位存在</h4>
+<p class="sl"><span class="lb">实验：</span>HNCDs（含Fe）与PNCDs（无Fe）对照；XPS→XANES→EXAFS/小波变换拟合，同时辅以TEM/光谱。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>多方法配合支持Fe–N4局域配位，未见Fe聚集特征。但表征本身只确认"结构是这样"，不能直接预测光化学或生物效应。这一步的作用是确立后续所有比较的前提。</p>
+</div>
+<div class="step">
+<h4>第二步：计算解释ROS类型差异，实验验证</h4>
+<p class="sl"><span class="lb">实验：</span>DFT计算Fe–N4 vs 无Fe体系的能级、氧吸附和电子分布；EPR和不同ROS特异性探针（超氧vs单线态氧）比较。</p>
+<p class="sl interp"><span class="lb">数据搭配逻辑：</span>计算提出机制候选（Fe中心促进电子转移→超氧），EPR/探针实验在细胞外体系验证。计算和实验互为约束，不能只用计算。</p>
+<p class="sl interp"><span class="lb">边界：</span>type I超氧生成仍涉及氧底物，不能写成"完全不需氧"；探针选择性有限，需配合多种探针。</p>
+</div>
+<div class="step">
+<h4>第三步：缺氧下功能对照——直接验证核心声称</h4>
+<p class="sl"><span class="lb">实验：</span>HB（含Fe体系）vs PB（无Fe），常氧vs缺氧（2% O₂），有光vs无光；观察ROS、细胞活性、形态。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>这是文章最关键的"主张检验"——四因素矩阵对照直接回答"缺氧下Fe体系是否保留优势"。PB缺氧下效应明显减弱，HB相对保留，形态出现裂解性死亡特征。</p>
+</div>
+<div class="step">
+<h4>第四步：把ROS连接到caspase-3/GSDME——死亡机制验证</h4>
+<p class="sl"><span class="lb">实验：</span>检测LDH/ATP、活化caspase-3、GSDME-N（裂解片段）、线粒体膜电位和Cyt C定位；再加ROS清除剂和caspase-3抑制剂，观察能否降低死亡特征。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>比单检GSDME总蛋白强得多——裂解片段（-N）是活化标志。药理阻断把通路位置锁定在ROS→caspase-3→GSDME上游。边界：缺少GSDME遗传敲除/回补，药理阻断不能排除其他通路的参与。</p>
+</div>
+<div class="step">
+<h4>第五步：死亡→免疫桥梁——DC共培养</h4>
+<p class="sl"><span class="lb">实验：</span>CRT/HMGB1等DAMPs检测后，把处理后细胞与DC共培养；测DC成熟、CD8标志和GzB；区分常氧和缺氧。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>从肿瘤死亡到免疫细胞激活的桥梁。缺氧下仍保留DC成熟效应，与前面的细胞死亡数据呼应。共培养比例/时间条件需核SI。</p>
+</div>
+<div class="step">
+<h4>第六步：动物实验闭环</h4>
+<p class="sl"><span class="lb">实验：</span>EMT-6荷瘤小鼠；疗效/生存n=6，成像n=3；比较HB/PB±光处理；测体内GSDME-N、流式免疫表型和细胞因子。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>体内GSDME-N与体外结果呼应，多个终点方向一致。肺部病灶减轻是辅助结果，不等同于原位肿瘤切除。</p>
+</div>
+</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>有Fe/无Fe结构对照贯穿全文，确保每层比较都有一致的"处理变量"。</li>
+<li>常氧/缺氧×有光/无光的因素矩阵，让"耐缺氧"声称有专门的实验检验结构。</li>
+<li>死亡机制验证：裂解片段（-N）+药理阻断，比总蛋白表达更接近机制。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>正文"O₂-independent"等表述须结合电子转移仍涉及氧的机制来理解，不应照字面翻译。</li>
+<li>缺GSDME遗传干预和关键免疫细胞耗竭，不能把整个获益归因于特定死亡节点。</li>
+<li>BSA是牛血清白蛋白，不是人源蛋白；短期生化指标不等于完整药代安全。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1002/adma.202414697" target="_blank" rel="noopener">论文DOI</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P04 ===== -->
+<details class="paper" id="P04" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 04</span><h2>OMV纳米机器人：把运动学优势转化为功能性递送和疾病控制</h2>
+<div class="paper-en">Bacterial outer membrane vesicle nanorobot</div>
+<div class="paper-meta">PNAS 121(30), e2403460121 · 2024 · <a href="https://doi.org/10.1073/pnas.2403460121" target="_blank" rel="noopener">10.1073/pnas.2403460121</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">局部递送优化；运动→功能→疗效</div>
+<div class="hb hb-blue"><b>核心科学问题：</b>静态递送载体在膀胱腔中结合效率低、穿透深度不足。利用尿素酶驱动的自推进能否改善这两个问题，并把这种空间优势转化为survivin沉默和抗肿瘤免疫？</div>
+
+<h3>研究主线：从轨迹到靶点到疾病终点</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：确立运动本身的物理意义</h4>
+<p class="sl"><span class="lb">实验：</span>比较静态囊泡和运动体系（加尿素酶）在缓冲液和真实尿液中的轨迹、均方位移。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>在复杂环境中仍能保持定向运动特征，提示材料在生理相关条件下的可行性。注意：n=15指追踪的颗粒轨迹，不是15只动物。这一步只确认物理功能，不能说明治疗效果。</p>
+</div>
+<div class="step">
+<h4>第二步：把运动转化为功能性递送——靶点变化才是真正的递送证明</h4>
+<p class="sl"><span class="lb">实验：</span>比较游离siRNA、空囊泡、静态载药、运动载药；测细胞摄取（荧光）+survivin mRNA/蛋白+细胞活性。</p>
+<p class="sl interp"><span class="lb">关键设计：</span>仅测荧光摄取不够，还测了靶点下调——这把"进去了"变成"真正起效了"。运动体系各指标均优于静态，空载作为材料本身效应控制。</p>
+</div>
+<div class="step">
+<h4>第三步：三维球验证穿透——从平铺细胞到组织深度</h4>
+<p class="sl"><span class="lb">实验：</span>肿瘤球和膀胱肿瘤组织切面的荧光Z-stack；观察不同深度的信号。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>三维模型在二维细胞和体内动物之间建立中间证据层。分布信号不等于每处都有有效siRNA浓度。</p>
+</div>
+<div class="step">
+<h4>第四步：体内靶点抑制和免疫改变</h4>
+<p class="sl"><span class="lb">实验：</span>原位膀胱瘤；比较空载、静态载药、运动载药；测survivin（WB/IHC）、DC成熟和T细胞流式、细胞因子。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>体内survivin下降把分布优势落实为靶点作用。免疫表型提示参与，但细胞比例增加不等于免疫依赖性已证明（缺耗竭实验）。</p>
+</div>
+<div class="step">
+<h4>第五步：疾病终点验证</h4>
+<p class="sl"><span class="lb">实验：</span>纵向生物发光、终点肿瘤负荷、病理、生存（n=5/组）；短期安全指标。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>多个疾病终点方向一致，支持局部膀胱模型中的有效性。不能外推为静脉给药或其他器官。讨论中提到的酸碱调节机制尚在探索，不属于已验证结论。</p>
+</div>
+</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>从轨迹→穿透→靶点→疾病终点的递进逻辑，每一步都不止步于荧光图。</li>
+<li>空载和静态对照帮助拆分运动、载体、载荷三者的贡献。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>局部膀胱尿素环境是核心前提，不能写成通用主动导航平台。</li>
+<li>免疫表型改变不等于免疫依赖性；survivin回补和免疫耗竭实验将强化因果链。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1073/pnas.2403460121" target="_blank" rel="noopener">论文DOI</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P05 ===== -->
+<details class="paper" id="P05" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 05</span><h2>IL-12+PLX3397：双功能臂分别验证，scRNA-seq解释细胞生态</h2>
+<div class="paper-en">Tumor-Microenvironment-Activatable Nanoparticle Mediating Immunogene Therapy and M2 Macrophage-Targeted Inhibitor for Synergistic Cancer Immunotherapy</div>
+<div class="paper-meta">ACS Nano 18(4), 3295–3312 · 2024 · <a href="https://doi.org/10.1021/acsnano.3c10037" target="_blank" rel="noopener">10.1021/acsnano.3c10037</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">双功能联合免疫 · scRNA-seq解释生态</div>
+<div class="hb hb-blue"><b>核心科学问题：</b>单独激活T细胞或抑制M2巨噬细胞效果有限，因为TME同时存在"激活不足"和"抑制过强"两个瓶颈。cRGD靶向载体能否同时递送pIL-12（激活）和PLX3397（解除M2抑制），并在两种肿瘤模型中验证？</div>
+
+<h3>研究主线：两功能臂分立验证，汇合到动物疗效，scRNA-seq收尾解释</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：载体——能否组装、响应并完成基因表达</h4>
+<p class="sl"><span class="lb">实验：</span>NAMD分子动力学模拟组装（20ns）；TEM/DLS（141.60nm，4.24mV）；10mM GSH粒径变化；凝胶阻滞；EGFP/IL-12蛋白表达比较cRGD有无。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>表达出蛋白比单纯看荧光摄取更接近基因递送目标。分子动力学说明组装机制，不替代体内释放验证。</p>
+</div>
+<div class="step">
+<h4>第二步：IL-12功能臂——激活淋巴细胞并杀伤肿瘤</h4>
+<p class="sl"><span class="lb">实验：</span>转染肿瘤细胞上清刺激淋巴细胞，测pAKT/pERK、CD69、IFNγ/TNFα；再共培养观察肿瘤凋亡。</p>
+<p class="sl interp"><span class="lb">数据衔接：</span>pIL-12表达→受体细胞激活→靶细胞杀伤，三个环节连续验证。</p>
+</div>
+<div class="step">
+<h4>第三步：PLX功能臂——低剂量调节而非粗暴清除</h4>
+<p class="sl"><span class="lb">关键设计：</span>先做剂量-时间活性曲线选60nM工作浓度（避免大量直接杀伤）；在此浓度下检测CSF-1诱导的p-CSF-1R；比较M2相关标志和STAT3/STAT6/IRF4。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>剂量预实验把"功能调节"和"细胞清除"区分开——这是CSF-1R研究中容易被忽视的控制步骤。</p>
+</div>
+<div class="step">
+<h4>第四步：两种动物模型，七组对照拆解配方贡献</h4>
+<p class="sl"><span class="lb">实验：</span>B16-F10皮下瘤（静脉给药）和CT26腹腔种植（腹腔给药）；七组含空载、空质粒、两单药、非靶向双药、靶向双药。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>空质粒组排除DNA本身刺激；两模型印证跨肿瘤类型；腹腔种植不等同自然腹膜转移形成过程。</p>
+</div>
+<div class="step">
+<h4>第五步：scRNA-seq解释治疗后细胞生态（解释型组学）</h4>
+<p class="sl"><span class="lb">数据：</span>B16-F10肿瘤，4组共90,341细胞、36簇；10x 3'v3.1，NovaSeq PE150；每组独立动物/文库数主文未明确。</p>
+<p class="sl"><span class="lb">分析：</span>Seurat/t-SNE聚类注释；TAM Mx亚群特征（抗原呈递）；NKT拟时序A→B；CellChat通讯预测。</p>
+<p class="sl interp"><span class="lb">数据衔接逻辑：</span>scRNA-seq放在已确认疗效之后，用来解释"为什么"和"哪些细胞状态改变了"，而不是用来证明疗效。这个定位是正确的。Doublet簇仍在图中，拟时序是转录排序不是谱系示踪，通讯是计算预测不是实证结合。</p>
+</div>
+</div>
+
+<div class="hb hb-warn"><b>关键注意：</b>正文称CSF1R高表达关联差预后，引用HR=0.498（&lt;1表示保护性或低风险），与"高表达-差预后"描述方向不一致。参照组编码和SI生存曲线需要核对才能确定方向。</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>两功能臂先各自在体外获得独立证据，再在动物中汇合，避免"只有组合有效"的黑盒问题。</li>
+<li>scRNA-seq放在确认疗效之后解释机制，而不是用来证明疗效——这是正确的组学定位。</li>
+<li>剂量预实验分清"功能调节"和"细胞清除"，为PLX用量选择提供了逻辑依据。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>90,341是细胞数，不是生物学重复数；每组文库数未明确是重要信息缺失。</li>
+<li>NKT A→B为转录排序不是谱系示踪；CellChat通讯强度是计算预测，不是已证实的细胞互作。</li>
+<li>缺CD8耗竭、IL-12中和或CSF-1R遗传救援；腹腔种植与静脉给药的两种模型不完全可比。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1021/acsnano.3c10037" target="_blank" rel="noopener">论文DOI</a><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE140228" target="_blank" rel="noopener">GSE140228（文献06相关）</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P06 ===== -->
+<details class="paper" id="P06" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 06</span><h2>TAM中的xCT：从RNA-seq发现靶点到甘露糖靶向纳米干预</h2>
+<div class="paper-en">Targeted xCT-mediated Ferroptosis and Protumoral Polarization of Macrophages Is Effective against HCC and Enhances the Efficacy of the Anti-PD-1/L1 Response</div>
+<div class="paper-meta">Advanced Science 10(2), 2203973 · 2023 · <a href="https://doi.org/10.1002/advs.202203973" target="_blank" rel="noopener">10.1002/advs.202203973</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">机制发现驱动→TAM靶向纳米→ICI联合</div>
+<div class="hb hb-blue"><b>核心科学问题：</b>铁死亡通常作用于肿瘤细胞；如果把靶点换成TAM的xCT（SLC7A11），能否同时抑制TAM的铁死亡抵抗和M2极化，并以此为切入点增强抗PD-L1疗效？</div>
+
+<h3>研究主线：RNA-seq发现→遗传敲除因果→纳米转化→ICI联合</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：RNA-seq发现TAM中xCT高表达（发现型组学）</h4>
+<p class="sl"><span class="lb">实验：</span>分选Hepa1-6瘤内TAM与正常BMDM做bulk RNA-seq（n=3）；CM刺激后测xCT/GPX4、脂质过氧化、erastin/RSL3敏感性。</p>
+<p class="sl interp"><span class="lb">数据衔接逻辑：</span>RNA-seq是发现工具，提出"TAM高表达SLC7A11"这个候选。随后用蛋白（WB）、功能（脂质氧化、铁死亡敏感性）和铁死亡抑制剂救援（Fer-1）来验证候选的功能意义。组学→蛋白→功能→救援，层层收敛。</p>
+</div>
+<div class="step">
+<h4>第二步：宿主遗传干预确立因果——全身KO→髓系条件KO</h4>
+<p class="sl"><span class="lb">实验：</span>全身Slc7a11-KO后再用Lyz2-Cre条件KO；比较皮下瘤、快速尾静脉注射肝定植模型、慢速尾静脉肺定植模型。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>两步设计是"缩小责任范围"的经典操作：全身KO先确认表型，髓系条件KO把作用收敛到髓系细胞。三种模型覆盖原位和不同转移部位。</p>
+<p class="sl interp"><span class="lb">边界：</span>尾静脉注射肺定植是实验性定植，不等于自然发生的转移级联；LysM-Cre也影响其他髓系细胞。</p>
+</div>
+<div class="step">
+<h4>第三步：机制路径：xCT→信号通路→铁死亡易感性</h4>
+<p class="sl"><span class="lb">实验：</span>KO/对照TAM转录组富集（KO vs 对照，n=3）；WB测SOCS3↑、pSTAT6/pAKT/PPARγ↓；测MDA/铁/GSH/脂质ROS；Fer-1体内救援部分恢复抑瘤。</p>
+<p class="sl interp"><span class="lb">数据搭配逻辑：</span>第二套RNA-seq（KO vs 对照TAM）与第一套（TAM vs BMDM）目的不同：后者用来发现xCT高表达，前者用来理解xCT控制了哪些下游信号。两套组学各有明确任务，不应混为一谈。</p>
+<p class="sl interp"><span class="lb">边界：</span>SOCS3→STAT6→PPARγ是支持性证据，未完成逐级遗传救援。</p>
+</div>
+<div class="step">
+<h4>第四步：xCT干预后PD-L1反馈——联合ICI的逻辑来源</h4>
+<p class="sl"><span class="lb">实验：</span>测KO巨噬细胞与瘤组织PD-L1；以基因型×抗PD-L1构成组合比较。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>KO后PD-L1升高，加抗体最有效——联合不是拍脑袋加药，而是针对干预后出现的反馈。这是"看到问题再设计方案"的研究思路，比预先堆叠两个热门靶点更有说服力。</p>
+</div>
+<div class="step">
+<h4>第五步：甘露糖靶向pSiNPs递送erastin——遗传靶点的药理转化</h4>
+<p class="sl"><span class="lb">实验：</span>Man/无Man-Cy7颗粒在TAM/M0/Hepa1-6中的摄取差异；载药颗粒的细胞选择性；Fer-1逆转Man-pSiNP处理后的PD-L1和M2表型。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>甘露糖利用CD206优先摄取，在细胞层面重现遗传敲除的效果。肝脾也明显富集，不能描述为"专一TAM递送"；但在有对照的细胞比较中，摄取差异已有功能意义。</p>
+</div>
+<div class="step">
+<h4>第六步：体内联合疗效和人类数据关联</h4>
+<p class="sl"><span class="lb">实验：</span>空载、载药、抗PD-L1、联合四组（n=6疗效，n=5免疫）；GSE14520/TCGA-LIHC/ICGC生存分析（高/低组各116或185）；GSE140228 scRNA-seq定位xCT在CD68+细胞；配对组织WB/IHC（n=8对）。</p>
+<p class="sl interp"><span class="lb">数据搭配逻辑：</span>公共数据（GSE14520、TCGA、GSE140228）在体内验证之后用于人类相关性，而不是用来证明因果。GSE140228是已发表的HCC scRNA-seq再分析，确认xCT在TAM/macrophage中定位。</p>
+</div>
+</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>两套RNA-seq（发现xCT、解析KO后机制）各有独立目的——这是组学在同一研究中服务不同问题的好示范。</li>
+<li>"干预后出现PD-L1反馈→设计抗体联合"的逻辑链，使联合治疗有机制依据而非随意叠加。</li>
+<li>纳米药设计之前已有遗传因果基础，材料的出现是为了转化可验证的靶点，而不是为了展示新材料。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>SOCS3–STAT6–PPARγ通路需要逐级遗传救援才能确立因果链。</li>
+<li>PD-L1联合优于单药≠免疫依赖性；缺CD8耗竭。GSE140228使用的是已发表数据（41个样本条目，不等于41患者）。</li>
+<li>临床列线图是预后模型，未在独立ICI治疗队列中验证，不能升级为免疫治疗预测模型。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1002/advs.202203973" target="_blank" rel="noopener">论文DOI</a><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE140228" target="_blank" rel="noopener">GSE140228</a><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE14520" target="_blank" rel="noopener">GSE14520</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P07 ===== -->
+<details class="paper" id="P07" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 07</span><h2>PET追踪仿生共递送：药理协同筛选→p53机制→体内分布验证→铁死亡/焦亡+PD-L1联合</h2>
+<div class="paper-en">Targeted Positron Emission Tomography-Tracked Biomimetic Codelivery Synergistically Amplifies Ferroptosis and Pyroptosis for Inducing Lung Cancer Regression and Anti-PD-L1 Immunotherapy Efficacy</div>
+<div class="paper-meta">ACS Nano 18(45), 31401–31420 · 2024 · <a href="https://doi.org/10.1021/acsnano.4c11278" target="_blank" rel="noopener">10.1021/acsnano.4c11278</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">药理协同→递送可视化→分子机制→免疫联合</div>
+<div class="hb hb-blue"><b>核心科学问题：</b>顺铂耐药来自多重障碍（低敏感性、非特异分布、耐药机制未知）。能否先找到真正协同的伙伴药物（PPVI），再用同源膜脂质体解决分布问题，用PET实时回答"药到了哪里"，并通过p53机制解释为何这个组合对两种死亡程序都有效？</div>
+
+<h3>研究主线：四条并行证据线的逻辑串联</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：Bliss协同筛选——先有药理依据，再设计载体</h4>
+<p class="sl"><span class="lb">实验：</span>A549、H1299做单药IC50和不同浓度组合CCK-8；Bliss评分和CompuSyn CI定量；另验证顺铂耐药A549/CDDP（IC50 76.51µM）。</p>
+<p class="sl"><span class="lb">结果：</span>A549 Bliss=33.272，H1299=13.495，均有协同；选择3µM PPVI + 6µM CDDP（摩尔比1:2）用于后续体外实验。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>这一步决定了整个设计的合理性。如果体外协同数据不存在，后面所有材料实验的"共递送优越性"都会失去依据。药物浓度矩阵是多药联合研究的必备前提。</p>
+</div>
+<div class="step">
+<h4>第二步：材料参数逐一对应递送需求</h4>
+<p class="sl"><span class="lb">实验：</span>DOPE/CHEMS/DSPE-PEG脂质体（酸性释放增强：pH5.4下PPVI/CDDP释放约75%/80%）；癌细胞膜融合后粒径118nm；质谱确认Pan Cadherin、Na+/K+-ATPase保留、Histone H3低；124I标记放化纯度99.24%，PBS和HSA中稳定至120h。</p>
+<p class="sl interp"><span class="lb">数据搭配逻辑：</span>膜蛋白质谱证明膜成分保留（完整性），pH释放证明响应性，124I稳定性证明示踪可信性。三个参数各自回答不同问题，不能互相替代。</p>
+</div>
+<div class="step">
+<h4>第三步：双死亡特征验证——两组独立指标支撑两种机制</h4>
+<p class="sl"><span class="lb">铁死亡指标：</span>TEM线粒体缩小/嵴减少、GSH↓、C11-BODIPY脂质氧化↑、MDA↑、Fe²+↑、GPX4↓。</p>
+<p class="sl"><span class="lb">焦亡指标：</span>细胞肿胀/膜泡形态、NLRP3↑、GSDMD-N裂解片段↑、cleaved caspase-1↑、IL-1β↑。</p>
+<p class="sl interp"><span class="lb">边界：</span>两类特征并存，不等于两种机制"相互放大"——后者需要交叉阻断实验（如铁死亡抑制剂Fer-1对焦亡的影响）才能确立。这是本文机制链中最需要补强的部分。</p>
+</div>
+<div class="step">
+<h4>第四步：公共数据→机制方向，SPR/IP/救援验证p53参与</h4>
+<p class="sl"><span class="lb">公共数据使用：</span>GSE157692（A549 vs A549/DDP，8个文库：mRNA+miRNA各2+2）和GSE116192（16个文库，多种条件）；差异分析提示p53/铁死亡通路在耐药中变化。</p>
+<p class="sl"><span class="lb">验证实验：</span>PPVI-p53分子对接（KD≈9.47×10⁻⁷M）；IP显示泛素化信号降低；PFTα（p53抑制剂）部分恢复增殖并削弱ROS和死亡蛋白。</p>
+<p class="sl interp"><span class="lb">数据衔接逻辑：</span>公共GEO数据提方向，本研究的SPR直接结合和药理救援提供机制证据。GSE157692/116192均来自细胞系（非患者），不能当作临床证据。论文具体用了哪些GSM条目需参照SI。</p>
+</div>
+<div class="step">
+<h4>第五步：PET回答"药到了哪里"——分布与疗效解耦</h4>
+<p class="sl"><span class="lb">实验：</span>LLC来源膜制剂 vs 无膜制剂，micro-PET/CT 2–120h；同鼠建立LLC/Hepa1-6双瘤；测SUVmax和肿瘤/肌肉比（TMR）。</p>
+<p class="sl"><span class="lb">结果：</span>膜制剂LLC肿瘤24h SUVmax≈1.92，72h TMR&gt;30；双瘤比较主要富集在LLC侧。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>无膜对照排除了"肿瘤天然蓄积"的混杂；异源双瘤减少肿瘤大小差异对信号的干扰。注意：PET追踪的是放射性标记的位置，不直接测量两种游离药的胞内有效浓度。</p>
+</div>
+<div class="step">
+<h4>第六步：p53宿主背景验证体内机制依赖性</h4>
+<p class="sl"><span class="lb">实验：</span>p53+/+ vs p53−/−小鼠各设PBS/双载组（n=5）；另用urethane化学诱导肺癌。</p>
+<p class="sl interp"><span class="lb">边界：</span>改变的是宿主p53状态，不是肿瘤细胞p53——宿主p53影响免疫/间质，结果不等于"肿瘤细胞p53决定疗效"。体内机制依赖性的更严格验证需要肿瘤细胞特异性p53敲除/回补。</p>
+</div>
+<div class="step">
+<h4>第七步：PD-L1联合——免疫激活后出现制动，针对性解除</h4>
+<p class="sl"><span class="lb">实验：</span>LLC共培养测DC/CD8/CD4变化，IFN-γ/IL-2↑，同时PD-L1↑；设单药与联合抗PD-L1比较。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>联合治疗动机来自本研究观察到的PD-L1诱导升高，而不是随意堆叠。联合获益支持策略合理性，缺CD8耗竭和再挑战不能确定免疫记忆。</p>
+</div>
+</div>
+
+<div class="hb hb-warn"><b>出版更正提示：</b>ACS Nano文章发表后无更正记录（截至2026-10-28核验），但SI（含Fig.S2等）未随附件提供，耐药细胞完整曲线等只能按主文转述。</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>Bliss定量协同在进材料设计之前完成——这是多药共递送研究的正确起点。</li>
+<li>PET解决"药去了哪里"，与"药有没有效"的疗效数据分开呈现——两类证据各司其职。</li>
+<li>公共数据提出p53方向，SPR/IP/救援从不同角度递进验证——组学不承担机制证明的全部责任。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>双死亡特征并存≠相互放大；需要交叉抑制剂实验来量化各分支贡献。</li>
+<li>宿主p53敲除不等于肿瘤细胞p53，体内背景依赖性和细胞自主性是两个不同问题。</li>
+<li>GSE157692/116192来自细胞系实验；具体分析子集需SI核对。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1021/acsnano.4c11278" target="_blank" rel="noopener">论文DOI</a><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE157692" target="_blank" rel="noopener">GSE157692</a><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE116192" target="_blank" rel="noopener">GSE116192</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P08 ===== -->
+<details class="paper" id="P08" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 08</span><h2>仿生活菌治疗：RNA-seq提候选，焦亡假说待强化因果证据</h2>
+<div class="paper-en">Intravenous Delivery of Living Listeria monocytogenes Elicits Gasdermin Dependent Tumor Pyroptosis and Motivates Anti-Tumor Immune Response</div>
+<div class="paper-meta">ACS Nano 16, 4102–4115 · 2022 · <a href="https://doi.org/10.1021/acsnano.1c09818" target="_blank" rel="noopener">10.1021/acsnano.1c09818</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">活菌平台；组学候选≠遗传必要性</div>
+<div class="hb hb-blue"><b>核心科学问题：</b>红细胞膜包覆李斯特菌改善静脉输注安全性——这个平台产生的抗肿瘤效果，是否部分通过gasdermin介导的裂解性死亡起效？RNA-seq能否引出这个方向？</div>
+
+<h3>研究主线：表型→RNA-seq候选→形态/蛋白验证→免疫桥梁</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：平台对照建立基础表型</h4>
+<p class="sl"><span class="lb">实验：</span>PBS / 裸Lmo / Lmo@RBC三组；比较动物肿瘤负荷和组织学。RNA-seq在此步骤之后进行，以"有表型差异"为前提。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>先有表型才有值得解释的对象。如果组学先于表型出现，那它发现的差异很可能是背景噪音而不是致病机制。</p>
+</div>
+<div class="step">
+<h4>第二步：肿瘤bulk RNA-seq提出死亡假说（发现型组学）</h4>
+<p class="sl"><span class="lb">数据：</span>CT26荷瘤小鼠肿瘤整体组织三组比较（n=3）；KEGG富集细胞死亡相关通路；STRING网络（先验关联，非本研究新测互作）；热图突出GSDMC等候选。</p>
+<p class="sl interp"><span class="lb">关键边界：</span>肿瘤整体RNA-seq包含肿瘤细胞、免疫细胞、基质细胞的混合信号。GSDMC表达变化可能来自任何一类细胞。STRING边代表已知关联，不是本研究发现的蛋白互作。RNA-seq在这里的正确定位：提出候选，不是证明机制。</p>
+</div>
+<div class="step">
+<h4>第三步：形态/蛋白验证焦亡候选</h4>
+<p class="sl"><span class="lb">实验：</span>膜泡形态、LDH释放、GSDMC总蛋白/定位、NLRP3、caspase-8的WB/IF。</p>
+<p class="sl interp"><span class="lb">边界：</span>多种相关证据叠加仍不等于遗传必要性验证。GSDMC总蛋白升高≠形成有功能的裂解孔。标题中的"Dependent"需要GSDMC敲除/回补才能成立——这是本文证据链最需要补强的核心缺口。</p>
+</div>
+<div class="step">
+<h4>第四步：死亡→免疫桥梁</h4>
+<p class="sl"><span class="lb">实验：</span>处理后肿瘤细胞与DC体系共培养；体内流式DC/T细胞和细胞因子；"延后接种"第二处肿瘤+BMS-1联合。</p>
+<p class="sl interp"><span class="lb">注意：</span>第二处肿瘤是在治疗开始后才接种的（Fig.5明示），更准确的描述是"后续肿瘤控制"，而不是"双侧同期肿瘤的远隔消退"。BMS-1是PD-1/PD-L1小分子抑制剂，不是抗体，应区别描述。平台本身也直接刺激先天免疫，不能把所有免疫激活归因于GSDMC介导的死亡。</p>
+</div>
+</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>先建立治疗表型，再让RNA-seq发现候选，再做聚焦验证——这个顺序比"先做组学再找表型"更有说服力。</li>
+<li>共培养桥梁把细胞死亡和DC激活联系起来，逐步推进免疫故事。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>标题"Gasdermin Dependent"强于已完成的机制证据；GSDMC敲除/回补实验才能支撑这个声称。</li>
+<li>活菌直接先天免疫刺激与肿瘤死亡诱导免疫尚未分开；两种贡献难以在同一实验中独立。</li>
+<li>主文未见RNA-seq公开编号；16S数据不等于微生物组功能机制证据。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1021/acsnano.1c09818" target="_blank" rel="noopener">论文DOI</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P09 ===== -->
+<details class="paper" id="P09" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 09</span><h2>混合细胞膜包覆三联递送：同时处理药物拮抗和胰腺癌纤维化屏障</h2>
+<div class="paper-en">Membrane-camouflaged supramolecular nanoparticles for co-delivery of chemotherapeutic and molecular-targeted drugs with siRNA against patient-derived pancreatic carcinoma</div>
+<div class="paper-meta">Acta Pharmaceutica Sinica B 12(8), 3410–3426 · 2022 · <a href="https://doi.org/10.1016/j.apsb.2022.02.007" target="_blank" rel="noopener">10.1016/j.apsb.2022.02.007</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">药物拮抗+间质屏障；PDX验证</div>
+<div class="hb hb-blue"><b>核心科学问题：</b>GEM与erlotinib联用效果有限，原因是双向拮抗：Er抑制hENT1（GEM主要转运体），GEM提高EGFR相关信号（与Er靶点对抗）。同时胰腺癌纤维化间质阻碍递送。材料必须同时解决两个障碍，每个都要有独立的实验读数。</div>
+
+<h3>研究主线：两条并行障碍→化学设计分工→细胞验证两条机制→三维穿透→原位瘤→PDX</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：化学设计分工明确</h4>
+<p class="sl"><span class="lb">设计：</span>β-CD包合Er（疏水，主客体），PEI阳离子结合siIRAK4，二硫键GEM前药（GSH响应释放GEM），混合细胞膜（SW1990+RAW264.7）包覆。最终siIRAK4/Er@GEM-SS-PC-M约200nm。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>三种功能组件各有化学依据（NMR/2D-NOESY/凝胶阻滞），不是随意混合。释放曲线验证GSH/pH响应性——但释放条件（pH5.0）对应内吞/溶酶体，不等于整个肿瘤间质环境。</p>
+</div>
+<div class="step">
+<h4>第二步：用转运抑制剂和蛋白读数证明绕过hENT1拮抗</h4>
+<p class="sl"><span class="lb">关键实验：</span>比较自由GEM/Er vs 纳米siNT vs 纳米siIRAK4各组的hENT1和p-EGFR蛋白；用dilazep（hENT1抑制剂）处理后，纳米摄取不受影响（荧光颗粒）。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>dilazep对照把"纳米药不依赖hENT1入胞"直接检验；hENT1/p-EGFR蛋白变化方向与假说吻合。荧光颗粒进入≠GEM代谢物定量，还需代谢产物检测来完全证明拮抗消除。</p>
+</div>
+<div class="step">
+<h4>第三步：CDI分析联合效应——从"两种药都有了"到"是否有额外收益"</h4>
+<p class="sl"><span class="lb">实验：</span>克隆形成、划痕、Annexin V/PI；对这些终点计算CDI（药物相互作用系数）。PANC-1自由联用CDI：抗迁移1.06、促凋亡1.15（接近1=相加）；完整纳米体系：0.11和0.49（&lt;1=协同）。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>CDI把"最终效果最好"转换为量化的相互作用评估。但CDI特定于计算终点，不能把一个终点的协同外推到所有剂量和终点。划痕实验受增殖影响，不能独立反映迁移能力。</p>
+</div>
+<div class="step">
+<h4>第四步：siIRAK4→IRAK4/NF-κB/IL-1β→三维球穿透——两条机制用不同实验检测</h4>
+<p class="sl"><span class="lb">实验：</span>IRAK4 WB→p65核转位IF→IL-1β ELISA（信号通路证据）；癌细胞/成纤维细胞1:2混合三维球Z-stack比较不同深度荧光（空间功能证据）；皮下瘤ICG体内分布（体内富集证据）。</p>
+<p class="sl interp"><span class="lb">数据搭配逻辑：</span>三个实验回答不同问题：通路验证siIRAK4起效，三维球证明空间穿透改善，ICG证明体内富集。三者互为支撑，不能只用其中一个。注意方法写PANC-1/L929混合球，结果段写SW1990——需核对实际使用细胞。</p>
+</div>
+<div class="step">
+<h4>第五步：原位瘤和PDX分层验证</h4>
+<p class="sl"><span class="lb">实验：</span>SW1990-luc胰尾原位瘤（n=5体积/重量，n=8生存）；患者组织来源PDX第3代皮下裸鼠（n=5体积，n=8生存）；两种模型均复测两条机制支线（hENT1/p-EGFR + IRAK4/NF-κB/IL-1β + Sirius Red纤维化）。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>PDX是人肿瘤来源的药理验证，不是患者治疗试验。裸鼠缺完整适应性免疫，不能据"巨噬细胞膜"推导适应性抗肿瘤免疫。供者数量未明确，多只PDX鼠≠多位患者。</p>
+</div>
+</div>
+
+<div class="hb hb-warn"><b>文本注意：</b>原文p.15将PDX α-SMA描述为"increased"，与Fig.6H图示（染色减弱）和抗纤维化结论相矛盾。依据图示，应为纤维化减轻，此处标记为原文文本歧义。</div>
+<div class="hb hb-warn"><b>给药方案注意：</b>原位治疗方法写"每周1次2周"，结果段写"每周2次3周"——复现实验需联系作者核对SI。</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>两条障碍各有独立实验支线（hENT1拮抗线+纤维化屏障线），材料的每个组件都有对应的实验读数。</li>
+<li>从二维细胞→三维混合球→原位瘤→PDX的逐级递进，每层增加复杂性有明确理由。</li>
+<li>体内不只看瘤体积，还复测两条分子机制支线——这把"为什么有效"连接回材料设计。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>荧光颗粒摄取不等于活性GEM代谢物定量；IRAK4通路救援缺少IRAK4或IL-1β回补实验。</li>
+<li>方法/结果间的不一致（细胞名称、给药频次、α-SMA方向）需核SI/作者。</li>
+<li>PDX裸鼠不能验证适应性免疫机制；供者信息不足。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1016/j.apsb.2022.02.007" target="_blank" rel="noopener">论文DOI</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P10 ===== -->
+<details class="paper" id="P10" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 10</span><h2>TPP-LND脂质体：一次线粒体干预同时缓解缺氧和压低放疗诱导PD-L1</h2>
+<div class="paper-en">Metabolic Intervention Liposome Boosted Lung Cancer Radio-Immunotherapy via Hypoxia Amelioration and PD-L1 Restraint</div>
+<div class="paper-meta">Advanced Science 10, 2207608 · 2023 · <a href="https://doi.org/10.1002/advs.202207608" target="_blank" rel="noopener">10.1002/advs.202207608</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">代谢干预/放疗免疫 · 2025年图像更正</div>
+<div class="hb hb-red"><b>出版更正：</b>2025年6月23日官方更正（DOI: <a href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202509211" target="_blank" rel="noopener">10.1002/advs.202509211</a>）涉及Fig.5D、Fig.7L及SI Fig.S21D、Fig.S24B的图像选错/重复。作者声明不影响总体结论，但阅读相关图必须以更正版为准。</div>
+<div class="hb hb-blue"><b>核心科学问题：</b>放疗的两个主要障碍——肿瘤缺氧降低放射损伤效率，放疗诱导PD-L1上调促进免疫逃逸——能否用一次线粒体OXPHOS干预同时解决？TPP修饰提升LND的线粒体靶向性，脂质体递送改善体内暴露。</div>
+
+<h3>研究主线：小分子机制验证→两条放疗增效支线→体内联合</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：TPP连接提升效力，AMPK/PD-L1通路验证</h4>
+<p class="sl"><span class="lb">实验：</span>比较LND、TPP-LND、TPP-C4（结构对照）的复合体I/II抑制IC50（TPP-LND约6.09/7.46µM，LND约341.82/366.64µM）；ADP/ATP比值；p-AMPK及PD-L1；compound C（AMPK抑制剂）逆转PD-L1下降。</p>
+<p class="sl interp"><span class="lb">数据搭配逻辑：</span>LND vs TPP-LND vs TPP-C4三组分别代表：未修饰基础药、修饰后新分子、排除连接基团本身效应的对照。IC50倍数差异约50倍，支持TPP修饰的必要性。drug C逆转提供AMPK参与的药理证据，但未排除其他通路（缺AMPK遗传干预）。</p>
+</div>
+<div class="step">
+<h4>第二步：脂质体包载后保留作用——从分子到制剂的转化验证</h4>
+<p class="sl"><span class="lb">实验：</span>TEM/DLS/稳定性；JC-1、ADP/ATP、WB；PD-1 Fc结合减少；健康供者PBMC激活T细胞与预处理A549共培养（结晶紫存活）。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>包载后分子活性保留，而且从蛋白变化推进到PD-1结合能力和T细胞杀伤功能——三层验证比只看WB更完整。供者数未明确，需分清n=3是重复实验次数还是独立供者数。</p>
+</div>
+<div class="step">
+<h4>第三步：两条放疗增效支线同步验证</h4>
+<p class="sl"><span class="lb">缺氧线：</span>HIF-1α和pimonidazole检测缺氧程度；TPP-LND降低缺氧标志（减少耗氧）。</p>
+<p class="sl"><span class="lb">DNA损伤线：</span>6Gy后0/4/24h γ-H2AX动态（持续时间延长）；克隆形成评估增敏；0–10Gy诱导PD-L1上调，TPP-LND处理可压低。</p>
+<p class="sl interp"><span class="lb">数据搭配逻辑：</span>两条支线分别用不同的功能读数，不能互相替代：缺氧用HIF-1α/pimonidazole（结构性缺氧代理），损伤用γ-H2AX（直接DNA损伤标志），PD-L1用流式/WB。固定6Gy克隆实验不等于完整放射生存曲线，不能计算正式增敏比（SER）。</p>
+</div>
+<div class="step">
+<h4>第四步：体内联合疗效和免疫读出</h4>
+<p class="sl"><span class="lb">实验：</span>LLC/C57BL/6皮下瘤（n=5/组，14天）：盐水/制剂/αPD-L1/RT及两种联合；尾静脉LLC肺定植模型；CD3/CD4/CD8染色及TUNEL/Ki67。</p>
+<p class="sl interp"><span class="lb">边界：</span>没有CD8耗竭和免疫缺陷对照，不能确认免疫必要性；TPP-LND方案与αPD-L1方案比较不是临床非劣优效设计；尾静脉注射是实验性肺定植，原文用了"orthotopic"描述需谨慎。共培养时间T细胞图注(48h)与方法(24h)不一致，需核对。</p>
+</div>
+</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>先验证小分子药理效力，再证明包载后作用保留——不把制剂表征当作机制证明。</li>
+<li>两条放疗增效支线（缺氧+DNA损伤/PD-L1）各有独立读数，相互补充而不是重复。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>2025年图像更正影响Fig.5D/7L，阅读须参考更正版。缺AMPK遗传敲除/PD-L1回补和免疫耗竭实验。</li>
+<li>不同终点的"倍数差异"来自不同测量单位（IC50以µM，不能和其他终点的倍数混用）。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1002/advs.202207608" target="_blank" rel="noopener">论文DOI</a><a href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202509211" target="_blank" rel="noopener">2025年官方更正</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P11 ===== -->
+<details class="paper" id="P11" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 11</span><h2>DOX+PCSK9抑制+CaCO₃：抗原释放、呈递和酸性环境三层配合</h2>
+<div class="paper-en">Multiple Immunomodulatory Strategies Based on Targeted Regulation of Proprotein Convertase Subtilisin/Kexin Type 9 and Immune Homeostasis against Hepatocellular Carcinoma</div>
+<div class="paper-meta">ACS Nano 18(12), 8811–8826 · 2024 · <a href="https://doi.org/10.1021/acsnano.3c11775" target="_blank" rel="noopener">10.1021/acsnano.3c11775</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">抗原呈递·微环境·三模块联合免疫</div>
+<div class="hb hb-blue"><b>核心科学问题：</b>杀死肿瘤细胞并释放抗原还不够——低MHC-I阻碍T细胞识别，酸性TME降低DOX效果并抑制免疫。能否用一个制剂同时解决：①DOX产生ICD，②PCSK9抗体提升MHC-I，③CaCO₃中和酸？再联合系统性PD-L1阻断。</div>
+
+<h3>研究主线：三瓶颈定义→各模块分立验证→组学探方向→动物多层读出→双侧瘤联合</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：材料参数各自回答一个问题</h4>
+<p class="sl"><span class="lb">关键读数：</span>DECP（DOX/evolocumab@CaCO₃-PLGA-PEG）约120nm；DOX包封63.1%，抗体包封79.8%；pH6.5和5.0比pH7.4释药更快；TEM暗对比纳米晶支持CaCO₃存在；DECP vs DEP（无CaCO₃）的酸中和对比。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>DEP是关键对照——它含两种药但无CaCO₃，专门用来分离CaCO₃的酸响应/中和功能贡献。</p>
+</div>
+<div class="step">
+<h4>第二步：RNA-seq提方向，HLA关联提临床动机（发现型+关联型组学）</h4>
+<p class="sl"><span class="lb">自测RNA-seq：</span>Hepa1-6 PBS vs DECP；BGISEQ-500；2,466个差异基因（fold change≥2，P&lt;0.01）；GO/GSEA富集抗原加工/呈递相关通路。</p>
+<p class="sl"><span class="lb">公共数据：</span>TCGA泛癌和KMplot分析HLA-A/B/C表达与OS关联；另有作者称ICI治疗队列分析，但主文未列队列名称/编号。</p>
+<p class="sl interp"><span class="lb">数据衔接逻辑：</span>RNA-seq只做了"PBS vs 完整制剂"，无法归因到哪个模块（DOX/抗体/CaCO₃）引起了抗原呈递通路富集。组学在这里是方向提示，后续用MHC-I流式来具体验证哪个模块起作用。公共HLA关联数据提供临床动机，但HLA信号可能混入免疫浸润信息。</p>
+</div>
+<div class="step">
+<h4>第三步：八组对照拆分三个模块的独立贡献</h4>
+<p class="sl"><span class="lb">组别：</span>DOX/CaCO₃/抗体三单药，两种双药组合（DEP、DCP、CP等），完整DECP。</p>
+<p class="sl"><span class="lb">结果：</span>含抗体组MHC-I约29.5%，无抗体组约11–14%（抗体模块贡献）；含DOX组产生CRT/HMGB1/ATP（ICD模块贡献）；CaCO₃改变酸性条件下释药效率（pH模块贡献）。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>成分拆分对照把三模块的贡献分开——这比只和PBS比较要强得多。边界：MHC-I升高是表面蛋白增加，不等于特定抗原呈递增强；缺肽-MHC复合体测定和抗原特异性T细胞实验。</p>
+</div>
+<div class="step">
+<h4>第四步：BMDC共培养——ICD到免疫细胞功能的桥梁</h4>
+<p class="sl"><span class="lb">实验：</span>预处理Hepa1-6细胞与BMDC共培养；测CD11c+CD80+CD86+成熟DC（约47.3%）；IL-12p70↑、IL-10↓（后者为SI结果转述）。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>把"死亡细胞释放DAMPs"和"DC获得激活"连接起来，补上了从ICD到免疫细胞功能的桥梁层。</p>
+</div>
+<div class="step">
+<h4>第五步：体内直接测量肿瘤pH——酸中和功能的直接验证</h4>
+<p class="sl"><span class="lb">实验：</span>微电极直接插入皮下Hepa1-6瘤组织；DECP组pH约7.21，未处理约6.68。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>这是把"CaCO₃在缓冲液里能中和酸"转化为"体内肿瘤微环境pH真的改变了"的直接桥梁。ICG示踪同时确认制剂到达肿瘤。</p>
+</div>
+<div class="step">
+<h4>第六步：双侧瘤联合ICI——局部处理的远端效应</h4>
+<p class="sl"><span class="lb">实验：</span>PBS/瘤周DECP/静脉αPD-L1/联合（n=5/组）；评价双侧肿瘤、生存及远处免疫（引流LN DC、肿瘤CD8/Treg）。联合远处瘤抑制率73.5%，αPD-L1单药39.7%。</p>
+<p class="sl interp"><span class="lb">边界：</span>局部给药后药物可能通过循环到达远端瘤，不能把全部远端效应归于系统性免疫激活；缺再挑战实验，不能确认持久记忆。</p>
+</div>
+</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>三模块对照设计比"只和PBS比"更有说服力，每个模块有独立的功能读数。</li>
+<li>体内直接pH测量把材料的化学功能（酸中和）落到了生物学读数，避免了"体外有效→体内假设有效"的跳跃。</li>
+<li>RNA-seq提方向，后续用表面蛋白流式验证具体模块——组学和实验各司其职。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>ICI治疗队列分析的来源和编号未在主文披露；不能把这类分析写成独立的疗效预测验证。</li>
+<li>PCSK9直接靶点结合/遗传干预和MHC-I功能阻断实验尚缺，机制因果链仍有空缺。</li>
+<li>流式门控/组名等文字不一致（CD11b/F4/80 vs CD11c），需核对SI原始数据。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://pubs.acs.org/doi/10.1021/acsnano.3c11775" target="_blank" rel="noopener">论文DOI</a><a href="https://kmplot.com/analysis/" target="_blank" rel="noopener">KMplot平台</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P12 ===== -->
+<details class="paper" id="P12" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 12</span><h2>CaCO₃共递送DOX/erianin：钙超载、代谢干预与化疗免疫</h2>
+<div class="paper-en">Potentiated Calcium Carbonate with Enhanced Calcium Overload Induction and Acid Neutralization Capabilities to Boost Chemoimmunotherapy against Liver Cancer</div>
+<div class="paper-meta">ACS Nano 18(40), 27597–27616 · 2024 · <a href="https://doi.org/10.1021/acsnano.4c08690" target="_blank" rel="noopener">10.1021/acsnano.4c08690</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">钙离子稳态·代谢干预·双侧瘤免疫联合</div>
+<div class="hb hb-blue"><b>核心科学问题：</b>单纯补钙会被细胞稳态机制抵消，单纯化疗ICD又受酸性微环境抑制。erianin能促进钙内流并干扰糖代谢，与CaCO₃共同递送能否形成互补——一个破坏钙稳态，一个提供外源钙并中和酸？</div>
+
+<h3>研究主线：协同筛选→通路阻断/救援→RNA-seq代谢线索→代谢实验验证→免疫共培养→双侧瘤联合</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：组合比例筛选与协同验证</h4>
+<p class="sl"><span class="lb">实验：</span>三种肝癌细胞（MHCC97H、HCCLM3、Hepa1-6）筛选DOX/erianin比例CI；选约10:1（质量比）；同时验证erianin±CaCl₂促进胞内钙信号（Fluo-4）。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>先有药理依据（协同）再制备CaCO₃制剂，erianin的促钙功能则是设计三联体系的生物学理由。</p>
+</div>
+<div class="step">
+<h4>第二步：钙通路阻断+多种死亡抑制剂——区分钙来源和死亡方式</h4>
+<p class="sl"><span class="lb">实验：</span>EGTA（细胞外钙螯合）和nifedipine（L型钙通道抑制）验证内流来源；NAC/zVAD-fmk/Fer-1/DFO四种抑制剂分别测活性。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>多种死亡抑制剂能部分恢复活性，支持凋亡和铁死亡共同参与。但各自救援程度不等于各自占总杀伤的比例，也不能判断哪种死亡更"主要"。</p>
+</div>
+<div class="step">
+<h4>第三步：RNA-seq提代谢候选（发现型组学），代谢实验验证</h4>
+<p class="sl"><span class="lb">RNA-seq：</span>Hepa1-6 PBS vs DECaNPs；BGISEQ-500；阈值fold change≥1.0、P&lt;0.05（注：阈值较宽松，多重校正未说明，重复数主文未明确）；富集代谢、钙和死亡相关通路。</p>
+<p class="sl"><span class="lb">验证实验：</span>实测葡萄糖/乳酸/ATP/NAD+/NADH；测丙酮酸羧化酶（PC）活性；补加PC产物草酰乙酸（OAA）后观察细胞活性和氧化损伤。</p>
+<p class="sl interp"><span class="lb">数据搭配逻辑：</span>OAA补救实验是本文代谢分析的最强证据——把"RNA-seq提示PC通路下调"转化为"补充下游产物可缓解损伤"的功能因果链。代谢物静态含量（乳酸减少）还需同位素追踪才能证明通量改变，但OAA救援已提供功能意义。</p>
+</div>
+<div class="step">
+<h4>第四步：ICD→DC/巨噬细胞共培养——死亡到免疫的桥梁</h4>
+<p class="sl"><span class="lb">实验：</span>CRT/HMGB1读出后，把预处理Hepa1-6与BMDC/BMDM共培养；流式DC成熟、IL-12p70/IL-10；M1样比例增加。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>从材料化学→细胞死亡→免疫细胞功能形成三层串联。未逐一阻断DAMP（如HMGB1中和），所以不能确定哪种DAMPs信号是DC成熟的主驱动。</p>
+</div>
+<div class="step">
+<h4>第五步：体内微电极测pH，双侧瘤验证远端效应</h4>
+<p class="sl"><span class="lb">实验：</span>微电极直接测肿瘤pH（DECaNPs组高于DENPs组，高于PBS组）；双侧Hepa1-6皮下瘤：原发灶瘤周DECaNPs，静脉αPD-L1；比较PBS/各单药/联合四组的双侧肿瘤、生存及远端免疫（n按图注）。</p>
+<p class="sl interp"><span class="lb">数据搭配逻辑：</span>微电极pH直接证明体内酸中和（区别于"CaCO₃在缓冲液中能中和酸"的试管证据）。DENPs（含两药无CaCO₃）是关键对照，专门分离CaCO₃贡献。</p>
+</div>
+</div>
+
+<div class="hb hb-warn"><b>文本注意（预印版本）：</b>附件为排版前版本，存在多处文字不一致（组别编号、M1/M2方向描述、SEM/SD混用等）。本报告依据图示和设计逻辑进行解读，不照抄矛盾数值。</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>OAA补救实验把RNA-seq的代谢富集转化为功能因果——这是"发现型组学→靶向验证"的优质范例。</li>
+<li>DENPs作为"含两药无CaCO₃"的精准对照，专门分离材料化学功能的贡献。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>RNA-seq阈值较宽松，重复数未明确，无GEO编号；结论应依赖OAA救援实验而非仅依赖富集分析。</li>
+<li>死亡比例：多种抑制剂都能部分救援，说明混合死亡模式，不能给出"X%是铁死亡"的定量。</li>
+<li>无CD8耗竭和再挑战；短期安全性不能推断DOX长期心脏毒性风险已解决。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1021/acsnano.4c08690" target="_blank" rel="noopener">论文DOI</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+
+<!-- ===== P13 ===== -->
+<details class="paper" id="P13" open>
+<summary class="paper-summary">
+<span class="paper-number">文献 13</span><h2>离子稳态同时调控：CaCO₃中和胞外酸，乙酰唑胺让胞内更酸——两个方向协同增强放疗</h2>
+<div class="paper-en">Regulation of Ion Homeostasis for Enhanced Tumor Radio-Immunotherapy</div>
+<div class="paper-meta">Advanced Science 10, 2304092 · 2023 · <a href="https://doi.org/10.1002/advs.202304092" target="_blank" rel="noopener">10.1002/advs.202304092</a></div>
+</summary>
+<div class="paper-body">
+<div class="tag">离子稳态/放疗免疫·胞内外pH分离验证</div>
+<div class="hb hb-blue"><b>核心科学问题：</b>肿瘤pH调控具有空间方向性：提高胞外pH（中和酸、改善免疫）与降低胞内pH（增强细胞损伤）是互补而非矛盾的目标。CaCO₃完成胞外中和，乙酰唑胺（CAI）阻断碳酸酐酶使胞内酸化——两者同时作用能否协同放疗并触发免疫？</div>
+
+<h3>研究主线：胞内外pH分立测量→RT增效验证→体内分布→八组双侧瘤→发现PD-L1反馈→抗体联合</h3>
+<div class="story">
+<div class="step">
+<h4>第一步：三个方向不同的离子变化——测量设计是核心创新点</h4>
+<p class="sl"><span class="lb">实验：</span>CT26细胞；比较PBS/CL（CaCO₃脂质体）/LC（CAI脂质体）/CCL（两者合一）；测培养液pH（胞外↑）、BCECF-AM胞内pH（胞内↓）和Fluo-4钙（胞内Ca²+↑）。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>这里最关键的一点是：必须用两种不同的探针分别测胞内和胞外——混用同一个pH读数就会丢失这个方向性。CCL在三个方向都有改变，而CL或LC只能改变其中一到两个，这是CCL优于单组分的机制基础。</p>
+</div>
+<div class="step">
+<h4>第二步：±RT矩阵验证放疗增效</h4>
+<p class="sl"><span class="lb">实验：</span>PBS/CL/LC/CCL各±X射线；测γ-H2AX（DNA损伤标志）、克隆形成、CRT（ICD标志）；RAW264.7流式测M1/M2极化。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>每组都有±RT设计，CCL+RT的损伤和ICD标志最强。固定6Gy克隆实验评估增敏，但需要多个剂量点才能计算正式SER。CRT仅作为ICD相关标志，不是完整ICD功能证明。</p>
+</div>
+<div class="step">
+<h4>第三步：体内分布与离子变化验证——组织匀浆pH</h4>
+<p class="sl"><span class="lb">实验：</span>DiD示踪颗粒分布；ICP-OES测钙；双侧瘤模型一侧取样后给药、24h后另一侧测pH（组织匀浆）；HIF-1α下降。</p>
+<p class="sl interp"><span class="lb">边界：</span>组织匀浆pH是整体读数，不是细胞外微环境的精确测量（比微电极粗糙）；不同侧取样也不是同一肿瘤纵向测量。HIF-1α下降提示缺氧改善，但不直接证明氧分压变化。</p>
+</div>
+<div class="step">
+<h4>第四步：八组对照建立局部和远端效应</h4>
+<p class="sl"><span class="lb">实验：</span>BALB/c双侧CT26（n=5/组）；PBS/CL/LC/CCL各±RT；比较两侧肿瘤体积、生存（60天80%存活）、ICD标志；引流LN DC、两侧CD8/Treg/M1M2、血清IFN-γ/TNF-α。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>两侧肿瘤都受影响，支持系统性效应。但静脉给药的CCL也能到远端瘤，不能把全部远端效应归于免疫。</p>
+</div>
+<div class="step">
+<h4>第五步：观察到PD-L1反馈→设计抗体联合</h4>
+<p class="sl"><span class="lb">实验：</span>治疗后远端瘤PD-L1↑；设新辅助RT+CCL、切除原发灶、抗体治疗方案；另做CT26-Luc原位直肠瘤模型。</p>
+<p class="sl interp"><span class="lb">逻辑含义：</span>发现PD-L1反馈后设计联合，联合动机来自本研究观察，不是预先堆叠热门靶点。原位模型补充了解剖相关性，但主要是PBS vs 完整联合的比较，不能独立拆分各组分。</p>
+</div>
+</div>
+
+<div class="hb hb-warn"><b>命名注意：</b>原文p.3的CL/LC名称解释在正文和Fig.1注解中可能互换；本报告按Fig.1：LC=CAI脂质体、CL=CaCO₃脂质体。复现时必须按原始配方核对。Fig.6示意图αPD-L1标注皮下而正文写静脉，给药途径须核SI确认。</div>
+
+<div class="grid-2">
+<div class="card green-c"><h3>最值得借鉴</h3>
+<ul>
+<li>胞内外pH分离测量——这是文章方法设计上最清晰的一点，直接反映材料功能的空间特异性。</li>
+<li>治疗后检测到PD-L1反馈，再设计抗体联合——后续实验有清楚的观察触发点。</li>
+</ul></div>
+<div class="card orange-c"><h3>证据边界</h3>
+<ul>
+<li>无组学/患者数据；钙通道特异性阻断和离子钳制实验可进一步强化机制。</li>
+<li>组织匀浆pH粗糙；缺CD8耗竭和免疫缺陷对照。CL/LC命名和αPD-L1给药途径文本不一致需核对。</li>
+</ul></div>
+</div>
+<div class="src"><b>来源：</b><a href="https://doi.org/10.1002/advs.202304092" target="_blank" rel="noopener">论文DOI</a></div>
+<a class="backtop" href="#papers">返回文献目录 ↑</a>
+</div>
+</details>
+</section>
+
+<section id="comparison">
+<h2 class="sec-title purple">四、横向比较：同类问题，不同证据结构</h2>
+
+<div class="table-wrap"><table>
+<colgroup><col style="width:28%"><col style="width:30%"><col style="width:42%"></colgroup>
+<thead class="th-purple"><tr><th>比较维度</th><th>最值得对读的文章</th><th>核心变量与阅读视角</th></tr></thead>
+<tbody>
+<tr><td><b>如何确定"是哪类细胞的靶点在起作用"</b></td>
+<td>01 CD36 · 06 xCT</td>
+<td>全身KO与髓系条件KO的差别；肝细胞/巨噬细胞消除排他设计；同一肿瘤细胞置入不同宿主背景，比较微环境贡献</td></tr>
+<tr><td><b>怎样证明材料解决了递送问题而不只是"有荧光"</b></td>
+<td>02 MCL-1靶向 · 04 OMV · 09 胰腺癌</td>
+<td>受体敲除/封闭排除受体参与；靶蛋白/RNA变化作为功能读出；dilazep对照验证转运途径</td></tr>
+<tr><td><b>组学应该放在故事的哪个位置</b></td>
+<td>06 xCT（发现型）· 05 IL-12（解释型）· 08 活菌（发现但因果不足）</td>
+<td>先有治疗表型/靶点动机再做组学；组学提候选再靶向验证；不能把富集到通路直接写成机制证明</td></tr>
+<tr><td><b>多模块设计如何拆分贡献</b></td>
+<td>09 胰腺癌三联 · 11 PCSK9三模块 · 12 CaCO₃</td>
+<td>每个模块有专属对照（DEP vs DECP；DENPs vs DECaNPs）；完整制剂的收益必须超过任意两模块之和才支持三联设计的价值</td></tr>
+<tr><td><b>PD-L1联合的动机应从哪里来</b></td>
+<td>06 xCT · 07 PET双死亡 · 10 TPP-LND · 13 离子稳态</td>
+<td>最强的理由：本研究干预后观察到PD-L1升高，再设计阻断（06/07/13）；而不是预设"热门靶点叠加"</td></tr>
+<tr><td><b>PET/影像数据在疗效证据链中的角色</b></td>
+<td>07 PET双死亡</td>
+<td>PET解决"分布"问题，与"疗效"数据分开；标记信号不等于游离药在靶部位的有效浓度</td></tr>
+</tbody></table></div>
+
+<div class="grid-2">
+<div class="card blue-c"><h3>03 vs 08：同写焦亡，因果深度不同</h3>
+<p>单原子研究（03）有含Fe/无Fe结构对照+缺氧因素矩阵+GSDME-N裂解片段+药理阻断；活菌研究（08）从RNA-seq提出候选，但缺GSDMC遗传必要性验证。同一类声称，读证据时要看具体用了哪些实验，而不是看结论句式是否相似。</p></div>
+<div class="card orange-c"><h3>11 vs 12：都用CaCO₃，核心创新点不同</h3>
+<p>文献11（PCSK9）的核心是"三模块免疫协调"，CaCO₃主要负责酸中和和药物释放；文献12（钙超载）的核心是"钙稳态被破坏协同化疗"，CaCO₃和erianin共同针对钙离子稳态。共用材料组件不等于核心问题相同。</p></div>
+</div>
+
+<div class="hb hb-red"><b>不要跨论文直接比较数字：</b>不同癌种、移植部位、给药途径、剂量、肿瘤起始大小、随访窗口下的抑瘤率和生存数据不构成可靠的排行榜。本报告比较的是研究逻辑结构，不制作材料疗效横向排名。</div>
+</section>
+
+<section id="blueprint">
+<h2 class="sec-title teal">五、可复用研究设计要点</h2>
+
+<p>以下是从这13篇文章归纳的设计原则，不是任何一篇文章已完成的额外实验清单。</p>
+
+<h3>1. 写出一句可被实验推翻的主假说</h3>
+<div class="hb hb-blue">
+在<b>具体疾病模型</b>下，<b>A细胞中的X节点</b>通过<b>可测量的中间步骤</b>影响<b>B细胞或治疗结果</b>。材料通过<b>明确的递送或反应能力</b>干预该节点，因此改善疗效。若阻断中间节点或移除B细胞，效应应减弱。
+</div>
+<p>材料每增加一个功能组件，都应能回答"它解决哪一个已经明确的障碍"。</p>
+
+<h3>2. 数据层次与进阶标准</h3>
+<div class="table-wrap"><table>
+<colgroup><col style="width:20%"><col style="width:30%"><col style="width:25%"><col style="width:25%"></colgroup>
+<thead class="th-teal"><tr><th>数据层</th><th>负责回答的问题</th><th>进入下一层的条件</th><th>不能代替的事</th></tr></thead>
+<tbody>
+<tr><td>组学（自测）</td><td>发生了哪些分子变化，候选通路是什么？</td><td>差异基因经靶向实验验证；样本来源和比较设计明确</td><td>不能直接证明机制必要性</td></tr>
+<tr><td>材料表征+功能</td><td>制剂是否执行预期物理化学任务？</td><td>功能出现在生理相关条件下，有单组分对照</td><td>TEM/DLS不能代替递送效果</td></tr>
+<tr><td>细胞机制</td><td>关键节点是否必要？通路位于哪个步骤？</td><td>阻断/救援检验；区分相关和因果</td><td>不能代替体内疗效</td></tr>
+<tr><td>细胞间传递</td><td>一种细胞的变化是否传递给另一种细胞？</td><td>明确介质（分泌物/囊泡）；排除药物残留直接刺激</td><td>共培养中两种细胞同时变化≠已证明传递路径</td></tr>
+<tr><td>体内疗效+机制</td><td>疾病相关模型中有效，关键机制解释部分获益</td><td>与机制匹配的免疫背景；重现关键分子读数</td><td>裸鼠不能验证适应性免疫；短期安全不等于临床可转化</td></tr>
+<tr><td>外推</td><td>在人类样本或不同模型中有对应现象？</td><td>区分人类相关性与人类疗效验证</td><td>预后关联≠治疗特异预测</td></tr>
+</tbody></table></div>
+
+<h3>3. 组学使用的三种模式对应不同验证要求</h3>
+<div class="grid-3">
+<div class="card blue-c"><h3>发现型</h3><p>处理vs对照差异分析，目的是缩小候选空间。后续需要：靶向敲低/阻断+救援验证具体候选。<b>不能把富集分析的p值当作机制证明。</b></p></div>
+<div class="card green-c"><h3>关联型</h3><p>GEO/TCGA公共数据分析，目的是提供人类相关性。后续需要：区分预后关联与治疗预测；核对原始队列描述是否与论文一致。</p></div>
+<div class="card orange-c"><h3>解释型（scRNA-seq）</h3><p>已知疗效后解释细胞生态变化。需要：生物学重复≠细胞数；拟时序/通讯是计算推断；关键候选机制需功能验证。</p></div>
+</div>
+
+<h3>4. 核心对照最小集（按声称类型选，不机械凑组数）</h3>
+<ul>
+<li><b>声称主动靶向：</b>受体敲除或封闭对照；比较靶向/非靶向体内分布不只看整瘤荧光。</li>
+<li><b>声称两药协同：</b>完整浓度矩阵+Bliss或CI定量；"组合组最好"≠统计学协同。</li>
+<li><b>声称特定死亡方式：</b>裂解片段（非仅总蛋白）+专一抑制剂+遗传干预（至少药理，最好遗传）。</li>
+<li><b>声称免疫介导疗效：</b>免疫细胞耗竭或免疫缺陷模型对照；流式比例变化是描述，不是依赖性证明。</li>
+<li><b>声称远隔效应：</b>明确第二处肿瘤是同期建立还是治疗后接种；区分系统性药物暴露和免疫介导的贡献。</li>
+</ul>
+</section>
+
+<section id="glossary">
+<h2 class="sec-title brown">六、常用术语的使用边界</h2>
+<div class="table-wrap"><table>
+<thead class="th-navy"><tr><th>术语</th><th>常见使用边界</th><th>阅读时的判断点</th></tr></thead>
+<tbody>
+<tr><td><b>ICD（免疫原性细胞死亡）</b></td>
+<td>CRT/HMGB1/ATP三联是ICD相关标志，不等于完整免疫原性死亡已被证明</td>
+<td>有没有DC/T细胞功能验证？有没有体内免疫保护实验？</td></tr>
+<tr><td><b>焦亡 / Pyroptosis</b></td>
+<td>形态+裂解片段（-N）+功能孔是完整证据；总蛋白单独不够</td>
+<td>是GSDMD还是GSDME还是GSDMC？有没有遗传敲除/回补？</td></tr>
+<tr><td><b>铁死亡 / Ferroptosis</b></td>
+<td>多种指标方向一致+Fer-1救援是基础；GPX4总量下降不等于铁死亡</td>
+<td>铁死亡、凋亡、坏死可以同时存在，比例需交叉阻断实验才能估算</td></tr>
+<tr><td><b>药理协同</b></td>
+<td>需要浓度矩阵+Bliss/CI定量；"联合组更好"≠协同</td>
+<td>是哪种协同模型？是否用了等效线图或Bliss打分？</td></tr>
+<tr><td><b>独立生物学重复</b></td>
+<td>可以用于统计推断的独立实验单位（动物、供者、独立培养批次）</td>
+<td>n=3是三次独立培养还是三个视野或三个技术复孔？</td></tr>
+<tr><td><b>同源靶向 / Homologous targeting</b></td>
+<td>细胞膜包覆增强同种来源肿瘤细胞摄取，不是所有肿瘤均有效</td>
+<td>有没有异源肿瘤对照？膜蛋白保留的证据是什么？</td></tr>
+<tr><td><b>远隔效应</b></td>
+<td>需要明确是双侧同期建立还是治疗后接种；局部给药后系统药物暴露也会影响远端</td>
+<td>第二处肿瘤什么时候建立？处理了哪侧？用过免疫耗竭分析贡献吗？</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="references">
+<h2 class="sec-title blue">七、来源目录</h2>
+<ol style="font-size:9pt;line-height:1.8">
+<li><b>CD36 与肝转移代谢串扰：</b>Nature Communications 13, 5782, 2022. <a href="https://doi.org/10.1038/s41467-022-33349-y" target="_blank" rel="noopener">DOI</a></li>
+<li><b>PTX + shMCL-1 共递送：</b>Small Methods 5, 2001132, 2021. <a href="https://doi.org/10.1002/smtd.202001132" target="_blank" rel="noopener">DOI</a></li>
+<li><b>单原子配位与耐缺氧焦亡：</b>Advanced Materials, 2414697, 2025. <a href="https://doi.org/10.1002/adma.202414697" target="_blank" rel="noopener">DOI</a></li>
+<li><b>OMV 纳米机器人：</b>PNAS 121(30), e2403460121, 2024. <a href="https://doi.org/10.1073/pnas.2403460121" target="_blank" rel="noopener">DOI</a></li>
+<li><b>IL-12 + PLX3397：</b>ACS Nano 18(4), 3295–3312, 2024. <a href="https://doi.org/10.1021/acsnano.3c10037" target="_blank" rel="noopener">DOI</a></li>
+<li><b>TAM xCT 靶向铁死亡：</b>Advanced Science 10(2), 2203973, 2023. <a href="https://doi.org/10.1002/advs.202203973" target="_blank" rel="noopener">DOI</a></li>
+<li><b>PET 示踪双死亡平台：</b>ACS Nano 18(45), 31401–31420, 2024. <a href="https://doi.org/10.1021/acsnano.4c11278" target="_blank" rel="noopener">DOI</a></li>
+<li><b>红细胞膜包覆活菌：</b>ACS Nano 16, 4102–4115, 2022. <a href="https://doi.org/10.1021/acsnano.1c09818" target="_blank" rel="noopener">DOI</a></li>
+<li><b>胰腺癌膜伪装共递送：</b>Acta Pharmaceutica Sinica B 12(8), 3410–3426, 2022. <a href="https://doi.org/10.1016/j.apsb.2022.02.007" target="_blank" rel="noopener">DOI</a></li>
+<li><b>代谢脂质体与放射免疫：</b>Advanced Science 10, 2207608, 2023. <a href="https://doi.org/10.1002/advs.202207608" target="_blank" rel="noopener">DOI</a> · <a href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.202509211" target="_blank" rel="noopener">2025年更正</a></li>
+<li><b>PCSK9 与免疫稳态：</b>ACS Nano 18(12), 8811–8826, 2024. <a href="https://doi.org/10.1021/acsnano.3c11775" target="_blank" rel="noopener">DOI</a></li>
+<li><b>增强 CaCO₃ 化学免疫：</b>ACS Nano 18(40), 27597–27616, 2024. <a href="https://doi.org/10.1021/acsnano.4c08690" target="_blank" rel="noopener">DOI</a></li>
+<li><b>离子稳态与放射免疫：</b>Advanced Science 10, 2304092, 2023. <a href="https://doi.org/10.1002/advs.202304092" target="_blank" rel="noopener">DOI</a></li>
+</ol>
+<p class="note">数据来源：正文所附PDF及外部核验（GEO数据库原始记录、期刊官方更正公告）。核验日期：2026-10-28。未对全部原始数据重新分析；"未见公开编号"指所给材料范围，不代表数据一定不存在。</p>
+</section>
+
+<div class="footer">
+这份报告的核心目标：帮助读者识别每篇文章中不同数据类型承担的具体任务，以及相邻证据层次之间的连接是强还是弱。阅读时的最重要问题：这个结论需要哪种实验才能成立，现有数据达到了吗？<br>
+整理日期：2026-10-28 · 13篇原始研究
+</div>
+</div>
+</main>
+
+<script>
+(()=>{
+const ps=[...document.querySelectorAll('.paper')];
+const q=document.getElementById('srch'),st=document.getElementById('fstatus');
+function flt(){let n=0;const k=q.value.trim().toLocaleLowerCase();ps.forEach(p=>{const ok=!k||p.textContent.toLocaleLowerCase().includes(k);p.classList.toggle('hidden',!ok);if(ok)n++;});st.textContent=`显示 ${n}/${ps.length} 篇`+(k?`  ·  关键词："${q.value}"`:'');document.getElementById('empty').style.display=n?'none':'block';}
+q.addEventListener('input',flt);
+document.getElementById('clr').onclick=()=>{q.value='';flt();};
+document.getElementById('expall').onclick=()=>ps.forEach(p=>p.open=true);
+document.getElementById('colall').onclick=()=>{ps.forEach(p=>p.open=false);document.getElementById('papers').scrollIntoView({behavior:'smooth'});};
+document.getElementById('prn').onclick=()=>window.print();
+document.getElementById('jmp').onchange=e=>{if(e.target.value){const el=document.getElementById(e.target.value);if(el){if(el.classList.contains('paper'))el.open=true;setTimeout(()=>el.scrollIntoView({behavior:'smooth'}),0);}e.target.value='';}};
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href').slice(1);if(!id)return;const el=document.getElementById(id);if(el&&el.classList.contains('paper')){el.open=true;setTimeout(()=>el.scrollIntoView({behavior:'smooth'}),0);}});
+let pst=null;
+window.addEventListener('beforeprint',()=>{pst=ps.map(p=>p.open);ps.forEach(p=>{p.open=true;p.classList.remove('hidden');});});
+window.addEventListener('afterprint',()=>{if(pst)ps.forEach((p,i)=>p.open=pst[i]);pst=null;flt();});
+if(location.hash){const el=document.getElementById(location.hash.slice(1));if(el){if(el.classList.contains('paper'))el.open=true;setTimeout(()=>el.scrollIntoView({behavior:'smooth'}),0);}}
+})();
+</script>
+</body>
+</html>
