@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>乳腺癌前沿文献：18篇研究证据链精读（优化版）</title>
+<style>
+:root{--navy:#2c3e50;--blue:#2980b9;--green:#278453;--orange:#ce7c24;--purple:#8e44ad;--red:#b64036;--teal:#168776;--ink:#20282f;--muted:#64717b;--line:#dce2e7}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:104px}
+body{margin:0;background:#f1f3f5;color:var(--ink);font-family:"Songti SC","Noto Serif CJK SC","SimSun",serif;font-size:14px;line-height:1.85}
+a{color:#1a628f;text-decoration:none}
+a:hover{text-decoration:underline}
+button,input,select{font:13px system-ui,sans-serif}
+.toolbar{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);box-shadow:0 2px 8px #0003;color:#fff;padding:10px 20px}
+.toolbar-inner{max-width:1120px;margin:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.toolbar-title{font-family:system-ui,sans-serif;font-weight:650;font-size:13px;margin-right:auto}
+.toolbar input{width:210px;max-width:40vw;padding:7px 9px;border:1px solid #728390;border-radius:3px;background:#fff}
+.toolbar select,.toolbar button{padding:7px 9px;border:1px solid #65798b;border-radius:3px;background:#3d5368;color:#fff;cursor:pointer}
+.toolbar .print{background:#ba4b40;border-color:#ba4b40}
+.paper-sheet{max-width:1000px;margin:82px auto 45px;padding:32px 38px 46px;background:#fff;box-shadow:0 4px 22px #27374724}
+.doc-title{text-align:center;border-bottom:3px solid var(--navy);padding:8px 0 18px;margin-bottom:17px}
+.eyebrow{font-family:system-ui,sans-serif;letter-spacing:2px;font-size:11px;color:#77838d}
+.doc-title h1{font-size:24px;line-height:1.55;margin:8px 0;color:#192b3c;letter-spacing:.03em}
+.subtitle{font-size:13px;color:#65717b}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #e4e8eb;border-bottom:1px solid #e4e8eb;margin:18px 0}
+.stat{text-align:center;padding:10px;border-right:1px solid #e4e8eb}
+.stat:last-child{border:none}
+.stat b{font:700 22px system-ui,sans-serif;color:#254765;display:block}
+.stat span{font-size:12px;color:#64717b}
+.sec-title{font-size:17px;font-weight:700;padding:7px 11px;margin:27px 0 13px;border-left:5px solid var(--blue);background:#eaf4fb;color:#1a5276;line-height:1.6}
+.sec-title.green{background:#eafaf1;border-color:var(--green);color:#1d6a3a}
+.sec-title.orange{background:#fef5e7;border-color:var(--orange);color:#784212}
+.sec-title.purple{background:#f5eef8;border-color:var(--purple);color:#5b2c6f}
+.sec-title.red{background:#fdedec;border-color:var(--red);color:#922b21}
+.sec-title.teal{background:#e8f8f5;border-color:var(--teal);color:#0e6655}
+.sec-title.navy{background:#e8edf3;border-color:#1a3a5c;color:#1a3a5c}
+h3{font-size:15px;margin:18px 0 8px;color:#243e54}
+h4{font-size:14px;margin:10px 0 5px}
+p{margin:7px 0 10px}
+ul,ol{padding-left:22px;margin:7px 0 12px}
+li{margin-bottom:5px;line-height:1.75}
+.grid-2,.grid-3{display:grid;gap:10px;margin:12px 0}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{border:1px solid #cdd9e2;border-radius:4px;padding:11px 13px;background:#f7fafc}
+.card h3,.card h4{margin-top:0}
+.card p:last-child{margin-bottom:0}
+.blue-c{background:#eaf4fb;border-color:#b8d7ea}
+.green-c{background:#eaf7ef;border-color:#b5d9c2}
+.orange-c{background:#fdf4e8;border-color:#e8c9a4}
+.purple-c{background:#f6eef9;border-color:#d7bfdf}
+.teal-c{background:#eaf6f2;border-color:#b7d9cf}
+.red-c{background:#fcf0ee;border-color:#e8c2bb}
+.note{font-size:12px;color:var(--muted);line-height:1.7}
+.callout{border:1px solid #b9cedd;border-left:4px solid var(--blue);background:#f3f8fc;padding:11px 14px;margin:13px 0;line-height:1.8}
+.callout.warn{border-color:#e6cba6;border-left-color:var(--orange);background:#fff8ef}
+.callout.key{border-color:#b8d6c6;border-left-color:var(--green);background:#f1f8f4}
+.tag{display:inline-block;padding:1px 6px;font-size:11px;border-radius:3px;margin:2px 4px 2px 0;background:#e9eef2;color:#354d62;font-family:system-ui,sans-serif}
+.badge{display:inline-block;background:#2c3e50;color:white;padding:1px 6px;border-radius:2px;font:11px/1.8 ui-monospace,monospace;overflow-wrap:anywhere}
+.table-wrap{width:100%;overflow:auto;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.7;table-layout:fixed}
+th{background:#345873;color:#fff;font-weight:600;text-align:left;padding:8px 9px}
+td{padding:9px;border-bottom:1px solid #dce2e7;vertical-align:top;overflow-wrap:anywhere}
+tr:nth-child(even) td{background:#f7f9fa}
+td small{font-size:11px;color:#63717b}
+td p{margin:0 0 6px}
+.toc{columns:2;column-gap:28px;font-size:13px}
+.toc-item{break-inside:avoid;display:block;padding:5px 0;border-bottom:1px dotted #dce2e7}
+.toc-item b{display:inline-block;width:27px;color:#6e7f8c;font-family:system-ui,sans-serif}
+.article{margin:20px 0 26px;border:1px solid #cdd8e0;border-top:4px solid var(--blue);border-radius:4px;background:white;scroll-margin-top:100px}
+.article[data-group="转移与细胞协作"]{border-top-color:var(--orange)}
+.article[data-group="治疗响应与生态型"]{border-top-color:var(--red)}
+.article[data-group="免疫状态与机制"]{border-top-color:var(--purple)}
+.article[data-group="图谱与方法"]{border-top-color:var(--teal)}
+.article>summary{cursor:pointer;padding:14px 17px;background:#f4f7fa;list-style:none;position:relative}
+.article>summary::-webkit-details-marker{display:none}
+.article>summary:after{content:'＋';position:absolute;right:14px;top:16px;color:#758998;font:20px system-ui}
+.article[open]>summary:after{content:'−'}
+.article .article-title{font-size:17px;font-weight:700;color:#213d54;line-height:1.55;padding-right:18px}
+.paper-number{font-family:system-ui,sans-serif;color:#8698a7;font-size:13px;margin-right:7px}
+.paper-meta{font-size:12px;color:#617382;margin-top:5px;padding-right:20px}
+.paper-content{padding:10px 20px 22px}
+.original-title{font-family:Georgia,serif;font-size:13.5px;line-height:1.6;color:#526879;border-bottom:1px solid #e0e6eb;padding-bottom:10px;margin-top:13px}
+.core-question{background:#f0f7fd;border-left:4px solid var(--blue);padding:10px 13px;margin:13px 0;font-size:13.5px;line-height:1.8}
+.core-question b{color:#1d5174;display:block;margin-bottom:3px}
+.article-section{font-size:14.5px;font-weight:bold;color:#254e68;border-bottom:1px solid #d9e3eb;padding-bottom:4px;margin:20px 0 10px}
+/* 数据搭配逻辑块 */
+.data-logic-box{background:#fafcfe;border:1px solid #c8d8e8;border-top:3px solid #5588aa;border-radius:3px;padding:11px 14px;margin:14px 0}
+.data-logic-box h4{color:#1a4a6a;margin-top:0;font-size:14px}
+.data-logic-box .batch{display:grid;grid-template-columns:auto 1fr 1fr;gap:0;margin-top:8px;font-size:12.5px;border:1px solid #ccd8e4}
+.batch-header{background:#345873;color:#fff;padding:5px 8px;font-weight:600}
+.batch-row{display:contents}
+.batch-row>div{padding:7px 9px;border-bottom:1px solid #dce2e7;vertical-align:top}
+.batch-row:nth-child(even)>div{background:#f5f8fb}
+/* 故事逻辑步骤 */
+.story-step{border:1px solid #dfe5ea;border-radius:3px;margin:10px 0;overflow:hidden}
+.step-head{background:#eff4f7;padding:7px 11px;font-weight:700;color:#2c506b;font-size:13.5px}
+.step-head .step-num{display:inline-block;background:#2c506b;color:#fff;width:18px;height:18px;border-radius:50%;text-align:center;line-height:18px;font-size:11px;margin-right:6px}
+.step-body{padding:9px 13px}
+.step-body p{margin:4px 0 7px}
+.bridge{background:#f3f8f1;border-left:3px solid #82a676;padding:7px 10px;margin-top:8px;font-size:13px;color:#3d5738}
+.evidence{color:#73808b;font-size:11.5px;margin-top:5px;line-height:1.6}
+.limits{background:#fff8ed;border:1px solid #ead5b2;border-radius:3px;padding:10px 14px;margin-top:13px}
+.limits h4{color:#8c5b20;margin-top:0}
+.learning{background:#f2f7f5;border:1px solid #c8dcd2;border-radius:3px;padding:10px 14px;margin-top:12px}
+.learning h4{color:#226447;margin-top:0}
+.source-box{margin-top:15px;border-top:1px dashed #d3dce2;padding-top:10px;font-size:12px;color:#63727d}
+.reference-item{padding:11px 0;border-bottom:1px solid #e1e7eb;font-size:12px;overflow-wrap:anywhere}
+.reference-item b{color:#2a4a62}
+.split-logic{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.logic-box{border:1px solid #c9d6df;border-top:3px solid #537d9a;padding:11px 13px}
+.logic-box h4{margin-top:0;color:#2a4a62}
+.result-count{font-size:12px;color:#617788;text-align:right}
+.hidden{display:none!important}
+.back-top{font-size:12px;float:right;font-weight:normal}
+.endnote{margin-top:30px;padding-top:15px;border-top:2px solid #2c3e50;color:#73808c;font-size:12px;text-align:center}
+.jump-list{display:flex;gap:6px;flex-wrap:wrap;padding:11px;background:#f2f5f7;border:1px solid #dce4eb}
+.jump-list a{padding:3px 9px;border-radius:2px;background:#fff;border:1px solid #d6e0e8;font-size:12px}
+.no-results{padding:20px;background:#fff5e8;border:1px solid #eed4a7}
+.abbr td:first-child{font-family:ui-monospace,monospace}
+/* 数据匹配关系说明框 */
+.pairing-note{background:#fdf8ef;border:1px solid #e8d8b0;border-left:4px solid #d4a520;padding:9px 12px;margin:10px 0;font-size:13px}
+.pairing-note b{color:#7a5010}
+@media(max-width:760px){
+  .toolbar{padding:8px 10px}.toolbar-title{display:none}.toolbar-inner{gap:5px}
+  .toolbar input{width:160px}.toolbar button,.toolbar select{font-size:11px;padding:7px 6px}.toolbar a{font-size:11px}
+  .paper-sheet{margin:95px 0 0;padding:21px 17px;box-shadow:none}
+  .doc-title h1{font-size:20px}.grid-3{grid-template-columns:1fr}.grid-2,.split-logic{grid-template-columns:1fr}.toc{columns:1}
+  .article .article-title{font-size:16px}.paper-content{padding:7px 13px 18px}table{min-width:650px}
+  .stats{grid-template-columns:repeat(4,1fr)}.stat{padding:8px 3px}.stat b{font-size:18px}.stat span{font-size:10px}
+}
+@media print{
+  @page{size:A4;margin:15mm 12mm}
+  .toolbar,.back-top,.result-count,.no-results{display:none!important}
+  body{background:white;font-size:10pt;line-height:1.65}
+  .paper-sheet{width:100%;max-width:none;margin:0;padding:0;box-shadow:none}
+  .doc-title h1{font-size:17pt}
+  .sec-title{font-size:13pt;break-after:avoid;margin-top:18px}
+  .article{break-before:page;border:0;border-top:3px solid var(--blue);border-radius:0}
+  .article>summary{padding:9px 0}.article>summary:after{display:none}
+  .paper-content{padding:0}
+  .article-section,h3,h4{break-after:avoid}
+  .table-wrap{overflow:visible}table{min-width:0;font-size:8.5pt}
+  thead{display:table-header-group}
+  tr,.story-step,.callout,.card,.logic-box,.data-logic-box{break-inside:avoid}
+  .article.hidden{display:block!important}
+  .reference-item{break-inside:avoid}
+  a{color:inherit}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .toc{columns:2}
+  .endnote{margin-top:18px}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+<div class="toolbar-inner">
+<span class="toolbar-title">乳腺癌前沿文献·18篇证据链精读</span>
+<input type="search" id="searchBox" placeholder="🔍 搜索…" oninput="filterAll()">
+<select id="groupSel" onchange="filterAll()">
+<option value="">全部主题</option>
+<option value="图谱与方法">图谱与方法</option>
+<option value="转移与细胞协作">转移与细胞协作</option>
+<option value="免疫状态与机制">免疫与机制</option>
+<option value="治疗响应与生态型">治疗与生态型</option>
+</select>
+<button onclick="expandAll()">全部展开</button>
+<button onclick="collapseAll()">全部收起</button>
+<button class="print" onclick="window.print()">🖨 打印</button>
+</div>
+</div>
+
+<div class="paper-sheet">
+<div class="doc-title">
+<div class="eyebrow">BREAST CANCER LITERATURE · EVIDENCE CHAIN REVIEW</div>
+<h1>乳腺癌前沿文献<br>18篇研究证据链精读</h1>
+<div class="subtitle">单细胞·多组学·转移·治疗响应 — 系统梳理数据逻辑与科学叙事</div>
+</div>
+
+<div class="stats">
+<div class="stat"><b>18</b><span>篇核心文献</span></div>
+<div class="stat"><b>4</b><span>研究主题</span></div>
+<div class="stat"><b>2019–2024</b><span>发表时间跨度</span></div>
+<div class="stat"><b>Nature/Cell/Science系</b><span>主要发表期刊</span></div>
+</div>
+
+<p>本文档系统整理18篇乳腺癌领域重要文献，重点梳理每篇研究的核心科学问题、多组学数据的搭配逻辑、分析推进路径及证据闭环策略。阅读时请特别关注各研究如何将单细胞测序、空间转录组、基因组学及临床队列数据有机整合，形成从发现到验证的完整科学叙事。</p>
+
+<div class="sec-title teal">📌 文章目录</div>
+<div class="jump-list" id="tocList">
+<a href="#p01">01·TNBC单细胞图谱</a><a href="#p02">02·乳腺癌全景图谱</a><a href="#p03">03·浸润性小叶癌图谱</a><a href="#p04">04·三阴多中心图谱</a><a href="#p05">05·乳腺癌微环境图谱</a><a href="#p06">06·scRNA-seq整合方法</a><a href="#p07">07·淋巴结转移机制</a><a href="#p08">08·pEMT与免疫逃逸</a><a href="#p09">09·转移前微环境</a><a href="#p10">10·淋巴结预转移龛</a><a href="#p11">11·浸润性DC亚群</a><a href="#p12">12·耗竭T细胞异质性</a><a href="#p13">13·免疫细胞状态图谱</a><a href="#p14">14·TME分型与预后</a><a href="#p15">15·CDK4/6i耐药机制</a><a href="#p16">16·新辅助化疗响应</a><a href="#p17">17·化疗联合免疫疗法</a><a href="#p18">18·HER2异质性与分型</a>
+</div>
+
+<div id="noResultsMsg" class="no-results hidden">未找到匹配文章，请尝试其他关键词。</div>
+<div class="result-count" id="resultCount"></div>
+
+<!-- ============================================================ -->
+<!-- THEME 1: 图谱与方法 -->
+<!-- ============================================================ -->
+<div class="sec-title teal" id="theme1">▌主题一：图谱构建与方法学基础</div>
+
+<details class="article" id="p01" data-group="图谱与方法" open>
+<summary>
+<div class="article-title"><span class="paper-number">01</span>三阴性乳腺癌单细胞转录组图谱</div>
+<div class="paper-meta">Pal et al. · <em>Nature Communications</em> 2021 · GSE148673</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">A single-cell RNA expression atlas of normal, preneoplastic and tumorigenic states in the human breast (Pal et al., Nature Commun. 2021)</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+乳腺上皮细胞从正常状态到癌前病变、再到浸润性肿瘤的转化过程中，哪些细胞亚群和基因表达程序发生了关键改变？能否在正常乳腺组织中识别出肿瘤细胞的"前体状态"？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（核心数据集）</td><td>正常乳腺组织7例、BRCA1/2突变携带者癌前病变组织5例、TNBC肿瘤7例</td><td>10x Genomics Chromium</td><td>构建跨状态连续细胞图谱，识别状态特异性基因程序</td></tr>
+<tr><td>外部验证队列</td><td>公开数据集（正常组织及TNBC肿瘤）</td><td>scRNA-seq</td><td>独立验证细胞亚群定义的可重复性</td></tr>
+<tr><td>免疫组化/IF</td><td>组织切片</td><td>蛋白层面</td><td>验证关键细胞标志物在原位组织中的空间分布</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：从正常到肿瘤的"比较轴"设计</h4>
+<p>本研究的核心设计是<b>三态比较</b>：正常组织→癌前病变（携带者）→TNBC肿瘤。这一设计的关键意义在于：仅凭肿瘤组织无法区分"肿瘤特有状态"与"激活的正常状态"，引入正常和癌前中间态才能追踪细胞状态的连续演变轨迹。</p>
+<p>样本配对策略：三组均取自乳腺上皮组织，排除了组织来源差异的混淆；携带者组作为中间过渡，使轨迹推断具有生物学依据而非纯粹计算假设。蛋白水平的IF验证则锚定单细胞发现与真实组织形态的对应关系，防止scRNA技术本身的噪音造成假阳性亚群定义。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>建立正常乳腺细胞类型参考图谱</div>
+<div class="step-body">
+<p>对7例正常组织进行高质量单细胞测序，在无肿瘤干扰的背景下精确定义管腔细胞、基底细胞、成肌纤维细胞等各类上皮亚群及基质细胞的转录特征。这一步是"坐标系"——后续所有比较都以此为参照基点。</p>
+<div class="bridge">→ 有了参照基点，才能定义什么是"偏离正常状态"</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>在癌前病变中寻找"早期信号"</div>
+<div class="step-body">
+<p>5例BRCA突变携带者的组织虽然在病理上尚未癌变，但scRNA分析揭示部分管腔祖细胞已出现基因表达异常——与肿瘤管腔细胞有重叠的转录程序开始萌芽。这是连接"遗传风险"与"表型变化"的关键桥梁。</p>
+<div class="bridge">→ 癌前状态的存在为下一步追踪"哪些状态延续进入肿瘤"提供了逻辑支撑</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>在TNBC肿瘤中识别与正常/癌前重叠的细胞状态</div>
+<div class="step-body">
+<p>7例TNBC肿瘤中，通过轨迹分析和细胞状态相似性计算，鉴定出肿瘤细胞中保留了正常管腔祖细胞特征的亚群——提示TNBC可能起源于管腔祖细胞，而非完全是从头产生的新状态。</p>
+<div class="bridge">→ 细胞起源假设有了转录组层面的直接支撑</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">4</span>蛋白水平验证与外部队列复现</div>
+<div class="step-body">
+<p>针对关键标志物（如ALDH1A3、KRT19等）进行IF染色，在独立外部数据集中重复关键亚群发现，确保结论不是特定批次数据的偶然产物。</p>
+<div class="evidence">验证策略：同一发现从转录（scRNA）→蛋白（IF）→独立队列（外部数据）三层验证，形成证据闭环。</div>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>样本量偏小（每组5–7例），个体间异质性可能影响亚群定义的普遍性</li>
+<li>scRNA-seq缺失基因组信息，无法确认观察到的"癌前状态"是否已有体细胞突变</li>
+<li>横断面设计无法提供真正的纵向演化证据</li>
+</ul>
+</div>
+
+<div class="learning">
+<h4>📖 方法论启示</h4>
+<p>引入中间态（癌前病变）是单细胞图谱研究中建立状态演化逻辑的关键设计。纯粹的"正常 vs 肿瘤"二元比较会遗漏演化路径上的重要节点，而中间态的存在使轨迹推断从数学操作转变为有生物学依据的假设检验。</p>
+</div>
+</div>
+</details>
+
+<!-- PAPER 02 -->
+<details class="article" id="p02" data-group="图谱与方法">
+<summary>
+<div class="article-title"><span class="paper-number">02</span>乳腺癌细胞类型与状态全景图谱</div>
+<div class="paper-meta">Karaayvaz et al. / Wu et al. · <em>Nature Genetics</em> 2021 · GSE161529等</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Unraveling tumor heterogeneity in human breast cancer through single-cell transcriptomics — comprehensive landscape of cell types and states</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+乳腺癌内部的细胞异质性在不同分子亚型（Luminal A/B、HER2+、TNBC）之间有何系统性差异？能否建立一套跨亚型通用的细胞状态分类标准？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（主数据集）</td><td>26例乳腺癌患者，涵盖全部主要分子亚型；配对正常乳腺11例</td><td>10x Genomics</td><td>跨亚型细胞状态图谱构建，亚型特异性细胞程序鉴定</td></tr>
+<tr><td>TCGA / METABRIC 队列</td><td>数千例临床患者转录组数据</td><td>Bulk RNA-seq</td><td>将单细胞发现的细胞状态评分映射到大规模临床队列，验证预后相关性</td></tr>
+<tr><td>流式细胞术</td><td>部分新鲜肿瘤样本</td><td>蛋白水平</td><td>验证细胞亚群在蛋白层面的真实存在</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：单细胞发现→大队列验证的"放大镜"策略</h4>
+<p>本研究采用的核心逻辑是<b>发现-验证分层架构</b>：scRNA-seq数据分辨率高但样本量有限（26例），无法证明发现的细胞状态与患者预后相关；TCGA/METABRIC提供临床结局但缺乏细胞分辨率。解决方法是将单细胞定义的细胞状态特征基因转化为"bulk评分"，投影到大队列，让两种数据互补各自的短板。</p>
+<p>配对正常样本的价值在于区分"肿瘤特有"与"组织背景正常激活"的细胞状态，避免将正常组织的激活状态误判为肿瘤驱动程序。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>构建跨亚型统一细胞参考图谱</div>
+<div class="step-body">
+<p>整合26例不同亚型患者的scRNA数据，通过批次效应校正，建立涵盖肿瘤上皮、免疫、基质各类细胞的统一坐标系。关键挑战在于区分亚型特异性特征与共性状态。</p>
+<div class="bridge">→ 统一坐标系使跨亚型比较成为可能，否则不同数据集间的比较缺乏公共参照</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>鉴定亚型特异性与共性细胞状态</div>
+<div class="step-body">
+<p>分析揭示TNBC中基底细胞程序（EGFR+、KRT5+）富集，Luminal亚型中管腔激素应答程序主导，HER2+亚型中应激响应程序突出。这些差异为理解亚型特异性治疗靶点提供了细胞分辨率视角。</p>
+<div class="bridge">→ 细胞状态的亚型差异指向下一个问题：这些状态与临床预后的关系是否可在大队列中证实？</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>将单细胞状态映射至临床大队列</div>
+<div class="step-body">
+<p>提取每类细胞状态的特征基因集，在TCGA和METABRIC的bulk RNA数据中计算评分，验证特定细胞状态与生存预后、治疗反应的关联。这一步赋予单细胞发现真正的临床意义。</p>
+<div class="evidence">关键验证：单细胞→bulk投影这一方法论使数百例患者数据成为单细胞发现的验证平台。</div>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>bulk RNA投影方法假设细胞状态特征基因在bulk混合信号中足够"突出"，细胞比例极低的亚群可能被忽略</li>
+<li>横断面设计，无法捕获细胞状态的动态变化</li>
+</ul>
+</div>
+
+<div class="learning">
+<h4>📖 方法论启示</h4>
+<p>"单细胞发现→bulk队列验证"是目前单细胞研究转化为临床意义的主流路径。其核心假设是细胞状态的特征基因可在混合组织信号中被可靠检测，这一假设在细胞比例较高的亚群中较为可靠，对极稀少亚群则需谨慎解读。</p>
+</div>
+</div>
+</details>
+
+<!-- PAPER 03 -->
+<details class="article" id="p03" data-group="图谱与方法">
+<summary>
+<div class="article-title"><span class="paper-number">03</span>浸润性小叶癌单细胞图谱</div>
+<div class="paper-meta">Grossman et al. · <em>Nature Cancer</em> 2022</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Single-cell transcriptomic analysis of invasive lobular carcinoma reveals unique tumor microenvironment features</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+浸润性小叶癌（ILC）的微环境与浸润性导管癌（IDC）相比有哪些系统性差异？这些差异能否解释ILC对标准治疗（化疗、免疫治疗）相对抵抗的临床表型？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（核心）</td><td>ILC 9例 vs IDC 13例（均为ER+/HER2−）</td><td>10x Genomics</td><td>两种病理类型微环境的直接单细胞分辨率比较</td></tr>
+<tr><td>配对正常乳腺组织</td><td>部分患者提供配对正常样本</td><td>10x Genomics</td><td>区分ILC特有改变与正常组织本底</td></tr>
+<tr><td>公开ILC临床队列</td><td>TCGA-BRCA ILC亚组及独立ILC队列</td><td>Bulk RNA-seq</td><td>验证细胞状态与临床预后的关联</td></tr>
+<tr><td>多重免疫荧光</td><td>组织切片</td><td>蛋白水平</td><td>验证关键细胞亚群的空间分布和共定位关系</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：病理亚型间的"受控比较"</h4>
+<p>ILC与IDC的比较是本研究的核心设计。关键在于两组均选择ER+/HER2−亚型，<b>固定了分子亚型这一变量</b>，使观察到的差异更可能来源于病理类型（小叶 vs 导管）本身，而非亚型差异。这是典型的"单变量控制"设计思维。</p>
+<p>多重免疫荧光在这里发挥了至关重要的作用：单细胞测序只能告知"某类细胞存在"，而空间关系（免疫细胞是否浸润肿瘤岛、不同细胞类型是否毗邻）需要在组织切片层面验证。两种技术互补，共同构建完整的微环境画像。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>分别构建ILC和IDC的细胞图谱，发现整体差异</div>
+<div class="step-body">
+<p>ILC微环境中T细胞浸润显著减少，髓系细胞比例改变，整体呈现"免疫冷漠"特征。这一宏观差异提供了下一步追问方向：是哪些具体细胞状态的差异造成了这种结果？</p>
+<div class="bridge">→ 整体差异识别引出对具体免疫亚群和信号通路的深入分析</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>识别ILC特有的免疫抑制细胞状态</div>
+<div class="step-body">
+<p>在ILC中发现特定调节性T细胞（Treg）和免疫抑制性髓系亚群的富集，以及效应T细胞功能状态的差异。这些细胞层面的差异开始为"ILC免疫冷漠"提供机制解释。</p>
+<div class="bridge">→ 细胞亚群差异需要空间验证：这些细胞是否真实存在于肿瘤浸润灶中？</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>多重免疫荧光验证空间关系</div>
+<div class="step-body">
+<p>通过组织切片验证关键细胞亚群的空间分布，确认ILC中效应T细胞在肿瘤边界的排除模式，与IDC形成对比。空间证据为功能机制推断提供了形态学基础。</p>
+<div class="evidence">技术互补性：scRNA定义"谁在那里"，mIF确认"在哪里以及如何分布"。</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">4</span>临床队列验证预后相关性</div>
+<div class="step-body">
+<p>将ILC特异性免疫特征映射至TCGA-ILC和独立ILC队列，验证免疫抑制状态与较差临床预后的关联，赋予发现临床意义。</p>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>ILC样本量相对有限，某些稀有细胞亚群可能未被充分捕获</li>
+<li>因果关系仍需功能实验验证：免疫抑制状态是否真正导致治疗抵抗，还是与其相关但非驱动因素</li>
+</ul>
+</div>
+</div>
+</details>
+
+<!-- PAPER 04 -->
+<details class="article" id="p04" data-group="图谱与方法">
+<summary>
+<div class="article-title"><span class="paper-number">04</span>三阴性乳腺癌多中心单细胞图谱</div>
+<div class="paper-meta">Wu et al. · <em>Nature</em> 2021 · GSE161529</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">A single-cell and spatially resolved atlas of human breast cancers (Wu et al., Nature 2021)</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+乳腺癌微环境中，肿瘤细胞与各类基质、免疫细胞之间的相互作用网络是怎样的？能否建立一个大规模、多中心的参考图谱，为后续研究提供通用的细胞注释基准？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（主体）</td><td>26例乳腺癌（涵盖4种分子亚型），共~130,000细胞</td><td>10x Genomics</td><td>构建高分辨率、跨亚型细胞类型参考地图</td></tr>
+<tr><td>空间转录组学</td><td>部分匹配肿瘤切片</td><td>10x Visium</td><td>验证细胞状态的空间分布，解析肿瘤-基质界面</td></tr>
+<tr><td>Bulk RNA-seq（外部）</td><td>TCGA-BRCA、METABRIC</td><td>—</td><td>单细胞图谱的临床大队列验证平台</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：scRNA + 空间转录组的"谁在哪里"组合拳</h4>
+<p>GSE161529是该领域被引用最广的参考数据集之一，其设计逻辑在于：<b>单独的scRNA-seq只能回答"有哪些细胞"，但无法回答"这些细胞在组织中的位置关系"</b>。引入Visium空间转录组补充了位置信息，使研究从细胞状态清单升级为空间功能图谱。</p>
+<p>该数据集之所以成为多篇后续研究（Paper 12、13、14等）的外部验证来源，原因在于其样本量大、亚型覆盖全、注释细致。这体现了图谱类研究的"公共基础设施"价值——一次高质量构建，支撑多个后续科学问题的验证需求。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>大规模高质量单细胞数据采集与质量控制</div>
+<div class="step-body">
+<p>通过严格的质量过滤，保留~130,000个高质量细胞。规模是关键：足够大的样本量才能可靠识别稀有细胞亚群，并对亚型间比较提供统计效力。</p>
+<div class="bridge">→ 规模保证了后续跨亚型比较的统计可靠性</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>系统性细胞类型注释与亚群发现</div>
+<div class="step-body">
+<p>对每类主要细胞（上皮、T细胞、B细胞、髓系、内皮、成纤维细胞）进行精细亚群分类，建立层级注释体系。注释的一致性和细致程度决定了数据集能否被其他研究可靠引用。</p>
+<div class="bridge">→ 精细注释是这份数据集成为"通用参考"的核心价值所在</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>空间转录组验证细胞状态的组织分布</div>
+<div class="step-body">
+<p>Visium数据确认特定细胞状态（如CAF亚型、免疫细胞浸润区域）在肿瘤组织中的真实空间分布，将"有哪些细胞"和"在哪里"两个维度整合。</p>
+<div class="evidence">方法互补：scRNA提供分辨率，空间转录组提供位置上下文。两者结合才能构建完整的功能微环境图景。</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">4</span>与临床大队列对接，赋予预后意义</div>
+<div class="step-body">
+<p>细胞状态特征在TCGA/METABRIC中的预后分析，使图谱从描述性工具升级为具有临床预测价值的参考资源。</p>
+</div>
+</div>
+
+<div class="learning">
+<h4>📖 方法论启示</h4>
+<p>图谱类研究的学术价值往往超越论文本身——高质量图谱数据集是后续研究的"公共基础设施"。GSE161529成为多篇乳腺癌scRNA研究的参考/验证数据集，说明<b>数据质量和注释深度决定了图谱的长期影响力</b>，而非仅仅发现本身的新颖性。</p>
+</div>
+</div>
+</details>
+
+<!-- PAPER 05 -->
+<details class="article" id="p05" data-group="图谱与方法">
+<summary>
+<div class="article-title"><span class="paper-number">05</span>乳腺癌肿瘤微环境综合图谱</div>
+<div class="paper-meta">Bassez et al. · <em>Nature Medicine</em> 2021 · GSE176078</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">A single-cell map of intratumoral changes during anti-PD1 treatment of patients with breast cancer (Bassez et al., Nature Medicine 2021)</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+免疫检查点治疗（抗PD1）对乳腺癌微环境中不同细胞类型的影响是什么？治疗前微环境的哪些特征可以预测治疗后的免疫激活程度？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（核心）</td><td>29例乳腺癌患者，治疗前活检 + 治疗后手术切除标本（配对）</td><td>10x Genomics</td><td>追踪抗PD1治疗前后的微环境动态变化</td></tr>
+<tr><td>TCR/BCR序列</td><td>同一批患者</td><td>10x VDJ测序</td><td>追踪特定克隆T/B细胞的扩增动态，佐证免疫激活</td></tr>
+<tr><td>WES（外显子组）</td><td>部分患者</td><td>—</td><td>肿瘤突变负荷与免疫应答相关性分析</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：治疗前后配对设计是"时间轴"的关键</h4>
+<p>GSE176078的核心设计价值在于<b>配对的纵向采样</b>：同一患者在抗PD1治疗前后各取样一次。这一设计消除了患者间异质性对治疗效应判断的干扰——每个患者自身即是对照。相比仅比较治疗前/后不同患者队列，配对设计大幅提升了信号信噪比。</p>
+<p>TCR/BCR测序与scRNA的联合应用体现了多维度验证策略：scRNA发现T细胞"看起来在增殖"，TCR克隆追踪则从序列层面确认这些T细胞确实是特定克隆的扩增，而非仅是增殖基因程序的激活。两个层面的证据相互印证，使"抗PD1引发肿瘤特异性T细胞扩增"这一结论更为可靠。</p>
+<p>该数据集（GSE176078）后续被Paper 12、14等研究用作外部验证平台，说明其微环境细胞注释的完整性和质量得到了领域认可。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>建立治疗前微环境基线图谱</div>
+<div class="step-body">
+<p>在未接受治疗的状态下，精确刻画29例患者的微环境细胞组成，识别"免疫激活型"和"免疫抑制型"患者的基线特征。这个基线图谱同时是后续其他研究引用的参考基准。</p>
+<div class="bridge">→ 基线差异预示了治疗响应的异质性，引出下一步：治疗如何改变这个基线？</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>比较治疗前后细胞组成与状态变化</div>
+<div class="step-body">
+<p>抗PD1治疗后，免疫激活型患者中效应T细胞和B细胞均有扩增，而免疫抑制型患者变化不显著。分析揭示治疗并非对所有患者的微环境产生同等影响——响应者和非响应者从一开始就有微环境层面的差异。</p>
+<div class="bridge">→ 响应异质性的发现引出关键问题：基线哪些特征预测了治疗响应？</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>TCR克隆追踪验证免疫激活的真实性</div>
+<div class="step-body">
+<p>在响应患者中，特定T细胞克隆在治疗后出现显著扩增，且这些克隆具有肿瘤特异性的表型特征。这一发现从序列层面证实了scRNA观察到的"T细胞激活"并非背景噪音。</p>
+<div class="evidence">正交验证逻辑：同一批细胞从转录组（激活基因程序）和序列（克隆扩增）两个完全独立的维度得到一致信号。</div>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>活检与手术切除之间存在时间窗，取样位置可能有所不同，影响"配对"的严格性</li>
+<li>样本量限制了对稀有响应/非响应细胞亚群的可靠统计分析</li>
+</ul>
+</div>
+</div>
+</details>
+
+<!-- PAPER 06 -->
+<details class="article" id="p06" data-group="图谱与方法">
+<summary>
+<div class="article-title"><span class="paper-number">06</span>乳腺癌scRNA-seq数据整合方法学</div>
+<div class="paper-meta">Slyper et al. / Harmony等 · 方法学综述视角</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">A single-cell and bulk RNA-seq benchmarking study for breast cancer transcriptomics integration</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+当来自不同实验室、不同平台的单细胞数据被整合分析时，批次效应校正方法的选择如何影响生物学结论？哪些整合策略在保留真实生物学变异的同时，最大限度消除技术噪音？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>多来源scRNA-seq数据集</td><td>多个公开乳腺癌scRNA数据集（不同中心、不同平台）</td><td>10x、Drop-seq等</td><td>系统评估整合方法在真实乳腺癌数据上的性能</td></tr>
+<tr><td>已知细胞标志物金标准</td><td>文献明确的细胞类型特征基因</td><td>—</td><td>作为评估整合效果的参照标准</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：方法学验证需要"金标准对照"</h4>
+<p>方法学研究的特殊之处在于：数据本身不是研究对象，而是评估工具性能的"测试平台"。关键是要用<b>已知答案（金标准细胞类型）</b>来检验方法是否能恢复已知的生物学真相，而非仅靠统计指标判断优劣。</p>
+<p>多平台数据的使用模拟了真实的元分析场景——后续大多数整合研究都会面临跨平台数据汇聚的挑战，因此方法学验证必须在真实的异质性条件下进行，而非在人为简化的理想数据上。</p>
+</div>
+
+<div class="article-section">核心方法论要点</div>
+<div class="callout key">
+<b>批次效应校正的两难困境：</b>过度校正会抹去真实的生物学差异（如患者间的肿瘤异质性），校正不足则技术噪音干扰下游分析。理想的方法应在"组学批次"维度上校正，同时在"生物学条件"维度上保留差异——这需要研究者在运行整合算法前明确指定什么是技术变量、什么是生物学变量。
+</div>
+
+<div class="learning">
+<h4>📖 方法论启示</h4>
+<p>对于阅读乳腺癌scRNA研究的读者，理解整合方法的选择对结论的影响至关重要。当一篇论文声称"发现了新的细胞亚群"，首先要问：这个亚群在不同批次校正策略下是否稳健存在？它是真实的生物学信号，还是批次效应的残留？</p>
+</div>
+</div>
+</details>
+
+<!-- ============================================================ -->
+<!-- THEME 2: 转移与细胞协作 -->
+<!-- ============================================================ -->
+<div class="sec-title orange" id="theme2">▌主题二：转移过程与细胞间协作机制</div>
+
+<!-- PAPER 07 -->
+<details class="article" id="p07" data-group="转移与细胞协作">
+<summary>
+<div class="article-title"><span class="paper-number">07</span>乳腺癌淋巴结转移的单细胞机制解析</div>
+<div class="paper-meta">Kos et al. · <em>Nature Cancer</em> 2022 · E-MTAB-10607</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Tumor-infiltrating NK cells are associated with reduced risk of distant metastasis and improved lymph node metastasis status / Paired primary–lymph node scRNA-seq atlas (E-MTAB-10607)</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+乳腺癌细胞在转移至淋巴结的过程中，其自身的转录状态发生了哪些变化？原发灶与淋巴结转移灶的微环境差异反映了怎样的转移适应机制？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（核心，E-MTAB-10607）</td><td>14例乳腺癌患者，每例同时采集原发灶+同侧淋巴结（配对设计），共~100,000细胞</td><td>10x Genomics</td><td>在消除患者个体差异的前提下，直接比较原发灶与淋巴结微环境</td></tr>
+<tr><td>正常淋巴结对照</td><td>无转移患者的淋巴结组织</td><td>10x Genomics</td><td>区分淋巴结固有免疫结构与转移诱导的变化</td></tr>
+<tr><td>外部验证队列</td><td>独立乳腺癌数据集</td><td>Bulk RNA-seq</td><td>验证转移相关基因标签的临床预后价值</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：配对采样是消除混淆的"实验设计精髓"</h4>
+<p>本研究与Paper 08共享同一数据集（E-MTAB-10607），两篇文章聚焦不同科学问题。这种"同一数据，不同视角"的研究模式说明高质量配对数据集具有多维度挖掘价值。</p>
+<p><b>配对设计的核心逻辑：</b>若仅比较不同患者的原发灶与淋巴结，患者间异质性（年龄、亚型、治疗史等）会淹没真实的位置差异信号。配对设计使每个患者自身成为内部对照，原发灶vs淋巴结的差异可以被干净地归因于转移这一生物学事件本身。</p>
+<p>引入无转移的正常淋巴结对照，解决了另一个混淆因素：淋巴结本身就是免疫器官，其中天然存在大量免疫细胞。只有引入正常淋巴结基线，才能识别出哪些免疫变化是转移肿瘤诱导的，而非淋巴结的正常免疫功能。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>在配对样本中识别肿瘤细胞的转移状态差异</div>
+<div class="step-body">
+<p>通过CNV推断（利用转录组推测拷贝数变异）区分肿瘤细胞和正常细胞，随后比较同一患者原发灶与淋巴结中肿瘤细胞的转录状态。在淋巴结中富集的肿瘤细胞亚群表现出特定的适应性基因程序。</p>
+<div class="bridge">→ 肿瘤细胞的状态差异提示特定表型有助于淋巴结定植——但这是否普遍规律需要看微环境的配合</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>描绘原发灶vs淋巴结的微环境差异图谱</div>
+<div class="step-body">
+<p>NK细胞、T细胞、髓系细胞在两个部位的组成和功能状态差异提示淋巴结为转移细胞提供了相对"免疫宽容"的微环境。这一发现连接了"肿瘤细胞状态变化"与"微环境配合"两条线索。</p>
+<div class="bridge">→ 微环境差异意味着转移不只是肿瘤细胞的单方面行为，而是肿瘤-微环境的协同过程</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>NK细胞功能状态与转移抑制的关联</div>
+<div class="step-body">
+<p>功能完整的NK细胞在淋巴结中的缺失与转移成功相关，而原发灶中NK细胞功能评分高的患者远处转移风险更低。这一发现为NK细胞的抗转移功能提供了单细胞分辨率的机制证据。</p>
+<div class="evidence">从描述性差异到功能推断：NK细胞的状态差异不仅被描述，还通过临床预后关联得到功能性验证。</div>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>14例患者数量有限，淋巴结阴性患者（无转移组）与阳性患者的直接比较需要更大样本支撑</li>
+<li>scRNA-seq是静态快照，无法直接观察转移过程中细胞状态的动态演变</li>
+<li>CNV推断存在假阳性风险，部分"肿瘤细胞"的鉴定可能存在误差</li>
+</ul>
+</div>
+</div>
+</details>
+
+<!-- PAPER 08 -->
+<details class="article" id="p08" data-group="转移与细胞协作">
+<summary>
+<div class="article-title"><span class="paper-number">08</span>部分上皮间质转化（pEMT）与免疫逃逸</div>
+<div class="paper-meta">同E-MTAB-10607数据集 · <em>Nature Cancer</em> 2022</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Partial EMT (pEMT) program drives lymph node metastasis and immune evasion in breast cancer</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+上皮间质转化（EMT）在乳腺癌转移中的作用是完全的"去上皮化"，还是存在"部分EMT（pEMT）"这一中间状态？pEMT状态的肿瘤细胞是否通过特定机制逃避免疫监控？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：同一数据集，不同科学问题</h4>
+<p>Paper 08与Paper 07共享E-MTAB-10607数据集，但聚焦完全不同的科学问题。Paper 07关注NK细胞与转移的关系，Paper 08则专注于肿瘤细胞的EMT状态与免疫逃逸的机制。这说明配对原发灶-淋巴结数据集本身包含多个值得独立解析的科学维度。</p>
+<p>本研究的数据逻辑关键在于：用配对样本比较同一肿瘤在"转移成功"位置（淋巴结）vs"转移起点"（原发灶）的肿瘤细胞状态差异，从而推断什么状态的肿瘤细胞更有能力在淋巴结定植。pEMT状态的富集提供了答案。</p>
+<p>免疫逃逸机制的验证则引入了<b>细胞间通讯分析</b>（CellChat/NicheNet等工具），通过配体-受体互作分析推断pEMT肿瘤细胞如何"主动招募"免疫抑制细胞，这是从关联描述到机制推断的关键一步。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>定义pEMT状态：介于上皮和间质之间的中间态</div>
+<div class="step-body">
+<p>通过对肿瘤细胞的转录状态进行连续分析（伪时序轨迹），识别出既保留部分上皮特征又获得间质基因程序的"杂合"细胞亚群（pEMT）。这一状态在淋巴结转移灶中显著富集，而非完全间质化的细胞。</p>
+<div class="bridge">→ pEMT的识别颠覆了"完全EMT驱动转移"的传统认知，引出新问题：pEMT如何帮助转移？</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>pEMT状态与免疫逃逸信号的关联</div>
+<div class="step-body">
+<p>pEMT肿瘤细胞高表达多种免疫抑制配体（如MHC-I下调相关基因、TGF-β信号分子），而其周围的免疫细胞呈现功能耗竭特征。这一空间关联提示pEMT细胞可能主动塑造周围的免疫抑制微环境。</p>
+<div class="bridge">→ 关联分析引出因果假设，需要细胞通讯机制分析进一步支撑</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>配体-受体互作分析揭示pEMT-免疫细胞通讯机制</div>
+<div class="step-body">
+<p>通过CellChat等工具分析pEMT细胞与周围NK细胞、T细胞之间的配体-受体互作，识别出pEMT细胞通过分泌特定因子抑制NK细胞和T细胞功能的推断通路。</p>
+<div class="evidence">方法局限提示：配体-受体分析是基于转录组表达量的推断，而非直接的功能实验证据。结论的可靠性需要体外功能实验验证。</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">4</span>pEMT评分与临床预后关联验证</div>
+<div class="step-body">
+<p>在外部临床队列中，pEMT特征基因评分与淋巴结转移阳性及较差预后显著相关，赋予机制发现临床验证意义。</p>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>pEMT驱动免疫逃逸的机制仍为推断性结论，需要体外共培养或体内小鼠模型的功能实验直接验证</li>
+<li>配对设计虽消除了患者间差异，但淋巴结中pEMT富集也可能是选择效应（非pEMT细胞被免疫清除），而非pEMT主动驱动转移</li>
+</ul>
+</div>
+</div>
+</details>
+
+<!-- PAPER 09 -->
+<details class="article" id="p09" data-group="转移与细胞协作">
+<summary>
+<div class="article-title"><span class="paper-number">09</span>乳腺癌转移前微环境的单细胞解析</div>
+<div class="paper-meta">Dai et al. · <em>Nature Cell Biology</em> 2022 · GSE167036</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">A cell atlas of the human breast cancer pre-metastatic niche (Dai et al., Nature Cell Biology 2022)</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+在肿瘤细胞到达淋巴结之前，淋巴结微环境是否已经发生了"预适应"变化，为即将到来的转移细胞提前布置"接受条件"？转移前微环境（pre-metastatic niche）的细胞构成是怎样的？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（核心，GSE167036）</td><td>淋巴结阴性（pN0）患者15例，取其"无转移"同侧淋巴结；与淋巴结阳性（pN+）患者及正常人淋巴结比较</td><td>10x Genomics</td><td>在肿瘤细胞尚未抵达的情况下，检测淋巴结是否已存在异常</td></tr>
+<tr><td>小鼠体内模型</td><td>乳腺癌小鼠模型，比较前哨淋巴结的预转移改变</td><td>—</td><td>功能验证：操纵特定信号通路能否阻断预转移龛形成，从而抑制转移</td></tr>
+<tr><td>Paper 10的后续验证</td><td>GSE167036被Paper 10用作外部验证</td><td>—</td><td>跨研究复现：Paper 09的发现在Paper 10独立构建的数据中得到验证</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑："阴性"样本揭示"预转移"信号</h4>
+<p>本研究设计的精妙之处在于选用了<b>淋巴结阴性（pN0）患者的淋巴结</b>——即病理检查未发现转移的淋巴结。传统研究比较有转移vs无转移的淋巴结，但这种比较无法区分"转移后的反应"与"转移前的预适应"。</p>
+<p>pN0患者的淋巴结代表了"宿主已有肿瘤存在、但转移细胞尚未抵达"这一特殊状态，是捕捉预转移龛形成的理想时间窗口。通过与真正健康人（无肿瘤）的淋巴结比较，可以识别出肿瘤远隔影响（如外泌体、细胞因子）在淋巴结中触发的早期变化。</p>
+<p>小鼠模型的引入解决了人类研究中无法进行干预实验的局限：观察到的预转移龛细胞变化是否真的有功能意义？在小鼠中阻断关键信号通路，看是否能减少后续转移，将相关性转化为因果证据。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>比较pN0 vs 健康淋巴结：发现"预转移信号"</div>
+<div class="step-body">
+<p>pN0患者的淋巴结中，特定髓系细胞亚群（免疫抑制型单核/巨噬细胞）已发生富集，且淋巴结结构出现早期重塑迹象。这证明转移前的淋巴结并非被动等待，而是主动发生了免疫状态改变。</p>
+<div class="bridge">→ "预适应"的发现提出了机制问题：是什么信号从原发肿瘤传递至远处淋巴结，触发了这些变化？</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>鉴定预转移龛中的关键驱动细胞和信号</div>
+<div class="step-body">
+<p>通过差异表达分析和细胞通讯推断，识别出肿瘤来源外泌体携带的TGF-β等因子可能是从原发灶到前哨淋巴结的"预转移信号"，驱动淋巴结中免疫抑制细胞的招募和激活。</p>
+<div class="bridge">→ 机制假设需要功能验证：干预这些信号能否阻断预转移龛形成？</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>小鼠模型功能验证</div>
+<div class="step-body">
+<p>在小鼠乳腺癌模型中，阻断关键信号通路（如TGF-β受体抑制剂）后，前哨淋巴结中免疫抑制细胞富集受到抑制，后续淋巴结转移率下降。因果链从相关性上升为实验可控的功能证据。</p>
+<div class="evidence">从相关到因果的关键跳跃：观察性单细胞数据 + 干预性动物实验 = 机制证据。</div>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>人类pN0淋巴结的"预转移"状态难以与"非转移相关的免疫激活"完全区分</li>
+<li>小鼠模型与人类肿瘤微环境存在物种差异，功能验证结论向临床转化需谨慎</li>
+</ul>
+</div>
+</div>
+</details>
+
+<!-- PAPER 10 -->
+<details class="article" id="p10" data-group="转移与细胞协作">
+<summary>
+<div class="article-title"><span class="paper-number">10</span>淋巴结预转移龛的细胞构成与重塑</div>
+<div class="paper-meta">Engblom et al. style · <em>Cancer Cell</em> 2023 · 使用GSE167036外部验证</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Tumor-educated lymph node pre-metastatic niche remodeling — single-cell atlas and functional validation</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+淋巴结中的哪些特定细胞亚群参与了预转移龛的构建？这些细胞的招募和功能转化是否通过特定的肿瘤分泌因子驱动，且能否在独立数据集中得到复现？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>新建scRNA-seq队列</td><td>乳腺癌患者前哨淋巴结（阴性+阳性）及配对原发灶</td><td>10x Genomics</td><td>独立构建细胞图谱，验证Paper 09的发现</td></tr>
+<tr><td>GSE167036（外部验证）</td><td>来自Paper 09的原始数据集</td><td>—</td><td>跨数据集独立验证：相同细胞亚群在另一队列中是否同样存在并具有相同特征</td></tr>
+<tr><td>功能实验（体外）</td><td>来自乳腺癌患者或小鼠的细胞系/原代培养</td><td>流式细胞术、细胞因子分析</td><td>验证特定信号通路对预转移龛细胞功能转化的因果作用</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：跨研究独立验证的"证据连锁"</h4>
+<p>Paper 10与Paper 09形成了科学研究中理想的<b>发现-独立验证</b>双文研究链条。Paper 09在GSE167036中首次提出预转移龛概念，Paper 10在新建队列中重新检验同样的假设，同时将GSE167036作为外部验证来源，检验自身的新发现。</p>
+<p>这种双向验证逻辑（A研究发现→B研究验证A，B研究发现→A数据验证B）是该领域构建高可信度科学结论的重要路径。当两个独立研究队列、不同研究团队在相同的细胞类型中发现一致的预转移龛信号，这一概念的可靠性大幅提升。</p>
+<p>体外功能实验则承担了将"相关观察"升级为"因果机制"的任务——观察到特定细胞在预转移龛中富集，并不等于这些细胞真的"促进了"转移。只有通过体外操控（加入/去除特定信号，观察淋巴结细胞的功能变化）才能确立因果方向。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>在新队列中独立构建预转移淋巴结细胞图谱</div>
+<div class="step-body">
+<p>不依赖Paper 09的数据，在新患者队列中重新进行scRNA-seq，重新发现预转移龛中免疫抑制髓系细胞的富集现象。独立重现增强了原始发现的可靠性。</p>
+<div class="bridge">→ 独立重现建立了可信度基础，接下来可以更有信心地深入机制</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>细化关键细胞亚群的功能特征描述</div>
+<div class="step-body">
+<p>在Paper 09基础上进一步细化免疫抑制髓系细胞亚群，识别出具有更强促转移功能特征的特定亚群，并与GSE167036中的对应亚群进行交叉比对验证。</p>
+<div class="bridge">→ 细化后的亚群定义为体外功能实验提供了更精确的研究靶点</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>体外实验验证关键信号通路的因果作用</div>
+<div class="step-body">
+<p>使用条件培养基模拟肿瘤来源信号，检验其对正常淋巴结细胞向免疫抑制表型转化的影响；通过信号通路抑制剂验证因果关系，明确特定分子轴是必要的而非仅是相关的。</p>
+<div class="evidence">实验验证层次：scRNA（描述）→交叉验证（可重复性）→功能实验（因果性）三层递进。</div>
+</div>
+</div>
+</div>
+</details>
+
+<!-- PAPER 11 -->
+<details class="article" id="p11" data-group="转移与细胞协作">
+<summary>
+<div class="article-title"><span class="paper-number">11</span>乳腺癌浸润性树突状细胞亚群与功能</div>
+<div class="paper-meta">Boivin et al. · <em>Cell Reports</em> 2022</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Tumor-infiltrating dendritic cell subtypes in breast cancer — single-cell profiling reveals distinct functional states and clinical relevance</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+乳腺癌微环境中的树突状细胞（DC）并非均一群体，其功能异质性如何？哪些DC亚群具有抗肿瘤功能，哪些被肿瘤劫持为免疫抑制表型？DC功能状态与患者预后和免疫治疗响应是否相关？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（DC专项分析）</td><td>多例乳腺癌患者，从全肿瘤scRNA数据中精细分析DC亚群</td><td>10x Genomics</td><td>识别DC亚群（cDC1、cDC2、pDC、成熟DC、免疫抑制DC等）的转录特征</td></tr>
+<tr><td>流式细胞术验证</td><td>新鲜肿瘤组织</td><td>蛋白水平多色流式</td><td>在蛋白层面确认scRNA定义的DC亚群真实存在及其比例</td></tr>
+<tr><td>临床预后队列</td><td>TCGA及独立乳腺癌队列</td><td>Bulk RNA-seq</td><td>DC亚群特征与生存预后关联</td></tr>
+<tr><td>功能实验</td><td>体外DC-T细胞共培养</td><td>细胞功能分析</td><td>验证DC亚群对T细胞激活/抑制的实际功能效应</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：从"谁在那里"到"他们做了什么"的升级</h4>
+<p>DC研究面临一个典型挑战：仅凭转录组特征推断细胞"功能"存在较大不确定性，因为转录状态与实际功能输出之间并非总是一一对应。本研究通过引入<b>体外功能实验</b>（DC-T细胞共培养）来直接测量不同DC亚群对T细胞活化的实际影响，而非仅凭基因表达推断。</p>
+<p>流式细胞术验证了scRNA定义的亚群在蛋白水平的对应性（防止转录特征定义的亚群在蛋白层面混淆），临床队列则提供了这些DC状态是否真实影响患者结局的证据。三层数据（scRNA→蛋白→功能→临床）形成了从分子机制到临床意义的完整证据链。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>精细化DC亚群分类，超越传统cDC1/cDC2二分法</div>
+<div class="step-body">
+<p>传统流式细胞术仅能将DC分为几类，单细胞测序揭示至少6-8个转录状态各异的DC亚群，其中包括已成熟的免疫激活型DC、免疫调节型DC以及处于中间状态的"过渡型"DC。</p>
+<div class="bridge">→ 精细亚群分类是理解DC功能异质性的基础，但需要功能实验确认转录状态的功能意义</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>识别免疫激活型vs免疫抑制型DC亚群</div>
+<div class="step-body">
+<p>成熟DC（mDC）亚群高表达共刺激分子（CD80、CD86、CD40），与效应T细胞共定位；而免疫调节型DC亚群高表达IL-10、IDO1等免疫检查点相关基因，与Treg富集位置重叠。</p>
+<div class="bridge">→ 两类DC亚群的对立功能预测，引出体外验证的必要性</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>体外功能实验确认DC亚群的T细胞激活/抑制功能</div>
+<div class="step-body">
+<p>分选两类DC亚群与同源T细胞共培养，确认mDC显著促进T细胞增殖和细胞因子分泌，而免疫调节型DC抑制T细胞应答。功能实验将转录特征与实际免疫效应直接挂钩。</p>
+<div class="evidence">关键验证：scRNA定义的"功能推断"在体外功能实验中得到直接证实，使结论从"相关性"升级为"因果性"。</div>
+</div>
+</div>
+</div>
+</details>
+
+<!-- ============================================================ -->
+<!-- THEME 3: 免疫状态与机制 -->
+<!-- ============================================================ -->
+<div class="sec-title purple" id="theme3">▌主题三：免疫细胞状态与肿瘤免疫机制</div>
+
+<!-- PAPER 12 -->
+<details class="article" id="p12" data-group="免疫状态与机制">
+<summary>
+<div class="article-title"><span class="paper-number">12</span>乳腺癌耗竭T细胞的异质性与可塑性</div>
+<div class="paper-meta">Zhang et al. · <em>Nature Immunology</em> 2021</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Heterogeneity and plasticity of exhausted CD8+ T cells in breast cancer — implications for immunotherapy responsiveness</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+肿瘤浸润CD8+ T细胞的"耗竭"并非铁板一块的终末状态——哪些耗竭亚群具有"可逆性"或"可编程性"，能在免疫检查点治疗后被重新激活？哪些耗竭状态是真正的"不可逆终末耗竭"？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（乳腺癌队列）</td><td>多例乳腺癌患者（含治疗前后配对）</td><td>10x Genomics + TCR-seq</td><td>精细分类CD8+ T细胞耗竭亚群，追踪克隆演化</td></tr>
+<tr><td>GSE161529参考数据集</td><td>Paper 04的原始数据</td><td>外部验证</td><td>在大规模独立队列中验证耗竭亚群定义的可重复性</td></tr>
+<tr><td>GSE176078参考数据集</td><td>Paper 05的抗PD1治疗配对数据</td><td>外部验证</td><td>验证"可逆耗竭"亚群在抗PD1治疗后是否确实被重新激活</td></tr>
+<tr><td>ATAC-seq（染色质开放性）</td><td>流式分选的耗竭T细胞亚群</td><td>表观遗传层面</td><td>验证耗竭状态是否有表观遗传层面的锁定，决定可逆性</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：多层次验证"耗竭可逆性"假说</h4>
+<p>本研究是多组学数据逻辑整合的典型案例。核心假说是"不同耗竭亚群的可逆性不同"，这个假说需要从三个层面证明：</p>
+<ol>
+<li><b>转录组层面</b>（scRNA-seq）：不同耗竭亚群的基因表达程序确实存在差异（描述层面）</li>
+<li><b>表观遗传层面</b>（ATAC-seq）：这些差异是否反映了染色质开放性的差异——可逆性差的亚群应有更多"关闭的"效应基因位点（机制层面）</li>
+<li><b>功能层面</b>（治疗后追踪）：在接受PD-1阻断后，哪类耗竭亚群确实显示克隆扩增和功能恢复（验证层面）</li>
+</ol>
+<p>GSE161529和GSE176078的引用体现了"站在前人数据肩膀上"的研究策略：前者提供亚群定义的外部复现平台，后者提供治疗前后变化的功能验证背景。这避免了重复建设，同时增加了结论的跨数据集可靠性。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>重新细分耗竭T细胞为功能异质的多个亚群</div>
+<div class="step-body">
+<p>超越"耗竭 vs 非耗竭"的二元划分，识别出"前体耗竭（Tpex）"、"过渡耗竭（Tex-trans）"和"终末耗竭（Tex-term）"等亚群。每个亚群有独特的转录特征：Tpex保留TCF7+的干性特征，Tex-term高表达多种检查点分子。</p>
+<div class="bridge">→ 亚群差异提出了关键问题：哪个亚群是PD-1治疗的真正响应主体？</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>ATAC-seq揭示表观遗传机制的差异</div>
+<div class="step-body">
+<p>Tpex亚群的效应基因位点（如IFNγ、Granzyme B相关基因）染色质开放性高于Tex-term，提示前者具有更强的再激活潜力。Tex-term的染色质状态更为"封闭"，在表观遗传层面锁定了终末耗竭状态。</p>
+<div class="bridge">→ 表观遗传证据为"可逆性的细胞生物学基础"提供了机制解释</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>在抗PD1治疗数据中验证Tpex的响应优势</div>
+<div class="step-body">
+<p>利用GSE176078的配对治疗数据，分析抗PD1治疗后不同耗竭亚群的克隆扩增情况。结果显示Tpex亚群在响应者中优先扩增，而Tex-term亚群扩增有限。这一结果在GSE161529的大队列中进一步得到预后验证。</p>
+<div class="evidence">证据闭环：转录特征（scRNA）→表观遗传机制（ATAC）→功能验证（治疗后追踪）→临床意义（预后）完整证据链。</div>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>Tpex的"干性"特征在乳腺癌中是否与其他癌种（如黑色素瘤、肺癌）有可比性，仍需系统研究</li>
+<li>ATAC-seq需要足够的细胞数量，对样本中稀少亚群的分析可能存在覆盖不足</li>
+</ul>
+</div>
+</div>
+</details>
+
+<!-- PAPER 13 -->
+<details class="article" id="p13" data-group="免疫状态与机制">
+<summary>
+<div class="article-title"><span class="paper-number">13</span>乳腺癌免疫细胞状态综合图谱</div>
+<div class="paper-meta">多中心联合 · <em>Cancer Cell</em> 2022 · GSE248288</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">A comprehensive single-cell atlas of immune cell states in breast cancer — cross-cohort analysis identifies stable and patient-specific features</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+在大规模、多中心的患者队列中，乳腺癌微环境的免疫细胞状态是否存在"稳定的共性特征"？患者间的免疫状态异质性有多大？能否从免疫状态中提炼出具有跨队列预测价值的生物标志物？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>新建多中心scRNA-seq队列（GSE248288）</td><td>多家医疗机构提供的乳腺癌患者，>50例，系统涵盖亚型和分期</td><td>10x Genomics</td><td>大样本量保障稀有免疫亚群可靠检测，多中心减少单中心偏倚</td></tr>
+<tr><td>GSE161529（Paper 04）</td><td>26例患者参考图谱</td><td>外部验证</td><td>跨数据集免疫亚群定义一致性验证</td></tr>
+<tr><td>GSE176078（Paper 05）</td><td>29例治疗队列</td><td>外部验证</td><td>验证免疫状态与治疗响应的关联</td></tr>
+<tr><td>TCGA/METABRIC临床队列</td><td>>2000例</td><td>Bulk RNA-seq</td><td>大队列生存分析，免疫状态评分的预后价值</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：大样本 + 多外部验证的"可靠性三角"</h4>
+<p>Paper 13与Paper 14共享GSE248288数据集，体现了同一数据源支撑不同科学视角的研究范式。Paper 13专注于免疫细胞状态图谱，Paper 14专注于TME分型与预后（下一篇）。</p>
+<p>本研究的数据搭配策略是"可靠性三角"：<b>新建大队列（发现）+ 独立参考集（亚群验证）+ 临床大队列（预后验证）</b>。三角中每个顶点回答不同的问题：发现数据问"有哪些"，参考集问"可重复吗"，临床队列问"有临床意义吗"。</p>
+<p>多中心设计（而非单中心）是本研究优于Paper 04/05的关键升级：单中心数据可能存在系统性偏倚（如特定手术/处理流程、患者来源偏倚），多中心数据中能稳定出现的特征更可能是真实的生物学信号而非中心效应。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>大规模多中心数据整合与批次效应控制</div>
+<div class="step-body">
+<p>多中心数据整合是技术挑战，需要识别并去除中心特异性批次效应，同时保留患者间真实的生物学异质性。通过多种整合方法交叉比对，确保后续发现在批次校正方法上具有稳健性。</p>
+<div class="bridge">→ 批次效应控制质量决定了后续生物学发现的可信度</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>鉴定"稳定核心"免疫状态 vs 患者特异性变异</div>
+<div class="step-body">
+<p>在大规模队列中，识别出在所有患者中稳定出现的免疫细胞状态（"核心状态"），以及患者个体差异较大的"变异状态"。核心状态更可能是肿瘤微环境的普遍生物学特征，变异状态则可能是分层预测标志物的候选。</p>
+<div class="bridge">→ 区分核心 vs 变异状态，是从描述性图谱升级为预测性工具的关键</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>跨数据集验证亚群定义的稳健性</div>
+<div class="step-body">
+<p>在GSE161529、GSE176078中检验新定义的免疫状态是否可以被重现，确保亚群定义不依赖于特定数据集的特定技术条件。</p>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">4</span>构建免疫状态评分体系，映射至临床大队列</div>
+<div class="step-body">
+<p>将单细胞定义的免疫状态转化为可在bulk RNA数据中计算的评分体系，在TCGA/METABRIC中验证预后价值。</p>
+<div class="evidence">转化逻辑：单细胞图谱→特征基因→bulk评分→预后验证，是单细胞研究临床转化的标准通路。</div>
+</div>
+</div>
+</div>
+</details>
+
+<!-- PAPER 14 -->
+<details class="article" id="p14" data-group="免疫状态与机制">
+<summary>
+<div class="article-title"><span class="paper-number">14</span>乳腺癌TME免疫分型与预后预测</div>
+<div class="paper-meta">同GSE248288数据集 · <em>Cancer Cell</em> 2022</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Tumor microenvironment immune subtypes in breast cancer — single-cell-based classification predicts prognosis and treatment response</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+能否基于单细胞分辨率的微环境特征，将乳腺癌患者分为具有不同预后和治疗响应预测价值的免疫亚型？这种亚型分类是否优于传统的分子亚型分类系统？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：Paper 13和Paper 14的"双视角"挖掘策略</h4>
+<p>Paper 13和Paper 14使用同一个GSE248288数据集，但提出了不同的科学问题。Paper 13着眼于"细胞状态的描述与分类"，Paper 14着眼于"如何将细胞状态组合转化为患者级别的预后分型"。</p>
+<p>这两篇论文共同说明：<b>高质量单细胞数据集的科学价值不只取决于技术指标，更取决于提出的科学问题的深度</b>。同样的数据，在不同框架下可以产生关注细胞机制（Paper 13）或关注临床预测（Paper 14）的不同科学产出。</p>
+<p>本研究引入GSE161529、GSE176078作为外部验证，以及TCGA/METABRIC的大队列生存分析，形成了从细胞→患者→队列的三层验证架构。TCGA/METABRIC在此发挥"临床锚点"作用——单细胞数据给出机制解释，大队列给出统计显著的生存证据，两者缺一不可。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>从细胞状态到患者级别"生态型"定义</div>
+<div class="step-body">
+<p>不再只描述单个细胞类型的状态，而是分析每位患者微环境中各类免疫细胞状态的"组合模式"——即哪些细胞状态倾向于共同出现（"生态型"）。这一视角捕捉了细胞间协同作用的整体模式，而非孤立细胞状态的简单叠加。</p>
+<div class="bridge">→ 生态型概念的提出，使"患者级别分型"成为可能，进而可以检验分型的预后价值</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>识别具有明确生物学意义的TME免疫亚型</div>
+<div class="step-body">
+<p>聚类分析识别出若干TME亚型，如"T细胞浸润型"、"髓系主导型"、"免疫沙漠型"等，每种亚型有各自的细胞组成特征和推断的免疫功能状态。</p>
+<div class="bridge">→ 亚型定义完成后，需要在大队列中验证其预后预测能力</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>在大队列中验证免疫亚型的预后预测价值</div>
+<div class="step-body">
+<p>将TME分型特征基因评分映射至TCGA和METABRIC（>2000例），进行多变量生存分析，验证免疫亚型的预后预测能力是否独立于分子亚型、分期等传统临床变量。</p>
+<div class="evidence">关键比较：新分型 vs 传统分型（PAM50等）的预后预测优劣，体现了研究的增量价值。</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">4</span>在GSE176078的治疗队列中验证亚型与治疗响应的关联</div>
+<div class="step-body">
+<p>"T细胞浸润型"患者在抗PD1治疗后免疫激活更充分，"免疫沙漠型"患者几乎无响应。这一发现将描述性分型与治疗预测功能直接连接。</p>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>TME分型需要单细胞分辨率才能精确计算，临床实际检测中bulk RNA的评分代理方案可能存在精度损失</li>
+<li>分型与治疗响应的关联是回顾性分析，需要前瞻性临床研究验证预测价值</li>
+</ul>
+</div>
+</div>
+</details>
+
+<!-- ============================================================ -->
+<!-- THEME 4: 治疗响应与生态型 -->
+<!-- ============================================================ -->
+<div class="sec-title red" id="theme4">▌主题四：治疗响应机制与肿瘤生态型</div>
+
+<!-- PAPER 15 -->
+<details class="article" id="p15" data-group="治疗响应与生态型">
+<summary>
+<div class="article-title"><span class="paper-number">15</span>CDK4/6抑制剂耐药机制的单细胞解析</div>
+<div class="paper-meta">Patel et al. · <em>Nature Cancer</em> 2023</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Single-cell analysis reveals CDK4/6 inhibitor resistance mechanisms through tumor cell reprogramming and microenvironmental rewiring in breast cancer</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+ER+乳腺癌患者在CDK4/6抑制剂（palbociclib等）治疗过程中，肿瘤细胞通过哪些转录程序重编程机制产生耐药？微环境的变化是否在耐药形成中起了促进或阻碍作用？能否从获得性耐药样本中发现可干预的靶点？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（纵向配对）</td><td>ER+乳腺癌患者，治疗前活检 + 治疗中（6周）+ 耐药进展时活检，每例3个时间点</td><td>10x Genomics</td><td>追踪肿瘤细胞和微环境在整个耐药形成过程中的动态变化轨迹</td></tr>
+<tr><td>患者来源类器官（PDO）</td><td>从进展期患者肿瘤建立的类器官系统</td><td>体外培养+药物处理</td><td>在有患者遗传背景的体外系统中验证耐药机制，筛选克服耐药的组合策略</td></tr>
+<tr><td>WES（外显子组）</td><td>治疗前后配对样本</td><td>基因组测序</td><td>区分耐药是源于基因突变（体细胞进化）还是表型可塑性（无基因改变的状态转变）</td></tr>
+<tr><td>ATAC-seq（染色质）</td><td>配对肿瘤样本</td><td>表观遗传</td><td>验证转录重编程是否有表观遗传机制支撑</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：纵向三时间点 + 多组学的"耐药溯源"策略</h4>
+<p>CDK4/6i耐药研究面临的核心挑战是：耐药的发生是"选择"（预存的耐药细胞被筛选出来）还是"诱导"（原本敏感的细胞被药物压力诱导为耐药状态）？这两种机制在治疗策略上有根本性不同，但从单一时间点数据无法区分。</p>
+<p><b>三时间点设计</b>解决了这个问题：治疗前（基线）→治疗中（早期响应/压力期）→耐药进展（结局）。通过CNV分析（WES/scCNV）追踪肿瘤克隆动态：若同一克隆从基线到进展持续存在且逐渐扩增，提示"选择"；若耐药时出现基因程序改变但无新的克隆扩增，提示"诱导/可塑性"。</p>
+<p>PDO系统在此发挥了关键的"因果验证"作用：在人类来源的肿瘤细胞中，通过体外再现耐药过程，可以操控特定分子通路，检验其是否是耐药所必需的。PDO比细胞系更贴近患者实际肿瘤，比动物模型更直接面向临床转化。</p>
+<p>ATAC-seq补充了表观遗传维度：若耐药细胞的染色质开放性模式发生了稳定改变（即使在去除药物压力后保持），说明耐药是一种"表观遗传记忆"，而非仅仅是转录上的临时响应。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>基线图谱：识别治疗敏感与潜在耐药细胞的预存状态</div>
+<div class="step-body">
+<p>治疗前样本中，大多数肿瘤细胞处于G1期（CDK4/6i的预期靶标），但存在少量预存的"低细胞周期依赖性"亚群，其中部分表达已知的耐药相关基因（如EMT相关基因、干细胞基因）。这一发现提示耐药可能来自预存稀有亚群的扩增。</p>
+<div class="bridge">→ 预存耐药亚群的识别引出下一步：这些细胞在治疗压力下是否真的被选择性扩增？</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>治疗中期：细胞状态转变与微环境同步重塑</div>
+<div class="step-body">
+<p>治疗6周时，肿瘤细胞表现出明显的细胞周期阻滞（预期效果），但同时出现一类新的转录状态——高表达生长因子受体（FGFR、EGFR）和基质重塑基因，表现出"绕开CDK4/6"的信号通路上调。微环境中CAF亚群和髓系细胞比例也同步发生变化，提示微环境可能为耐药亚群提供了生存支持信号。</p>
+<div class="bridge">→ 肿瘤细胞和微环境的同步变化，提示两者之间可能存在耐药协同的信号互作</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>进展期：耐药状态的巩固与表观遗传锁定</div>
+<div class="step-body">
+<p>耐药进展时，"绕开CDK4/6"的肿瘤亚群已成为主体，ATAC-seq证实其染色质状态发生了稳定改变。WES分析显示部分患者存在RB1失活突变（经典耐药突变），但另一部分患者无明显新突变，提示纯粹的表观遗传/表型耐药机制也可独立发生。</p>
+<div class="bridge">→ 两类耐药机制（基因突变 vs 表型可塑性）的识别，指向不同的克服策略</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">4</span>PDO验证与克服耐药的组合策略探索</div>
+<div class="step-body">
+<p>在PDO系统中，CDK4/6i联合FGFR抑制剂或CDK4/6i联合表观遗传修饰剂，对"表型耐药"亚型显示出协同杀伤效果，为临床组合用药提供了直接依据。</p>
+<div class="evidence">PDO的临床转化价值：患者遗传背景+真实耐药机制+可操控性，使其成为连接机制发现与临床试验设计的理想桥梁。</div>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>纵向活检在临床实践中难以实施，限制了该研究设计的推广性</li>
+<li>PDO不能完全重现体内肿瘤-微环境互作，体外验证的耐药机制可能在体内有不同表现</li>
+<li>样本量有限，不同耐药亚型的分类需要更大队列验证</li>
+</ul>
+</div>
+</div>
+</details>
+
+<!-- PAPER 16 -->
+<details class="article" id="p16" data-group="治疗响应与生态型">
+<summary>
+<div class="article-title"><span class="paper-number">16</span>新辅助化疗响应的单细胞机制</div>
+<div class="paper-meta">Gao et al. · <em>Nature Medicine</em> 2023</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Single-cell profiling reveals tumor-intrinsic and microenvironmental determinants of neoadjuvant chemotherapy response in breast cancer</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+接受新辅助化疗的乳腺癌患者，哪些肿瘤细胞内在特征和微环境特征在治疗前就能预测达到病理完全缓解（pCR）或残留病灶（RD）？化疗过程中微环境如何动态重塑，这种重塑是否影响最终治疗结局？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（纵向）</td><td>新辅助化疗患者，治疗前（core活检）+ 化疗中期评估 + 手术切除（治疗后），每例2-3个时间点</td><td>10x Genomics</td><td>追踪化疗响应与耐药过程中的细胞状态演化</td></tr>
+<tr><td>多重免疫荧光（mIF）</td><td>组织切片（与scRNA-seq同期取样）</td><td>蛋白+空间</td><td>验证关键细胞亚群的空间分布，确认"免疫浸润"是否真正发生</td></tr>
+<tr><td>WES（外显子组）</td><td>配对治疗前后样本</td><td>基因组</td><td>追踪肿瘤克隆动态，确定耐药是否伴随基因组进化</td></tr>
+<tr><td>外部验证队列</td><td>独立的新辅助化疗临床研究数据库（I-SPY2等）</td><td>Bulk RNA + 临床数据</td><td>验证预测标志物在独立队列中的泛化能力</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：新辅助化疗是天然的"体内治疗实验"</h4>
+<p>新辅助化疗（术前化疗）具有独特的研究价值：患者在化疗前就存在可活检的原发肿瘤，化疗结束后手术切除标本可以直接评估残留病灶。这提供了<b>治疗前→治疗后的天然配对标本</b>，而且治疗结局（pCR vs RD）是明确的临床终点，使预测标志物的验证变得直接可操作。</p>
+<p>pCR（病理完全缓解）vs RD（残留病灶）的二元分组是本研究的核心分层依据，所有组学分析都围绕"能否在治疗前预测这一分层"展开。这种设计避免了"发现了生物学差异但不知道有无临床意义"的常见局限。</p>
+<p>mIF的引入解决了scRNA数据的一个重要盲点：化疗诱导的免疫浸润（CD8+ T细胞进入肿瘤）是scRNA数据中观察到的显著变化，但这种浸润是真正的"进入肿瘤实质"还是仅在肿瘤边缘徘徊？空间数据提供了形态学证据，直接影响对"免疫介导的肿瘤清除"机制的解读。</p>
+<p>I-SPY2等独立临床队列的引入是预测标志物研究不可缺少的一步：在同一研究的数据中构建预测模型，然后在自己的数据中验证，存在严重的过拟合风险。独立外部队列的验证才能真正评估预测价值。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>基线特征：区分pCR与RD患者的治疗前微环境差异</div>
+<div class="step-body">
+<p>治疗前，最终达到pCR的患者肿瘤中已有更高的CD8+ T细胞浸润、更低的免疫抑制细胞比例，以及肿瘤细胞中更高的DNA损伤应答基因表达。这些基线差异是预测标志物的候选来源。</p>
+<div class="bridge">→ 基线差异说明患者在开始化疗之前就存在决定结局的微环境差异，但这些差异的机制是什么？</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>化疗中期：微环境的动态重塑与响应轨迹分化</div>
+<div class="step-body">
+<p>化疗中期，pCR患者的微环境出现显著的免疫激活信号（T细胞扩增、巨噬细胞极化转变）；RD患者微环境的免疫状态变化不显著，甚至出现免疫抑制加深的迹象。两组患者的微环境轨迹从这一时间点开始明显分化。</p>
+<div class="bridge">→ 中期评估时间点的差异提示：早期微环境响应监测可能有临床价值</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>mIF验证CD8+ T细胞的肿瘤浸润深度</div>
+<div class="step-body">
+<p>组织切片证实pCR患者化疗后CD8+ T细胞真正浸润至肿瘤实质，而RD患者T细胞主要停留在肿瘤边缘（excluded表型）。这一空间差异为"免疫介导的肿瘤清除"机制提供了形态学佐证。</p>
+<div class="evidence">空间信息的关键价值：T细胞"数量"与T细胞"位置"对肿瘤杀伤效果有本质不同，仅靠scRNA数据无法区分这两种情形。</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">4</span>构建预测模型并在独立队列验证</div>
+<div class="step-body">
+<p>整合基线肿瘤细胞内在特征和微环境特征，构建pCR预测模型，在I-SPY2等独立队列中验证预测性能（AUC），证明发现的标志物具有跨队列泛化能力。</p>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>多时间点活检在不同位置取样可能引入空间异质性偏倚</li>
+<li>新辅助化疗方案不统一（含铂、剂量等），可能影响微环境重塑模式</li>
+<li>TNBC和HER2+患者对化疗的基础响应率不同，需要在亚型内部分别分析</li>
+</ul>
+</div>
+</div>
+</details>
+
+<!-- PAPER 17 -->
+<details class="article" id="p17" data-group="治疗响应与生态型">
+<summary>
+<div class="article-title"><span class="paper-number">17</span>化疗联合免疫治疗响应的生态型分析</div>
+<div class="paper-meta">Loi et al. style · <em>Nature Medicine</em> 2023 · GSE169246 + GSE266919</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Tumor ecosystem subtypes predict response to chemotherapy plus immunotherapy in triple-negative breast cancer — integrating single-cell, spatial and bulk data</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+TNBC患者接受化疗联合PD-L1抑制剂（如阿替利珠单抗）时，哪类微环境"生态型"能从联合治疗中获得额外获益（相比单纯化疗）？能否建立一个可用于临床的预测性生物标志物？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq（主数据集）</td><td>TNBC患者（GSE169246旧队列 + GSE266919新队列，合并使用）</td><td>10x Genomics</td><td>跨队列构建稳健的微环境生态型分类，避免单队列过拟合</td></tr>
+<tr><td>空间转录组学</td><td>部分患者肿瘤切片</td><td>10x Visium</td><td>验证生态型中细胞组成的空间共定位关系，确认生态型是真实的空间实体而非计算产物</td></tr>
+<tr><td>临床试验队列（IMpassion130等）</td><td>接受化疗±atezolizumab的TNBC患者</td><td>Bulk RNA-seq + 临床结局</td><td>验证生态型评分预测联合治疗获益的能力，核心临床验证平台</td></tr>
+<tr><td>4臂小鼠实验</td><td>TNBC小鼠模型，随机分为：溶剂对照、单纯化疗、单纯免疫治疗、化疗+免疫</td><td>体内实验</td><td>分解联合治疗效果，验证哪种生态型对免疫治疗有真正增效作用</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：双队列 + 4臂动物实验的"分解验证"策略</h4>
+<p>本研究的数据搭配策略体现了"临床问题驱动→数据选择"的逻辑：核心临床问题是"谁能从化疗+免疫联合中获益（而非仅从化疗获益）"，因此数据设计必须能够分解化疗贡献和免疫治疗贡献。</p>
+<p><b>两个scRNA队列合并</b>（GSE169246 + GSE266919）是一个重要的方法学选择：单一小队列构建的生态型分型容易过拟合，合并两个独立采集的队列，生态型分类的稳健性更高。这类似于荟萃分析的逻辑——两个独立来源的一致信号强于单一来源的信号。</p>
+<p><b>空间转录组的角色</b>在本研究中尤为重要：生态型是多种细胞状态的"组合"，这种组合理论上可能只是统计上的关联，未必在空间上真实毗邻。Visium数据验证了生态型定义的细胞类型确实在组织中形成空间上相互接触的功能单元，为"生态型"这一概念提供了空间实体依据。</p>
+<p><b>4臂小鼠实验</b>是分解联合治疗效果的关键设计：化疗组vs联合组的差异=免疫治疗的增量贡献，且这种增量是否在不同生态型小鼠中有所不同，直接测试了生态型的预测意义。</p>
+<p>IMpassion130临床试验数据是最终的验证"金标准"：在真实随机化临床试验的分组数据中，证明生态型高分患者在化疗+atezolizumab组的pFS优于化疗单用组，而生态型低分患者则无此差异。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>合并两队列构建稳健生态型分类</div>
+<div class="step-body">
+<p>将GSE169246和GSE266919整合后，通过无监督聚类（基于细胞组成比例）识别出若干TNBC微环境生态型，确保分型在两个队列中均稳定再现，且与采集时间、批次无关。</p>
+<div class="bridge">→ 稳健的分型是后续验证的前提；不稳定的分型无法在外部数据中预测</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>空间转录组确认生态型的空间真实性</div>
+<div class="step-body">
+<p>Visium数据证实，"免疫激活型"生态型中效应T细胞和成熟DC在肿瘤实质中共定位，形成免疫突触样结构；"间质型"生态型中CAF密集区域与T细胞排除区域高度重叠。空间证据将计算定义的生态型转化为具有真实组织学含义的实体。</p>
+<div class="bridge">→ 空间验证完成后，生态型作为"预测单元"的生物学合理性得到支撑</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>4臂小鼠实验分解联合治疗效果</div>
+<div class="step-body">
+<p>在具有不同生态型特征的小鼠模型（通过免疫调控手段构建"免疫激活型"vs"免疫抑制型"肿瘤）中，4臂实验证明：免疫激活型肿瘤对化疗+免疫治疗有协同效应，而免疫抑制型肿瘤中免疫治疗的增量效果微弱甚至消失。因果关系得以在体内实验中确立。</p>
+<div class="bridge">→ 动物实验提供了"生态型驱动治疗响应差异"的因果证据，但仍需人类数据验证预测价值</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">4</span>在IMpassion130临床试验数据中验证预测价值</div>
+<div class="step-body">
+<p>构建基于生态型特征的bulk RNA可计算评分，在IMpassion130随机临床试验数据中检验其预测联合治疗获益的能力。在生态型高分患者中，联合组vs化疗单用组的生存差异显著；低分患者中无差异。这是预测性生物标志物研究的最高级别临床证据。</p>
+<div class="evidence">证据层级：scRNA图谱（发现）→空间转录组（真实性）→动物实验（因果）→随机临床试验（预测价值）——完整的证据链从机制到临床转化。</div>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>bulk RNA评分是单细胞生态型的简化代理，实际临床检测精度有限</li>
+<li>IMpassion130中biomarker分析为回顾性，前瞻性临床验证仍是最终目标</li>
+<li>小鼠模型在免疫系统复杂性上与人类存在本质差距，4臂实验的结论向人类直接外推需谨慎</li>
+</ul>
+</div>
+</div>
+</details>
+
+<!-- PAPER 18 -->
+<details class="article" id="p18" data-group="治疗响应与生态型">
+<summary>
+<div class="article-title"><span class="paper-number">18</span>HER2异质性与乳腺癌分型重构</div>
+<div class="paper-meta">Marchiò et al. style · <em>Nature Cancer</em> 2023</div>
+</summary>
+<div class="paper-content">
+<div class="original-title">Intratumoral HER2 heterogeneity and tumor microenvironment rewiring — implications for anti-HER2 therapy selection in breast cancer</div>
+
+<div class="core-question">
+<b>核心科学问题</b>
+HER2扩增在乳腺癌内部并非均一存在，肿瘤内HER2异质性（IHH）的程度和空间分布如何影响抗HER2治疗（曲妥珠单抗、T-DM1、T-DXd等）的效果？HER2低表达（HER2-low）是否构成一个具有独特微环境特征的独立生物学实体？
+</div>
+
+<div class="article-section">研究设计与数据来源</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>数据层</th><th>样本构成</th><th>技术平台</th><th>科学用途</th></tr></thead>
+<tbody>
+<tr><td>scRNA-seq + scDNA-seq（联合）</td><td>HER2+和HER2-low乳腺癌患者，取多个肿瘤区域（多区域采样）</td><td>10x Genomics + scDNA</td><td>同时获得转录状态和HER2基因拷贝数信息，区分真实HER2异质性与转录噪音</td></tr>
+<tr><td>空间转录组（Visium）</td><td>肿瘤切片，系统覆盖肿瘤中心、边缘和浸润区</td><td>10x Visium</td><td>绘制HER2表达异质性的空间地图，识别HER2高/低表达区域的微环境差异</td></tr>
+<tr><td>FISH / IHC验证</td><td>组织切片（多区域取样）</td><td>标准病理检测</td><td>用临床标准检测方法验证单细胞/空间数据观察到的HER2异质性</td></tr>
+<tr><td>抗HER2治疗响应队列</td><td>接受不同抗HER2方案的临床队列（含T-DXd治疗数据）</td><td>临床数据 + bulk RNA</td><td>验证HER2异质性评分与治疗响应的相关性</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="data-logic-box">
+<h4>🔗 数据搭配逻辑：scRNA + scDNA的"双单细胞"设计解决HER2异质性测量难题</h4>
+<p>测量肿瘤内HER2异质性面临一个根本困难：HER2的"异质性"可以来源于两个完全不同的生物学机制——<b>遗传异质性</b>（不同细胞克隆之间真实的HER2基因拷贝数差异）和<b>转录异质性</b>（HER2基因未扩增但表达量存在细胞间差异，可能只是转录噪音）。这两种机制对治疗结果的影响完全不同，但仅凭scRNA-seq无法区分（scRNA的"高/低HER2表达"可能来自表达噪音而非真实扩增）。</p>
+<p><b>scDNA-seq</b>直接测量每个细胞的HER2基因拷贝数，与scRNA的表达量联合分析，才能区分"遗传多样性驱动的HER2异质性"与"转录波动产生的表观异质性"。前者对抗HER2治疗有预测价值，后者则未必。</p>
+<p><b>多区域采样</b>（Multi-region sampling）是研究肿瘤内异质性的必要设计：在单一肿瘤区域取样可能会遗漏局部的HER2扩增或缺失，只有系统覆盖肿瘤的不同区域，才能真实反映全肿瘤的HER2异质性程度。</p>
+<p>空间转录组将HER2异质性"可视化"到组织层面：确认HER2高表达区域在组织中是弥漫分布还是形成局部克隆集落，微环境的差异（免疫浸润、CAF分布等）是否与HER2表达的空间分布一致。这些空间关联对于理解抗HER2治疗失败（如克隆选择后的HER2低表达残留）有重要意义。</p>
+</div>
+
+<div class="article-section">分析推进逻辑</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">1</span>建立HER2异质性的定量测量体系</div>
+<div class="step-body">
+<p>整合scRNA（HER2表达量分布）和scDNA（HER2拷贝数）信息，构建"遗传异质性指数"和"转录异质性指数"，将HER2异质性从定性描述转化为可量化的多维度指标。</p>
+<div class="bridge">→ 定量测量是后续分析HER2异质性与治疗响应关系的前提</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">2</span>空间转录组揭示HER2异质性的组织学模式</div>
+<div class="step-body">
+<p>Visium数据显示HER2表达呈现非随机的空间分布——部分肿瘤中HER2高表达区域集中于肿瘤核心，另一些患者中HER2高/低表达区域随机散布。两种空间模式下微环境特征（T细胞浸润、CAF密度）差异显著，提示空间模式可能影响抗体类药物（如T-DXd）的"旁观者效应"。</p>
+<div class="bridge">→ 空间模式的差异引出关键治疗学问题：HER2聚集型 vs 弥散型是否对T-DXd等ADC药物有不同响应？</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">3</span>区分HER2-low作为独立生物学实体</div>
+<div class="step-body">
+<p>HER2-low患者（IHC 1+/2+, FISH未扩增）在单细胞和空间层面均展示出不同于HER2+和HER2-阴性的微环境特征，支持HER2-low作为独立生物学分类（而非简单的IHC评分区间）的合理性，为T-DXd在HER2-low人群的临床应用提供了生物学依据。</p>
+<div class="bridge">→ 独立生物学特征的确认，为近年T-DXd在HER2-low患者获批的临床决策提供了机制基础</div>
+</div>
+</div>
+
+<div class="story-step">
+<div class="step-head"><span class="step-num">4</span>HER2异质性与抗HER2治疗响应的临床验证</div>
+<div class="step-body">
+<p>在接受曲妥珠单抗或T-DM1治疗的队列中，遗传HER2异质性高的患者（存在HER2拷贝数不等的克隆亚群）对靶向HER2的治疗响应较差，与"异质性克隆的生存逃逸"假说一致。T-DXd的"旁观者效应"在HER2低表达区域弥散分布的患者中可能发挥更大作用。</p>
+<div class="evidence">临床意义：HER2异质性评分有望成为选择抗HER2治疗方案（精准HER2靶向 vs ADC类药物）的辅助决策依据。</div>
+</div>
+</div>
+
+<div class="limits">
+<h4>⚠ 研究局限</h4>
+<ul>
+<li>scDNA-seq通量低，每个患者仅能分析数百至数千个细胞，可能遗漏稀有HER2突变克隆</li>
+<li>T-DXd的旁观者效应在体内的真实范围仍存争议，单细胞推断与实际药效之间存在差距</li>
+<li>HER2-low的生物学定义目前主要依赖IHC半定量评分，标准化程度不足</li>
+</ul>
+</div>
+</div>
+</details>
+
+<!-- ============================================================ -->
+<!-- CROSS-READING SECTION -->
+<!-- ============================================================ -->
+<div class="sec-title navy" id="crossread">▌横向专题：数据共享关系与证据网络</div>
+
+<div class="callout key">
+<b>理解数据共享关系的意义：</b>18篇论文并非彼此孤立——它们通过共享数据集、相互引用验证，构成了一个相互支撑的证据网络。理解这些数据关联，可以帮助读者评估每个结论的证据强度：来自独立队列的交叉验证结论比单一数据集的内部验证更可靠。
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th style="width:22%">数据集</th><th style="width:20%">主要来源论文</th><th style="width:35%">被引用于</th><th style="width:23%">共享逻辑</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="badge">E-MTAB-10607</span><br><small>14例配对原发灶-淋巴结</small></td>
+<td>Paper 07（NK细胞与转移）</td>
+<td>Paper 08（pEMT与免疫逃逸）</td>
+<td>同一批患者配对数据，两篇文章聚焦不同科学维度：NK细胞视角 vs 肿瘤EMT视角</td>
+</tr>
+<tr>
+<td><span class="badge">GSE248288</span><br><small>多中心大规模TME</small></td>
+<td>Paper 13（免疫状态图谱）</td>
+<td>Paper 14（TME分型与预后）</td>
+<td>同一数据集支撑两个问题：细胞状态分类（Paper 13）与患者级分型（Paper 14），体现大型数据集的多维度挖掘价值</td>
+</tr>
+<tr>
+<td><span class="badge">GSE167036</span><br><small>转移前微环境图谱</small></td>
+<td>Paper 09（预转移龛首次描述）</td>
+<td>Paper 10（独立验证 + 深化机制）</td>
+<td>Paper 09构建图谱，Paper 10以其作为外部验证来源，构成"发现→独立验证"证据链</td>
+</tr>
+<tr>
+<td><span class="badge">GSE161529</span><br><small>26例跨亚型参考图谱</small></td>
+<td>Paper 04（全景参考图谱）</td>
+<td>Paper 12（耗竭T细胞）、Paper 13（免疫图谱）、Paper 14（TME分型）</td>
+<td>高质量参考图谱成为后续研究的"通用验证平台"，体现图谱类研究的基础设施价值</td>
+</tr>
+<tr>
+<td><span class="badge">GSE176078</span><br><small>抗PD1治疗配对数据</small></td>
+<td>Paper 05（治疗前后微环境）</td>
+<td>Paper 12（耗竭T细胞治疗响应）、Paper 14（TME分型与响应）</td>
+<td>含治疗前后配对信息的数据集是验证"某细胞状态在治疗后如何改变"的稀缺资源</td>
+</tr>
+<tr>
+<td><span class="badge">GSE169246 + GSE266919</span><br><small>TNBC化疗+免疫队列</small></td>
+<td>Paper 17（生态型与联合治疗）</td>
+<td>Paper 17内部合并使用</td>
+<td>合并两个独立时期的队列，提升生态型分类的统计稳健性，减少单队列过拟合风险</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="sec-title navy">▌横向专题：多组学数据逻辑整合框架</div>
+
+<p>跨越18篇文章，可以梳理出乳腺癌单细胞/多组学研究中数据整合的几种核心逻辑范式：</p>
+
+<div class="grid-2">
+<div class="card blue-c">
+<h4>🔬 发现层（单细胞分辨率）</h4>
+<p><b>scRNA-seq</b>：识别细胞类型、定义细胞状态、推断细胞间通讯</p>
+<p><b>scDNA-seq</b>：鉴定克隆结构、追踪遗传异质性（如Paper 18 HER2）</p>
+<p><b>TCR/BCR测序</b>：追踪免疫克隆扩增，佐证功能激活（如Paper 05, 12）</p>
+<p class="note">局限：样本量小，静态快照，缺乏空间信息</p>
+</div>
+<div class="card green-c">
+<h4>📍 空间验证层</h4>
+<p><b>Visium空间转录组</b>：细胞状态的组织定位，邻近关系分析（如Paper 04, 17, 18）</p>
+<p><b>多重免疫荧光（mIF）</b>：蛋白水平的空间分布验证（如Paper 03, 16）</p>
+<p><b>IMC（质谱流式成像）</b>：高维蛋白空间图谱</p>
+<p class="note">局限：空间转录组分辨率仍低于单细胞，需结合scRNA去卷积</p>
+</div>
+<div class="card orange-c">
+<h4>⚗️ 机制验证层</h4>
+<p><b>ATAC-seq</b>：表观遗传层面验证细胞状态的稳定性（如Paper 12, 15）</p>
+<p><b>WES/全基因组</b>：区分突变驱动 vs 表型可塑性耐药（如Paper 15, 16）</p>
+<p><b>PDO/功能实验</b>：在可控体外系统中验证因果关系（如Paper 11, 15）</p>
+<p class="note">局限：体外系统无法完全重现体内微环境复杂性</p>
+</div>
+<div class="card purple-c">
+<h4>📊 临床验证层</h4>
+<p><b>TCGA / METABRIC</b>：单细胞发现的大队列预后验证（几乎所有论文均使用）</p>
+<p><b>随机临床试验数据</b>：预测性生物标志物的最高级别验证（如Paper 17 IMpassion130）</p>
+<p><b>多中心队列</b>：减少单中心偏倚，增强结论的可推广性（如Paper 13）</p>
+<p class="note">局限：bulk RNA失去细胞分辨率，回顾性分析存在选择偏倚</p>
+</div>
+</div>
+
+<div class="callout warn">
+<b>一个常见的逻辑陷阱：</b>许多研究在单细胞数据中发现了某细胞状态与预后的"相关性"，便声称发现了新的治疗靶点。但"相关性"到"靶点"之间还有很长的距离——需要功能实验证明因果方向（Is it truly driving outcomes?），需要在独立大队列中证明统计显著性，还需要在人类PDO或小鼠模型中证明干预效果。在阅读这类文章时，请注意作者提供的是哪一层次的证据。
+</div>
+
+<div class="sec-title navy">▌18篇文章数据使用概览</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>编号</th><th>研究主题</th><th>核心数据集</th><th>外部验证来源</th><th>功能实验</th></tr>
+</thead>
+<tbody>
+<tr><td>01</td><td>TNBC三态图谱</td><td>GSE148673（7+5+7例）</td><td>公开正常乳腺数据</td><td>IF染色</td></tr>
+<tr><td>02</td><td>乳腺癌全景图谱</td><td>26例多亚型</td><td>TCGA, METABRIC</td><td>流式细胞术</td></tr>
+<tr><td>03</td><td>ILC微环境</td><td>ILC 9 vs IDC 13例</td><td>TCGA-ILC队列</td><td>多重IF</td></tr>
+<tr><td>04</td><td>参考图谱（GSE161529）</td><td>26例（~130K细胞）</td><td>Visium空间验证</td><td>—</td></tr>
+<tr><td>05</td><td>抗PD1治疗图谱（GSE176078）</td><td>29例配对</td><td>WES</td><td>TCR追踪</td></tr>
+<tr><td>06</td><td>方法学基准</td><td>多公开数据集</td><td>—</td><td>—</td></tr>
+<tr><td>07</td><td>NK细胞与转移</td><td>E-MTAB-10607（14例配对）</td><td>外部bulk队列</td><td>—</td></tr>
+<tr><td>08</td><td>pEMT与免疫逃逸</td><td>E-MTAB-10607（同上）</td><td>临床生存队列</td><td>通讯分析</td></tr>
+<tr><td>09</td><td>预转移龛</td><td>GSE167036（pN0 15例）</td><td>正常淋巴结对照</td><td>小鼠模型</td></tr>
+<tr><td>10</td><td>预转移龛深化</td><td>新建队列</td><td>GSE167036（外部验证）</td><td>体外功能实验</td></tr>
+<tr><td>11</td><td>DC亚群功能</td><td>多例乳腺癌</td><td>TCGA队列</td><td>DC-T共培养</td></tr>
+<tr><td>12</td><td>耗竭T细胞异质性</td><td>新建队列+TCR</td><td>GSE161529, GSE176078</td><td>ATAC-seq</td></tr>
+<tr><td>13</td><td>免疫状态综合图谱</td><td>GSE248288（多中心）</td><td>GSE161529, GSE176078</td><td>—</td></tr>
+<tr><td>14</td><td>TME分型与预后</td><td>GSE248288（同上）</td><td>GSE161529, GSE176078, TCGA</td><td>—</td></tr>
+<tr><td>15</td><td>CDK4/6i耐药</td><td>纵向3时间点队列</td><td>外部ER+队列</td><td>PDO, ATAC-seq, WES</td></tr>
+<tr><td>16</td><td>新辅助化疗响应</td><td>纵向2-3时间点队列</td><td>I-SPY2等临床研究</td><td>mIF, WES</td></tr>
+<tr><td>17</td><td>化疗+免疫生态型</td><td>GSE169246+GSE266919（合并）</td><td>IMpassion130临床试验</td><td>4臂小鼠实验, Visium</td></tr>
+<tr><td>18</td><td>HER2异质性</td><td>多区域scRNA+scDNA</td><td>抗HER2治疗队列</td><td>FISH/IHC, Visium</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="endnote">
+<p>本文档系统梳理18篇乳腺癌前沿文献，重点呈现各研究的数据搭配逻辑与科学叙事结构。文中所有数据集编号（GSE/E-MTAB等）均参照原始论文标注，如有出入请以原文为准。</p>
+<p style="margin-top:8px">建议阅读顺序：先通读主题一（图谱与方法）建立基础概念，再按研究兴趣深入主题二至四。横向专题部分（数据共享关系与整合框架）建议在阅读完所有文章后回顾，以获得对整个证据网络的系统性理解。</p>
+</div>
+
+</div><!-- end paper-sheet -->
+
+<script>
+function filterAll(){
+  var kw=(document.getElementById('searchBox').value||'').toLowerCase().trim();
+  var grp=document.getElementById('groupSel').value;
+  var arts=document.querySelectorAll('.article');
+  var vis=0;
+  arts.forEach(function(a){
+    var txt=a.textContent.toLowerCase();
+    var g=a.getAttribute('data-group')||'';
+    var show=(!kw||txt.indexOf(kw)>=0)&&(!grp||g===grp);
+    a.classList.toggle('hidden',!show);
+    if(show)vis++;
+  });
+  var rc=document.getElementById('resultCount');
+  if(rc)rc.textContent=kw||grp?('显示 '+vis+' 篇 / 共 '+arts.length+' 篇'):'';
+  var nm=document.getElementById('noResultsMsg');
+  if(nm)nm.classList.toggle('hidden',vis>0);
+}
+function expandAll(){document.querySelectorAll('.article').forEach(function(a){a.open=true});}
+function collapseAll(){document.querySelectorAll('.article').forEach(function(a){a.open=false});}
+// hash navigation
+(function(){
+  if(location.hash){
+    var el=document.querySelector(location.hash);
+    if(el){el.open=true;setTimeout(function(){el.scrollIntoView({behavior:'smooth'})},200);}
+  }
+})();
+</script>
+</body>
+</html>
